@@ -125,3 +125,7 @@ Publishing images to ECR does **not** deploy them to ECS, App Runner or EC2; dep
 The repository stores readable source code with four-space indentation. Minification is reserved for generated production bundles inside the Docker build, not committed source files.
 
 > Official GardnAIze logo reference and usage: [Branding guide](docs/BRANDING.md).
+
+## Implemented Java backend and integrated demo
+
+The [Java 25 backend](backend/README.md) provides Spring Boot 3.5.7, Hibernate/JPA, Flyway, PostgreSQL 18, Swagger UI and REST APIs consumed by Angular. Java calls FastAPI for **rule-based demonstration** recommendations, not trained ML predictions. Run `docker compose up --build -d --wait` and open http://localhost:8080. Swagger: http://localhost:8081/swagger-ui.html. Database is private to the Compose network. Set a strong `DB_PASSWORD` before any nonlocal deployment. The photo remains browser-only; persistence currently covers questionnaire metadata, not image bytes. GitHub Actions builds/tests Java and can publish `gardnaize-backend` to ECR once AWS OIDC is configured.
