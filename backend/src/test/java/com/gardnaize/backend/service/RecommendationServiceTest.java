@@ -21,6 +21,7 @@ class RecommendationServiceTest {
         GardenProjectService gardens = Mockito.mock(GardenProjectService.class);
         RestClient rest = Mockito.mock(RestClient.class);
         RestClient.RequestBodyUriSpec uri = Mockito.mock(RestClient.RequestBodyUriSpec.class);
+        RestClient.RequestBodySpec bodySpec = Mockito.mock(RestClient.RequestBodySpec.class);
         RestClient.ResponseSpec response = Mockito.mock(RestClient.ResponseSpec.class);
         var suggestions = new RecommendationResponse("demo-rules", List.of(
                 new RecommendationResponse.PlantSuggestion("Lavender", "Full sun")
@@ -31,8 +32,8 @@ class RecommendationServiceTest {
         ));
         when(rest.post()).thenReturn(uri);
         when(uri.uri("/recommendations")).thenReturn(uri);
-        when(uri.body(Mockito.any())).thenReturn(uri);
-        when(uri.retrieve()).thenReturn(response);
+        when(uri.body(Mockito.any())).thenReturn(bodySpec);
+        when(bodySpec.retrieve()).thenReturn(response);
         when(response.body(RecommendationResponse.class)).thenReturn(suggestions);
 
         assertThat(new RecommendationService(gardens, rest).recommend(id).plants()).hasSize(1);
