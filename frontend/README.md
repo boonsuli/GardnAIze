@@ -91,3 +91,7 @@ The browser application is currently a standalone photo-preview interface. Angul
 Run `npm run test:unit` to test photo-validation rules with Node's built-in test runner via `tsx`. GitHub Actions runs these tests and `npm run build` before Docker integration checks. TypeScript, HTML and SCSS sources use **four spaces**, with no tabs. Production bundles are minified during build only, not committed to Git.
 
 > Official GardnAIze logo reference and usage: [Branding guide](../docs/BRANDING.md).
+
+## Backend integration
+
+The questionnaire now creates projects through `POST /api/v1/gardens` and requests demo suggestions through `GET /api/v1/gardens/{id}/recommendations`. Angular dev server proxies `/api` to http://localhost:8081; Docker Nginx proxies to the backend container. The photo is **not uploaded**; suggestions are explicitly rule-based placeholders pending actual ML inference.

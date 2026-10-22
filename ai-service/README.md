@@ -41,3 +41,7 @@ The image uses a non-root user and installs only minimal API dependencies. Futur
 ## Automated tests
 
 Run `pip install -r requirements-dev.txt` and `python -m pytest -q tests`. CI runs these unit tests before building and smoke-testing the Docker image. Source files use four-space indentation and no tabs.
+
+## Backend orchestration
+
+Java sends `POST /recommendations` with location, exposure and soil type. This currently returns exactly three **demo rule-based** plants (`mode: demo-rules-not-ai`); no trained model is used. Python tests verify the request contract and validation.

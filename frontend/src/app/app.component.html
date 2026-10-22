@@ -26,5 +26,38 @@
             }
         </mat-card-content>
     </mat-card>
-    <footer>Prototype local · Backend non connecté</footer>
+    <mat-card appearance="outlined" class="questionnaire">
+        <mat-card-header>
+            <mat-card-title>2. Décrivez votre jardin</mat-card-title>
+            <mat-card-subtitle>Questionnaire initial · suggestions de démonstration</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <label for="garden-name">Nom du projet</label>
+            <input id="garden-name" #gardenNameInput [value]="gardenName()" (input)="gardenName.set(gardenNameInput.value)" maxlength="120">
+            <label for="garden-location">Localisation</label>
+            <input id="garden-location" #locationInput [value]="location()" (input)="location.set(locationInput.value)" maxlength="160">
+            <label for="exposure">Exposition</label>
+            <select id="exposure" #exposureInput [value]="exposure()" (change)="exposure.set($any(exposureInput.value))">
+                <option value="FULL_SUN">Plein soleil</option>
+                <option value="PARTIAL_SHADE">Mi-ombre</option>
+                <option value="SHADE">Ombre</option>
+            </select>
+            <label for="soil-type">Type de sol</label>
+            <select id="soil-type" #soilInput [value]="soilType()" (change)="soilType.set($any(soilInput.value))">
+                <option value="UNKNOWN">Inconnu</option>
+                <option value="SANDY">Sableux</option>
+                <option value="LOAMY">Limoneux</option>
+                <option value="CLAY">Argileux</option>
+            </select>
+            <button mat-flat-button [disabled]="loading()" (click)="submitGarden()">Créer et proposer trois plantes</button>
+            <p aria-live="polite">{{ apiMessage() }}</p>
+            @if (suggestions().length > 0) {
+                <h2>3. Suggestions de plantes</h2>
+                @for (plant of suggestions(); track plant.name) {
+                    <p><strong>{{ plant.name }}</strong> — {{ plant.reason }}</p>
+                }
+            }
+        </mat-card-content>
+    </mat-card>
+    <footer>Prototype V1 · Suggestions non personnalisées par IA · Photo non transmise</footer>
 </main>
