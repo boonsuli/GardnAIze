@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 290" role="img" aria-labelledby="title description">
     <title id="title">GardnAIze</title>
-    <desc id="description">GardnAIze logo, green AI with a compact stem and two proportionate veined leaves, barely above the G cap height. Imagine. Design. Grow.</desc>
+    <desc id="description">GardnAIze logo, green AI with a shortened I stem and two proportionate veined leaves, barely above the G cap height. Imagine. Design. Grow.</desc>
     <defs>
         <linearGradient id="forest" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0" stop-color="#0f4938"/>
@@ -17,11 +17,11 @@
     </defs>
     <g font-family="Arial, Helvetica, sans-serif" font-size="150" font-weight="750" letter-spacing="-8">
         <text x="22" y="198" fill="url(#forest)">Gardn</text>
-        <text x="488" y="198" fill="url(#lime)">A</text>
-        <text x="592" y="198" fill="url(#lime)">I</text>
-        <text x="635" y="198" fill="url(#forest)">ze</text>
+        <text x="457" y="198" fill="url(#lime)">A</text>
+        <rect x="566" y="99" width="22" height="99" rx="1" fill="url(#lime)"/>
+        <text x="605" y="198" fill="url(#forest)">ze</text>
     </g>
-    <g transform="translate(0 63) translate(611 0) scale(0.68) translate(-611 0)">
+    <g transform="translate(-34 68) translate(611 0) scale(0.68) translate(-611 0)">
     <g stroke-linecap="round" stroke-linejoin="round">
         <path d="M611 77 Q607 57 596 42" fill="none" stroke="#298e35" stroke-width="5"/>
         <path d="M612 79 Q617 49 638 28" fill="none" stroke="#298e35" stroke-width="5"/>
