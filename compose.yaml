@@ -1,16 +1,66 @@
 name: gardnaize
 
 services:
+    postgres:
+        image: postgres:18-alpine
+        environment:
+            POSTGRES_DB: gardnaize
+            POSTGRES_USER: gardnaize
+            POSTGRES_PASSWORD: "${DB_PASSWORD:-gardnaize-local-only}"
+        volumes:
+            - postgres-data:/var/lib/postgresql
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U gardnaize -d gardnaize"]
+            interval: 5s
+            timeout: 3s
+            retries: 20
+        restart: unless-stopped
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "3"
+
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        environment:
+            DB_URL: jdbc:postgresql://postgres:5432/gardnaize
+            DB_USER: gardnaize
+            DB_PASSWORD: "${DB_PASSWORD:-gardnaize-local-only}"
+            AI_BASE_URL: http://ai-service:8000
+            LOG_LEVEL: "${BACKEND_LOG_LEVEL:-INFO}"
+        ports:
+            - "127.0.0.1:${BACKEND_PORT:-8081}:8081"
+        depends_on:
+            postgres:
+                condition: service_healthy
+            ai-service:
+                condition: service_healthy
+        healthcheck:
+            test: ["CMD", "java", "-cp", "/app/app.jar", "-version"]
+            interval: 30s
+            timeout: 10s
+            retries: 5
+            start_period: 45s
+        restart: unless-stopped
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "3"
+
     frontend:
         build:
             context: ./frontend
             dockerfile: Dockerfile
         ports:
             - "${FRONTEND_PORT:-8080}:8080"
-        restart: unless-stopped
         depends_on:
-            ai-service:
-                condition: service_healthy
+            backend:
+                condition: service_started
+        restart: unless-stopped
         logging:
             driver: json-file
             options:
@@ -26,8 +76,16 @@ services:
         ports:
             - "127.0.0.1:${AI_PORT:-8000}:8000"
         restart: unless-stopped
+        healthcheck:
+            test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)"]
+            interval: 15s
+            timeout: 3s
+            retries: 5
         logging:
             driver: json-file
             options:
                 max-size: "10m"
                 max-file: "3"
+
+volumes:
+    postgres-data:
