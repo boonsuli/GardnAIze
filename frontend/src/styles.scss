@@ -1,3 +1,19 @@
-@use "@angular/material" as mat;
-html { @include mat.theme((color: (primary: mat.$green-palette, theme-type: light), typography: Roboto, density: 0)); }
-body{margin:0;background:#f7faf7;color:#243c2b;font-family:Roboto,Arial,sans-serif}
+@use '@angular/material' as mat;
+
+html {
+    @include mat.theme((
+        color: (
+            primary: mat.$green-palette,
+            theme-type: light
+        ),
+        typography: Roboto,
+        density: 0
+    ));
+}
+
+body {
+    margin: 0;
+    background: #f7faf7;
+    color: #243c2b;
+    font-family: Roboto, Arial, sans-serif;
+}
