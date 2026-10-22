@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 290" role="img" aria-labelledby="title description">
     <title id="title">GardnAIze</title>
-    <desc id="description">GardnAIze logo, green AI with a short stem and two veined leaves above the I. Imagine. Design. Grow.</desc>
+    <desc id="description">GardnAIze logo, green AI with a short I directly joined to the sprout stem and two proportionate veined leaves, barely above the G cap height. Imagine. Design. Grow.</desc>
     <defs>
         <linearGradient id="forest" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0" stop-color="#0f4938"/>
@@ -17,10 +17,11 @@
     </defs>
     <g font-family="Arial, Helvetica, sans-serif" font-size="150" font-weight="750" letter-spacing="-8">
         <text x="22" y="198" fill="url(#forest)">Gardn</text>
-        <text x="488" y="198" fill="url(#lime)">A</text>
-        <text x="592" y="198" fill="url(#lime)">I</text>
-        <text x="635" y="198" fill="url(#forest)">ze</text>
+        <text x="444" y="198" fill="url(#lime)">A</text>
+        <rect x="550" y="120" width="22" height="78" rx="1" fill="url(#lime)"/>
+        <text x="588" y="198" fill="url(#forest)">ze</text>
     </g>
+    <g transform="translate(-50 68) translate(611 0) scale(0.68) translate(-611 0)">
     <g stroke-linecap="round" stroke-linejoin="round">
         <path d="M611 77 Q607 57 596 42" fill="none" stroke="#298e35" stroke-width="5"/>
         <path d="M612 79 Q617 49 638 28" fill="none" stroke="#298e35" stroke-width="5"/>
@@ -32,6 +33,7 @@
             <path d="M617 65 Q634 34 651 17"/>
             <path d="M626 49 L641 46 M633 38 L633 25 M640 31 L650 30"/>
         </g>
+    </g>
     </g>
     <text x="130" y="258" fill="#0d4334" font-family="Arial, Helvetica, sans-serif" font-size="30" letter-spacing="10">IMAGINE. DESIGN. GROW.</text>
 </svg>
