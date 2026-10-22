@@ -85,3 +85,7 @@ docker run --rm -p 8080:8080 gardnaize-frontend
 ```
 
 The browser application is currently a standalone photo-preview interface. Angular's `LoggerService` logs in browser DevTools; Nginx access logs are visible through Docker. The future Spring Boot API must be configured separately; no backend API proxy is enabled yet.
+
+## Automated unit tests and formatting
+
+Run `npm run test:unit` to test photo-validation rules with Node's built-in test runner via `tsx`. GitHub Actions runs these tests and `npm run build` before Docker integration checks. TypeScript, HTML and SCSS sources use **four spaces**, with no tabs. Production bundles are minified during build only, not committed to Git.

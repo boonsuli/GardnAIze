@@ -3,6 +3,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { LoggerService } from './core/logger.service';
+import { isValidPhoto } from './core/photo-validation';
 
 @Component({
     selector: 'app-root',
@@ -25,9 +26,7 @@ export class AppComponent {
             return;
         }
 
-        const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
-
-        if (!allowedTypes.includes(file.type) || file.size > 10 * 1024 * 1024) {
+        if (!isValidPhoto(file.type, file.size)) {
             this.message.set('Format invalide ou fichier de plus de 10 Mo.');
             this.logger.warn('Invalid photo');
             return;

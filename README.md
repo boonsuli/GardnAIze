@@ -100,3 +100,26 @@ docker compose down
 Use `AI_LOG_LEVEL=DEBUG docker compose up --build` for verbose Python logs. Docker rotates stdout/stderr logs (10 MB × 3 files per service). Browser-side Angular logs remain in browser DevTools. Ports can be changed with `FRONTEND_PORT` and `AI_PORT` environment variables. The AI API is bound to localhost in Compose.
 
 The frontend and AI API currently run as **separate services**, not as an integrated recommendation workflow. The backend will orchestrate calls to the AI service when implemented.
+
+## CI/CD pipeline and AWS deployment preparation
+
+The workflow [`.github/workflows/ci-cd.yml`](.github/workflows/ci-cd.yml) runs on pull requests and pushes to `main`:
+
+1. Verify **4-space indentation** in frontend and AI source files (tabs forbidden).
+2. Run **Angular/TypeScript unit tests** and production build.
+3. Run **FastAPI/Python unit tests** with pytest.
+4. Build the frontend and AI Docker images, launch them with Docker Compose and run **integration smoke tests** against the web UI, health endpoint and OpenAPI document.
+5. On successful `main` pushes, **optionally** authenticate to AWS using GitHub OIDC and push versioned images to **Amazon ECR**. Publishing is disabled until AWS has been configured.
+
+### Future AWS ECR configuration
+
+When the AWS account is available:
+
+- Create private ECR repositories `gardnaize-frontend` and `gardnaize-ai-service` in the chosen region (default: `eu-west-3`).
+- Configure an IAM role trusted by GitHub Actions OIDC, restricted to the repository and `main` branch, with permissions to upload images to those two repositories.
+- Add GitHub repository **Actions variables**: `AWS_DEPLOY_ENABLED=true`, `AWS_ROLE_ARN=<role ARN>`, and optionally `AWS_REGION=eu-west-3`.
+- Do **not** store AWS access keys in GitHub. The workflow requests short-lived credentials via OIDC and never publishes from pull requests.
+
+Publishing images to ECR does **not** deploy them to ECS, App Runner or EC2; deployment will be a later step. The Spring Boot backend is not yet part of the runnable stack. When added, its Docker build will use **Amazon Corretto (Java 25 LTS)** and receive its own build, test, integration and ECR publishing jobs.
+
+The repository stores readable source code with four-space indentation. Minification is reserved for generated production bundles inside the Docker build, not committed source files.
