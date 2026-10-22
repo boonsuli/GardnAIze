@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="frontend/public/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow." width="460" />
+  <img src="frontend/public/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow." width="480" />
   <p><strong>AI-powered garden planning and plant recommendations</strong></p>
   <p>
     <img alt="Angular 21" src="https://img.shields.io/badge/Angular-21-DD0031?logo=angular&logoColor=white" />
@@ -123,3 +123,5 @@ When the AWS account is available:
 Publishing images to ECR does **not** deploy them to ECS, App Runner or EC2; deployment will be a later step. The Spring Boot backend is not yet part of the runnable stack. When added, its Docker build will use **Amazon Corretto (Java 25 LTS)** and receive its own build, test, integration and ECR publishing jobs.
 
 The repository stores readable source code with four-space indentation. Minification is reserved for generated production bundles inside the Docker build, not committed source files.
+
+> Official GardnAIze logo reference and usage: [Branding guide](docs/BRANDING.md).
