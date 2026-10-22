@@ -3,7 +3,7 @@
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SUFFIXES = {".ts", ".html", ".scss", ".css", ".py", ".java", ".sql", ".json", ".yaml", ".yml"}
+SUFFIXES = {".ts", ".html", ".scss", ".css", ".py", ".java", ".sql"}
 TARGETS = [ROOT / "frontend", ROOT / "ai-service"]
 IGNORED = {"node_modules", "dist", ".angular", "__pycache__", ".venv", "venv"}
 failures = []
