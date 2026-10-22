@@ -1,2 +1,79 @@
-# GardnAIze
-GardnAIze is an AI-powered garden planning application that analyzes garden environments and recommends suitable plants based on climate, sunlight, soil conditions, and user preferences.  Built with Angular, Spring Boot, Python/FastAPI, PostgreSQL, and Docker.
+<div align="center">
+  <img src="frontend/public/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow." width="430" />
+  <p><strong>AI-powered garden planning and plant recommendations</strong></p>
+  <p>
+    <img alt="Angular 21" src="https://img.shields.io/badge/Angular-21-DD0031?logo=angular&logoColor=white" />
+    <img alt="Angular Material 21" src="https://img.shields.io/badge/Angular%20Material-21-3F51B5?logo=angular&logoColor=white" />
+    <img alt="Java 25 LTS" src="https://img.shields.io/badge/Java-25%20LTS-ED8B00?logo=openjdk&logoColor=white" />
+    <img alt="Spring Boot 3.5" src="https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?logo=springboot&logoColor=white" />
+    <img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" />
+    <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-planned-009688?logo=fastapi&logoColor=white" />
+    <img alt="PostgreSQL 18" src="https://img.shields.io/badge/PostgreSQL-18-4169E1?logo=postgresql&logoColor=white" />
+    <img alt="Docker Compose" src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white" />
+  </p>
+  <p>
+    <img alt="scikit-learn" src="https://img.shields.io/badge/scikit--learn-ML-F7931E?logo=scikitlearn&logoColor=white" />
+    <img alt="TensorFlow Keras" src="https://img.shields.io/badge/TensorFlow%20%2B%20Keras-DL-FF6F00?logo=tensorflow&logoColor=white" />
+    <img alt="DuckDB" src="https://img.shields.io/badge/DuckDB-analytics-FFF000?logo=duckdb&logoColor=black" />
+    <img alt="Gemini API" src="https://img.shields.io/badge/Gemini-vision-4285F4?logo=googlegemini&logoColor=white" />
+  </p>
+</div>
+
+> **Project status:** V1 under development. Badges show selected technology versions or planned components, **not** a claim that every service is implemented or deployed.
+
+## Overview
+
+**GardnAIze** helps people design a greener outdoor space. Users upload a garden photo, confirm the scene analysis, answer a short questionnaire (location, sunlight, soil, watering and preferences), and receive **three plant suggestions** with clear explanations and constraints.
+
+The first release is designed to run **locally as a standalone application**. The architecture also anticipates future **embedding into plant retailers' websites**, using versioned APIs and a decoupled recommendation service. Commercial integrations, checkout, user accounts and cloud deployment are **not part of V1**.
+
+## Application components
+
+| Directory | Technology | Responsibility | V1 status |
+| --- | --- | --- | --- |
+| [`frontend/`](frontend/) | Angular 21, Angular Material 21, TypeScript 5.9 | Responsive photo-upload interface, questionnaire and recommendations | Initial UI available; API integration pending |
+| [`backend/`](backend/) | Java 25 LTS, Spring Boot 3.5 | REST orchestration, input validation, photo storage, questionnaire persistence and external vision API | Planned |
+| [`ai-service/`](ai-service/) | Python 3.12, FastAPI, scikit-learn, TensorFlow/Keras | Plant similarity, clustering, botanical attribute prediction and garden-image classification | Planned |
+| [`datasets/`](datasets/) | CSV / Parquet, pandas, DuckDB, SQL | Data ingestion, cleaning, deduplication, provenance and evaluation datasets | Structure prepared |
+| [`models/`](models/) | scikit-learn, Keras | Exported, versioned ML/DL artifacts (large binaries excluded from Git) | Structure prepared |
+| [`database/`](database/) | PostgreSQL 18, Flyway | Persistent plant catalog, garden projects, answers and photo metadata | Planned |
+| [`docker/`](docker/) / `compose.yaml` | Docker Compose | Local multi-service deployment | Skeleton only |
+| [`docs/`](docs/) | Markdown | Architecture, experiments, API contracts and operational notes | Structure prepared |
+
+## Artificial intelligence
+
+**Computer vision:** a small TensorFlow/Keras CNN (with a transfer-learning comparison) is planned to identify whether an uploaded image is a usable garden scene. A Gemini vision API integration can provide richer structured observations; it is an **external model**, separate from GardnAIze's trained models.
+
+**Botanical recommendations:** deterministic filters first exclude incompatible plants (hardiness, exposure, water and space). scikit-learn nearest-neighbor search then ranks suitable plants. **K-Means** explores botanical clusters and can support diversity analysis. **Random Forest** may predict missing botanical care attributes *only when sufficiently reliable labeled examples exist*; predicted values must be marked as estimates and cannot silently replace verified facts.
+
+**Data engineering:** Python pipelines ingest and normalize botanical sources; DuckDB/SQL window functions support quality checks and deduplication. Jupyter notebooks document preprocessing, visualization, evaluation and reproducible training. A labeled garden-image dataset is required for training the CNN.
+
+## Intended user journey (V1)
+
+1. Upload a garden photo (JPEG, PNG or WebP).
+2. Validate image quality and suitability; analyze visible garden features.
+3. Confirm observations and answer a short structured questionnaire.
+4. Filter the botanical catalog and rank candidates using ML.
+5. Display **three plants**, with reasons and cautions.
+
+## Development and logging
+
+The Angular starter can be run today:
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+Open http://localhost:4200. The frontend currently previews a selected photo; **end-to-end recommendations are not implemented yet**. See [frontend/README.md](frontend/README.md).
+
+Each backend service will write configurable-level logs to stdout/stderr; Angular logs remain in browser DevTools. The intended levels are `DEBUG`, `INFO`, `WARN`, `ERROR`, `OFF` (subject to each framework's conventions). Docker Compose logs will be sufficient for the local V1; an ELK stack is deliberately out of scope.
+
+## Future integration
+
+The long-term goal is to expose stable, documented REST APIs for two distribution models: a **standalone consumer application** and an **embedded plant-retailer experience**. Tenant isolation, authentication, commercial catalog matching, consent, licensing and operational scaling will be addressed before production integration.
+
+## License and botanical data
+
+No open-source license is granted unless a `LICENSE` file is added. Botanical source terms, image rights and third-party API data policies must be checked before redistribution or commercial use.
