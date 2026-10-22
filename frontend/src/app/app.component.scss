@@ -75,3 +75,21 @@ footer {
         max-width: 190px;
     }
 }
+
+.questionnaire {
+    margin-top: 24px;
+}
+
+.questionnaire mat-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.questionnaire input,
+.questionnaire select {
+    padding: 10px;
+    border: 1px solid #b7c9bd;
+    border-radius: 6px;
+    font: inherit;
+}
