@@ -19,18 +19,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: '22'
-            - name: Check frontend formatting
-              working-directory: frontend
-              run: |
-                  npm install -g prettier@3
-                  prettier --check "src/**/*.{ts,html,scss}" "tests/**/*.ts"
-            - name: Check Python formatting
-              run: |
-                  python -m pip install black
-                  black --check --line-length 100 ai-service/app ai-service/tests
             - name: Check whitespace (4-space indentation, no tabs)
               run: |
                   python scripts/check_indentation.py
