@@ -1,0 +1,2 @@
+# Skeleton only. Docker Compose services will be configured once application entrypoints exist.
+services: {}
