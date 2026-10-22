@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow." width="350" />
+  <img src="public/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow." width="360" />
   <p><strong>Responsive garden planning frontend</strong></p>
   <p>
     <img alt="Angular 21" src="https://img.shields.io/badge/Angular-21-DD0031?logo=angular&logoColor=white" />
@@ -89,3 +89,5 @@ The browser application is currently a standalone photo-preview interface. Angul
 ## Automated unit tests and formatting
 
 Run `npm run test:unit` to test photo-validation rules with Node's built-in test runner via `tsx`. GitHub Actions runs these tests and `npm run build` before Docker integration checks. TypeScript, HTML and SCSS sources use **four spaces**, with no tabs. Production bundles are minified during build only, not committed to Git.
+
+> Official GardnAIze logo reference and usage: [Branding guide](../docs/BRANDING.md).
