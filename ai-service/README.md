@@ -37,3 +37,7 @@ uvicorn app.main:app --reload
 The standard Python `logging` module writes to stdout/stderr. Set `AI_LOG_LEVEL=DEBUG` in Compose (or `LOG_LEVEL=DEBUG` when running the container directly). Supported Python levels: DEBUG, INFO, WARNING, ERROR, CRITICAL. Avoid logging photos, credentials or personal data.
 
 The image uses a non-root user and installs only minimal API dependencies. Future ML/DL inference requirements will be added when the corresponding models and endpoints are implemented. In Compose the API port is published on localhost only; do not expose it publicly without authentication, rate limiting and network controls.
+
+## Automated tests
+
+Run `pip install -r requirements-dev.txt` and `python -m pytest -q tests`. CI runs these unit tests before building and smoke-testing the Docker image. Source files use four-space indentation and no tabs.
