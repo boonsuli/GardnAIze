@@ -1,11 +1,67 @@
-# GardnAIze frontend
-Angular SPA (photo upload, questionnaire, three plant recommendations). Scaffold later on the personal development machine.
-Angular 21 + Angular Material 21 standalone application. Requires Node.js >=22.12.
+<div align="center">
+  <img src="public/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow." width="370" />
+  <p><strong>Responsive garden planning frontend</strong></p>
+  <p>
+    <img alt="Angular 21" src="https://img.shields.io/badge/Angular-21-DD0031?logo=angular&logoColor=white" />
+    <img alt="Angular Material 21" src="https://img.shields.io/badge/Material-21-3F51B5?logo=angular&logoColor=white" />
+    <img alt="TypeScript 5.9" src="https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white" />
+    <img alt="Node.js 22" src="https://img.shields.io/badge/Node.js-22-339933?logo=nodedotjs&logoColor=white" />
+  </p>
+</div>
 
+> **Status:** Initial Angular UI. Photo selection and local preview are available; server-side analysis, questionnaire and recommendation APIs are not connected yet.
+
+## Purpose
+
+The GardnAIze Angular application is the user-facing experience for a **standalone garden assistant**, designed for eventual integration into **plant retailers' websites** through a decoupled API architecture.
+
+## Features
+
+| Feature | Status |
+| --- | --- |
+| Responsive Angular Material home page with GardnAIze branding | Available |
+| Select JPEG/PNG/WebP photo and preview locally | Available |
+| Client-side file type and 10 MB size check | Available (server validation still required) |
+| Configurable browser logging | Available |
+| Backend photo upload and AI analysis | Planned |
+| Garden questionnaire | Planned |
+| Three recommended plants and explanations | Planned |
+| Embeddable retailer integration | Future |
+
+## Technology and structure
+
+- **Angular 21** standalone components, strict TypeScript **5.9**, Angular Material **21**.
+- **Node.js 22** for development; production image will be built and served via Docker/Nginx.
+- `src/app/app.component.*`: landing page and photo preview.
+- `src/app/core/logger.service.ts`: browser logging with `DEBUG`, `INFO`, `WARN`, `ERROR`, `OFF`.
+- `public/logo-gardnaize.svg`: reusable vector brand asset.
+
+## Run locally
+
+Prerequisites: Node.js **22** and npm.
 
 ```bash
 cd frontend
 npm install
 npm start
 ```
-Build: `npm run build`. Commit generated package-lock.json after npm install. Photo preview works locally; backend integration is not yet implemented. Logs are in browser DevTools.
+
+Open **http://localhost:4200**.
+
+```bash
+npm run build
+```
+
+The project does not yet include a committed `package-lock.json`; generate it with `npm install` and commit it once dependency resolution is validated in CI.
+
+## Logging
+
+`LoggerService` defaults to `INFO` and can be configured at runtime with `setLevel("DEBUG")` or `setLevel("ERROR")`. Logs appear in **browser DevTools**, not automatically in Docker backend logs. Avoid logging images, personal data, tokens or full API responses.
+
+## Planned API integration
+
+The Angular app will communicate with the Spring Boot REST backend; Spring Boot will orchestrate the FastAPI recommendation service, PostgreSQL and external image analysis. Angular will not call private AI APIs with embedded secrets.
+
+## Product direction
+
+V1 prioritizes a short photo → questionnaire → recommendation journey. Future consumer and retailer deployments will reuse the same UI components and versioned API contracts, with deployment-specific branding and integration handled separately.
