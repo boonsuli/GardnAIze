@@ -1,1 +1,30 @@
-<mat-toolbar class="bar"><img class="brand-logo" src="/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow."><span class="spacer"></span><small>Imagine. Design. Grow.</small></mat-toolbar><main><header><p>AMÉNAGEMENT INTELLIGENT</p><h1>Imaginez votre futur jardin.</h1><p>Une photo et quelques réponses pour trouver des plantes adaptées.</p></header><mat-card appearance="outlined"><mat-card-header><mat-card-title>1. Votre photo de jardin</mat-card-title><mat-card-subtitle>JPEG, PNG, WebP · 10 Mo max</mat-card-subtitle></mat-card-header><mat-card-content><input #photo hidden type="file" accept="image/jpeg,image/png,image/webp" (change)="onFileSelected($event)"><button mat-flat-button (click)="photo.click()">Choisir une photo</button><p aria-live="polite">{{message()}}</p>@if(preview()){<img [src]="preview()" alt="Aperçu du jardin"><p>{{filename()}}</p>}</mat-card-content></mat-card><footer>Prototype local · Backend non connecté</footer></main>
+<mat-toolbar class="bar">
+    <img class="brand-logo" src="/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow.">
+    <span class="spacer"></span>
+    <small>Imagine. Design. Grow.</small>
+</mat-toolbar>
+
+<main>
+    <header>
+        <p>AMÉNAGEMENT INTELLIGENT</p>
+        <h1>Imaginez votre futur jardin.</h1>
+        <p>Une photo et quelques réponses pour trouver des plantes adaptées.</p>
+    </header>
+
+    <mat-card appearance="outlined">
+        <mat-card-header>
+            <mat-card-title>1. Votre photo de jardin</mat-card-title>
+            <mat-card-subtitle>JPEG, PNG, WebP · 10 Mo max</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <input #photo hidden type="file" accept="image/jpeg,image/png,image/webp" (change)="onFileSelected($event)">
+            <button mat-flat-button (click)="photo.click()">Choisir une photo</button>
+            <p aria-live="polite">{{ message() }}</p>
+            @if (preview()) {
+                <img [src]="preview()" alt="Aperçu du jardin">
+                <p>{{ filename() }}</p>
+            }
+        </mat-card-content>
+    </mat-card>
+    <footer>Prototype local · Backend non connecté</footer>
+</main>

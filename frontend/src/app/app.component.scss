@@ -5,8 +5,11 @@
     font-weight: 700;
 }
 
-.accent {
-    color: #9ce8a7;
+.brand-logo {
+    height: 54px;
+    width: auto;
+    max-width: 230px;
+    object-fit: contain;
 }
 
 .spacer {
@@ -62,20 +65,13 @@ footer {
     color: #687a6c;
 }
 
-.brand-logo {
-    height: 50px;
-    width: auto;
-    max-width: 230px;
-    object-fit: contain;
-}
-
 @media (max-width: 550px) {
     .bar small {
         display: none;
     }
 
     .brand-logo {
-        height: 42px;
+        height: 44px;
         max-width: 190px;
     }
 }
