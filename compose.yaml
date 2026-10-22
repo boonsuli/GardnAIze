@@ -1,2 +1,33 @@
-# Skeleton only. Docker Compose services will be configured once application entrypoints exist.
-services: {}
+name: gardnaize
+
+services:
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+            - "${FRONTEND_PORT:-8080}:8080"
+        restart: unless-stopped
+        depends_on:
+            ai-service:
+                condition: service_healthy
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "3"
+
+    ai-service:
+        build:
+            context: ./ai-service
+            dockerfile: Dockerfile
+        environment:
+            LOG_LEVEL: "${AI_LOG_LEVEL:-INFO}"
+        ports:
+            - "127.0.0.1:${AI_PORT:-8000}:8000"
+        restart: unless-stopped
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "3"

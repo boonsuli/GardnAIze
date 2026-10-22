@@ -65,3 +65,23 @@ The Angular app will communicate with the Spring Boot REST backend; Spring Boot 
 ## Product direction
 
 V1 prioritizes a short photo → questionnaire → recommendation journey. Future consumer and retailer deployments will reuse the same UI components and versioned API contracts, with deployment-specific branding and integration handled separately.
+
+## Docker image (Angular + Nginx)
+
+The multi-stage [Dockerfile](Dockerfile) builds Angular with **Node.js 22** and serves the static bundle using **Nginx Alpine** on port **8080**. The container does not require Node.js at runtime. The Nginx configuration supports Angular client-side routes with a fallback to `index.html` and writes access/error logs to stdout/stderr.
+
+From the repository root:
+
+```bash
+docker compose up --build -d
+docker compose logs -f frontend
+```
+
+Open **http://localhost:8080**. For frontend-only operation:
+
+```bash
+docker build -t gardnaize-frontend ./frontend
+docker run --rm -p 8080:8080 gardnaize-frontend
+```
+
+The browser application is currently a standalone photo-preview interface. Angular's `LoggerService` logs in browser DevTools; Nginx access logs are visible through Docker. The future Spring Boot API must be configured separately; no backend API proxy is enabled yet.
