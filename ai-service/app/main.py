@@ -6,6 +6,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from app.recommendations import RecommendationRequest, RecommendationResponse, suggest
+
 VALID_LOG_LEVELS = {"DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"}
 requested_level = os.getenv("LOG_LEVEL", "INFO").upper()
 log_level = requested_level if requested_level in VALID_LOG_LEVELS else "INFO"
@@ -44,3 +46,8 @@ def root() -> dict[str, str]:
         "status": "ready",
         "documentation": "/docs",
     }
+
+
+@app.post("/recommendations", response_model=RecommendationResponse, tags=["recommendations"])
+def recommendations(request: RecommendationRequest) -> RecommendationResponse:
+    return suggest(request)
