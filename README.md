@@ -77,3 +77,26 @@ The long-term goal is to expose stable, documented REST APIs for two distributio
 ## License and botanical data
 
 No open-source license is granted unless a `LICENSE` file is added. Botanical source terms, image rights and third-party API data policies must be checked before redistribution or commercial use.
+
+## Dockerized local V1 (current scaffold)
+
+The repository includes multi-stage container builds for the **Angular frontend** (Node.js 22 build stage, Nginx runtime) and the **FastAPI AI service** (Python 3.12, Uvicorn). Spring Boot, PostgreSQL and actual AI inference are **not yet included in the runnable Compose stack**.
+
+Requirements: Docker Engine with Docker Compose v2.
+
+```bash
+docker compose up --build -d
+docker compose ps
+docker compose logs -f
+docker compose down
+```
+
+| Component | Local URL | What works today |
+| --- | --- | --- |
+| Frontend | http://localhost:8080 | Angular UI, local photo preview |
+| AI service | http://localhost:8000/docs | FastAPI OpenAPI interface |
+| AI health | http://localhost:8000/health | Health endpoint |
+
+Use `AI_LOG_LEVEL=DEBUG docker compose up --build` for verbose Python logs. Docker rotates stdout/stderr logs (10 MB × 3 files per service). Browser-side Angular logs remain in browser DevTools. Ports can be changed with `FRONTEND_PORT` and `AI_PORT` environment variables. The AI API is bound to localhost in Compose.
+
+The frontend and AI API currently run as **separate services**, not as an integrated recommendation workflow. The backend will orchestrate calls to the AI service when implemented.
