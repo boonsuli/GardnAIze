@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="frontend/public/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow." width="430" />
+  <img src="frontend/public/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow." width="460" />
   <p><strong>AI-powered garden planning and plant recommendations</strong></p>
   <p>
     <img alt="Angular 21" src="https://img.shields.io/badge/Angular-21-DD0031?logo=angular&logoColor=white" />

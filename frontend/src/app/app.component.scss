@@ -6,9 +6,9 @@
 }
 
 .brand-logo {
-    height: 54px;
+    height: auto;
     width: auto;
-    max-width: 230px;
+    max-width: 250px;
     object-fit: contain;
 }
 
@@ -71,7 +71,7 @@ footer {
     }
 
     .brand-logo {
-        height: 44px;
+        height: auto;
         max-width: 190px;
     }
 }
