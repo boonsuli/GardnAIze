@@ -1,6 +1,28 @@
-# GardnAIze Backend
+<div align="center">
+    <img src="../frontend/public/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow." width="440" />
+    <p><strong>GardnAIze · Java Backend REST API</strong></p>
+    <p>
+        <img alt="Java 25 LTS" src="https://img.shields.io/badge/Java-25%20LTS-ED8B00?logo=openjdk&logoColor=white" />
+        <img alt="Amazon Corretto 25" src="https://img.shields.io/badge/Amazon%20Corretto-25-FF9900?logo=amazonaws&logoColor=white" />
+        <img alt="Spring Boot 3.5.7" src="https://img.shields.io/badge/Spring%20Boot-3.5.7-6DB33F?logo=springboot&logoColor=white" />
+        <img alt="Spring Data JPA" src="https://img.shields.io/badge/Spring%20Data-JPA-6DB33F?logo=spring&logoColor=white" />
+        <img alt="Hibernate ORM (managed)" src="https://img.shields.io/badge/Hibernate-ORM%20(Boot%20managed)-59666C?logo=hibernate&logoColor=white" />
+        <img alt="PostgreSQL 18" src="https://img.shields.io/badge/PostgreSQL-18-4169E1?logo=postgresql&logoColor=white" />
+    </p>
+    <p>
+        <img alt="Maven 3.9.11" src="https://img.shields.io/badge/Maven-3.9.11-C71A36?logo=apachemaven&logoColor=white" />
+        <img alt="springdoc OpenAPI 2.8.13" src="https://img.shields.io/badge/springdoc%20OpenAPI-2.8.13-85EA2D?logo=swagger&logoColor=black" />
+        <img alt="Swagger UI" src="https://img.shields.io/badge/Swagger-UI-85EA2D?logo=swagger&logoColor=black" />
+        <img alt="Flyway (Boot managed)" src="https://img.shields.io/badge/Flyway-Boot%20managed-CC0200?logo=flyway&logoColor=white" />
+        <img alt="JUnit 5" src="https://img.shields.io/badge/JUnit-5-25A162?logo=junit5&logoColor=white" />
+        <img alt="Mockito" src="https://img.shields.io/badge/Mockito-Unit%20Tests-6DB33F" />
+        <img alt="Docker" src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white" />
+    </p>
+</div>
 
-**Java 25 LTS (Amazon Corretto runtime)** · Spring Boot **3.5.7** · Hibernate/JPA (version managed by Spring Boot) · PostgreSQL 18 · Flyway · Swagger UI (springdoc).
+> Versions shown are the versions explicitly pinned in the backend POM or Dockerfile. Hibernate, Flyway, JUnit and Mockito are managed by the Spring Boot dependency BOM, so their precise resolved versions are not asserted here.
+
+**Stack:** Java 25 LTS (Amazon Corretto runtime), Spring Boot 3.5.7, Spring Data JPA / Hibernate, PostgreSQL 18, Flyway and springdoc OpenAPI 2.8.13.
 
 ## Launch
 
