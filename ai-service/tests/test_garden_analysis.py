@@ -3,7 +3,7 @@ import os
 import unittest
 from unittest.mock import patch
 
-from garden_analysis import analyze_image
+from app.garden_analysis import analyze_image
 
 
 class GardenAnalysisTests(unittest.TestCase):
