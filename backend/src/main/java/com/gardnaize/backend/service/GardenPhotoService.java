@@ -128,14 +128,43 @@ public class GardenPhotoService {
                     || !result.has("description") || !result.get("description").isObject()) {
                 return reject(photoId, gardenId, "INVALID_PROVIDER_RESPONSE");
             }
+            String rawJson = mapper.writeValueAsString(result);
             jdbc.update("UPDATE garden_photos SET analysis_provider=?, analysis_json=CAST(? AS jsonb), updated_at=now() WHERE id=?",
-                    providerName, mapper.writeValueAsString(result), photoId);
+                    providerName, rawJson, photoId);
+            // Preserve immutable provider evidence separately from normalized ML features.
+            UUID analysisId = UUID.randomUUID();
+            jdbc.update("""
+                INSERT INTO garden_photo_analysis
+                  (id,photo_id,provider_name,model_name,schema_version,analysis_status,raw_response)
+                VALUES (?,?,?,?,?,'SUCCEEDED',CAST(? AS jsonb))
+                """, analysisId, photoId, providerName, "gemini-adapter",
+                    result.path("schemaVersion").asText("1.0"), rawJson);
+            JsonNode description = result.path("description");
+            jdbc.update("""
+                INSERT INTO garden_features
+                  (id,garden_id,source_photo_analysis_id,schema_version,space_type,shade_level,
+                   privacy_exposure,plantable_areas_detected,visible_surfaces,visible_vegetation,
+                   feature_provenance)
+                VALUES (?,?,?,?,?,?,?,?,
+                        CAST(? AS jsonb),CAST(? AS jsonb),CAST(? AS jsonb))
+                """, UUID.randomUUID(), gardenId, analysisId,
+                    result.path("schemaVersion").asText("1.0"),
+                    nullableText(description.path("spaceType")),
+                    nullableText(description.path("shadeLevel")),
+                    nullableText(description.path("privacyExposure")),
+                    description.path("plantableAreasDetected").isBoolean()
+                        ? description.path("plantableAreasDetected").asBoolean() : null,
+                    mapper.writeValueAsString(description.path("surfaces").isArray()
+                        ? description.path("surfaces") : mapper.createArrayNode()),
+                    mapper.writeValueAsString(description.path("visibleVegetation").isArray()
+                        ? description.path("visibleVegetation") : mapper.createArrayNode()),
+                    mapper.writeValueAsString(Map.of("source", "GEMINI_IMAGE_OBSERVATION", "climateVerified", false, "soilVerified", false)));
             transition(photoId, "ANALYZED", "IN_PROGRESS", "Provider JSON persisted");
             if (!result.path("isGarden").asBoolean() || !result.path("isAnalyzable").asBoolean()) {
                 return reject(photoId, gardenId, "NOT_ANALYZABLE_GARDEN");
             }
             if (!ACCEPTED_CLIMATES.contains(result.path("climateCode").asText())) {
-                return reject(photoId, gardenId, "CLIMATE_OUT_OF_SCOPE");
+                return reject(photoId, gardenId, "CLIMATE_UNVERIFIED_OR_OUT_OF_SCOPE");
             }
             transition(photoId, "ACCEPTED", "COMPLETED", "MVP requirements met");
             return get(photoId, gardenId);
@@ -144,6 +173,10 @@ public class GardenPhotoService {
             throw new ResponseStatusException(HttpStatus.BAD_GATEWAY,
                     "External photo analysis failed; uploaded photo remains persisted");
         }
+    }
+
+    private static String nullableText(JsonNode node) {
+        return node.isTextual() && !node.asText().isBlank() ? node.asText() : null;
     }
 
     private PhotoAnalysisResponse reject(UUID photoId, UUID gardenId, String reason) {

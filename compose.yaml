@@ -31,8 +31,8 @@ services:
             DB_PASSWORD: "${DB_PASSWORD:-gardnaize-local-only}"
             AI_BASE_URL: http://ai-service:8000
             VISION_ENABLED: "${VISION_ENABLED:-false}"
-            VISION_BASE_URL: "${VISION_BASE_URL:-http://host.docker.internal:9000}"
-            VISION_PROVIDER_NAME: "${VISION_PROVIDER_NAME:-external-vision}"
+            VISION_BASE_URL: "${VISION_BASE_URL:-http://ai-service:8000}"
+            VISION_PROVIDER_NAME: "${VISION_PROVIDER_NAME:-gemini-adapter}"
             VISION_API_KEY: "${VISION_API_KEY:-}"
             LOG_LEVEL: "${BACKEND_LOG_LEVEL:-INFO}"
         ports:
@@ -77,6 +77,8 @@ services:
             dockerfile: Dockerfile
         environment:
             LOG_LEVEL: "${AI_LOG_LEVEL:-INFO}"
+            GEMINI_API_KEY: "${GEMINI_API_KEY:-}"
+            GEMINI_MODEL: "${GEMINI_MODEL:-gemini-2.5-flash}"
         ports:
             - "127.0.0.1:${AI_PORT:-8000}:8000"
         restart: unless-stopped
