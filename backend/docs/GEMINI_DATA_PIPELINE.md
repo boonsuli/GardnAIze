@@ -27,8 +27,7 @@ Response: {schemaVersion,isGarden,isAnalyzable,climateCode:'UNKNOWN',description
 
 Climate cannot be verified from an image. The current backend PR #16 requires a supported
 climateCode for acceptance, so a future questionnaire/location confirmation step is needed.
-Until then the adapter returns UNKNOWN and the photo is rejected as out of scope, rather
-than falsely asserting a climate.
+Until a user or official source verifies the climate, the adapter returns UNKNOWN and the photo is not eligible for automatic acceptance.
 
 ## ML integrity
 Store raw response and extracted observations separately. Confirm climate and soil from
