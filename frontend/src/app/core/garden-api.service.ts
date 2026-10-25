@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 export type Exposure = 'FULL_SUN' | 'PARTIAL_SHADE' | 'SHADE';
 export type SoilType = 'SANDY' | 'LOAMY' | 'CLAY' | 'UNKNOWN';
+export type RequirementLevel = 'LOW' | 'MODERATE' | 'HIGH';
 
 export interface CreateGardenRequest {
     name: string;
@@ -15,6 +16,19 @@ export interface CreateGardenRequest {
 export interface GardenProject extends CreateGardenRequest {
     id: string;
     createdAt: string;
+}
+
+export interface GardenPreferencesRequest {
+    waterAvailability: RequirementLevel;
+    maintenancePreference: RequirementLevel;
+    evergreenPreferred: boolean;
+    privacyScreeningRequired: boolean;
+    desiredHeightCm: number | null;
+}
+
+export interface GardenPreferences extends GardenPreferencesRequest {
+    gardenId: string;
+    updatedAt: string;
 }
 
 export interface PlantSuggestion {
@@ -33,6 +47,18 @@ export class GardenApiService {
 
     createGarden(request: CreateGardenRequest): Observable<GardenProject> {
         return this.http.post<GardenProject>('/api/v1/gardens', request);
+    }
+
+    savePreferences(id: string, request: GardenPreferencesRequest): Observable<GardenPreferences> {
+        return this.http.put<GardenPreferences>(
+            `/api/v1/gardens/${encodeURIComponent(id)}/preferences`, request
+        );
+    }
+
+    getPreferences(id: string): Observable<GardenPreferences> {
+        return this.http.get<GardenPreferences>(
+            `/api/v1/gardens/${encodeURIComponent(id)}/preferences`
+        );
     }
 
     getRecommendations(id: string): Observable<RecommendationResponse> {
