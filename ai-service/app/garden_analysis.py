@@ -21,18 +21,18 @@ Use uppercase controlled vocabulary for categorical observations.
 Only include what is visible; uncertainty should be explicit.
 Return:
 {
- "schemaVersion":"1.0", "isGarden":true, "isAnalyzable":true,
- "climateCode":"UNKNOWN",
- "description":{
-  "summary":"...",
-  "spaceType":"PRIVATE_GARDEN|COURTYARD|BALCONY|TERRACE|OTHER|UNKNOWN",
-  "surfaces":["LAWN","SOIL","PAVING","GRAVEL","CONCRETE"],
-  "visibleVegetation":["TREE","SHRUB","HEDGE","GRASS","FLOWER"],
-  "shadeLevel":"SUNNY|PARTIAL|SHADED|UNKNOWN",
-  "privacyExposure":"LOW|MODERATE|HIGH|UNKNOWN",
-  "plantableAreasDetected":true,
-  "limitations":["..."]
- }
+    "schemaVersion":"1.0", "isGarden":true, "isAnalyzable":true,
+    "climateCode":"UNKNOWN",
+    "description":{
+    "summary":"...",
+    "spaceType":"PRIVATE_GARDEN|COURTYARD|BALCONY|TERRACE|OTHER|UNKNOWN",
+    "surfaces":["LAWN","SOIL","PAVING","GRAVEL","CONCRETE"],
+    "visibleVegetation":["TREE","SHRUB","HEDGE","GRASS","FLOWER"],
+    "shadeLevel":"SUNNY|PARTIAL|SHADED|UNKNOWN",
+    "privacyExposure":"LOW|MODERATE|HIGH|UNKNOWN",
+    "plantableAreasDetected":true,
+    "limitations":["..."]
+    }
 }"""
 
 def analyze_image(image_base64: str, mime_type: str) -> dict:
@@ -58,8 +58,8 @@ def analyze_image(image_base64: str, mime_type: str) -> dict:
     }
     endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
     req = request.Request(endpoint, data=json.dumps(payload).encode("utf-8"),
-                          headers={"Content-Type": "application/json", "x-goog-api-key": api_key},
-                          method="POST")
+        headers={"Content-Type": "application/json", "x-goog-api-key": api_key},
+        method="POST")
     try:
         with request.urlopen(req, timeout=25) as response:
             provider_json = json.load(response)
