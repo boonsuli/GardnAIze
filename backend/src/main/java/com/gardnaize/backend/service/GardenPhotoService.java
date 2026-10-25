@@ -158,7 +158,7 @@ public class GardenPhotoService {
                         ? description.path("surfaces") : mapper.createArrayNode()),
                     mapper.writeValueAsString(description.path("visibleVegetation").isArray()
                         ? description.path("visibleVegetation") : mapper.createArrayNode()),
-                    "{\\"source\\":\\"GEMINI_IMAGE_OBSERVATION\\",\\"climateVerified\\":false,\\"soilVerified\\":false}");
+                    mapper.writeValueAsString(Map.of("source", "GEMINI_IMAGE_OBSERVATION", "climateVerified", false, "soilVerified", false)));
             transition(photoId, "ANALYZED", "IN_PROGRESS", "Provider JSON persisted");
             if (!result.path("isGarden").asBoolean() || !result.path("isAnalyzable").asBoolean()) {
                 return reject(photoId, gardenId, "NOT_ANALYZABLE_GARDEN");
