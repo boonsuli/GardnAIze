@@ -1,0 +1,4 @@
+ipykernel>=6,<8
+pandas>=2,<4
+SQLAlchemy>=2,<3
+psycopg[binary]>=3,<4

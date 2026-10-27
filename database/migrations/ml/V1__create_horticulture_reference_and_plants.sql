@@ -1,4 +1,4 @@
--- GardnAIze | PostgreSQL 18 | Run 001 then 002 on an empty horticulture schema.
+-- ML-only Flyway V1: botanical taxonomy, features and provenance.
 -- Dedicated schema avoids collisions with existing Spring Boot public tables.
 BEGIN;
 CREATE SCHEMA IF NOT EXISTS horticulture;
