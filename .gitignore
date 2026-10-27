@@ -13,6 +13,16 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+
 # Package Files #
 *.jar
 *.war
