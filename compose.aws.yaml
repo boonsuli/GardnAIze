@@ -1,0 +1,23 @@
+# EC2 deployment overrides. No direct public container ports; use host HTTPS reverse proxy.
+# Requires Docker Compose v2.24.4+ and .env on the EC2 instance.
+services:
+    postgres:
+        image: postgres:18-alpine
+        ports: !override []
+        environment:
+            POSTGRES_PASSWORD: "${DB_PASSWORD:?Set DB_PASSWORD on EC2}"
+    frontend:
+        image: "${ECR_REGISTRY:?Set ECR_REGISTRY}/gardnaize-frontend:${IMAGE_TAG:?Set IMAGE_TAG}"
+        build: !reset null
+        ports: !override
+            - "127.0.0.1:8080:8080"
+    backend:
+        image: "${ECR_REGISTRY:?Set ECR_REGISTRY}/gardnaize-backend:${IMAGE_TAG:?Set IMAGE_TAG}"
+        build: !reset null
+        environment:
+            DB_PASSWORD: "${DB_PASSWORD:?Set DB_PASSWORD on EC2}"
+        ports: !override []
+    ai-service:
+        image: "${ECR_REGISTRY:?Set ECR_REGISTRY}/gardnaize-ai-service:${IMAGE_TAG:?Set IMAGE_TAG}"
+        build: !reset null
+        ports: !override []
