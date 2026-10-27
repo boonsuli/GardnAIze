@@ -27,6 +27,13 @@
 
 The first release is designed to run **locally as a standalone application**. The architecture also anticipates future **embedding into plant retailers' websites**, using versioned APIs and a decoupled recommendation service. Commercial integrations, checkout, user accounts and cloud deployment are **not part of V1**.
 
+## Local deployment options
+
+- **Docker Compose (recommended):** `docker compose -f compose.yaml -f compose.local.yaml up --build -d --wait` (requires Docker Compose v2.24.4+).
+- **Without Docker:** run PostgreSQL 18, FastAPI, Spring Boot and Angular natively in separate terminals.
+
+See [Local deployment guide and cost-conscious AWS options](docs/deployment-local.md) for setup, ports, credentials, health checks, shutdown and infrastructure tradeoffs.
+
 ## Application components
 
 | Directory | Technology | Responsibility | V1 status |
