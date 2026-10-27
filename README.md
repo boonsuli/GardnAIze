@@ -6,14 +6,13 @@
     <img alt="Angular Material 21" src="https://img.shields.io/badge/Angular%20Material-21-3F51B5?logo=angular&logoColor=white" />
     <img alt="Java 25 LTS" src="https://img.shields.io/badge/Java-25%20LTS-ED8B00?logo=openjdk&logoColor=white" />
     <img alt="Spring Boot 3.5" src="https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?logo=springboot&logoColor=white" />
-    <img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" />
-    <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-planned-009688?logo=fastapi&logoColor=white" />
     <img alt="PostgreSQL 18" src="https://img.shields.io/badge/PostgreSQL-18-4169E1?logo=postgresql&logoColor=white" />
     <img alt="Docker Compose" src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white" />
   </p>
   <p>
+    <img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" />
+    <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-planned-009688?logo=fastapi&logoColor=white" />
     <img alt="scikit-learn" src="https://img.shields.io/badge/scikit--learn-ML-F7931E?logo=scikitlearn&logoColor=white" />
-    <img alt="TensorFlow Keras" src="https://img.shields.io/badge/TensorFlow%20%2B%20Keras-DL-FF6F00?logo=tensorflow&logoColor=white" />
     <img alt="DuckDB" src="https://img.shields.io/badge/DuckDB-analytics-FFF000?logo=duckdb&logoColor=black" />
     <img alt="Gemini API" src="https://img.shields.io/badge/Gemini-vision-4285F4?logo=googlegemini&logoColor=white" />
   </p>
