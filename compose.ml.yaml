@@ -1,0 +1,40 @@
+# ML-only override. Use: docker compose -f compose.yaml -f compose.ml.yaml --profile ml run --rm flyway-ml
+services:
+  postgres:
+    ports:
+      - "127.0.0.1:${ML_DB_PORT:-5433}:5432"
+  postgres-ml-init:
+    image: postgres:18-alpine
+    profiles: ["ml"]
+    environment:
+      PGHOST: postgres
+      PGUSER: gardnaize
+      PGDATABASE: postgres
+      PGPASSWORD: "${DB_PASSWORD:-gardnaize-local-only}"
+    volumes:
+      - ./database/bootstrap/create_ml_database.sql:/database/bootstrap/create_ml_database.sql:ro
+    entrypoint: ["psql", "-v", "ON_ERROR_STOP=1", "-f", "/database/bootstrap/create_ml_database.sql"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+  flyway-ml:
+    image: redgate/flyway:13.11.1
+    profiles: ["ml"]
+    environment:
+      FLYWAY_URL: jdbc:postgresql://postgres:5432/gardnaize_ml
+      FLYWAY_USER: gardnaize
+      FLYWAY_PASSWORD: "${DB_PASSWORD:-gardnaize-local-only}"
+      FLYWAY_SCHEMAS: horticulture
+      FLYWAY_DEFAULT_SCHEMA: horticulture
+      FLYWAY_CONNECT_RETRIES: "20"
+      FLYWAY_LOCATIONS: filesystem:/flyway/sql
+      FLYWAY_CLEAN_DISABLED: "true"
+    volumes:
+      - ./database/migrations/ml:/flyway/sql:ro
+    depends_on:
+      postgres-ml-init:
+        condition: service_completed_successfully
+    entrypoint: ["flyway"]
+    command: ["migrate"]
+    restart: "no"
