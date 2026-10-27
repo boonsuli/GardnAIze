@@ -10,7 +10,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Entity
-@Table(name = "garden_projects")
+@Table(name = "garden_projects", schema = "public")
 public class GardenProject {
     @Id
     private UUID id;

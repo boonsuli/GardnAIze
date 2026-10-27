@@ -1,0 +1,13 @@
+
+services:
+    postgres:
+        ports: !override []
+
+    backend:
+        ports: !override []
+
+    ai-service:
+        ports: !override []
+
+    frontend:
+        ports: !override []
