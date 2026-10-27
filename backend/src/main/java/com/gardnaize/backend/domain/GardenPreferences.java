@@ -8,7 +8,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Entity
-@Table(name = "garden_preferences")
+@Table(name = "garden_preferences", schema = "public")
 public class GardenPreferences {
     @Id
     @Column(name = "garden_id", nullable = false)

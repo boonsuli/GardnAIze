@@ -14,10 +14,15 @@ spring:
             ddl-auto: validate
         properties:
             hibernate:
+                default_schema: public
                 jdbc:
                     time_zone: UTC
     flyway:
         enabled: true
+        default-schema: public
+        schemas:
+            - public
+            - gardnaize
 
 management:
     endpoints:
