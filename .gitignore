@@ -42,3 +42,9 @@ replay_pid*
 /datasets/images/garden_test/
 /models/weights/
 /models/checkpoints/
+
+# Local dataset provenance and human review annotations
+/datasets/images/garden_image_provenance.csv
+/datasets/images/garden_image_reviews.csv
+/datasets/images/garden_image_reviews.json
+.venv/
