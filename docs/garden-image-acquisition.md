@@ -16,3 +16,9 @@ The downloader uses Wikimedia Commons search and the `imageinfo` metadata endpoi
 **Limitations:** This script requires internet access on the developer machine and is not run by CI. It does not guarantee 30 images per class or a balanced dataset. It does not train ResNet-18. The training notebook requires all three classes, so collect and validate the data before running it.
 
 Official API reference: https://commons.wikimedia.org/wiki/Commons:Machine-readable_data
+
+## Visual mosaic and annotation reviews
+
+Install `python -m pip install ipywidgets matplotlib pillow` in the project virtual environment, then open `notebooks/07_review_garden_images.ipynb` in VS Code/Jupyter from the repository root. It displays a 20-image mosaic with split/class filters and provides a per-image selector for human review. **Save review** writes `datasets/images/garden_image_reviews.csv` and `datasets/images/garden_image_reviews.json` locally; these are ignored by Git.
+
+The reviewed JSON contains **human annotation corrections**, not computer-vision inference results. No model inference JSON exists until ResNet-18 is trained and an inference/export step is implemented. The notebook deliberately does not move files automatically: `05_train_garden_classifier.ipynb` still uses folder labels. Apply reviewed corrections to the folder structure before training, without mixing train and test sources.
