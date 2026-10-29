@@ -36,3 +36,9 @@ __pycache__/
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Local garden-image datasets and model artifacts
+/datasets/images/garden_validation/
+/datasets/images/garden_test/
+/models/weights/
+/models/checkpoints/
