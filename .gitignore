@@ -13,10 +13,20 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Local environment and credentials
+# Angular generated files
+/frontend/node_modules/
+/frontend/.angular/
+
+# Local environment files and credentials
 .env
 .env.*
 !.env.example
+.env.local
+
+# Python virtual environments
+/.venv/
+.venv/
+
 
 # Python / Jupyter
 __pycache__/
@@ -42,3 +52,8 @@ replay_pid*
 /datasets/images/garden_test/
 /models/weights/
 /models/checkpoints/
+
+# Local dataset provenance and human review annotations
+/datasets/images/garden_image_provenance.csv
+/datasets/images/garden_image_reviews.csv
+/datasets/images/garden_image_reviews.json
