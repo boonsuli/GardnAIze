@@ -48,3 +48,14 @@ replay_pid*
 /datasets/images/garden_image_reviews.csv
 /datasets/images/garden_image_reviews.json
 .venv/
+
+# Angular generated files
+/frontend/.angular/
+/frontend/node_modules/
+
+# Local image quarantine
+/datasets/images/quarantaine/
+/datasets/images/quarantine/
+
+# Local ML model backups
+/models/backup/

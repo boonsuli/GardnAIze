@@ -70,6 +70,19 @@ def retrieve(session, image_url):
         image.save(output, format="JPEG", quality=85)
     return output.getvalue()
 
+def choose_split(index: int, test_fraction: float) -> str:
+    """Distribute images deterministically between train and test.
+
+    index is zero-based and counts accepted images in one class.
+    """
+    previous_test_count = round(index * test_fraction)
+    current_test_count = round((index + 1) * test_fraction)
+
+    return (
+        "garden_test"
+        if current_test_count > previous_test_count
+        else "garden_validation"
+    )
 
 def main():
     parser = argparse.ArgumentParser()
@@ -122,7 +135,7 @@ def main():
                 if digest in seen:
                     continue
                 # Keep Commons category-derived labels provisional: review every image.
-                split = "garden_test" if count % 5 == 0 else "garden_validation"
+                split = choose_split(count, args.test_fraction)
                 folder = args.output / split / label
                 folder.mkdir(parents=True, exist_ok=True)
                 filename = f"{label}_{count + 1:04d}_{digest[:10]}.jpg"
