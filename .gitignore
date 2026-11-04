@@ -13,10 +13,20 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Local environment and credentials
+# Angular generated files
+/frontend/node_modules/
+/frontend/.angular/
+
+# Local environment files and credentials
 .env
 .env.*
 !.env.example
+.env.local
+
+# Python virtual environments
+/.venv/
+.venv/
+
 
 # Python / Jupyter
 __pycache__/
@@ -36,3 +46,21 @@ __pycache__/
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Local garden-image datasets and model artifacts
+/datasets/images/garden_validation/
+/datasets/images/garden_test/
+/models/weights/
+/models/checkpoints/
+
+# Local dataset provenance and human review annotations
+/datasets/images/garden_image_provenance.csv
+/datasets/images/garden_image_reviews.csv
+/datasets/images/garden_image_reviews.json
+
+# Local image quarantine
+/datasets/images/quarantaine/
+/datasets/images/quarantine/
+
+# Local ML model backups
+/models/backup/
