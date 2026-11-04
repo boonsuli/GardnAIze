@@ -57,3 +57,10 @@ replay_pid*
 /datasets/images/garden_image_provenance.csv
 /datasets/images/garden_image_reviews.csv
 /datasets/images/garden_image_reviews.json
+
+# Local image quarantine
+/datasets/images/quarantaine/
+/datasets/images/quarantine/
+
+# Local ML model backups
+/models/backup/
