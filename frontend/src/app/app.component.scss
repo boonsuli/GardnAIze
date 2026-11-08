@@ -41,3 +41,13 @@ form { display: flex; flex-direction: column; gap: 8px; }
     .bar small { display: none; }
     .brand-logo { max-width: 190px; }
 }
+
+.status-bar {
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background: #e8f0ed;
+    color: #194e35;
+}
+.status-success { background: #e0f3e6; color: #126a35; }
+.status-error { background: #fff0ee; color: #a52b20; }
