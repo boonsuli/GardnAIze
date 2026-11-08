@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.context.MessageSource;
+import java.util.Locale;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,12 +19,14 @@ import static org.springframework.http.HttpStatus.*;
 @Service
 public class GardenWorkflowService {
     private final JdbcTemplate jdbc;
+    private final MessageSource messages;
     private final RestClient validator;
     private final String validatorUrl;
 
-    public GardenWorkflowService(JdbcTemplate jdbc, RestClient.Builder restClientBuilder,
+    public GardenWorkflowService(JdbcTemplate jdbc, MessageSource messages, RestClient.Builder restClientBuilder,
             @Value("${gardnaize.validation.base-url:http://localhost:9001}") String validatorUrl) {
         this.jdbc = jdbc;
+        this.messages = messages;
         this.validator = restClientBuilder.build();
         this.validatorUrl = validatorUrl;
     }
@@ -89,12 +93,10 @@ public class GardenWorkflowService {
 
     public Questionnaire questions(UUID photoId, String language, String continent, String climate, String country) {
         requirePhoto(photoId);
-        String lang = "en".equalsIgnoreCase(language) ? "en" : "fr";
+        Locale locale = "en".equalsIgnoreCase(language) ? Locale.ENGLISH : Locale.FRENCH;
         String sql = """
-            SELECT q.id, q.answer_type, q.required, COALESCE(t.label, fallback.label, q.id) AS label
+            SELECT q.id, q.answer_type, q.required
             FROM gdai_questions q
-            LEFT JOIN gdai_question_translations t ON t.question_id=q.id AND t.language_code=?
-            LEFT JOIN gdai_question_translations fallback ON fallback.question_id=q.id AND fallback.language_code='en'
             WHERE q.active=TRUE AND (
                 NOT EXISTS (SELECT 1 FROM gdai_question_rules r WHERE r.question_id=q.id)
                 OR EXISTS (SELECT 1 FROM gdai_question_rules r WHERE r.question_id=q.id
@@ -104,23 +106,22 @@ public class GardenWorkflowService {
             )
             ORDER BY q.display_order LIMIT 10
             """;
-        var questions = jdbc.query(sql, (rs, row) -> new Question(
-            rs.getString("id"), rs.getString("label"), rs.getString("answer_type"),
-            rs.getBoolean("required"), options(rs.getString("id"), lang)),
-            lang, continent, climate, country);
+        var questions = jdbc.query(sql, (rs, row) -> {
+            String id = rs.getString("id");
+            return new Question(id, messages.getMessage("question." + id, null, id, locale),
+                rs.getString("answer_type"), rs.getBoolean("required"), options(id, locale));
+        }, continent, climate, country);
         return new Questionnaire(photoId, questions);
     }
 
-    private List<QuestionOption> options(String id, String language) {
+    private List<QuestionOption> options(String id, Locale locale) {
         return jdbc.query("""
-            SELECT o.value, COALESCE(t.label, fallback.label, o.value) AS label
-            FROM gdai_question_options o
-            LEFT JOIN gdai_question_option_translations t ON t.question_id=o.question_id
-                AND t.value=o.value AND t.language_code=?
-            LEFT JOIN gdai_question_option_translations fallback ON fallback.question_id=o.question_id
-                AND fallback.value=o.value AND fallback.language_code='en'
-            WHERE o.question_id=? ORDER BY o.display_order
-            """, (rs, row) -> new QuestionOption(rs.getString(1), rs.getString(2)), language, id);
+            SELECT value FROM gdai_question_options WHERE question_id=? ORDER BY display_order
+            """, (rs, row) -> {
+                String value = rs.getString("value");
+                String label = messages.getMessage("option." + id + "." + value, null, value, locale);
+                return new QuestionOption(value, label);
+            }, id);
     }
 
     @Transactional
