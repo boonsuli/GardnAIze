@@ -1,0 +1,29 @@
+name: AWS OIDC dry run (no deployment)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate AWS configuration without cloud access
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Confirm safe mode
+        shell: bash
+        run: |
+          echo "GardnAIze AWS region: eu-west-3"
+          echo "Dry run only: no AWS credentials requested."
+          echo "No AWS CLI commands, infrastructure provisioning, or deployment."
+      - name: Validate optional IAM trust policy JSON
+        shell: bash
+        run: |
+          if [ -f infrastructure/aws/github-oidc-trust-policy.json ]; then
+            python3 -m json.tool infrastructure/aws/github-oidc-trust-policy.json >/dev/null
+          else
+            echo "IAM trust policy not yet provided; skipping."
+          fi
