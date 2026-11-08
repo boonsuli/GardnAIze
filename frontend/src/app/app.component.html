@@ -10,7 +10,10 @@
     </header>
     <mat-card appearance="outlined">
         <mat-card-content>
-            <p aria-live="polite">{{ message() }}</p>
+            <div class="status-bar" [class.status-success]="status() === 'success'"
+                [class.status-error]="status() === 'error'" role="status" aria-live="polite">
+                {{ message() }}
+            </div>
             @if (step() === 'photo') {
                 <h2>1. Votre photo de jardin</h2>
                 <p>JPEG, PNG ou WebP — 1 Mo maximum.</p>
@@ -26,10 +29,10 @@
                     [ngModel]="description()" (ngModelChange)="description.set($event)"
                     placeholder="Ex. Jardin exposé au sud, à aménager avec des plantes résistantes à la chaleur"></textarea>
                 <button mat-flat-button [disabled]="!preview() || busy()" (click)="submitPhoto()">
-                    Envoyer la photo
+                    Envoyer
                 </button>
             }
-            @if (step() === 'confirm') {
+            @if (step() === 'confirm' || step() === 'validating') {
                 <h2>2. Confirmez votre photo</h2>
                 <img [src]="preview()" alt="Photo du jardin à confirmer">
                 <p>{{ filename() }}</p>
@@ -49,58 +52,54 @@
                             (click)="saveDescription()"><mat-icon>check_circle</mat-icon></button>
                         <button mat-icon-button aria-label="Effacer la description"
                             (click)="clearDescription()"><mat-icon>close</mat-icon></button>
-                    } @else {
+                    } @else if (step() === 'confirm') {
                         <button mat-icon-button aria-label="Modifier la description"
                             (click)="editDescription()"><mat-icon>edit</mat-icon></button>
                     }
                 </div>
                 <div class="actions">
                     <button mat-flat-button [disabled]="busy() || editingDescription()"
-                        (click)="confirmPhoto()">Confirmer et poursuivre</button>
+                        (click)="confirmPhoto()">Valider la photo et poursuivre</button>
                     <button mat-button [disabled]="busy()" (click)="cancelConfirmation()">Annuler / Recommencer</button>
                 </div>
+                @if (step() === 'validating' && !busy() && status() === 'error') {
+                    <button mat-button (click)="retryQuestions()">Réessayer de charger les questions</button>
+                }
             }
             @if (step() === 'questions') {
-                <h2>3. Décrivez votre jardin</h2>
+                <h2>3. Contexte du jardin</h2>
                 <form #gardenForm="ngForm" (ngSubmit)="submitContext()">
-                    <label for="location">1. Localisation (ville ou code postal)</label>
-                    <input id="location" name="location" [(ngModel)]="context.location" required maxlength="160">
-                    <label for="exposure">2. Exposition</label>
-                    <select id="exposure" name="exposure" [(ngModel)]="context.exposure">
-                        <option value="FULL_SUN">Plein soleil</option><option value="PARTIAL_SHADE">Mi-ombre</option>
-                        <option value="SHADE">Ombre</option>
-                    </select>
-                    <label for="soil">3. Nature du sol</label>
-                    <select id="soil" name="soil" [(ngModel)]="context.soilType">
-                        <option value="UNKNOWN">Je ne sais pas</option><option value="SANDY">Sableux</option>
-                        <option value="LOAMY">Limoneux</option><option value="CLAY">Argileux</option>
-                    </select>
-                    <label for="water">4. Arrosage souhaité</label>
-                    <select id="water" name="water" [(ngModel)]="context.watering">
-                        <option value="LOW">Faible</option><option value="MODERATE">Modéré</option>
-                        <option value="REGULAR">Régulier</option>
-                    </select>
-                    <label for="maintenance">5. Entretien accepté</label>
-                    <select id="maintenance" name="maintenance" [(ngModel)]="context.maintenance">
-                        <option value="LOW">Minimal</option><option value="MODERATE">Modéré</option>
-                        <option value="HIGH">Important</option>
-                    </select>
-                    <label for="style">6. Type de végétation</label>
-                    <select id="style" name="style" [(ngModel)]="context.style">
-                        <option value="EVERGREEN">Persistante</option><option value="FLOWERING">Fleurie / saisonnière</option>
-                        <option value="MIXED">Mixte</option>
-                    </select>
-                    <label for="height">7. Hauteur maximale (cm, facultatif)</label>
-                    <input id="height" name="height" type="number" min="20" max="3000"
-                        [(ngModel)]="context.maxHeightCm">
-                    <label for="privacy">8. Besoin de brise-vue ?</label>
-                    <select id="privacy" name="privacy" [(ngModel)]="context.privacyScreen">
-                        <option [ngValue]="false">Non</option><option [ngValue]="true">Oui</option>
-                    </select>
+                    @for (question of questions(); track question.id; let index = $index) {
+                        <label [for]="'question-' + question.id">{{ index + 1 }}. {{ question.label }}</label>
+                        @switch (question.type) {
+                            @case ('select') {
+                                <select [id]="'question-' + question.id" [name]="question.id"
+                                    [(ngModel)]="answers[question.id]" [required]="question.required">
+                                    <option value="">Choisir une réponse</option>
+                                    @for (option of question.options ?? []; track option.value) {
+                                        <option [value]="option.value">{{ option.label }}</option>
+                                    }
+                                </select>
+                            }
+                            @case ('boolean') {
+                                <select [id]="'question-' + question.id" [name]="question.id"
+                                    [(ngModel)]="answers[question.id]">
+                                    <option [ngValue]="false">Non</option><option [ngValue]="true">Oui</option>
+                                </select>
+                            }
+                            @case ('number') {
+                                <input [id]="'question-' + question.id" [name]="question.id" type="number"
+                                    [(ngModel)]="answers[question.id]" [required]="question.required">
+                            }
+                            @default {
+                                <input [id]="'question-' + question.id" [name]="question.id"
+                                    [(ngModel)]="answers[question.id]" [required]="question.required" maxlength="160">
+                            }
+                        }
+                    }
                     <button mat-flat-button type="submit" [disabled]="gardenForm.invalid || busy()">
                         Analyser et proposer des plantes
                     </button>
-                    <button mat-button type="button" [disabled]="busy()" (click)="backToConfirmation()">Retour</button>
                 </form>
             }
             @if (step() === 'results') {
@@ -115,5 +114,5 @@
             }
         </mat-card-content>
     </mat-card>
-    <footer>GardnAIze · La photo est envoyée au serveur après votre clic sur « Envoyer ».</footer>
+    <footer>GardnAIze · Image persistée uniquement après votre confirmation.</footer>
 </main>
