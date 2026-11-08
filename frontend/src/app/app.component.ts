@@ -1,91 +1,114 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, OnDestroy, inject, signal } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { LoggerService } from './core/logger.service';
-import { GardenApiService, Exposure, SoilType, PlantSuggestion } from './core/garden-api.service';
+import { FormsModule } from '@angular/forms';
+import { GardenApiService } from './core/garden-api.service';
+import { GardenContext, GardenAnalysisResponse } from './core/garden-context.model';
 import { isValidPhoto } from './core/photo-validation';
+
+type Step = 'photo' | 'confirm' | 'questions' | 'results';
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [MatToolbarModule, MatButtonModule, MatCardModule],
+    imports: [MatToolbarModule, MatButtonModule, MatCardModule, FormsModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
-export class AppComponent {
-    private readonly logger = inject(LoggerService);
-    private readonly gardenApi = inject(GardenApiService);
+export class AppComponent implements OnDestroy {
+    private readonly api = inject(GardenApiService);
+    readonly step = signal<Step>('photo');
+    readonly preview = signal('');
+    readonly filename = signal('');
+    readonly busy = signal(false);
+    readonly message = signal('Sélectionnez une photo de jardin.');
+    readonly result = signal<GardenAnalysisResponse | null>(null);
+    readonly context: GardenContext = {
+        location: '', exposure: 'FULL_SUN', soilType: 'UNKNOWN',
+        watering: 'MODERATE', maintenance: 'LOW', style: 'MIXED',
+        maxHeightCm: null, privacyScreen: false
+    };
+    private photo: File | null = null;
+    private photoId: string | null = null;
 
-    readonly gardenName = signal('Mon jardin');
-    readonly location = signal('Paris');
-    readonly exposure = signal<Exposure>('FULL_SUN');
-    readonly soilType = signal<SoilType>('UNKNOWN');
-    readonly suggestions = signal<PlantSuggestion[]>([]);
-    readonly loading = signal(false);
-    readonly apiMessage = signal('Créez votre jardin pour recevoir trois suggestions de démonstration.');
-
-    submitGarden(): void {
-        if (!this.gardenName().trim() || !this.location().trim() || this.loading()) {
-            this.apiMessage.set('Renseignez le nom et la localisation.');
+    onFileSelected(event: Event): void {
+        const file = (event.target as HTMLInputElement).files?.item(0);
+        if (!file) return;
+        if (!isValidPhoto(file.type, file.size)) {
+            this.message.set('Photo invalide : JPEG, PNG ou WebP, 10 Mo maximum.');
             return;
         }
+        this.releasePreview();
+        this.photo = file;
+        this.photoId = null;
+        this.preview.set(URL.createObjectURL(file));
+        this.filename.set(file.name);
+        this.message.set('Vérifiez que cette photo représente bien le jardin à aménager.');
+        this.step.set('confirm');
+    }
 
-        this.loading.set(true);
-        this.suggestions.set([]);
-        this.gardenApi.createGarden({
-            name: this.gardenName().trim(),
-            location: this.location().trim(),
-            exposure: this.exposure(),
-            soilType: this.soilType()
-        }).subscribe({
-            next: (garden) => {
-                this.gardenApi.getRecommendations(garden.id).subscribe({
-                    next: (response) => {
-                        this.suggestions.set(response.plants);
-                        this.apiMessage.set('Suggestions indicatives : règles de démonstration, sans modèle IA.');
-                        this.loading.set(false);
-                    },
-                    error: () => {
-                        this.apiMessage.set('Jardin créé, mais le service de recommandations est indisponible.');
-                        this.loading.set(false);
-                    }
-                });
+    replacePhoto(): void {
+        this.photo = null;
+        this.photoId = null;
+        this.releasePreview();
+        this.step.set('photo');
+    }
+
+    confirmPhoto(): void {
+        if (!this.photo || this.busy()) return;
+        this.busy.set(true);
+        this.message.set('Validation technique de la photo en cours…');
+        this.api.uploadPhoto(this.photo).subscribe({
+            next: response => {
+                this.busy.set(false);
+                if (response.status !== 'VALID' || !response.photoId) {
+                    this.message.set(response.message || 'Photo non conforme. Veuillez en choisir une autre.');
+                    return;
+                }
+                this.photoId = response.photoId;
+                this.message.set('Photo validée. Complétez les informations sur votre jardin.');
+                this.step.set('questions');
             },
             error: () => {
-                this.apiMessage.set('Impossible de contacter le backend.');
-                this.loading.set(false);
+                this.busy.set(false);
+                this.message.set('Service de validation indisponible. Réessayez.');
             }
         });
     }
 
+    submitContext(): void {
+        if (!this.photoId || !this.context.location.trim() || this.busy()) return;
+        this.busy.set(true);
+        this.message.set('Analyse de votre jardin en cours…');
+        this.api.analyzeGarden({
+            photoId: this.photoId,
+            context: {
+                ...this.context,
+                location: this.context.location.trim(),
+                maxHeightCm: this.context.maxHeightCm === null ||
+                    this.context.maxHeightCm === 0 ? null : Number(this.context.maxHeightCm)
+            }
+        }).subscribe({
+            next: response => {
+                this.result.set(response);
+                this.busy.set(false);
+                this.step.set('results');
+                this.message.set('Demande transmise à GDAI-BACK.');
+            },
+            error: () => {
+                this.busy.set(false);
+                this.message.set('Analyse indisponible. Vos réponses sont conservées, réessayez.');
+            }
+        });
+    }
 
-    readonly filename = signal('');
-    readonly preview = signal('');
-    readonly message = signal('Choisissez une photo pour commencer.');
+    backToConfirmation(): void { this.step.set('confirm'); }
 
-    onFileSelected(event: Event): void {
-        const file = (event.target as HTMLInputElement).files?.item(0);
+    ngOnDestroy(): void { this.releasePreview(); }
 
-        if (!file) {
-            return;
-        }
-
-        if (!isValidPhoto(file.type, file.size)) {
-            this.message.set('Format invalide ou fichier de plus de 10 Mo.');
-            this.logger.warn('Invalid photo');
-            return;
-        }
-
-        const previous = this.preview();
-
-        if (previous) {
-            URL.revokeObjectURL(previous);
-        }
-
-        this.preview.set(URL.createObjectURL(file));
-        this.filename.set(file.name);
-        this.message.set('Photo sélectionnée. Analyse IA bientôt disponible.');
-        this.logger.info('Photo selected');
+    private releasePreview(): void {
+        if (this.preview()) URL.revokeObjectURL(this.preview());
+        this.preview.set('');
     }
 }
