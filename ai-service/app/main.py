@@ -7,6 +7,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from app.garden_analysis import analyze_image
+from app.gdai_vision_client import analyze_garden
 
 from app.recommendations import RecommendationRequest, RecommendationResponse, suggest
 
@@ -71,3 +72,16 @@ def analyze(request: AnalyzeRequest) -> dict:
     except RuntimeError as exc:
         logger.warning("Vision analysis failed: %s", type(exc).__name__)
         raise HTTPException(status_code=503, detail="External vision analysis unavailable") from exc
+
+# GDAI-VISION endpoint for the GDAI-BACK orchestrator.
+@app.post("/vision/gemini", tags=["vision"])
+def gemini_vision(request: AnalyzeRequest) -> dict:
+    import base64
+    try:
+        image = base64.b64decode(request.imageBase64, validate=True)
+        return analyze_garden(image, request.mimeType, request.photoId)
+    except (ValueError, base64.binascii.Error) as exc:
+        raise HTTPException(status_code=422, detail="Invalid image payload") from exc
+    except RuntimeError as exc:
+        logger.warning("GDAI-VISION unavailable photoId=%s", request.photoId)
+        raise HTTPException(status_code=503, detail="Gemini analysis unavailable") from exc
