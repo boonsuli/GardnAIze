@@ -9,7 +9,8 @@ export interface CreateGardenRequest { name: string; location: string; exposure:
 export interface GardenProject extends CreateGardenRequest { id: string; createdAt: string; }
 export interface PlantSuggestion { name: string; reason: string; }
 export interface RecommendationResponse { mode: string; plants: PlantSuggestion[]; }
-export interface PhotoUploadResponse { photoId: string; status: 'STORED'; }
+export interface PhotoUploadResponse { photoId: string; status: 'VALID' | 'INVALID';
+    message?: string; }
 export interface PhotoValidationResponse { photoId: string; status: 'VALID' | 'INVALID' | 'PENDING'; message?: string; }
 
 @Injectable({ providedIn: 'root' })
@@ -31,7 +32,7 @@ export class GardenApiService {
         const body = new FormData();
         body.append('photo', file, file.name);
         body.append('description', description);
-        return this.http.post<PhotoUploadResponse>('/api/v1/gardens/photos', body);
+        return this.http.post<PhotoUploadResponse>('/api/v1/gardens/photos/confirm', body);
     }
 
     validatePhoto(photoId: string): Observable<PhotoValidationResponse> {

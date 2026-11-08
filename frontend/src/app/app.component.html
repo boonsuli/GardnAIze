@@ -68,6 +68,8 @@
             }
             @if (step() === 'questions') {
                 <h2>3. Contexte du jardin</h2>
+                <img [src]="preview()" alt="Photo du jardin validée">
+                <p><strong>Description :</strong> {{ description() || "Aucune description renseignée." }}</p>
                 <form #gardenForm="ngForm" (ngSubmit)="submitContext()">
                     @for (question of questions(); track question.id; let index = $index) {
                         <label [for]="'question-' + question.id">{{ index + 1 }}. {{ question.label }}</label>

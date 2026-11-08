@@ -92,42 +92,19 @@ export class AppComponent implements OnDestroy {
         this.cancelWorkflow();
         this.busy.set(true);
         this.step.set('validating');
-        this.showStatus('Enregistrement de la photo et de la description…', 'info');
+        this.showStatus('Validation ResNet-18 en cours…', 'info');
         this.workflowSubscription.add(this.api.uploadPhoto(this.photo, this.description().trim()).subscribe({
-            next: stored => {
-                if (stored.status !== 'STORED' || !stored.photoId) {
-                    this.rejectPhoto('Enregistrement de la photo non confirmé.');
+            next: result => {
+                if (result.status !== 'VALID' || !result.photoId) {
+                    this.rejectPhoto(result.message || 'Photo non valide pour GDAI-VISION. Choisissez une autre photo.');
                     return;
                 }
-                this.photoId = stored.photoId;
-                this.showStatus('Photo enregistrée. Vérification ResNet-18 en cours…', 'info');
-                this.validateStoredPhoto(stored.photoId);
-            },
-            error: () => this.rejectPhoto('Impossible de sauvegarder la photo. Réessayez.')
-        }));
-    }
-
-    private validateStoredPhoto(photoId: string): void {
-        this.workflowSubscription.add(this.api.validatePhoto(photoId).subscribe({
-            next: validation => {
-                if (validation.status === 'INVALID') {
-                    this.rejectPhoto(validation.message || 'Photo non valide pour GDAI-VISION. Choisissez une autre photo.');
-                    return;
-                }
-                if (validation.status === 'PENDING') {
-                    this.showStatus('Validation ResNet-18 en cours…', 'info');
-                    this.workflowSubscription.add(timer(1000).subscribe(() => this.validateStoredPhoto(photoId)));
-                    return;
-                }
-                if (validation.status !== 'VALID') {
-                    this.rejectPhoto('Réponse de validation inattendue.');
-                    return;
-                }
+                this.photoId = result.photoId;
                 this.busy.set(false);
                 this.showStatus('Photo valide.', 'success');
-                this.workflowSubscription.add(timer(2000).subscribe(() => this.loadQuestions(photoId)));
+                this.workflowSubscription.add(timer(2000).subscribe(() => this.loadQuestions(result.photoId)));
             },
-            error: () => this.rejectPhoto('Service GDAI-VALID indisponible. Réessayez.')
+            error: () => this.rejectPhoto('Validation indisponible. Veuillez réessayer.')
         }));
     }
 
