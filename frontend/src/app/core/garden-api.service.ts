@@ -1,34 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GardenAnalysisRequest, GardenAnalysisResponse } from './garden-context.model';
+import { GardenAnalysisRequest, GardenAnalysisResponse, QuestionnaireResponse } from './garden-context.model';
 
 export type Exposure = 'FULL_SUN' | 'PARTIAL_SHADE' | 'SHADE';
 export type SoilType = 'SANDY' | 'LOAMY' | 'CLAY' | 'UNKNOWN';
-
-export interface CreateGardenRequest {
-    name: string;
-    location: string;
-    exposure: Exposure;
-    soilType: SoilType;
-}
-export interface GardenProject extends CreateGardenRequest {
-    id: string;
-    createdAt: string;
-}
-export interface PlantSuggestion {
-    name: string;
-    reason: string;
-}
-export interface RecommendationResponse {
-    mode: string;
-    plants: PlantSuggestion[];
-}
-export interface PhotoUploadResponse {
-    photoId: string;
-    status: 'VALID' | 'INVALID' | 'PENDING';
-    message?: string;
-}
+export interface CreateGardenRequest { name: string; location: string; exposure: Exposure; soilType: SoilType; }
+export interface GardenProject extends CreateGardenRequest { id: string; createdAt: string; }
+export interface PlantSuggestion { name: string; reason: string; }
+export interface RecommendationResponse { mode: string; plants: PlantSuggestion[]; }
+export interface PhotoUploadResponse { photoId: string; status: 'STORED'; }
+export interface PhotoValidationResponse { photoId: string; status: 'VALID' | 'INVALID' | 'PENDING'; message?: string; }
 
 @Injectable({ providedIn: 'root' })
 export class GardenApiService {
@@ -44,12 +26,24 @@ export class GardenApiService {
         );
     }
 
-    // Proposed GDAI-BACK contracts: implement/align backend before end-to-end deployment.
+    // Proposed GDAI-BACK contracts; backend must persist before invoking GDAI-VALID.
     uploadPhoto(file: File, description: string): Observable<PhotoUploadResponse> {
         const body = new FormData();
         body.append('photo', file, file.name);
         body.append('description', description);
-        return this.http.post<PhotoUploadResponse>('/api/v1/gardens/photos/validate', body);
+        return this.http.post<PhotoUploadResponse>('/api/v1/gardens/photos', body);
+    }
+
+    validatePhoto(photoId: string): Observable<PhotoValidationResponse> {
+        return this.http.post<PhotoValidationResponse>(
+            `/api/v1/gardens/photos/${encodeURIComponent(photoId)}/validate`, {}
+        );
+    }
+
+    getQuestions(photoId: string): Observable<QuestionnaireResponse> {
+        return this.http.get<QuestionnaireResponse>(
+            `/api/v1/gardens/photos/${encodeURIComponent(photoId)}/questions`
+        );
     }
 
     analyzeGarden(request: GardenAnalysisRequest): Observable<GardenAnalysisResponse> {
