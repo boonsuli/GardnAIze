@@ -26,6 +26,17 @@ def group_id(row):
 
 df["group_id"] = df.apply(group_id, axis=1)
 
+# Check that each file is unique.
+if df["file"].duplicated().any():
+    raise ValueError("Duplicate file paths in manifest")
+
+# Check that source images and synthetic variants share a group.
+source_groups = df.groupby("source_title")["group_id"].nunique()
+
+assert source_groups.max() == 1, (
+    "Images from the same source have different group IDs"
+)
+
 # Conserver RMA dans l'entraînement.
 df["split"] = ""
 
