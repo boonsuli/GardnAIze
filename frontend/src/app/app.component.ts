@@ -35,7 +35,6 @@ export class AppComponent implements OnDestroy {
     readonly result = signal<GardenAnalysisResponse | null>(null);
     private photo: File | null = null;
     private photoId: string | null = null;
-    private readonly subscriptions = new Subscription();
     private workflowSubscription = new Subscription();
 
     onFileSelected(event: Event): void {
@@ -43,6 +42,9 @@ export class AppComponent implements OnDestroy {
         const file = input.files?.item(0);
         if (!file) return;
         if (!isValidPhoto(file.type, file.size)) {
+            this.photo = null;
+            this.photoId = null;
+            this.releasePreview();
             this.showStatus('Photo invalide : JPEG, PNG ou WebP, 1 Mo maximum.', 'error');
             input.value = '';
             return;
@@ -199,7 +201,6 @@ export class AppComponent implements OnDestroy {
 
     ngOnDestroy(): void {
         this.cancelWorkflow();
-        this.subscriptions.unsubscribe();
         this.releasePreview();
     }
 
