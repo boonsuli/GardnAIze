@@ -43,6 +43,8 @@ gardnaize:
         base-url: ${VISION_BASE_URL:http://localhost:9000}
         provider-name: ${VISION_PROVIDER_NAME:external-vision}
         api-key: ${VISION_API_KEY:}
+    validation:
+        base-url: ${VALIDATION_BASE_URL:http://localhost:9001}
     cors:
         allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:4200}
 
@@ -51,5 +53,5 @@ logging:
         root: ${LOG_LEVEL:INFO}
         com.gardnaize: ${APP_LOG_LEVEL:INFO}
 
-spring.servlet.multipart.max-file-size: 10MB
-spring.servlet.multipart.max-request-size: 11MB
+spring.servlet.multipart.max-file-size: 1MB
+spring.servlet.multipart.max-request-size: 2MB
