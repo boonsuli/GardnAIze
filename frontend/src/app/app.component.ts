@@ -1,8 +1,9 @@
 import { Component, OnDestroy, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { GardenApiService } from './core/garden-api.service';
 import { GardenContext, GardenAnalysisResponse } from './core/garden-context.model';
 import { isValidPhoto } from './core/photo-validation';
@@ -12,7 +13,7 @@ type Step = 'photo' | 'confirm' | 'questions' | 'results';
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [MatToolbarModule, MatButtonModule, MatCardModule, FormsModule],
+    imports: [MatToolbarModule, MatButtonModule, MatCardModule, MatIconModule, FormsModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
@@ -21,8 +22,11 @@ export class AppComponent implements OnDestroy {
     readonly step = signal<Step>('photo');
     readonly preview = signal('');
     readonly filename = signal('');
+    readonly description = signal('');
+    readonly editingDescription = signal(false);
+    readonly descriptionDraft = signal('');
     readonly busy = signal(false);
-    readonly message = signal('Sélectionnez une photo de jardin.');
+    readonly message = signal('Sélectionnez une photo de jardin et décrivez-la.');
     readonly result = signal<GardenAnalysisResponse | null>(null);
     readonly context: GardenContext = {
         location: '', exposure: 'FULL_SUN', soilType: 'UNKNOWN',
@@ -33,10 +37,12 @@ export class AppComponent implements OnDestroy {
     private photoId: string | null = null;
 
     onFileSelected(event: Event): void {
-        const file = (event.target as HTMLInputElement).files?.item(0);
+        const input = event.target as HTMLInputElement;
+        const file = input.files?.item(0);
         if (!file) return;
         if (!isValidPhoto(file.type, file.size)) {
-            this.message.set('Photo invalide : JPEG, PNG ou WebP, 10 Mo maximum.');
+            this.message.set('Photo invalide : JPEG, PNG ou WebP, 1 Mo maximum.');
+            input.value = '';
             return;
         }
         this.releasePreview();
@@ -44,37 +50,58 @@ export class AppComponent implements OnDestroy {
         this.photoId = null;
         this.preview.set(URL.createObjectURL(file));
         this.filename.set(file.name);
-        this.message.set('Vérifiez que cette photo représente bien le jardin à aménager.');
-        this.step.set('confirm');
+        this.message.set('Photo sélectionnée. Ajoutez une description et envoyez.');
     }
 
-    replacePhoto(): void {
-        this.photo = null;
-        this.photoId = null;
-        this.releasePreview();
-        this.step.set('photo');
-    }
-
-    confirmPhoto(): void {
+    submitPhoto(): void {
         if (!this.photo || this.busy()) return;
         this.busy.set(true);
-        this.message.set('Validation technique de la photo en cours…');
-        this.api.uploadPhoto(this.photo).subscribe({
+        this.message.set('Envoi et validation de la photo…');
+        this.api.uploadPhoto(this.photo, this.description().trim()).subscribe({
             next: response => {
                 this.busy.set(false);
                 if (response.status !== 'VALID' || !response.photoId) {
-                    this.message.set(response.message || 'Photo non conforme. Veuillez en choisir une autre.');
+                    this.message.set(response.message || 'Photo non conforme. Veuillez réessayer.');
                     return;
                 }
                 this.photoId = response.photoId;
-                this.message.set('Photo validée. Complétez les informations sur votre jardin.');
-                this.step.set('questions');
+                this.editingDescription.set(false);
+                this.step.set('confirm');
+                this.message.set('Vérifiez la photo et sa description avant de poursuivre.');
             },
             error: () => {
                 this.busy.set(false);
-                this.message.set('Service de validation indisponible. Réessayez.');
+                this.message.set('Échec de l’envoi. Réessayez sans perdre vos données.');
             }
         });
+    }
+
+    editDescription(): void {
+        this.descriptionDraft.set(this.description());
+        this.editingDescription.set(true);
+    }
+
+    saveDescription(): void {
+        this.description.set(this.descriptionDraft().trim());
+        this.editingDescription.set(false);
+    }
+
+    clearDescription(): void {
+        this.descriptionDraft.set('');
+        this.description.set('');
+        this.editingDescription.set(false);
+    }
+
+    cancelConfirmation(): void {
+        this.step.set('photo');
+        this.editingDescription.set(false);
+        this.message.set('Vous pouvez remplacer la photo ou modifier sa description.');
+    }
+
+    confirmPhoto(): void {
+        if (!this.photoId || this.busy() || this.editingDescription()) return;
+        this.step.set('questions');
+        this.message.set('Photo confirmée. Complétez le questionnaire.');
     }
 
     submitContext(): void {
@@ -83,6 +110,7 @@ export class AppComponent implements OnDestroy {
         this.message.set('Analyse de votre jardin en cours…');
         this.api.analyzeGarden({
             photoId: this.photoId,
+            description: this.description(),
             context: {
                 ...this.context,
                 location: this.context.location.trim(),
@@ -98,13 +126,12 @@ export class AppComponent implements OnDestroy {
             },
             error: () => {
                 this.busy.set(false);
-                this.message.set('Analyse indisponible. Vos réponses sont conservées, réessayez.');
+                this.message.set('Analyse indisponible. Vos réponses sont conservées.');
             }
         });
     }
 
     backToConfirmation(): void { this.step.set('confirm'); }
-
     ngOnDestroy(): void { this.releasePreview(); }
 
     private releasePreview(): void {
