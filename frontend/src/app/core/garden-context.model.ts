@@ -17,6 +17,7 @@ export interface GardenContext {
 
 export interface GardenAnalysisRequest {
     photoId: string;
+    description: string;
     context: GardenContext;
 }
 
