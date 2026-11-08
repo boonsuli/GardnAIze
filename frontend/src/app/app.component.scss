@@ -4,53 +4,15 @@
     padding: 0 5%;
     font-weight: 700;
 }
-
-.brand-logo {
-    height: auto;
-    width: auto;
-    max-width: 250px;
-    object-fit: contain;
-}
-
-.spacer {
-    flex: 1;
-}
-
-small {
-    font-weight: 400;
-}
-
-main {
-    max-width: 860px;
-    margin: 55px auto;
-    padding: 0 20px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 38px;
-}
-
-header p:first-child {
-    color: #348354;
-    letter-spacing: 2px;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-h1 {
-    font-size: clamp(30px, 5vw, 48px);
-    color: #194e35;
-}
-
-mat-card {
-    padding: 22px;
-}
-
-mat-card-content {
-    padding-top: 24px;
-}
-
+.brand-logo { height: auto; width: auto; max-width: 250px; object-fit: contain; }
+.spacer { flex: 1; }
+small { font-weight: 400; }
+main { max-width: 860px; margin: 55px auto; padding: 0 20px; }
+header { text-align: center; margin-bottom: 38px; }
+header p:first-child { color: #348354; letter-spacing: 2px; font-size: 12px; font-weight: 700; }
+h1 { font-size: clamp(30px, 5vw, 48px); color: #194e35; }
+mat-card { padding: 22px; }
+mat-card-content { padding-top: 24px; }
 img:not(.brand-logo) {
     max-width: 100%;
     max-height: 380px;
@@ -58,38 +20,24 @@ img:not(.brand-logo) {
     margin-top: 20px;
     border-radius: 12px;
 }
-
-footer {
-    text-align: center;
-    margin-top: 36px;
-    color: #687a6c;
-}
-
-@media (max-width: 550px) {
-    .bar small {
-        display: none;
-    }
-
-    .brand-logo {
-        height: auto;
-        max-width: 190px;
-    }
-}
-
-.questionnaire {
-    margin-top: 24px;
-}
-
-.questionnaire mat-card-content {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.questionnaire input,
-.questionnaire select {
+footer { text-align: center; margin-top: 36px; color: #687a6c; }
+label { display: block; margin-top: 16px; margin-bottom: 6px; font-weight: 600; }
+input:not([type='file']), select, textarea {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
     padding: 10px;
     border: 1px solid #b7c9bd;
     border-radius: 6px;
     font: inherit;
+}
+form { display: flex; flex-direction: column; gap: 8px; }
+.description-line { display: flex; align-items: flex-start; gap: 8px; margin: 20px 0; }
+.description-content { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.description-content p { white-space: pre-wrap; }
+.save-icon { color: #16803c; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 550px) {
+    .bar small { display: none; }
+    .brand-logo { max-width: 190px; }
 }
