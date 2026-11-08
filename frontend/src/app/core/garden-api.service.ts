@@ -45,9 +45,10 @@ export class GardenApiService {
     }
 
     // Proposed GDAI-BACK contracts: implement/align backend before end-to-end deployment.
-    uploadPhoto(file: File): Observable<PhotoUploadResponse> {
+    uploadPhoto(file: File, description: string): Observable<PhotoUploadResponse> {
         const body = new FormData();
         body.append('photo', file, file.name);
+        body.append('description', description);
         return this.http.post<PhotoUploadResponse>('/api/v1/gardens/photos/validate', body);
     }
 
