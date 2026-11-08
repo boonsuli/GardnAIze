@@ -1,63 +1,119 @@
 <mat-toolbar class="bar">
-    <img class="brand-logo" width="220" height="70" src="/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow.">
-    <span class="spacer"></span>
-    <small>Imagine. Design. Grow.</small>
+    <img class="brand-logo" width="220" height="70" src="/logo-gardnaize.svg" alt="GardnAIze">
+    <span class="spacer"></span><small>Imagine. Design. Grow.</small>
 </mat-toolbar>
-
 <main>
     <header>
         <p>AMÉNAGEMENT INTELLIGENT</p>
         <h1>Imaginez votre futur jardin.</h1>
         <p>Une photo et quelques réponses pour trouver des plantes adaptées.</p>
     </header>
-
     <mat-card appearance="outlined">
-        <mat-card-header>
-            <mat-card-title>1. Votre photo de jardin</mat-card-title>
-            <mat-card-subtitle>JPEG, PNG, WebP · 10 Mo max</mat-card-subtitle>
-        </mat-card-header>
         <mat-card-content>
-            <input #photo hidden type="file" accept="image/jpeg,image/png,image/webp" (change)="onFileSelected($event)">
-            <button mat-flat-button (click)="photo.click()">Choisir une photo</button>
             <p aria-live="polite">{{ message() }}</p>
-            @if (preview()) {
-                <img [src]="preview()" alt="Aperçu du jardin">
-                <p>{{ filename() }}</p>
+            @if (step() === 'photo') {
+                <h2>1. Votre photo de jardin</h2>
+                <p>JPEG, PNG ou WebP — 1 Mo maximum.</p>
+                <label for="photo-input">Photo du jardin</label>
+                <input id="photo-input" type="file" accept="image/jpeg,image/png,image/webp"
+                    (change)="onFileSelected($event)">
+                @if (preview()) {
+                    <img [src]="preview()" alt="Aperçu du jardin sélectionné">
+                    <p>{{ filename() }}</p>
+                }
+                <label for="description">Description de la photo</label>
+                <textarea id="description" rows="3" maxlength="1000"
+                    [ngModel]="description()" (ngModelChange)="description.set($event)"
+                    placeholder="Ex. Jardin exposé au sud, à aménager avec des plantes résistantes à la chaleur"></textarea>
+                <button mat-flat-button [disabled]="!preview() || busy()" (click)="submitPhoto()">
+                    Envoyer la photo
+                </button>
             }
-        </mat-card-content>
-    </mat-card>
-    <mat-card appearance="outlined" class="questionnaire">
-        <mat-card-header>
-            <mat-card-title>2. Décrivez votre jardin</mat-card-title>
-            <mat-card-subtitle>Questionnaire initial · suggestions de démonstration</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <label for="garden-name">Nom du projet</label>
-            <input id="garden-name" #gardenNameInput [value]="gardenName()" (input)="gardenName.set(gardenNameInput.value)" maxlength="120">
-            <label for="garden-location">Localisation</label>
-            <input id="garden-location" #locationInput [value]="location()" (input)="location.set(locationInput.value)" maxlength="160">
-            <label for="exposure">Exposition</label>
-            <select id="exposure" #exposureInput [value]="exposure()" (change)="exposure.set($any(exposureInput.value))">
-                <option value="FULL_SUN">Plein soleil</option>
-                <option value="PARTIAL_SHADE">Mi-ombre</option>
-                <option value="SHADE">Ombre</option>
-            </select>
-            <label for="soil-type">Type de sol</label>
-            <select id="soil-type" #soilInput [value]="soilType()" (change)="soilType.set($any(soilInput.value))">
-                <option value="UNKNOWN">Inconnu</option>
-                <option value="SANDY">Sableux</option>
-                <option value="LOAMY">Limoneux</option>
-                <option value="CLAY">Argileux</option>
-            </select>
-            <button mat-flat-button [disabled]="loading()" (click)="submitGarden()">Créer et proposer trois plantes</button>
-            <p aria-live="polite">{{ apiMessage() }}</p>
-            @if (suggestions().length > 0) {
-                <h2>3. Suggestions de plantes</h2>
-                @for (plant of suggestions(); track plant.name) {
+            @if (step() === 'confirm') {
+                <h2>2. Confirmez votre photo</h2>
+                <img [src]="preview()" alt="Photo du jardin à confirmer">
+                <p>{{ filename() }}</p>
+                <div class="description-line">
+                    <div class="description-content">
+                        <strong>Description</strong>
+                        @if (editingDescription()) {
+                            <textarea aria-label="Modifier la description" rows="3" maxlength="1000"
+                                [ngModel]="descriptionDraft()"
+                                (ngModelChange)="descriptionDraft.set($event)"></textarea>
+                        } @else {
+                            <p>{{ description() || 'Aucune description renseignée.' }}</p>
+                        }
+                    </div>
+                    @if (editingDescription()) {
+                        <button mat-icon-button class="save-icon" aria-label="Enregistrer la description"
+                            (click)="saveDescription()"><mat-icon>check_circle</mat-icon></button>
+                        <button mat-icon-button aria-label="Effacer la description"
+                            (click)="clearDescription()"><mat-icon>close</mat-icon></button>
+                    } @else {
+                        <button mat-icon-button aria-label="Modifier la description"
+                            (click)="editDescription()"><mat-icon>edit</mat-icon></button>
+                    }
+                </div>
+                <div class="actions">
+                    <button mat-flat-button [disabled]="busy() || editingDescription()"
+                        (click)="confirmPhoto()">Confirmer et poursuivre</button>
+                    <button mat-button [disabled]="busy()" (click)="cancelConfirmation()">Annuler / Recommencer</button>
+                </div>
+            }
+            @if (step() === 'questions') {
+                <h2>3. Décrivez votre jardin</h2>
+                <form #gardenForm="ngForm" (ngSubmit)="submitContext()">
+                    <label for="location">1. Localisation (ville ou code postal)</label>
+                    <input id="location" name="location" [(ngModel)]="context.location" required maxlength="160">
+                    <label for="exposure">2. Exposition</label>
+                    <select id="exposure" name="exposure" [(ngModel)]="context.exposure">
+                        <option value="FULL_SUN">Plein soleil</option><option value="PARTIAL_SHADE">Mi-ombre</option>
+                        <option value="SHADE">Ombre</option>
+                    </select>
+                    <label for="soil">3. Nature du sol</label>
+                    <select id="soil" name="soil" [(ngModel)]="context.soilType">
+                        <option value="UNKNOWN">Je ne sais pas</option><option value="SANDY">Sableux</option>
+                        <option value="LOAMY">Limoneux</option><option value="CLAY">Argileux</option>
+                    </select>
+                    <label for="water">4. Arrosage souhaité</label>
+                    <select id="water" name="water" [(ngModel)]="context.watering">
+                        <option value="LOW">Faible</option><option value="MODERATE">Modéré</option>
+                        <option value="REGULAR">Régulier</option>
+                    </select>
+                    <label for="maintenance">5. Entretien accepté</label>
+                    <select id="maintenance" name="maintenance" [(ngModel)]="context.maintenance">
+                        <option value="LOW">Minimal</option><option value="MODERATE">Modéré</option>
+                        <option value="HIGH">Important</option>
+                    </select>
+                    <label for="style">6. Type de végétation</label>
+                    <select id="style" name="style" [(ngModel)]="context.style">
+                        <option value="EVERGREEN">Persistante</option><option value="FLOWERING">Fleurie / saisonnière</option>
+                        <option value="MIXED">Mixte</option>
+                    </select>
+                    <label for="height">7. Hauteur maximale (cm, facultatif)</label>
+                    <input id="height" name="height" type="number" min="20" max="3000"
+                        [(ngModel)]="context.maxHeightCm">
+                    <label for="privacy">8. Besoin de brise-vue ?</label>
+                    <select id="privacy" name="privacy" [(ngModel)]="context.privacyScreen">
+                        <option [ngValue]="false">Non</option><option [ngValue]="true">Oui</option>
+                    </select>
+                    <button mat-flat-button type="submit" [disabled]="gardenForm.invalid || busy()">
+                        Analyser et proposer des plantes
+                    </button>
+                    <button mat-button type="button" [disabled]="busy()" (click)="backToConfirmation()">Retour</button>
+                </form>
+            }
+            @if (step() === 'results') {
+                <h2>4. Résultat de l'analyse</h2>
+                <p>Analyse {{ result()?.analysisId }} — {{ result()?.status }}</p>
+                @for (plant of result()?.plants ?? []; track plant.name) {
                     <p><strong>{{ plant.name }}</strong> — {{ plant.reason }}</p>
+                }
+                @if (!result()?.plants?.length) {
+                    <p>Analyse enregistrée. Les recommandations seront disponibles après traitement.</p>
                 }
             }
         </mat-card-content>
     </mat-card>
-    <footer>Prototype V1 · Suggestions non personnalisées par IA · Photo non transmise</footer>
+    <footer>GardnAIze · La photo est envoyée au serveur après votre clic sur « Envoyer ».</footer>
 </main>

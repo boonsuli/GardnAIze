@@ -1,91 +1,141 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, OnDestroy, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { LoggerService } from './core/logger.service';
-import { GardenApiService, Exposure, SoilType, PlantSuggestion } from './core/garden-api.service';
+import { MatIconModule } from '@angular/material/icon';
+import { GardenApiService } from './core/garden-api.service';
+import { GardenContext, GardenAnalysisResponse } from './core/garden-context.model';
 import { isValidPhoto } from './core/photo-validation';
+
+type Step = 'photo' | 'confirm' | 'questions' | 'results';
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [MatToolbarModule, MatButtonModule, MatCardModule],
+    imports: [MatToolbarModule, MatButtonModule, MatCardModule, MatIconModule, FormsModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
-export class AppComponent {
-    private readonly logger = inject(LoggerService);
-    private readonly gardenApi = inject(GardenApiService);
+export class AppComponent implements OnDestroy {
+    private readonly api = inject(GardenApiService);
+    readonly step = signal<Step>('photo');
+    readonly preview = signal('');
+    readonly filename = signal('');
+    readonly description = signal('');
+    readonly editingDescription = signal(false);
+    readonly descriptionDraft = signal('');
+    readonly busy = signal(false);
+    readonly message = signal('Sélectionnez une photo de jardin et décrivez-la.');
+    readonly result = signal<GardenAnalysisResponse | null>(null);
+    readonly context: GardenContext = {
+        location: '', exposure: 'FULL_SUN', soilType: 'UNKNOWN',
+        watering: 'MODERATE', maintenance: 'LOW', style: 'MIXED',
+        maxHeightCm: null, privacyScreen: false
+    };
+    private photo: File | null = null;
+    private photoId: string | null = null;
 
-    readonly gardenName = signal('Mon jardin');
-    readonly location = signal('Paris');
-    readonly exposure = signal<Exposure>('FULL_SUN');
-    readonly soilType = signal<SoilType>('UNKNOWN');
-    readonly suggestions = signal<PlantSuggestion[]>([]);
-    readonly loading = signal(false);
-    readonly apiMessage = signal('Créez votre jardin pour recevoir trois suggestions de démonstration.');
-
-    submitGarden(): void {
-        if (!this.gardenName().trim() || !this.location().trim() || this.loading()) {
-            this.apiMessage.set('Renseignez le nom et la localisation.');
+    onFileSelected(event: Event): void {
+        const input = event.target as HTMLInputElement;
+        const file = input.files?.item(0);
+        if (!file) return;
+        if (!isValidPhoto(file.type, file.size)) {
+            this.message.set('Photo invalide : JPEG, PNG ou WebP, 1 Mo maximum.');
+            input.value = '';
             return;
         }
+        this.releasePreview();
+        this.photo = file;
+        this.photoId = null;
+        this.preview.set(URL.createObjectURL(file));
+        this.filename.set(file.name);
+        this.message.set('Photo sélectionnée. Ajoutez une description et envoyez.');
+    }
 
-        this.loading.set(true);
-        this.suggestions.set([]);
-        this.gardenApi.createGarden({
-            name: this.gardenName().trim(),
-            location: this.location().trim(),
-            exposure: this.exposure(),
-            soilType: this.soilType()
-        }).subscribe({
-            next: (garden) => {
-                this.gardenApi.getRecommendations(garden.id).subscribe({
-                    next: (response) => {
-                        this.suggestions.set(response.plants);
-                        this.apiMessage.set('Suggestions indicatives : règles de démonstration, sans modèle IA.');
-                        this.loading.set(false);
-                    },
-                    error: () => {
-                        this.apiMessage.set('Jardin créé, mais le service de recommandations est indisponible.');
-                        this.loading.set(false);
-                    }
-                });
+    submitPhoto(): void {
+        if (!this.photo || this.busy()) return;
+        this.busy.set(true);
+        this.message.set('Envoi et validation de la photo…');
+        this.api.uploadPhoto(this.photo, this.description().trim()).subscribe({
+            next: response => {
+                this.busy.set(false);
+                if (response.status !== 'VALID' || !response.photoId) {
+                    this.message.set(response.message || 'Photo non conforme. Veuillez réessayer.');
+                    return;
+                }
+                this.photoId = response.photoId;
+                this.editingDescription.set(false);
+                this.step.set('confirm');
+                this.message.set('Vérifiez la photo et sa description avant de poursuivre.');
             },
             error: () => {
-                this.apiMessage.set('Impossible de contacter le backend.');
-                this.loading.set(false);
+                this.busy.set(false);
+                this.message.set('Échec de l’envoi. Réessayez sans perdre vos données.');
             }
         });
     }
 
+    editDescription(): void {
+        this.descriptionDraft.set(this.description());
+        this.editingDescription.set(true);
+    }
 
-    readonly filename = signal('');
-    readonly preview = signal('');
-    readonly message = signal('Choisissez une photo pour commencer.');
+    saveDescription(): void {
+        this.description.set(this.descriptionDraft().trim());
+        this.editingDescription.set(false);
+    }
 
-    onFileSelected(event: Event): void {
-        const file = (event.target as HTMLInputElement).files?.item(0);
+    clearDescription(): void {
+        this.descriptionDraft.set('');
+        this.description.set('');
+        this.editingDescription.set(false);
+    }
 
-        if (!file) {
-            return;
-        }
+    cancelConfirmation(): void {
+        this.step.set('photo');
+        this.editingDescription.set(false);
+        this.message.set('Vous pouvez remplacer la photo ou modifier sa description.');
+    }
 
-        if (!isValidPhoto(file.type, file.size)) {
-            this.message.set('Format invalide ou fichier de plus de 10 Mo.');
-            this.logger.warn('Invalid photo');
-            return;
-        }
+    confirmPhoto(): void {
+        if (!this.photoId || this.busy() || this.editingDescription()) return;
+        this.step.set('questions');
+        this.message.set('Photo confirmée. Complétez le questionnaire.');
+    }
 
-        const previous = this.preview();
+    submitContext(): void {
+        if (!this.photoId || !this.context.location.trim() || this.busy()) return;
+        this.busy.set(true);
+        this.message.set('Analyse de votre jardin en cours…');
+        this.api.analyzeGarden({
+            photoId: this.photoId,
+            description: this.description(),
+            context: {
+                ...this.context,
+                location: this.context.location.trim(),
+                maxHeightCm: this.context.maxHeightCm === null ||
+                    this.context.maxHeightCm === 0 ? null : Number(this.context.maxHeightCm)
+            }
+        }).subscribe({
+            next: response => {
+                this.result.set(response);
+                this.busy.set(false);
+                this.step.set('results');
+                this.message.set('Demande transmise à GDAI-BACK.');
+            },
+            error: () => {
+                this.busy.set(false);
+                this.message.set('Analyse indisponible. Vos réponses sont conservées.');
+            }
+        });
+    }
 
-        if (previous) {
-            URL.revokeObjectURL(previous);
-        }
+    backToConfirmation(): void { this.step.set('confirm'); }
+    ngOnDestroy(): void { this.releasePreview(); }
 
-        this.preview.set(URL.createObjectURL(file));
-        this.filename.set(file.name);
-        this.message.set('Photo sélectionnée. Analyse IA bientôt disponible.');
-        this.logger.info('Photo selected');
+    private releasePreview(): void {
+        if (this.preview()) URL.revokeObjectURL(this.preview());
+        this.preview.set('');
     }
 }
