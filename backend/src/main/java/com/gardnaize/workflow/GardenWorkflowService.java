@@ -83,7 +83,8 @@ public class GardenWorkflowService {
         if (original == null) return "garden-image";
         String name = original.replace('\\', '/');
         name = name.substring(name.lastIndexOf('/') + 1);
-        return name.replaceAll("[^a-zA-Z0-9._-]", "_").substring(0, Math.min(name.length(), 200));
+        String sanitized = name.replaceAll("[^a-zA-Z0-9._-]", "_");
+        return sanitized.substring(0, Math.min(sanitized.length(), 200));
     }
 
     public Questionnaire questions(UUID photoId, String language, String continent, String climate, String country) {
