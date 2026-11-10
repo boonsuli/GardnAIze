@@ -11,37 +11,72 @@
         <p>Une photo et quelques réponses pour trouver des plantes adaptées.</p>
     </header>
 
-    <mat-card appearance="outlined">
+    <mat-card appearance="outlined" class="intake">
         <mat-card-header>
-            <mat-card-title>1. Votre photo de jardin</mat-card-title>
-            <mat-card-subtitle>JPEG, PNG, WebP · 5 Mio max</mat-card-subtitle>
+            <mat-card-title>1. Présentez votre jardin</mat-card-title>
+            <mat-card-subtitle>Photo JPEG, PNG ou WebP · 5 Mio maximum</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <input #photo hidden type="file" accept="image/jpeg,image/png,image/webp" (change)="onFileSelected($event)">
             <input #camera hidden type="file" accept="image/jpeg,image/png,image/webp" capture="environment" (change)="onFileSelected($event)">
-            <button mat-flat-button type="button" (click)="camera.click()">Prendre une photo</button>
-            <button mat-stroked-button type="button" (click)="photo.click()">Choisir dans la galerie ou les fichiers</button>
+            <div class="photo-actions">
+                <button mat-flat-button type="button" (click)="camera.click()">Prendre une photo</button>
+                <button mat-stroked-button type="button" (click)="photo.click()">Galerie ou fichiers</button>
+            </div>
             <p aria-live="polite">{{ message() }}</p>
             @if (preview()) {
-                <img [src]="preview()" alt="Aperçu du jardin">
+                <img [src]="preview()" alt="Aperçu du jardin sélectionné">
                 <p>{{ filename() }}</p>
+            }
+            <mat-form-field appearance="outline">
+                <mat-label>Pays *</mat-label>
+                <mat-select [value]="countryCode()" (selectionChange)="countryCode.set($event.value); editPhotoDetails()" [disabled]="photoConfirmed()">
+                    @for (country of countries; track country.code) {
+                        <mat-option [value]="country.code">{{ country.label }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Ville ou code postal *</mat-label>
+                <input matInput #cityInput [value]="location()" (input)="location.set(cityInput.value); editPhotoDetails()"
+                    [readonly]="photoConfirmed()" maxlength="160" autocomplete="address-level2">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Climat régional (facultatif)</mat-label>
+                <mat-select [value]="climate()" (selectionChange)="climate.set($event.value); editPhotoDetails()" [disabled]="photoConfirmed()">
+                    <mat-option value="UNKNOWN">Je ne sais pas</mat-option>
+                    <mat-option value="OCEANIC">Océanique</mat-option>
+                    <mat-option value="CONTINENTAL">Continental</mat-option>
+                    <mat-option value="MEDITERRANEAN">Méditerranéen</mat-option>
+                    <mat-option value="HOT_DRY">Chaud et sec</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Description du jardin (facultative)</mat-label>
+                <textarea matInput #descriptionInput rows="3" maxlength="1000"
+                    [value]="gardenDescription()" (input)="gardenDescription.set(descriptionInput.value); editPhotoDetails()"
+                    [readonly]="photoConfirmed()" placeholder="Exposition, terrasse, zones à aménager…"></textarea>
+            </mat-form-field>
+            @if (!photoConfirmed()) {
+                <button mat-flat-button type="button" [disabled]="!canConfirmPhoto()" (click)="confirmPhotoDetails()">
+                    Confirmer la photo et les informations
+                </button>
+            } @else {
+                <p class="confirmation" role="status">Photo et localisation confirmées. Aucun envoi de photo n'est encore effectué.</p>
+                <button mat-stroked-button type="button" (click)="editPhotoDetails()">Modifier les informations</button>
             }
         </mat-card-content>
     </mat-card>
 
     <mat-card appearance="outlined" class="questionnaire">
         <mat-card-header>
-            <mat-card-title>2. Décrivez votre jardin</mat-card-title>
+            <mat-card-title>2. Préférences du jardin (démonstration)</mat-card-title>
             <mat-card-subtitle>Questionnaire MVP · préférences enregistrées en base</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <mat-form-field appearance="outline">
                 <mat-label>Nom du projet</mat-label>
                 <input matInput #gardenNameInput [value]="gardenName()" (input)="gardenName.set(gardenNameInput.value)" maxlength="120">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Localisation</mat-label>
-                <input matInput #locationInput [value]="location()" (input)="location.set(locationInput.value)" maxlength="160">
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Exposition</mat-label>
@@ -100,5 +135,5 @@
             }
         </mat-card-content>
     </mat-card>
-    <footer>MVP en développement · Suggestions de démonstration · Photo non transmise</footer>
+    <footer>MVP en développement · Pays, climat et description non encore persistés · Photo non transmise</footer>
 </main>
