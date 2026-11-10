@@ -45,6 +45,23 @@ export interface RecommendationResponse {
 export class GardenApiService {
     private readonly http = inject(HttpClient);
 
+    submitGardenPhoto(photo: File, details: {
+        countryCode: string;
+        city: string;
+        climateCode: string;
+        description: string;
+    }): Observable<{ status: 'VALID' | 'INVALID'; message: string }> {
+        const form = new FormData();
+        form.append('photo', photo, photo.name);
+        form.append('countryCode', details.countryCode);
+        form.append('city', details.city);
+        form.append('climateCode', details.climateCode);
+        form.append('description', details.description);
+        return this.http.post<{ status: 'VALID' | 'INVALID'; message: string }>(
+            '/api/v1/gardens/photos/confirm', form
+        );
+    }
+
     createGarden(request: CreateGardenRequest): Observable<GardenProject> {
         return this.http.post<GardenProject>('/api/v1/gardens', request);
     }
