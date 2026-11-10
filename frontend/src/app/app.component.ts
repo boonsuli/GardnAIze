@@ -90,7 +90,7 @@ export class AppComponent {
             return;
         }
         if (!isValidPhoto(file.type, file.size)) {
-            this.message.set('Format invalide ou fichier de plus de 10 Mo.');
+            this.message.set('Format invalide ou fichier de plus de 5 Mio.');
             this.logger.warn('Invalid photo');
             return;
         }
