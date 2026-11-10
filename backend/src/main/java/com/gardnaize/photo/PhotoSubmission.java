@@ -1,6 +1,8 @@
 package com.gardnaize.photo;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -16,6 +18,7 @@ public class PhotoSubmission {
     @Column(nullable = false)
     private String filename;
     @Column(nullable = false)
+    @JdbcTypeCode(SqlTypes.VARBINARY)
     private byte[] image;
     @Column(nullable = false, length = 32)
     private String status;
@@ -32,7 +35,7 @@ public class PhotoSubmission {
         this.contentType = contentType;
         this.filename = filename;
         this.image = image;
-        this.status = "VALIDATED";
+        this.status = "VISION_PENDING";
         this.createdAt = Instant.now();
     }
 
