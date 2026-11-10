@@ -93,3 +93,24 @@ footer {
     border-radius: 6px;
     font: inherit;
 }
+
+.intake {
+    margin-bottom: 24px;
+}
+
+.intake mat-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.photo-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.confirmation {
+    color: #194e35;
+    font-weight: 600;
+}
