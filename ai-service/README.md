@@ -1,5 +1,7 @@
 # GardnAIze AI Service
 
+> **Point E2E — 10/11/2026 :** le service FastAPI fournit une base opérationnelle et des recommandations de démonstration par règles. Le service d'inférence ResNet-18 et ses poids entraînés, l'intégration des observations Gemini et le moteur Random Forest réel restent à raccorder et à tester. Exposer des contrats Python privés consommés par GDAI-BACK, avec schémas, erreurs et versions de modèle ; ne pas présenter les règles de démo comme des prédictions ML. [Plan de câblage](../docs/E2E_READINESS_2026-11-10.md).
+
 Python **3.12** and **FastAPI** provide an independent inference API.
 
 **Current implementation:** a working FastAPI scaffold with `/`, `/health`, and interactive OpenAPI documentation at `/docs`. Plant ranking, image classification, model loading and ML/DL inference are planned; no trained models are bundled.

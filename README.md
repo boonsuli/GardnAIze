@@ -14,6 +14,8 @@
   </p>
 </div>
 
+> **Point d'avancement — 10 novembre 2026 · Démo MVP visée le 15 décembre 2026.** Estimation de pilotage : **65 % global / 25 % chaîne IA E2E**, non issue de tests automatisés. Le parcours actuel fournit des recommandations **par règles de démonstration**. La validation ResNet-18, le câblage complet Gemini → PLANT et le Random Forest restent à prouver. **P0 : unifier les contrats REST** (BACK propriétaire d'OpenAPI, FRONT consommateur). [Voir l'audit, le câblage et les critères de recette](docs/E2E_READINESS_2026-11-10.md).
+
 > **Status — MVP under development.** The web application, Java API, FastAPI service, PostgreSQL persistence and Docker stack are integrated for a **rule-based demonstration**. Image-classification experiments have been conducted in notebooks, but trained-model inference is **not yet connected** to the running application. The photo currently stays in the browser. This is **not a production-ready AI recommendation system**.
 
 ## What is GardnAIze?

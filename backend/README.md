@@ -20,6 +20,8 @@
     </p>
 </div>
 
+> **Point E2E — 10/11/2026 :** GDAI-BACK est **propriétaire des contrats REST publics** et de leur documentation Swagger/OpenAPI ; Angular doit s'y aligner. Le workflow proposé est confirmation multipart → VALID → persistance uniquement si photo valide → questionnaire → VISION → PLANT → recommandations. Les DTO, codes HTTP, statuts asynchrones et propositions des PR #28/#29 doivent être vérifiés avant fusion ; le parcours IA complet n'est **pas** certifié opérationnel. [Plan de câblage et critères d'acceptation](../docs/E2E_READINESS_2026-11-10.md).
+
 > Versions shown are the versions explicitly pinned in the backend POM or Dockerfile. Hibernate, Flyway, JUnit and Mockito are managed by the Spring Boot dependency BOM, so their precise resolved versions are not asserted here.
 
 **Stack:** Java 25 LTS (Amazon Corretto runtime), Spring Boot 3.5.7, Spring Data JPA / Hibernate, PostgreSQL 18, Flyway and springdoc OpenAPI 2.8.13.

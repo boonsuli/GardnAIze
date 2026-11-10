@@ -9,6 +9,8 @@
   </p>
 </div>
 
+> **Point E2E — 10/11/2026 :** le FRONT doit consommer le contrat OpenAPI publié par GDAI-BACK, sans définir seul les routes. Les workflows photo/confirmation/questionnaire des PR #26, #27 et #29 doivent être réconciliés avec `main` avant fusion. Cible : contrôle JPEG/PNG/WebP ≤ 1 MiB, pas de stockage Node `images-upload`, confirmation puis réponse VALID, questionnaire asynchrone, affichage des trois recommandations avec provenance. **Ces changements ne sont pas attestés comme intégrés dans `main`.** [Plan et contrats proposés](../docs/E2E_READINESS_2026-11-10.md).
+
 > **Status:** Initial Angular UI. Photo selection and local preview are available; server-side analysis, questionnaire and recommendation APIs are not connected yet.
 
 ## Purpose
