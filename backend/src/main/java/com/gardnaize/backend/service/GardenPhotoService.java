@@ -25,7 +25,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class GardenPhotoService {
-    private static final long MAX_BYTES = 10L * 1024 * 1024;
+    private static final long MAX_BYTES = 5L * 1024 * 1024;
     private static final Set<String> ACCEPTED_CLIMATES = Set.of("TEMPERATE_CONTINENTAL");
     private final JdbcTemplate jdbc;
     private final ObjectMapper mapper;
@@ -51,12 +51,20 @@ public class GardenPhotoService {
     }
 
     public PhotoAnalysisResponse upload(UUID gardenId, MultipartFile file) {
+        return upload(gardenId, file, null);
+    }
+
+    public PhotoAnalysisResponse upload(UUID gardenId, MultipartFile file, String description) {
         if (!Boolean.TRUE.equals(jdbc.queryForObject(
                 "SELECT EXISTS(SELECT 1 FROM garden_projects WHERE id = ?)", Boolean.class, gardenId))) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Garden not found");
         }
         if (file == null || file.isEmpty() || file.getSize() > MAX_BYTES) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Photo must be 1–10 MB");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Photo must be between 1 byte and 5 MiB");
+        }
+        if (description != null && description.length() > 1000) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Description must be at most 1000 characters");
         }
         String type = file.getContentType();
         if (!Set.of("image/jpeg", "image/png").contains(type)) {
@@ -89,10 +97,11 @@ public class GardenPhotoService {
         }
         jdbc.update("""
             INSERT INTO garden_photos (id,garden_id,original_filename,content_type,file_size_bytes,
-                width_px,height_px,image_bytes,photo_status,processing_status)
-            VALUES (?,?,?,?,?,?,?,?,?,?)
+                width_px,height_px,image_bytes,description,photo_status,processing_status)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?)
             """, photoId, gardenId, filename, type, bytes.length,
-                image.getWidth(), image.getHeight(), bytes, "RECEIVED", "INITIALIZED");
+                image.getWidth(), image.getHeight(), bytes,
+                description == null ? "" : description.trim(), "RECEIVED", "INITIALIZED");
         transition(photoId, "RECEIVED", "INITIALIZED", "Photo persisted on upload");
 
         if (image.getWidth() < 640 || image.getHeight() < 480) {
