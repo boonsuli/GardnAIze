@@ -58,11 +58,11 @@
                     [readonly]="photoConfirmed()" placeholder="Exposition, terrasse, zones à aménager…"></textarea>
             </mat-form-field>
             @if (!photoConfirmed()) {
-                <button mat-flat-button type="button" [disabled]="!canConfirmPhoto()" (click)="confirmPhotoDetails()">
-                    Confirmer la photo et les informations
+                <button mat-flat-button type="button" [disabled]="!canConfirmPhoto() || photoSending()" (click)="confirmPhotoDetails()">
+                    {{ photoSending() ? 'Validation en cours…' : 'Confirmer et envoyer la photo' }}
                 </button>
             } @else {
-                <p class="confirmation" role="status">Photo et localisation confirmées. Aucun envoi de photo n'est encore effectué.</p>
+                <p class="confirmation" role="status">Photo validée par GDAI-VALID.</p>
                 <button mat-stroked-button type="button" (click)="editPhotoDetails()">Modifier les informations</button>
             }
         </mat-card-content>
@@ -135,5 +135,5 @@
             }
         </mat-card-content>
     </mat-card>
-    <footer>MVP en développement · Pays, climat et description non encore persistés · Photo non transmise</footer>
+    <footer>MVP en développement · Photo envoyée pour validation · Persistance à intégrer</footer>
 </main>
