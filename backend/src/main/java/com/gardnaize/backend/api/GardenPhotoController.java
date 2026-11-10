@@ -22,10 +22,11 @@ public class GardenPhotoController {
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @Operation(summary = "Persist and analyze a garden photo with the configured external provider")
+    @Operation(summary = "Upload a garden photo (5 MiB max) and its description")
     public PhotoAnalysisResponse upload(@PathVariable UUID gardenId,
-            @RequestPart("file") MultipartFile file) {
-        return service.upload(gardenId, file);
+            @RequestPart("file") MultipartFile file,
+            @RequestPart(value = "description", required = false) String description) {
+        return service.upload(gardenId, file, description);
     }
 
     @GetMapping("/{photoId}")
