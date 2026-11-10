@@ -18,6 +18,8 @@
 
 > **Status — MVP under development.** The web application, Java API, FastAPI service, PostgreSQL persistence and Docker stack are integrated for a **rule-based demonstration**. Image-classification experiments have been conducted in notebooks, but trained-model inference is **not yet connected** to the running application. The photo currently stays in the browser. This is **not a production-ready AI recommendation system**.
 
+> **Mise à jour FRONT — 10 novembre 2026.** Les évolutions proposées dans les PR [#33](https://github.com/boonsuli/GardnAIze/pull/33), [#34](https://github.com/boonsuli/GardnAIze/pull/34) et [#36](https://github.com/boonsuli/GardnAIze/pull/36) couvrent : prise de photo smartphone ou sélection galerie, JPEG/PNG/WebP jusqu'à **5 Mio**, formulaire **pays obligatoire + ville/code postal obligatoire + région climatique facultative + description facultative (1 000 caractères)**, écran de confirmation et modification, puis transmission multipart `photo`, `countryCode`, `city`, `climateCode`, `description` vers GDAI-BACK. **Ces fonctionnalités sont décrites dans les PR ; leur fusion et leur fonctionnement E2E ne sont pas certifiés par cette mise à jour documentaire.** La persistance après VALID, le contrat Python `/validate` et l'enchaînement VISION → PLANT restent à valider. Pas de GPS ni d'API météo pour le MVP.
+
 ## What is GardnAIze?
 
 GardnAIze aims to help users choose plants suited to their garden, local conditions and preferences. The MVP targets an end-to-end journey: upload a garden photo, check whether it is usable, confirm observations, answer a short questionnaire, and receive **three explained plant recommendations**.
