@@ -28,7 +28,12 @@ export class AppComponent {
     private readonly gardenApi = inject(GardenApiService);
 
     readonly gardenName = signal('Mon jardin');
-    readonly location = signal('Paris');
+    readonly location = signal('');
+    readonly countryCode = signal('FR');
+    readonly climate = signal('UNKNOWN');
+    readonly gardenDescription = signal('');
+    readonly photoConfirmed = signal(false);
+    readonly photoReady = signal(false);
     readonly exposure = signal<Exposure>('FULL_SUN');
     readonly soilType = signal<SoilType>('UNKNOWN');
     readonly waterAvailability = signal<RequirementLevel>('MODERATE');
@@ -43,8 +48,35 @@ export class AppComponent {
     readonly preview = signal('');
     readonly message = signal('Choisissez une photo pour commencer.');
 
+    readonly countries = [
+        { code: 'FR', label: 'France' },
+        { code: 'BE', label: 'Belgique' },
+        { code: 'CH', label: 'Suisse' },
+        { code: 'ES', label: 'Espagne' },
+        { code: 'IT', label: 'Italie' },
+        { code: 'OTHER', label: 'Autre pays' }
+    ];
+
+    canConfirmPhoto(): boolean {
+        return this.photoReady() && this.location().trim().length > 0 &&
+            this.countryCode().length > 0 && this.gardenDescription().length <= 1000;
+    }
+
+    confirmPhotoDetails(): void {
+        if (!this.canConfirmPhoto()) {
+            this.message.set('Ajoutez une photo, un pays et une ville ou un code postal.');
+            return;
+        }
+        this.photoConfirmed.set(true);
+        this.message.set('Informations confirmées. La transmission de la photo sera activée avec le workflow GDAI-VALID.');
+    }
+
+    editPhotoDetails(): void {
+        this.photoConfirmed.set(false);
+    }
+
     submitGarden(): void {
-        if (!this.gardenName().trim() || !this.location().trim() || this.loading()) {
+        if (!this.gardenName().trim() || !this.location().trim() || !this.countryCode() || this.loading()) {
             this.apiMessage.set('Renseignez le nom et la localisation.');
             return;
         }
@@ -85,12 +117,16 @@ export class AppComponent {
     }
 
     onFileSelected(event: Event): void {
-        const file = (event.target as HTMLInputElement).files?.item(0);
+        const input = event.target as HTMLInputElement;
+        const file = input.files?.item(0);
         if (!file) {
             return;
         }
         if (!isValidPhoto(file.type, file.size)) {
             this.message.set('Format invalide ou fichier de plus de 5 Mio.');
+            this.photoReady.set(false);
+            this.photoConfirmed.set(false);
+            input.value = '';
             this.logger.warn('Invalid photo');
             return;
         }
@@ -99,8 +135,10 @@ export class AppComponent {
             URL.revokeObjectURL(previous);
         }
         this.preview.set(URL.createObjectURL(file));
+        this.photoReady.set(true);
+        this.photoConfirmed.set(false);
         this.filename.set(file.name);
-        this.message.set('Photo sélectionnée. Analyse IA bientôt disponible.');
+        this.message.set('Photo sélectionnée. Complétez la localisation puis confirmez.');
         this.logger.info('Photo selected');
     }
 }
