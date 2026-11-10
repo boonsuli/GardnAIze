@@ -90,6 +90,8 @@ export class AppComponent {
         this.gardenApi.createGarden({
             name: this.gardenName().trim(),
             location: this.location().trim(),
+            countryCode: this.countryCode(),
+            climateRegion: this.climate(),
             exposure: this.exposure(),
             soilType: this.soilType()
         }).pipe(
