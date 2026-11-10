@@ -34,6 +34,8 @@ export class AppComponent {
     readonly gardenDescription = signal('');
     readonly photoConfirmed = signal(false);
     readonly photoReady = signal(false);
+    readonly photoSending = signal(false);
+    private selectedPhoto: File | null = null;
     readonly exposure = signal<Exposure>('FULL_SUN');
     readonly soilType = signal<SoilType>('UNKNOWN');
     readonly waterAvailability = signal<RequirementLevel>('MODERATE');
@@ -67,8 +69,28 @@ export class AppComponent {
             this.message.set('Ajoutez une photo, un pays et une ville ou un code postal.');
             return;
         }
-        this.photoConfirmed.set(true);
-        this.message.set('Informations confirmées. La transmission de la photo sera activée avec le workflow GDAI-VALID.');
+        if (!this.selectedPhoto || this.photoSending()) {
+            return;
+        }
+        this.photoSending.set(true);
+        this.message.set('Envoi de la photo à GDAI-BACK et validation en cours…');
+        this.gardenApi.submitGardenPhoto(this.selectedPhoto, {
+            countryCode: this.countryCode(),
+            city: this.location().trim(),
+            climateCode: this.climate(),
+            description: this.gardenDescription().trim()
+        }).pipe(finalize(() => this.photoSending.set(false))).subscribe({
+            next: result => {
+                this.photoConfirmed.set(result.status === 'VALID');
+                this.message.set(result.status === 'VALID'
+                    ? 'Photo valide. Les informations ont été transmises à GDAI-BACK.'
+                    : 'Photo non valide. Choisissez une autre photo.');
+            },
+            error: () => {
+                this.photoConfirmed.set(false);
+                this.message.set('Transmission ou validation impossible. Réessayez.');
+            }
+        });
     }
 
     editPhotoDetails(): void {
@@ -124,6 +146,7 @@ export class AppComponent {
         }
         if (!isValidPhoto(file.type, file.size)) {
             this.message.set('Format invalide ou fichier de plus de 5 Mio.');
+            this.selectedPhoto = null;
             this.photoReady.set(false);
             this.photoConfirmed.set(false);
             input.value = '';
@@ -134,6 +157,7 @@ export class AppComponent {
         if (previous) {
             URL.revokeObjectURL(previous);
         }
+        this.selectedPhoto = file;
         this.preview.set(URL.createObjectURL(file));
         this.photoReady.set(true);
         this.photoConfirmed.set(false);
