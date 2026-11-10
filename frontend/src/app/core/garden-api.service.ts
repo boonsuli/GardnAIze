@@ -9,6 +9,8 @@ export type RequirementLevel = 'LOW' | 'MODERATE' | 'HIGH';
 export interface CreateGardenRequest {
     name: string;
     location: string;
+    countryCode: string;
+    climateRegion: string;
     exposure: Exposure;
     soilType: SoilType;
 }
