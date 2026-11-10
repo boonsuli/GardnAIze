@@ -14,11 +14,13 @@
     <mat-card appearance="outlined">
         <mat-card-header>
             <mat-card-title>1. Votre photo de jardin</mat-card-title>
-            <mat-card-subtitle>JPEG, PNG, WebP · 10 Mo max</mat-card-subtitle>
+            <mat-card-subtitle>JPEG, PNG, WebP · 5 Mio max</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <input #photo hidden type="file" accept="image/jpeg,image/png,image/webp" (change)="onFileSelected($event)">
-            <button mat-flat-button (click)="photo.click()">Choisir une photo</button>
+            <input #camera hidden type="file" accept="image/jpeg,image/png,image/webp" capture="environment" (change)="onFileSelected($event)">
+            <button mat-flat-button type="button" (click)="camera.click()">Prendre une photo</button>
+            <button mat-stroked-button type="button" (click)="photo.click()">Choisir dans la galerie ou les fichiers</button>
             <p aria-live="polite">{{ message() }}</p>
             @if (preview()) {
                 <img [src]="preview()" alt="Aperçu du jardin">
