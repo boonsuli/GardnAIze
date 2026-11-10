@@ -29,6 +29,27 @@ class GardenPhotoServiceTest {
     }
 
     @Test
+    void oversizedPhotoIsRejected() {
+        UUID gardenId = UUID.randomUUID();
+        when(jdbc.queryForObject(any(String.class), eq(Boolean.class), eq(gardenId)))
+                .thenReturn(true);
+        byte[] oversized = new byte[5 * 1024 * 1024 + 1];
+        assertThrows(ResponseStatusException.class, () ->
+                service.upload(gardenId, new MockMultipartFile(
+                        "file", "garden.jpg", "image/jpeg", oversized), "Garden"));
+    }
+
+    @Test
+    void overlongDescriptionIsRejected() {
+        UUID gardenId = UUID.randomUUID();
+        when(jdbc.queryForObject(any(String.class), eq(Boolean.class), eq(gardenId)))
+                .thenReturn(true);
+        assertThrows(ResponseStatusException.class, () ->
+                service.upload(gardenId, new MockMultipartFile(
+                        "file", "garden.jpg", "image/jpeg", new byte[] {1}), "a".repeat(1001)));
+    }
+
+    @Test
     void invalidMediaTypeIsRejected() {
         UUID gardenId = UUID.randomUUID();
         when(jdbc.queryForObject(any(String.class), eq(Boolean.class), eq(gardenId)))
