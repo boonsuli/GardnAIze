@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.web.server.ResponseStatusException;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +21,7 @@ class WebpPhotoPersistenceIT {
     @Test
     void uploadPersistsWebpEvenWhenExternalVisionIsUnavailable() throws Exception {
         UUID gardenId = UUID.randomUUID();
-        jdbc.update("INSERT INTO garden_projects(id,name,location,exposure,soil_type) VALUES (?,?,?,?,?)",
+        jdbc.update("INSERT INTO garden_projects(id,name,location,exposure,soil_type,created_at) VALUES (?,?,?,?,?,now())",
             gardenId, "Integration garden", "Paris", "FULL_SUN", "LOAMY");
         try {
             BufferedImage image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
@@ -37,7 +36,12 @@ class WebpPhotoPersistenceIT {
                 "SELECT image_bytes FROM garden_photos WHERE garden_id=?", byte[].class, gardenId);
             assertEquals("image/webp", mime);
             assertNotNull(bytes);
+            assertEquals("RIFF", new String(bytes, 0, 4, java.nio.charset.StandardCharsets.US_ASCII));
             assertEquals("WEBP", new String(bytes, 8, 4, java.nio.charset.StandardCharsets.US_ASCII));
+            BufferedImage decoded = ImageIO.read(new java.io.ByteArrayInputStream(bytes));
+            assertNotNull(decoded, "Persisted WebP must be decodable");
+            assertEquals(640, decoded.getWidth());
+            assertEquals(480, decoded.getHeight());
         } finally {
             jdbc.update("DELETE FROM garden_projects WHERE id=?", gardenId);
         }
