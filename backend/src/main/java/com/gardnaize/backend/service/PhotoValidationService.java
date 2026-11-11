@@ -31,6 +31,10 @@ public class PhotoValidationService {
         client = RestClient.builder().baseUrl(baseUrl).requestFactory(factory).build();
     }
 
+    PhotoValidationService(RestClient client) {
+        this.client = client;
+    }
+
     public Map<String, Object> validate(MultipartFile file) {
         if (file == null || file.isEmpty() || file.getSize() > 5L * 1024 * 1024) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Photo must be 1 byte to 5 MiB");
