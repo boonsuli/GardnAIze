@@ -18,3 +18,9 @@ The backend returns **keys and option values only** from `GET /api/v1/questionna
 - Legacy `GardenPhotoService.upload(...)` overload is retained for compatibility tests. Audit and remove legacy no-consent entry points before production.
 - Backend currently invokes vision synchronously. Add asynchronous status handling/retries separately.
 - Verify WebP support, migration V13, Maven tests, Angular build and integration tests in CI.
+
+## Architecture boundary
+GDAI-FRONT communicates **only** with GDAI-BACK. It does not know or invoke GDAI-VALID, Gemini, or GDAI-PLANT. Angular HttpClient is non-blocking, but the current backend upload is still a synchronous processing request; a true `202 Accepted` background orchestration with status polling is not implemented yet.
+
+## Safety regression tests
+`GardenPhotoServiceTest` checks refusal/missing consent, wrong consent key, malformed answers and missing required answers: all must fail **before** any JDBC interaction. `PhotoValidationServiceTest` checks the real downstream adapter. These tests must pass in CI before merge.
