@@ -2,6 +2,30 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
+export interface QuestionnaireOption {
+    value: string;
+    labelKey: string;
+}
+export interface QuestionnaireQuestion {
+    key: string;
+    labelKey: string;
+    required: boolean;
+    inputType: string;
+    options: QuestionnaireOption[];
+}
+export interface QuestionnaireCatalog {
+    schemaVersion: number;
+    externalProcessingNoticeKey: string;
+    questions: QuestionnaireQuestion[];
+}
+export interface PhotoAnalysisResult {
+    photoId: string;
+    gardenId: string;
+    photoStatus: string;
+    processingStatus: string;
+    rejectionReason: string | null;
+}
+
 export type Exposure = 'FULL_SUN' | 'PARTIAL_SHADE' | 'SHADE';
 export type SoilType = 'SANDY' | 'LOAMY' | 'CLAY' | 'UNKNOWN';
 export type RequirementLevel = 'LOW' | 'MODERATE' | 'HIGH';
@@ -46,6 +70,34 @@ export interface RecommendationResponse {
 @Injectable({ providedIn: 'root' })
 export class GardenApiService {
     private readonly http = inject(HttpClient);
+
+    loadDictionary(language: 'FR' | 'EN'): Observable<Record<string, unknown>> {
+        return this.http.get<Record<string, unknown>>(
+            '/i18n/GardnAIze_data_' + language + '.json'
+        );
+    }
+
+    getQuestionnaire(): Observable<QuestionnaireCatalog> {
+        return this.http.get<QuestionnaireCatalog>('/api/v1/questionnaire');
+    }
+
+    validatePhoto(file: File): Observable<{ valid: boolean; reason: string }> {
+        const data = new FormData();
+        data.append('file', file, file.name);
+        return this.http.post<{ valid: boolean; reason: string }>('/api/v1/photos/validate', data);
+    }
+
+    uploadPhoto(gardenId: string, file: File, description: string,
+            answers: Record<string, string>, consentKey: string): Observable<PhotoAnalysisResult> {
+        const data = new FormData();
+        data.append('file', file, file.name);
+        data.append('description', description);
+        data.append('answersJson', JSON.stringify(answers));
+        data.append('consentKey', consentKey);
+        return this.http.post<PhotoAnalysisResult>(
+            '/api/v1/gardens/' + encodeURIComponent(gardenId) + '/photos', data
+        );
+    }
 
     createGarden(request: CreateGardenRequest): Observable<GardenProject> {
         return this.http.post<GardenProject>('/api/v1/gardens', request);
