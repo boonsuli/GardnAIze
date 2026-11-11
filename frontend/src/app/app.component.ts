@@ -107,7 +107,7 @@ export class AppComponent {
         }
         this.consentAccepted.set(true);
         this.workflowLoading.set(true);
-        this.message.set('Consentement confirmé. Enregistrement et analyse en cours…');
+        this.message.set('Consentement confirmé. Demande transmise à GDAI-BACK…');
         this.gardenApi.createGarden({
             name: this.gardenName().trim() || 'Mon jardin',
             location: this.location().trim(),
@@ -123,7 +123,7 @@ export class AppComponent {
             finalize(() => this.workflowLoading.set(false))
         ).subscribe({
             next: result => {
-                this.message.set('Photo enregistrée. Statut vision : ' + result.photoStatus);
+                this.message.set('GDAI-BACK a répondu. Statut du traitement : ' + result.photoStatus);
                 this.consentVisible.set(false);
             },
             error: () => {
@@ -186,7 +186,7 @@ export class AppComponent {
                 this.photoValidated.set(true);
                 this.questionnaire.set(catalog);
                 this.dictionary.set(dictionary);
-                this.message.set('Photo valide. Répondez au questionnaire.');
+                this.message.set('Photo acceptée par GDAI-BACK. Répondez au questionnaire.');
             },
             error: error => {
                 this.photoConfirmed.set(false);
