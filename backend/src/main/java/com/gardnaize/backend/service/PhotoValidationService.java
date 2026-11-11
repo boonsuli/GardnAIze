@@ -23,6 +23,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class PhotoValidationService {
     private final RestClient client;
 
+    @org.springframework.beans.factory.annotation.Autowired
     public PhotoValidationService(
             @Value("${gardnaize.validation.base-url:http://localhost:9001}") String baseUrl) {
         var factory = new SimpleClientHttpRequestFactory();
