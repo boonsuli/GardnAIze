@@ -7,6 +7,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from app.garden_analysis import analyze_image
+from app.gdai_vision_api import router as vision_router
 
 from app.recommendations import RecommendationRequest, RecommendationResponse, suggest
 
@@ -34,6 +35,9 @@ app = FastAPI(
     description="AI inference service scaffold; recommendation endpoints are planned.",
     lifespan=lifespan,
 )
+
+
+app.include_router(vision_router)
 
 
 @app.get("/health", tags=["operations"])
