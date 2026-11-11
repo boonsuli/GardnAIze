@@ -1,0 +1,100 @@
+{
+    "privacy": {
+        "externalProcessingNotice": "Avec votre accord explicite, votre photo sera envoyée à Gemini Vision (Google), un service externe, pour analyser les éléments visibles de votre jardin. Sans cet accord, aucune analyse externe ne sera lancée.",
+        "externalProcessingConsentKey": "privacy.externalProcessingNotice",
+        "accept": "J’accepte l’analyse de ma photo par Gemini Vision (Google).",
+        "refuse": "Refuser et revenir à l’accueil",
+        "acceptAndContinue": "Accepter et poursuivre l’analyse"
+    },
+    "questionnaire": {
+        "exposure": {
+            "label": "Quelle est l’exposition de votre jardin ?",
+            "options": {
+                "FULL_SUN": "Plein soleil",
+                "PARTIAL_SHADE": "Mi-ombre",
+                "SHADE": "Ombre",
+                "UNKNOWN": "Je ne sais pas"
+            }
+        },
+        "soilType": {
+            "label": "Quel est votre type de sol ?",
+            "options": {
+                "SANDY": "Sableux",
+                "LOAMY": "Limoneux",
+                "CLAY": "Argileux",
+                "UNKNOWN": "Je ne sais pas"
+            }
+        },
+        "waterAvailability": {
+            "label": "Quelle disponibilité en eau ?",
+            "options": {
+                "LOW": "Faible",
+                "MODERATE": "Modéré",
+                "HIGH": "Élevé"
+            }
+        },
+        "maintenancePreference": {
+            "label": "Quel niveau d’entretien souhaitez-vous ?",
+            "options": {
+                "LOW": "Faible",
+                "MODERATE": "Modéré",
+                "HIGH": "Élevé"
+            }
+        },
+        "evergreenPreferred": {
+            "label": "Souhaitez-vous des plantes persistantes ?",
+            "options": {
+                "YES": "Oui",
+                "NO": "Non",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "privacyScreeningRequired": {
+            "label": "Souhaitez-vous vous protéger du vis-à-vis ?",
+            "options": {
+                "YES": "Oui",
+                "NO": "Non",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "desiredHeight": {
+            "label": "Quelle hauteur de plantes préférez-vous ?",
+            "options": {
+                "LOW": "Faible",
+                "MEDIUM": "Moyenne",
+                "TALL": "Grande",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "preferredColors": {
+            "label": "Quelle couleur de fleurs préférez-vous ?",
+            "options": {
+                "WHITE": "Blanc",
+                "PINK": "Rose",
+                "PURPLE": "Violet",
+                "YELLOW": "Jaune",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "budget": {
+            "label": "Quel est votre budget ?",
+            "options": {
+                "LOW": "Faible",
+                "MEDIUM": "Moyenne",
+                "HIGH": "Élevé",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "gardenStyle": {
+            "label": "Quel style de jardin préférez-vous ?",
+            "options": {
+                "CONTEMPORARY": "Contemporain",
+                "NATURAL": "Naturel",
+                "MEDITERRANEAN": "Méditerranéen",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        }
+    },
+    "questionnaireTitle": "Questions sur votre jardin",
+    "questionnaireSubmit": "Valider les réponses"
+}
