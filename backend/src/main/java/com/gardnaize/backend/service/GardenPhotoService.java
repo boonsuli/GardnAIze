@@ -149,7 +149,7 @@ public class GardenPhotoService {
                 VALUES (?,?,?,?,?,'SUCCEEDED',CAST(? AS jsonb))
                 """, analysisId, photoId, providerName, "gemini-adapter",
                     result.path("schemaVersion").asText("1.0"), rawJson);
-            JsonNode description = result.path("description");
+            JsonNode visionDescription = result.path("description");
             jdbc.update("""
                 INSERT INTO garden_features
                   (id,garden_id,source_photo_analysis_id,schema_version,space_type,shade_level,
@@ -159,15 +159,15 @@ public class GardenPhotoService {
                         CAST(? AS jsonb),CAST(? AS jsonb),CAST(? AS jsonb))
                 """, UUID.randomUUID(), gardenId, analysisId,
                     result.path("schemaVersion").asText("1.0"),
-                    nullableText(description.path("spaceType")),
-                    nullableText(description.path("shadeLevel")),
-                    nullableText(description.path("privacyExposure")),
-                    description.path("plantableAreasDetected").isBoolean()
-                        ? description.path("plantableAreasDetected").asBoolean() : null,
-                    mapper.writeValueAsString(description.path("surfaces").isArray()
-                        ? description.path("surfaces") : mapper.createArrayNode()),
-                    mapper.writeValueAsString(description.path("visibleVegetation").isArray()
-                        ? description.path("visibleVegetation") : mapper.createArrayNode()),
+                    nullableText(visionDescription.path("spaceType")),
+                    nullableText(visionDescription.path("shadeLevel")),
+                    nullableText(visionDescription.path("privacyExposure")),
+                    visionDescription.path("plantableAreasDetected").isBoolean()
+                        ? visionDescription.path("plantableAreasDetected").asBoolean() : null,
+                    mapper.writeValueAsString(visionDescription.path("surfaces").isArray()
+                        ? visionDescription.path("surfaces") : mapper.createArrayNode()),
+                    mapper.writeValueAsString(visionDescription.path("visibleVegetation").isArray()
+                        ? visionDescription.path("visibleVegetation") : mapper.createArrayNode()),
                     mapper.writeValueAsString(Map.of("source", "GEMINI_IMAGE_OBSERVATION", "climateVerified", false, "soilVerified", false)));
             transition(photoId, "ANALYZED", "IN_PROGRESS", "Provider JSON persisted");
             if (!result.path("isGarden").asBoolean() || !result.path("isAnalyzable").asBoolean()) {
