@@ -244,6 +244,9 @@ info "Gemini token usage:"
 
 jq '.usageMetadata // {}' "$TMP_DIR/response.json"
 
+# Pricing values are indicative and may change over time.
+# The calculated cost is an estimate, not an actual billed amount.
+# INPUT_PRICE and OUTPUT_PRICE are USD per 1 million tokens.
 case "$MODEL" in
   gemini-2.5-flash-lite)
     INPUT_PRICE=0.10
