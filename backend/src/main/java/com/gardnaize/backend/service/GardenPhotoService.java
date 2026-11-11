@@ -27,6 +27,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class GardenPhotoService {
     private static final long MAX_BYTES = 5L * 1024 * 1024;
     private static final Set<String> ACCEPTED_CLIMATES = Set.of("TEMPERATE_CONTINENTAL");
+    private final WebpImageCodec webpCodec = new WebpImageCodec();
     private final JdbcTemplate jdbc;
     private final ObjectMapper mapper;
     private final RestClient providerClient;
@@ -67,9 +68,9 @@ public class GardenPhotoService {
                     "Description must be at most 1000 characters");
         }
         String type = file.getContentType();
-        if (!Set.of("image/jpeg", "image/png").contains(type)) {
+        if (!Set.of("image/jpeg", "image/png", "image/webp").contains(type)) {
             throw new ResponseStatusException(HttpStatus.UNSUPPORTED_MEDIA_TYPE,
-                    "Only JPEG and PNG are supported by the backend MVP");
+                    "Only JPEG, PNG and WebP are supported");
         }
         byte[] bytes;
         try {
@@ -80,14 +81,14 @@ public class GardenPhotoService {
         if (bytes.length > MAX_BYTES) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Photo too large");
         }
-        BufferedImage image;
+        WebpImageCodec.Encoded normalized;
         try {
-            image = ImageIO.read(new ByteArrayInputStream(bytes));
+            normalized = webpCodec.normalize(bytes);
         } catch (IOException ex) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid image");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid image or WebP encoding failed", ex);
         }
-        if (image == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unsupported image");
+        if (normalized.bytes().length > MAX_BYTES) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Encoded WebP exceeds 5 MiB");
         }
         UUID photoId = UUID.randomUUID();
         String filename = file.getOriginalFilename() == null ? "photo" : file.getOriginalFilename();
@@ -99,12 +100,12 @@ public class GardenPhotoService {
             INSERT INTO garden_photos (id,garden_id,original_filename,content_type,file_size_bytes,
                 width_px,height_px,image_bytes,description,photo_status,processing_status)
             VALUES (?,?,?,?,?,?,?,?,?,?,?)
-            """, photoId, gardenId, filename, type, bytes.length,
-                image.getWidth(), image.getHeight(), bytes,
+            """, photoId, gardenId, filename, "image/webp", normalized.bytes().length,
+                normalized.width(), normalized.height(), normalized.bytes(),
                 description == null ? "" : description.trim(), "RECEIVED", "INITIALIZED");
         transition(photoId, "RECEIVED", "INITIALIZED", "Photo persisted on upload");
 
-        if (image.getWidth() < 640 || image.getHeight() < 480) {
+        if (normalized.width() < 640 || normalized.height() < 480) {
             // Minimum resolution is enforced by DB constraint, so this branch is unreachable.
             return reject(photoId, gardenId, "INSUFFICIENT_RESOLUTION");
         }
@@ -123,8 +124,8 @@ public class GardenPhotoService {
                         }
                     })
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(Map.of("photoId", photoId.toString(), "mimeType", type,
-                            "imageBase64", Base64.getEncoder().encodeToString(bytes),
+                    .body(Map.of("photoId", photoId.toString(), "mimeType", "image/webp",
+                            "imageBase64", Base64.getEncoder().encodeToString(normalized.bytes()),
                             "requirements", Map.of("gardenRequired", true,
                                     "allowedClimateCodes", ACCEPTED_CLIMATES,
                                     "minimumWidthPx", 640, "minimumHeightPx", 480)))
