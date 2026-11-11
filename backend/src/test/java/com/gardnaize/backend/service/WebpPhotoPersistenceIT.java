@@ -1,16 +1,22 @@
 package com.gardnaize.backend.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.util.UUID;
+
 import javax.imageio.ImageIO;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.web.server.ResponseStatusException;
-import static org.junit.jupiter.api.Assertions.*;
+
+import com.gardnaize.backend.api.PhotoAnalysisResponse;
 
 /** Runs against the PostgreSQL service started by GitHub Actions. */
 @SpringBootTest(properties = "gardnaize.vision.enabled=false")
@@ -28,8 +34,12 @@ class WebpPhotoPersistenceIT {
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             assertTrue(ImageIO.write(image, "png", output));
             MockMultipartFile file = new MockMultipartFile("file", "garden.png", "image/png", output.toByteArray());
-            assertThrows(ResponseStatusException.class,
-                () -> photoService.upload(gardenId, file, "Test photo"));
+
+            PhotoAnalysisResponse response = photoService.upload(gardenId, file, "Test photo");
+            assertNotNull(response);
+            assertEquals("CHECKED", response.photoStatus());
+            assertEquals("IN_PROGRESS", response.processingStatus());
+
             String mime = jdbc.queryForObject(
                 "SELECT content_type FROM garden_photos WHERE garden_id=?", String.class, gardenId);
             byte[] bytes = jdbc.queryForObject(
