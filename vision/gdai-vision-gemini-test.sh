@@ -234,3 +234,47 @@ echo
 echo "========== GDAI-VISION RESULT =========="
 jq . "$ANALYSIS_FILE"
 echo "========================================"
+
+
+# ------------------------------------------------------------
+# GDAI-VISION - Token usage and estimated cost
+# ------------------------------------------------------------
+
+info "Gemini token usage:"
+
+jq '.usageMetadata // {}' "$TMP_DIR/response.json"
+
+case "$MODEL" in
+  gemini-2.5-flash-lite)
+    INPUT_PRICE=0.10
+    OUTPUT_PRICE=0.40
+    ;;
+  gemini-2.5-flash)
+    INPUT_PRICE=0.30
+    OUTPUT_PRICE=2.50
+    ;;
+  *)
+    info "Pricing not configured for model: $MODEL"
+    INPUT_PRICE=0
+    OUTPUT_PRICE=0
+    ;;
+esac
+
+jq -r \
+  --argjson inputPrice "$INPUT_PRICE" \
+  --argjson outputPrice "$OUTPUT_PRICE" \
+  '
+  .usageMetadata as $u
+  | if $u == null then
+      "Token usage unavailable"
+    else
+      ($u.promptTokenCount // 0) as $input
+      | (($u.candidatesTokenCount // 0)
+         + ($u.thoughtsTokenCount // 0)) as $output
+      | (($input * $inputPrice
+          + $output * $outputPrice) / 1000000) as $cost
+      | "Input tokens: \($input)\n"
+        + "Output + thinking tokens: \($output)\n"
+        + "Estimated cost: \($cost) USD"
+    end
+  ' "$TMP_DIR/response.json" | tee -a "$LOG_FILE"

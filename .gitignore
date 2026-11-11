@@ -49,6 +49,9 @@ replay_pid*
 /datasets/images/garden_image_reviews.json
 .venv/
 
+# ChatGPT conversation
+/docs/ChatGPT-conversation/*.txt
+
 # Angular generated files
 /frontend/.angular/
 /frontend/node_modules/
@@ -59,3 +62,6 @@ replay_pid*
 
 # Local ML model backups
 /models/backup/
+
+# Vision logs
+/vision/logs/*.json
