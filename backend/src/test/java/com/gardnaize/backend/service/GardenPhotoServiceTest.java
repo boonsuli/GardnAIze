@@ -61,7 +61,9 @@ class GardenPhotoServiceTest {
         UUID gardenId = UUID.randomUUID();
         var photo = new MockMultipartFile("file", "garden.jpg", "image/jpeg", new byte[] {1});
         var error = assertThrows(ResponseStatusException.class, () ->
-                service.upload(gardenId, photo, "Garden", "{\\"exposure\\":\\"FULL_SUN\\"}",
+                service.upload(gardenId, photo, "Garden", """
+                        {"exposure":"FULL_SUN"}
+                        """,
                         "privacy.externalProcessingNotice"));
         assertEquals(400, error.getStatusCode().value());
         verifyNoInteractions(jdbc);
