@@ -9,7 +9,11 @@
   </p>
 </div>
 
+> **Point E2E — 10/11/2026 :** le FRONT doit consommer le contrat OpenAPI publié par GDAI-BACK, sans définir seul les routes. Les workflows photo/confirmation/questionnaire des PR #26, #27 et #29 doivent être réconciliés avec `main` avant fusion. Cible : contrôle JPEG/PNG/WebP ≤ 1 MiB, pas de stockage Node `images-upload`, confirmation puis réponse VALID, questionnaire asynchrone, affichage des trois recommandations avec provenance. **Ces changements ne sont pas attestés comme intégrés dans `main`.** [Plan et contrats proposés](../docs/E2E_READINESS_2026-11-10.md).
+
 > **Status:** Initial Angular UI. Photo selection and local preview are available; server-side analysis, questionnaire and recommendation APIs are not connected yet.
+
+> **Mise à jour FRONT — 10 novembre 2026.** Les évolutions proposées dans les PR [#33](https://github.com/boonsuli/GardnAIze/pull/33), [#34](https://github.com/boonsuli/GardnAIze/pull/34) et [#36](https://github.com/boonsuli/GardnAIze/pull/36) couvrent : prise de photo smartphone ou sélection galerie, JPEG/PNG/WebP jusqu'à **5 Mio**, formulaire **pays obligatoire + ville/code postal obligatoire + région climatique facultative + description facultative (1 000 caractères)**, écran de confirmation et modification, puis transmission multipart `photo`, `countryCode`, `city`, `climateCode`, `description` vers GDAI-BACK. **Ces fonctionnalités sont décrites dans les PR ; leur fusion et leur fonctionnement E2E ne sont pas certifiés par cette mise à jour documentaire.** La persistance après VALID, le contrat Python `/validate` et l'enchaînement VISION → PLANT restent à valider. Pas de GPS ni d'API météo pour le MVP.
 
 ## Purpose
 
@@ -21,11 +25,11 @@ The GardnAIze Angular application is the user-facing experience for a **standalo
 | --- | --- |
 | Responsive Angular Material home page with GardnAIze branding | Available |
 | Select JPEG/PNG/WebP photo and preview locally | Available |
-| Client-side file type and 10 MB size check | Available (server validation still required) |
+| Client-side JPEG/PNG/WebP and 5 MiB limit | Proposed in PR #33; verify merged code and server validation |
 | Configurable browser logging | Available |
-| Backend photo upload and AI analysis | Planned |
-| Garden questionnaire | Planned |
-| Three recommended plants and explanations | Planned |
+| Photo multipart submission after confirmation | Proposed in PR #36; VALID contract and E2E pending |
+| Country/city/climate/description input and confirmation | Proposed in PR #34; demo questionnaire retained |
+| Three recommended plants and explanations | Demo-rule path; real AI pending |
 | Embeddable retailer integration | Future |
 
 ## Technology and structure
