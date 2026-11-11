@@ -56,6 +56,32 @@ public class GardenPhotoService {
     }
 
     public PhotoAnalysisResponse upload(UUID gardenId, MultipartFile file, String description) {
+        return uploadInternal(gardenId, file, description, null, null, false);
+    }
+
+    public PhotoAnalysisResponse upload(UUID gardenId, MultipartFile file, String description,
+            String answersJson, String consentKey) {
+        if (!"privacy.externalProcessingNotice".equals(consentKey)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "External vision consent required");
+        }
+        if (answersJson == null || answersJson.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Questionnaire answers required");
+        }
+        try {
+            JsonNode answers = mapper.readTree(answersJson);
+            if (!answers.isObject() || !answers.hasNonNull("exposure")
+                    || !answers.hasNonNull("waterAvailability")
+                    || !answers.hasNonNull("maintenancePreference")) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Required answers missing");
+            }
+        } catch (com.fasterxml.jackson.core.JsonProcessingException ex) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid answers JSON");
+        }
+        return uploadInternal(gardenId, file, description, answersJson, consentKey, true);
+    }
+
+    private PhotoAnalysisResponse uploadInternal(UUID gardenId, MultipartFile file,
+            String description, String answersJson, String consentKey, boolean consented) {
         if (!Boolean.TRUE.equals(jdbc.queryForObject(
                 "SELECT EXISTS(SELECT 1 FROM garden_projects WHERE id = ?)", Boolean.class, gardenId))) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Garden not found");
@@ -104,12 +130,22 @@ public class GardenPhotoService {
                 normalized.width(), normalized.height(), normalized.bytes(),
                 description == null ? "" : description.trim(), "RECEIVED", "INITIALIZED");
         transition(photoId, "RECEIVED", "INITIALIZED", "Photo persisted on upload");
+        if (consented) {
+            jdbc.update("""
+                INSERT INTO garden_photo_questionnaire
+                    (photo_id, answers, consent_key, consented_at)
+                VALUES (?, CAST(? AS jsonb), ?, now())
+                """, photoId, answersJson, consentKey);
+        }
 
         if (normalized.width() < 640 || normalized.height() < 480) {
             // Minimum resolution is enforced by DB constraint, so this branch is unreachable.
             return reject(photoId, gardenId, "INSUFFICIENT_RESOLUTION");
         }
         transition(photoId, "CHECKED", "IN_PROGRESS", "Local validation passed");
+        if (!consented) {
+            return get(photoId, gardenId);
+        }
         if (!enabled) {
             transition(photoId, "TRANSFER_FAILED", "FAILED", "Vision provider is not configured");
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE,
