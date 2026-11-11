@@ -72,7 +72,8 @@ jobs:
                   cache: maven
                   cache-dependency-path: backend/pom.xml
             - name: Maven unit tests and package
-              run: mvn -B verify
+              # PostgreSQL-backed *IT tests run in gdai-back-tests.yml with a database service.
+              run: mvn -B -DskipITs verify
 
     docker-integration:
         name: Docker images and integration tests
