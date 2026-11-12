@@ -2,7 +2,7 @@
 
 ## Scope and status
 
-Initial, reviewable Flyway migration: `backend/src/main/resources/db/migration/V10__gardnaize_domain_schema.sql`. It creates schema `gardnaize` and 11 tables. **Proposed structure, not a finalized botanical ontology.** No dataset import, trained model, application entity mapping or database execution is claimed by this change.
+Initial, reviewable Flyway migration: `backend/src/main/resources/db/migration/V10__gardnaize_domain_schema.sql`. V10 creates the original `gardnaize` schema and 11 tables; V11 renames it to `app_schema` without altering V10. **Proposed structure, not a finalized botanical ontology.** No dataset import, trained model, application entity mapping or database execution is claimed by this change.
 
 ## Naming convention
 
@@ -12,7 +12,7 @@ Initial, reviewable Flyway migration: `backend/src/main/resources/db/migration/V
 - `assoc_*`: explicit join/association tables; foreign keys are named after referenced entities (e.g. `plant_id`, `garden_id`, `recommendation_id`).
 - `ingest_*`: import batches and auditability; `ref_*`: source metadata.
 
-All tables are qualified by PostgreSQL schema `gardnaize`. IDs are bigint identity for catalog/reference entities, UUID for garden and run entities. The application supplies UUID values.
+After V11, application domain tables are qualified by PostgreSQL schema `app_schema`. IDs are bigint identity for catalog/reference entities, UUID for garden and run entities. The application supplies UUID values.
 
 ## Relationships
 
@@ -39,10 +39,17 @@ All tables are qualified by PostgreSQL schema `gardnaize`. IDs are bigint identi
 - Confirm climate/soil/sun/water measurement definitions, units and null semantics.
 - Validate migrations against a fresh PostgreSQL 18 database using Flyway; run integration tests before merge.
 - Check any pre-existing Flyway migration version sequence before merge; rename V10 if repository migration history requires a different version.
-- Decide application schema configuration: SQL tables live in `gardnaize`, while Flyway history may remain in `public`; JPA must use explicit schema or `hibernate.default_schema` if entities map to these tables.
+- Decide application schema configuration: SQL tables live in `app_schema` after V11, while Flyway history remains in `public`; JPA must use explicit schema or `hibernate.default_schema` if entities map to these tables.
 - Add reproducible importer with transactions, deduplication and rejection handling; no notebook should be the sole production import mechanism.
 - Ensure photos, personal information and API credentials are never embedded in import source rows or model artifacts.
 
 ## Explicit exclusions
 
 No image binary storage in PostgreSQL; no trained CNN; no model binaries in relational tables; no automatic migrations for dataset-specific unverified attributes; no user-account/retailer multi-tenancy in this MVP schema.
+
+## Approved PostgreSQL naming (2026-11-10)
+
+- Database `gardnaize`, application schema `app_schema` (Flyway V10 followed by V11).
+- Separate database `gardnaize_ml`, research schema `horticulture` (ML Flyway).
+- Do not change V10 after it has been applied; verify V11 against a migrated copy of the existing database before merging.
+- Existing backend JPA entities currently use `public`; do not globally change Hibernate `default_schema` to `app_schema` without mapping and integration tests.

@@ -1,8 +1,21 @@
-# Notebooks IA GardnAIze
+# GardnAIze — Notebooks de vision et validation
 
-- `01_plant_images_dl.ipynb` : classification de plantes à partir de photos étiquetées.
-- `02_garden_scenes_dl.ipynb` : classification de scènes de jardins, avec étiquettes à définir selon le corpus retenu.
+Ce dossier est consacré aux **images** et aux expérimentations de classification/validation visuelle. Il ne constitue pas le pipeline d'ingestion des caractéristiques botaniques.
 
-Ces deux notebooks sont des **points de départ non exécutés**, sans datasets intégrés ni résultats mesurés. Exécuter depuis `notebooks/` avec un environnement Python 3.12 comprenant `tensorflow`, `numpy`, `pandas`, `matplotlib` et `scikit-learn`. Configurer `DATASET_DIR` pour chaque corpus. Les notebooks incluent une séparation train/validation exploratoire ; ajouter un jeu de test indépendant et une comparaison MobileNetV2 avant toute revendication de validation du bloc 5.
+## Inventaire réel
+- `01_verify_ml_database.ipynb` : vérification des données et de la base ML.
+- `02_plant_images_dl.ipynb` : classification supervisée d'images de plantes (TensorFlow).
+- `03_garden_scenes_dl.ipynb` : classification de scènes de jardins.
+- `04_explore_garden_images.ipynb` : exploration des images de jardins.
+- `05_train_garden_classifier.ipynb` : entraînement du classifieur de jardin.
+- `06_evaluate_garden_classifier.ipynb` : évaluation du classifieur.
+- `07_review_garden_images.ipynb` : revue et contrôle des images.
 
-L'objectif prioritaire est de choisir des datasets documentés, annotés et légalement réutilisables. Ne pas ajouter de grandes images ni de poids de modèles au dépôt.
+## Distinction des autres notebooks
+- `ai-service/notebooks/` : comparaison d'algorithmes ML (K-Means, voisins, Random Forest) sur caractéristiques tabulaires.
+- `ai-service/plant-ingestion/` : acquisition d'exports **autorisés**, normalisation, rapprochement des noms scientifiques et consolidation CSV/JSON.
+
+Les trois familles sont complémentaires. Ne pas interpréter un cluster K-Means comme une propriété botanique vérifiée. Ne pas utiliser une prédiction visuelle comme preuve de rusticité, d'exposition ou de tolérance à la sécheresse.
+
+## Exécution et qualité
+Ces notebooks nécessitent des datasets d'images locaux légalement réutilisables, avec licences et provenance documentées. Vérifier les chemins, les dépendances, les splits et les métriques avant toute annonce de résultat. Aucun nouveau résultat d'entraînement n'est revendiqué par cette documentation.
