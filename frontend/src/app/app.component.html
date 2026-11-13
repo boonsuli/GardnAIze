@@ -103,7 +103,7 @@
         @if (questionnaire(); as catalog) {
             <mat-card appearance="outlined" class="questionnaire">
                 <mat-card-header>
-                    <mat-card-title>3. Consentement au traitement externe</mat-card-title>
+                    <mat-card-title>{{ translate('privacy.consentTitle') }}</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                     <p>{{ translate(catalog.externalProcessingNoticeKey) }}</p>
