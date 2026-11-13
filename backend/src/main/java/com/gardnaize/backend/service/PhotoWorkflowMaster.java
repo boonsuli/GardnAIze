@@ -27,13 +27,13 @@ public class PhotoWorkflowMaster {
 
     @Scheduled(fixedDelayString = "${gardnaize.workflow.poll-ms:5000}")
     public void dispatch() {
-        // Expired leases are only reclaimed up to the configured attempt ceiling.
         // SKIP LOCKED ensures two application instances never claim the same row.
+        // Do not reclaim expired RUNNING work automatically: the remote call may still be active.
+        // A dedicated idempotent retry protocol is required before replay is safe.
         var claimed = jdbc.query("""
             WITH candidate AS (
                 SELECT request_id FROM public.garden_photo_requests
                 WHERE status='ACCEPTED'
-                   OR (status='RUNNING' AND lease_until < now() AND attempt_count < 3)
                 ORDER BY created_at
                 LIMIT 1 FOR UPDATE SKIP LOCKED
             )
@@ -66,12 +66,7 @@ public class PhotoWorkflowMaster {
                 }
             }
         }
-        // Exhausted leases are made terminal rather than left in RUNNING indefinitely.
-        jdbc.update("""
-            UPDATE public.garden_photo_requests SET status='FAILED',lease_owner=NULL,
-                lease_until=NULL,finished_at=now(),updated_at=now()
-            WHERE status='RUNNING' AND lease_until < now() AND attempt_count >= 3
-            """);
+        // Expired RUNNING leases require manual reconciliation, not blind replay.
     }
 
     private record Claimed(UUID requestId, UUID photoId, int attempt) {}
