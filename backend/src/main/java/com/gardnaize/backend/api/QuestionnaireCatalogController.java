@@ -26,7 +26,7 @@ public class QuestionnaireCatalogController {
                 .toList());
     }
 
-    private static final Catalog CATALOG = new Catalog(1, "privacy.externalProcessingNotice",
+    private static final Catalog CATALOG = new Catalog(2, "privacy.externalProcessingNotice",
         List.of(
             choice("exposure", true, "FULL_SUN", "PARTIAL_SHADE", "SHADE", "UNKNOWN"),
             choice("soilType", false, "SANDY", "LOAMY", "CLAY", "UNKNOWN"),
@@ -35,6 +35,8 @@ public class QuestionnaireCatalogController {
             choice("evergreenPreferred", false, "YES", "NO", "NO_PREFERENCE"),
             choice("privacyScreeningRequired", false, "YES", "NO", "NO_PREFERENCE"),
             choice("desiredHeight", false, "LOW", "MEDIUM", "TALL", "NO_PREFERENCE"),
+            choice("matureSpread", false, "UNDER_1M", "FROM_1_TO_2M", "FROM_2_TO_4M", "OVER_4M", "NO_PREFERENCE"),
+            choice("rootSpace", false, "VERY_LIMITED", "LIMITED", "MODERATE", "UNRESTRICTED", "UNKNOWN"),
             choice("preferredColors", false, "WHITE", "PINK", "PURPLE", "YELLOW", "NO_PREFERENCE"),
             choice("budget", false, "LOW", "MEDIUM", "HIGH", "NO_PREFERENCE"),
             choice("gardenStyle", false, "CONTEMPORARY", "NATURAL", "MEDITERRANEAN", "NO_PREFERENCE")
