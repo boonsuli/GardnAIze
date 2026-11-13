@@ -18,6 +18,14 @@ export interface QuestionnaireCatalog {
     externalProcessingNoticeKey: string;
     questions: QuestionnaireQuestion[];
 }
+export interface PhotoProcessingRequest {
+    requestId: string;
+    gardenId: string;
+    photoId: string;
+    status: 'ACCEPTED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'REJECTED';
+    createdAt: string;
+    statusUrl: string;
+}
 export interface PhotoAnalysisResult {
     photoId: string;
     gardenId: string;
@@ -88,15 +96,21 @@ export class GardenApiService {
     }
 
     uploadPhoto(gardenId: string, file: File, description: string,
-            answers: Record<string, string>, consentKey: string): Observable<PhotoAnalysisResult> {
+            answers: Record<string, string>, consentKey: string): Observable<PhotoProcessingRequest> {
         const data = new FormData();
         data.append('file', file, file.name);
         data.append('description', description);
         data.append('answersJson', JSON.stringify(answers));
         data.append('consentKey', consentKey);
-        return this.http.post<PhotoAnalysisResult>(
+        return this.http.post<PhotoProcessingRequest>(
             '/api/v1/gardens/' + encodeURIComponent(gardenId) + '/photos', data
         );
+    }
+
+    getPhotoRequest(gardenId: string, requestId: string): Observable<PhotoProcessingRequest> {
+        return this.http.get<PhotoProcessingRequest>(
+            '/api/v1/gardens/' + encodeURIComponent(gardenId)
+            + '/photo-requests/' + encodeURIComponent(requestId));
     }
 
     createGarden(request: CreateGardenRequest): Observable<GardenProject> {
