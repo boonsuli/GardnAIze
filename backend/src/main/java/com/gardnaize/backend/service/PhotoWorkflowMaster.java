@@ -19,15 +19,18 @@ public class PhotoWorkflowMaster {
     private final JdbcTemplate jdbc;
     private final PhotoWorkflowWorker worker;
     private final PhotoWorkflowStateService states;
+    private final PhotoLeaseReconciliationService reconciliation;
     private final String owner = UUID.randomUUID().toString();
     private final Map<UUID, CompletableFuture<Void>> active = new ConcurrentHashMap<>();
     private final Map<UUID, Long> generations = new ConcurrentHashMap<>();
 
     public PhotoWorkflowMaster(JdbcTemplate jdbc, PhotoWorkflowWorker worker,
-                               PhotoWorkflowStateService states) {
+                               PhotoWorkflowStateService states,
+                               PhotoLeaseReconciliationService reconciliation) {
         this.jdbc = jdbc;
         this.worker = worker;
         this.states = states;
+        this.reconciliation = reconciliation;
     }
 
     @Scheduled(fixedDelayString = "${gardnaize.workflow.poll-ms:5000}",
@@ -100,27 +103,7 @@ public class PhotoWorkflowMaster {
 
     /** Ambiguous remote calls are quarantined, never automatically billed twice. */
     public int reconcileExpired() {
-        var expired = jdbc.query("""
-            WITH expired AS (
-                SELECT request_id FROM public.garden_photo_requests
-                WHERE status='RUNNING' AND lease_until < now()
-                ORDER BY lease_until LIMIT 100 FOR UPDATE SKIP LOCKED
-            )
-            UPDATE public.garden_photo_requests r
-            SET status='RECONCILIATION_REQUIRED',lease_owner=NULL,lease_until=NULL,
-                lease_generation=r.lease_generation+1,updated_at=now()
-            FROM expired e WHERE r.request_id=e.request_id
-            RETURNING r.request_id
-            """, (rs, index) -> (UUID) rs.getObject(1));
-        for (UUID requestId : expired) {
-            jdbc.update("""
-                INSERT INTO public.garden_photo_request_history
-                    (request_id,previous_status,status,event_code,error_code)
-                VALUES (?,'RUNNING','RECONCILIATION_REQUIRED','LEASE_EXPIRED','RECOVERY_REVIEW_REQUIRED')
-                """, requestId);
-            log.warn("event=LEASE_EXPIRED requestId={} status=RECONCILIATION_REQUIRED", requestId);
-        }
-        return expired.size();
+        return reconciliation.reconcileExpired();
     }
 
     private record Claimed(UUID requestId, UUID photoId, int attempt, long generation) {}
