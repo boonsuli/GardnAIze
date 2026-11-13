@@ -22,3 +22,7 @@ The backend validates the explicit consent and required questionnaire fields, no
 Implement asynchronous GDAI-VISION dispatch and its failure/retry handling in the backend orchestration work before declaring the workflow E2E complete. GDAI-PLANT should be integrated in a separate PR after its service contract is ready. GDAI-VALID segmentation belongs to its own module PR and will later be invoked from the BACK orchestration. Persisting photo before server-side validation is an existing gap to close before merging.
 
 A robust background dispatcher must claim persisted requests atomically, record every state transition in the history table, and recover requests after a restart. A `CompletableFuture` alone is not a durable job queue.
+
+## Update after PR #35 merge — 13 November 2026
+
+The preceding statement that the worker is not dispatched was accurate only for the original PR increment and is now superseded. The merged PR includes the Master/Worker VALID → VISION pipeline, heartbeat, generation fencing and transactional reconciliation. See [PHOTO_WORKFLOW_PR35.md](PHOTO_WORKFLOW_PR35.md) for the implemented state transitions and error paths. HTTP 202 still means **accepted, not completed**.
