@@ -67,6 +67,14 @@ export class AppComponent {
         { code: 'OTHER', label: 'Autre pays' }
     ];
 
+    changeLanguage(language: 'FR' | 'EN'): void {
+        this.language.set(language);
+        this.gardenApi.loadDictionary(language).subscribe({
+            next: dictionary => this.dictionary.set(dictionary),
+            error: () => this.message.set('Translations unavailable.')
+        });
+    }
+
     translate(key: string): string {
         const value = key.split('.').reduce<unknown>((node, part) => {
             if (node !== null && typeof node === 'object' && !Array.isArray(node)) {
