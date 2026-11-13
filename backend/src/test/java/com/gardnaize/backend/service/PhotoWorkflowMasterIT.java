@@ -21,8 +21,50 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 class PhotoWorkflowMasterIT {
     @Autowired JdbcTemplate jdbc;
     @Autowired PhotoWorkflowMaster master;
+    @Autowired PhotoLeaseReconciliationService reconciliation;
     @MockitoBean PhotoWorkflowWorker worker;
 
+
+
+    @Test
+    void reconciliationRollbackKeepsRunningAndDoesNotRecordLeaseExpired() {
+        UUID gardenId = UUID.randomUUID();
+        UUID photoId = UUID.randomUUID();
+        UUID requestId = UUID.randomUUID();
+        jdbc.update("INSERT INTO garden_projects(id,name,location,exposure,soil_type,created_at) VALUES (?,?,?,?,?,now())",
+                gardenId, "Atomic rollback", "Paris", "FULL_SUN", "LOAMY");
+        try {
+            jdbc.update("""
+                INSERT INTO garden_photos(id,garden_id,original_filename,content_type,file_size_bytes,
+                  width_px,height_px,image_bytes,photo_status,processing_status)
+                VALUES (?,?,'test.webp','image/webp',12,640,480,?,'RECEIVED','INITIALIZED')
+                """, photoId, gardenId, new byte[12]);
+            jdbc.update("""
+                INSERT INTO garden_photo_requests
+                    (request_id,garden_id,photo_id,status,lease_owner,lease_until,attempt_count)
+                VALUES (?,?,?,'RUNNING','dead-instance',now()-interval '10 seconds',1)
+                """, requestId, gardenId, photoId);
+            assertThrows(IllegalStateException.class, () ->
+                    reconciliation.reconcileExpired(() -> {
+                        throw new IllegalStateException("Simulated audit insert failure");
+                    }));
+            assertEquals("RUNNING", jdbc.queryForObject(
+                    "SELECT status FROM garden_photo_requests WHERE request_id=?",
+                    String.class, requestId));
+            assertEquals(0, jdbc.queryForObject(
+                    "SELECT count(*) FROM garden_photo_request_history WHERE request_id=? AND event_code='LEASE_EXPIRED'",
+                    Integer.class, requestId));
+            assertEquals(1, reconciliation.reconcileExpired());
+            assertEquals("RECONCILIATION_REQUIRED", jdbc.queryForObject(
+                    "SELECT status FROM garden_photo_requests WHERE request_id=?",
+                    String.class, requestId));
+            assertEquals(1, jdbc.queryForObject(
+                    "SELECT count(*) FROM garden_photo_request_history WHERE request_id=? AND event_code='LEASE_EXPIRED'",
+                    Integer.class, requestId));
+        } finally {
+            jdbc.update("DELETE FROM garden_projects WHERE id=?", gardenId);
+        }
+    }
 
     @Test
     void crashExpiredLeaseIsQuarantinedAndNotReplayedOnRestart() {
