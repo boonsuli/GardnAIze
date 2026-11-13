@@ -23,7 +23,7 @@ public class PhotoPreflightController {
     @PostMapping(value = "/validate", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "Validate a garden image using GDAI-VALID ResNet-18",
             description = "Forwards the multipart photo to GDAI-VALID. Does not persist the image.")
-    public Map<String, Object> validate(@RequestPart("file") MultipartFile file) {
-        return validationService.validate(file);
+    public java.util.concurrent.CompletableFuture<Map<String, Object>> validate(@RequestPart("file") MultipartFile file) {
+        return validationService.validateAsync(file);
     }
 }
