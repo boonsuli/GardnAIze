@@ -9,6 +9,10 @@ for (const language of languages) {
         const file = new URL('../public/i18n/GardnAIze_data_' + language + '.json', import.meta.url);
         const data = JSON.parse(readFileSync(file, 'utf8'));
         assert.equal(typeof data.privacy.externalProcessingNotice, 'string');
+        assert.equal(typeof data.privacy.consentTitle, 'string');
+        assert.equal(typeof data.privacy.pending, 'string');
+        assert.equal(typeof data.privacy.error, 'string');
+        assert.ok(data.privacy.externalProcessingNotice.length > 200);
         assert.equal(typeof data.privacy.refuse, 'string');
         assert.equal(typeof data.privacy.acceptAndContinue, 'string');
         assert.equal(data.privacy.externalProcessingConsentKey, 'privacy.externalProcessingNotice');
