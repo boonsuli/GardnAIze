@@ -95,7 +95,7 @@ export class AppComponent {
 
     refuseConsent(): void {
         this.resetPhotoWorkflow();
-        this.message.set('Analyse externe refusée. Aucun envoi à Gemini Vision.');
+        this.message.set(this.translate('privacy.refuse'));
     }
 
     acceptConsentAndSubmit(): void {
@@ -107,7 +107,7 @@ export class AppComponent {
         }
         this.consentAccepted.set(true);
         this.workflowLoading.set(true);
-        this.message.set('Consentement confirmé. Demande transmise à GDAI-BACK…');
+        this.message.set(this.translate('privacy.pending'));
         this.gardenApi.createGarden({
             name: this.gardenName().trim() || 'Mon jardin',
             location: this.location().trim(),
@@ -127,7 +127,7 @@ export class AppComponent {
                 this.consentVisible.set(false);
             },
             error: () => {
-                this.message.set('Erreur de transmission ou d’analyse. Réessayez.');
+                this.message.set(this.translate('privacy.error'));
                 this.consentAccepted.set(false);
             }
         });
