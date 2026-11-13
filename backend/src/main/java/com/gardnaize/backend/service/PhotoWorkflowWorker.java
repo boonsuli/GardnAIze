@@ -27,6 +27,7 @@ public class PhotoWorkflowWorker {
     private static final Logger log = LoggerFactory.getLogger(PhotoWorkflowWorker.class);
     private final JdbcTemplate jdbc;
     private final PhotoWorkflowStateService states;
+    private final PhotoWorkflowFencingService fenced;
     private final Executor validPool;
     private final Executor visionPool;
     private final RestClient validClient;
@@ -35,6 +36,7 @@ public class PhotoWorkflowWorker {
     private final String apiKey;
 
     public PhotoWorkflowWorker(JdbcTemplate jdbc, PhotoWorkflowStateService states,
+            PhotoWorkflowFencingService fenced,
             @Qualifier("validationExecutor") Executor validPool,
             @Qualifier("visionExecutor") Executor visionPool,
             @Value("${gardnaize.validation.base-url:http://localhost:9001}") String validUrl,
@@ -43,6 +45,7 @@ public class PhotoWorkflowWorker {
             @Value("${gardnaize.vision.api-key:}") String apiKey) {
         this.jdbc = jdbc;
         this.states = states;
+        this.fenced = fenced;
         this.validPool = validPool;
         this.visionPool = visionPool;
         this.visionEnabled = visionEnabled;
@@ -55,22 +58,37 @@ public class PhotoWorkflowWorker {
     }
 
     public CompletableFuture<Void> execute(UUID requestId, UUID photoId) {
+        var lease = jdbc.queryForObject("""
+            SELECT lease_owner,lease_generation FROM public.garden_photo_requests
+            WHERE request_id=? AND status='RUNNING' AND lease_until > now()
+            """, (rs, row) -> new PhotoWorkflowFencingService.Lease(requestId,
+                    rs.getString(1), rs.getLong(2)), requestId);
+        return execute(requestId, photoId, lease);
+    }
+
+    public CompletableFuture<Void> execute(UUID requestId, UUID photoId,
+            PhotoWorkflowFencingService.Lease lease) {
         java.util.concurrent.atomic.AtomicReference<String> stage = new java.util.concurrent.atomic.AtomicReference<>("VALID");
-        return CompletableFuture.supplyAsync(() -> validate(requestId, photoId), validPool)
+        return CompletableFuture.supplyAsync(() -> validate(requestId, photoId, lease), validPool)
                 .thenCompose(valid -> {
                     if (!valid) return CompletableFuture.completedFuture(null);
                     stage.set("VISION");
-                    return CompletableFuture.runAsync(() -> analyze(requestId, photoId), visionPool);
+                    return CompletableFuture.runAsync(() -> analyze(requestId, photoId, lease), visionPool);
                 }).exceptionally(error -> {
                     log.error("event=WORKFLOW_FAILED requestId={} photoId={} errorType={}",
                             requestId, photoId, error.getClass().getSimpleName());
                     try {
-                        if ("VISION".equals(stage.get())) {
-                            states.photoTransition(photoId, "VISION_FAILED", "WORKFLOW_FAILED");
-                        } else {
-                            states.photoTransition(photoId, "VALIDATION_FAILED", "WORKFLOW_FAILED");
+                        if (error.getCause() instanceof PhotoWorkflowFencingService.LeaseLostException
+                                || error instanceof PhotoWorkflowFencingService.LeaseLostException) {
+                            log.warn("event=STALE_WORKER_DISCARDED requestId={}", requestId);
+                            return null;
                         }
-                        states.requestTransition(requestId, "RUNNING", "FAILED", "WORKFLOW_FAILED", "MODULE_ERROR");
+                        if ("VISION".equals(stage.get())) {
+                            fenced.photoTransition(lease, photoId, "VISION_FAILED", "WORKFLOW_FAILED");
+                        } else {
+                            fenced.photoTransition(lease, photoId, "VALIDATION_FAILED", "WORKFLOW_FAILED");
+                        }
+                        fenced.requestTransition(lease, "FAILED", "WORKFLOW_FAILED", "MODULE_ERROR");
                     } catch (RuntimeException transitionError) {
                         log.error("event=WORKFLOW_STATE_WRITE_FAILED requestId={} errorType={}",
                                 requestId, transitionError.getClass().getSimpleName());
@@ -79,10 +97,10 @@ public class PhotoWorkflowWorker {
                 });
     }
 
-    private boolean validate(UUID requestId, UUID photoId) {
+    private boolean validate(UUID requestId, UUID photoId, PhotoWorkflowFencingService.Lease lease) {
         try (var ignored = MDC.putCloseable("requestId", requestId.toString())) {
-            UUID run = states.moduleStarted(requestId, "VALID");
-            states.photoTransition(photoId, "VALIDATING", "VALIDATION_STARTED");
+            UUID run = fenced.moduleStarted(lease, "VALID");
+            fenced.photoTransition(lease, photoId, "VALIDATING", "VALIDATION_STARTED");
             try {
                 byte[] bytes = photoBytes(photoId);
                 var resource = new ByteArrayResource(bytes) {
@@ -102,28 +120,30 @@ public class PhotoWorkflowWorker {
                     throw new IllegalStateException("Malformed VALID response");
                 }
                 boolean accepted = Boolean.TRUE.equals(result.get("valid"));
-                states.moduleFinished(requestId, run, "VALID", accepted ? "COMPLETED" : "REJECTED", null);
-                states.photoTransition(photoId, accepted ? "VALID" : "NOT_VALID",
+                fenced.moduleFinished(lease, run, "VALID", accepted ? "COMPLETED" : "REJECTED", null);
+                fenced.photoTransition(lease, photoId, accepted ? "VALID" : "NOT_VALID",
                         accepted ? "VALIDATION_COMPLETED" : "VALIDATION_REJECTED");
                 if (accepted) {
-                    states.photoTransition(photoId, "VISION_PENDING", "VISION_QUEUED");
+                    fenced.photoTransition(lease, photoId, "VISION_PENDING", "VISION_QUEUED");
                 }
                 if (!accepted) {
-                    states.requestTransition(requestId, "RUNNING", "REJECTED", "WORKFLOW_REJECTED", "INVALID_PHOTO");
+                    fenced.requestTransition(lease, "REJECTED", "WORKFLOW_REJECTED", "INVALID_PHOTO");
                 }
                 return accepted;
+            } catch (PhotoWorkflowFencingService.LeaseLostException ex) {
+                throw ex;
             } catch (RuntimeException ex) {
-                states.moduleFinished(requestId, run, "VALID", "FAILED", "VALIDATION_ERROR");
-                states.photoTransition(photoId, "VALIDATION_FAILED", "VALIDATION_FAILED");
+                fenced.moduleFinished(lease, run, "VALID", "FAILED", "VALIDATION_ERROR");
+                fenced.photoTransition(lease, photoId, "VALIDATION_FAILED", "VALIDATION_FAILED");
                 throw ex;
             }
         }
     }
 
-    private void analyze(UUID requestId, UUID photoId) {
+    private void analyze(UUID requestId, UUID photoId, PhotoWorkflowFencingService.Lease lease) {
         try (var ignored = MDC.putCloseable("requestId", requestId.toString())) {
-            UUID run = states.moduleStarted(requestId, "VISION");
-            states.photoTransition(photoId, "VISION_PROCESSING", "VISION_STARTED");
+            UUID run = fenced.moduleStarted(lease, "VISION");
+            fenced.photoTransition(lease, photoId, "VISION_PROCESSING", "VISION_STARTED");
             try {
                 if (!visionEnabled) throw new IllegalStateException("Vision disabled");
                 byte[] bytes = photoBytes(photoId);
@@ -139,22 +159,20 @@ public class PhotoWorkflowWorker {
                         || !result.path("description").isObject()) {
                     throw new IllegalStateException("Malformed VISION response");
                 }
-                jdbc.update("""
-                    UPDATE public.garden_photos SET analysis_provider='external-vision',
-                        analysis_json=CAST(? AS jsonb),vision_completed_at=now(),updated_at=now()
-                    WHERE id=?
-                    """, result.toString(), photoId);
+                fenced.saveVision(lease, photoId, result.toString());
                 boolean accepted = result.path("isGarden").asBoolean()
                         && result.path("isAnalyzable").asBoolean();
-                states.moduleFinished(requestId, run, "VISION",
+                fenced.moduleFinished(lease, run, "VISION",
                         accepted ? "COMPLETED" : "REJECTED", null);
-                states.photoTransition(photoId, accepted ? "VISION_COMPLETED" : "NOT_VALID",
+                fenced.photoTransition(lease, photoId, accepted ? "VISION_COMPLETED" : "NOT_VALID",
                         accepted ? "VISION_COMPLETED" : "VISION_REJECTED");
-                states.requestTransition(requestId, "RUNNING", accepted ? "COMPLETED" : "REJECTED",
+                fenced.requestTransition(lease, accepted ? "COMPLETED" : "REJECTED",
                         accepted ? "WORKFLOW_COMPLETED" : "WORKFLOW_REJECTED",
                         accepted ? null : "VISION_NOT_ANALYZABLE");
+            } catch (PhotoWorkflowFencingService.LeaseLostException ex) {
+                throw ex;
             } catch (RuntimeException ex) {
-                states.moduleFinished(requestId, run, "VISION", "FAILED", "VISION_ERROR");
+                fenced.moduleFinished(lease, run, "VISION", "FAILED", "VISION_ERROR");
                 throw ex;
             }
         }
