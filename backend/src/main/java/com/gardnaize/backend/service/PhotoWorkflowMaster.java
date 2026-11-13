@@ -25,7 +25,8 @@ public class PhotoWorkflowMaster {
         this.states = states;
     }
 
-    @Scheduled(fixedDelayString = "${gardnaize.workflow.poll-ms:5000}")
+    @Scheduled(fixedDelayString = "${gardnaize.workflow.poll-ms:5000}",
+            initialDelayString = "${gardnaize.workflow.initial-delay-ms:5000}")
     public void dispatch() {
         // SKIP LOCKED ensures two application instances never claim the same row.
         // Do not reclaim expired RUNNING work automatically: the remote call may still be active.
