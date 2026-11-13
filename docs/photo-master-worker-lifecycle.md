@@ -75,3 +75,7 @@ recommendations; not all are implemented in this increment.
   transactions; strengthen invariants and reconcile partial failures.
 - Tests and CI must be run and pass before merge. HTTP 202 means the request
   was accepted, not that processing succeeded.
+
+## Update after PR #35 merge — 13 November 2026
+
+The limitations and future-event notes above describe the **earlier implementation stage**. PR #35 subsequently added heartbeat renewal, `lease_generation` fencing, `RECONCILIATION_REQUIRED`, transactional `LEASE_EXPIRED` audit and PostgreSQL crash/rollback tests. **Do not use the earlier pre-merge limitations as the current implementation status.** The full current status catalog, transitions, event vocabulary and recovery boundaries are in [PHOTO_WORKFLOW_PR35.md](PHOTO_WORKFLOW_PR35.md). Expired VISION calls remain quarantined, not automatically replayed.
