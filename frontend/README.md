@@ -99,3 +99,9 @@ Run `npm run test:unit` to test photo-validation rules with Node's built-in test
 ## Backend integration
 
 The questionnaire now creates projects through `POST /api/v1/gardens` and requests demo suggestions through `GET /api/v1/gardens/{id}/recommendations`. Angular dev server proxies `/api` to http://localhost:8081; Docker Nginx proxies to the backend container. The photo is **not uploaded**; suggestions are explicitly rule-based placeholders pending actual ML inference.
+
+## Async photo processing — merged PR #35
+
+The older initial-UI notes above are historical. GDAI-FRONT now uses GDAI-BACK for photo preflight, questionnaire, explicit FR/EN external-processing consent and async submission. After consent, it submits the photo and answers to BACK, receives HTTP **202** and a durable `requestId`, then polls the BACK request endpoint. It stops on `COMPLETED`, `FAILED`, `REJECTED` or `RECONCILIATION_REQUIRED` (an expired worker lease requiring review). FRONT must not know or call VALID, VISION or Gemini directly.
+
+The questionnaire catalog v2 and FR/EN dictionaries include `matureSpread` (adult canopy width) and `rootSpace` (root growth clearance). The legacy rule-based recommendation screen remains distinct from the new VALID/VISION request workflow. For status transitions, consent contract and observability, see [PR #35 workflow](../docs/PHOTO_WORKFLOW_PR35.md).
