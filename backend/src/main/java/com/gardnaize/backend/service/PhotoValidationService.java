@@ -22,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class PhotoValidationService {
     private final RestClient client;
+    private java.util.concurrent.Executor executor = Runnable::run;
 
     @org.springframework.beans.factory.annotation.Autowired
     public PhotoValidationService(
@@ -32,8 +33,42 @@ public class PhotoValidationService {
         client = RestClient.builder().baseUrl(baseUrl).requestFactory(factory).build();
     }
 
+    @org.springframework.beans.factory.annotation.Autowired(required = false)
+    public void setValidationExecutor(@org.springframework.beans.factory.annotation.Qualifier("validationExecutor") java.util.concurrent.Executor executor) {
+        this.executor = executor;
+    }
+
     PhotoValidationService(RestClient client) {
         this.client = client;
+    }
+
+    public java.util.concurrent.CompletableFuture<Map<String, Object>> validateAsync(MultipartFile file) {
+        // Copy request-owned bytes before leaving the HTTP request thread.
+        if (file == null) {
+            return java.util.concurrent.CompletableFuture.failedFuture(
+                    new ResponseStatusException(HttpStatus.BAD_REQUEST, "Missing photo"));
+        }
+        final byte[] bytes;
+        try {
+            bytes = file.getBytes();
+        } catch (IOException ex) {
+            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+        }
+        String type = file.getContentType();
+        String name = file.getOriginalFilename();
+        return java.util.concurrent.CompletableFuture.supplyAsync(() ->
+                validate(new org.springframework.web.multipart.MultipartFile() {
+                    public String getName() { return "photo"; }
+                    public String getOriginalFilename() { return name; }
+                    public String getContentType() { return type; }
+                    public boolean isEmpty() { return bytes.length == 0; }
+                    public long getSize() { return bytes.length; }
+                    public byte[] getBytes() { return bytes; }
+                    public java.io.InputStream getInputStream() { return new java.io.ByteArrayInputStream(bytes); }
+                    public void transferTo(java.io.File dest) throws IOException {
+                        java.nio.file.Files.write(dest.toPath(), bytes);
+                    }
+                }), executor);
     }
 
     public Map<String, Object> validate(MultipartFile file) {
