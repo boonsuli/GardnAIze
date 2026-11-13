@@ -21,6 +21,7 @@ public class PhotoWorkflowMaster {
     private final PhotoWorkflowStateService states;
     private final String owner = UUID.randomUUID().toString();
     private final Map<UUID, CompletableFuture<Void>> active = new ConcurrentHashMap<>();
+    private final Map<UUID, Long> generations = new ConcurrentHashMap<>();
 
     public PhotoWorkflowMaster(JdbcTemplate jdbc, PhotoWorkflowWorker worker,
                                PhotoWorkflowStateService states) {
@@ -59,9 +60,14 @@ public class PhotoWorkflowMaster {
                     """, item.requestId());
                 log.info("event=WORKER_CLAIMED requestId={} photoId={} attempt={}",
                         item.requestId(), item.photoId(), item.attempt());
-                var future = worker.execute(item.requestId(), item.photoId());
+                var future = worker.execute(item.requestId(), item.photoId(),
+                        new PhotoWorkflowFencingService.Lease(item.requestId(), owner, item.generation()));
                 active.put(item.requestId(), future);
-                future.whenComplete((result, failure) -> active.remove(item.requestId(), future));
+                generations.put(item.requestId(), item.generation());
+                future.whenComplete((result, failure) -> {
+                    active.remove(item.requestId(), future);
+                    generations.remove(item.requestId(), item.generation());
+                });
             } catch (RuntimeException ex) {
                 log.error("event=WORKER_DISPATCH_FAILED requestId={} errorType={}",
                         item.requestId(), ex.getClass().getSimpleName());
@@ -86,8 +92,8 @@ public class PhotoWorkflowMaster {
             int updated = jdbc.update("""
                 UPDATE public.garden_photo_requests SET lease_until=now()+interval '180 seconds'
                 WHERE request_id=? AND lease_owner=? AND status='RUNNING'
-                  AND lease_until > now()
-                """, requestId, owner);
+                  AND lease_until > now() AND lease_generation=?
+                """, requestId, owner, generations.getOrDefault(requestId, -1L));
             if (updated == 0) log.warn("event=LEASE_LOST requestId={}", requestId);
         });
     }
