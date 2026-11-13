@@ -23,6 +23,72 @@ class PhotoWorkflowMasterIT {
     @Autowired PhotoWorkflowMaster master;
     @MockitoBean PhotoWorkflowWorker worker;
 
+
+    @Test
+    void crashExpiredLeaseIsQuarantinedAndNotReplayedOnRestart() {
+        UUID gardenId = UUID.randomUUID();
+        UUID photoId = UUID.randomUUID();
+        UUID requestId = UUID.randomUUID();
+        jdbc.update("INSERT INTO garden_projects(id,name,location,exposure,soil_type,created_at) VALUES (?,?,?,?,?,now())",
+                gardenId, "Crash recovery", "Paris", "FULL_SUN", "LOAMY");
+        try {
+            jdbc.update("""
+                INSERT INTO garden_photos(id,garden_id,original_filename,content_type,file_size_bytes,
+                  width_px,height_px,image_bytes,photo_status,processing_status)
+                VALUES (?,?, 'test.webp','image/webp',12,640,480,?,'RECEIVED','INITIALIZED')
+                """, photoId, gardenId, new byte[12]);
+            jdbc.update("""
+                INSERT INTO garden_photo_requests
+                  (request_id,garden_id,photo_id,status,lease_owner,lease_until,attempt_count)
+                VALUES (?,?,?,'RUNNING','dead-instance',now()-interval '10 seconds',1)
+                """, requestId, gardenId, photoId);
+            assertEquals(1, master.reconcileExpired());
+            assertEquals("RECONCILIATION_REQUIRED", jdbc.queryForObject(
+                    "SELECT status FROM garden_photo_requests WHERE request_id=?", String.class, requestId));
+            assertEquals(1, jdbc.queryForObject(
+                    "SELECT count(*) FROM garden_photo_request_history WHERE request_id=? AND event_code='LEASE_EXPIRED'",
+                    Integer.class, requestId));
+            // Simulate the new process polling the same durable database.
+            master.dispatch();
+            assertEquals(0, master.reconcileExpired());
+            verify(worker, never()).execute(requestId, photoId);
+        } finally {
+            jdbc.update("DELETE FROM garden_projects WHERE id=?", gardenId);
+        }
+    }
+
+    @Test
+    void heartbeatRenewsOnlyCurrentWorkerLease() {
+        UUID gardenId = UUID.randomUUID();
+        UUID photoId = UUID.randomUUID();
+        UUID requestId = UUID.randomUUID();
+        jdbc.update("INSERT INTO garden_projects(id,name,location,exposure,soil_type,created_at) VALUES (?,?,?,?,?,now())",
+                gardenId, "Heartbeat", "Paris", "FULL_SUN", "LOAMY");
+        try {
+            jdbc.update("""
+                INSERT INTO garden_photos(id,garden_id,original_filename,content_type,file_size_bytes,
+                  width_px,height_px,image_bytes,photo_status,processing_status)
+                VALUES (?,?, 'test.webp','image/webp',12,640,480,?,'RECEIVED','INITIALIZED')
+                """, photoId, gardenId, new byte[12]);
+            jdbc.update("""
+                INSERT INTO garden_photo_requests(request_id,garden_id,photo_id,status)
+                VALUES (?,?,?,'ACCEPTED')
+                """, requestId, gardenId, photoId);
+            var pending = new CompletableFuture<Void>();
+            when(worker.execute(requestId, photoId)).thenReturn(pending);
+            master.dispatch();
+            jdbc.update("UPDATE garden_photo_requests SET lease_until=now()+interval '5 seconds' WHERE request_id=?",
+                    requestId);
+            master.heartbeat();
+            assertTrue(jdbc.queryForObject(
+                    "SELECT lease_until > now()+interval '100 seconds' FROM garden_photo_requests WHERE request_id=?",
+                    Boolean.class, requestId));
+            pending.complete(null);
+        } finally {
+            jdbc.update("DELETE FROM garden_projects WHERE id=?", gardenId);
+        }
+    }
+
     @Test
     void claimedRequestIsNotDispatchedTwice() {
         UUID gardenId = UUID.randomUUID();
