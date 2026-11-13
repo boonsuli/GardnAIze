@@ -25,8 +25,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class GardenPhotoService {
-    private static final long MAX_BYTES = 10L * 1024 * 1024;
+    private static final long MAX_BYTES = 5L * 1024 * 1024;
     private static final Set<String> ACCEPTED_CLIMATES = Set.of("TEMPERATE_CONTINENTAL");
+    private final WebpImageCodec webpCodec = new WebpImageCodec();
     private final JdbcTemplate jdbc;
     private final ObjectMapper mapper;
     private final RestClient providerClient;
@@ -51,17 +52,51 @@ public class GardenPhotoService {
     }
 
     public PhotoAnalysisResponse upload(UUID gardenId, MultipartFile file) {
+        return upload(gardenId, file, null);
+    }
+
+    public PhotoAnalysisResponse upload(UUID gardenId, MultipartFile file, String description) {
+        return uploadInternal(gardenId, file, description, null, null, false);
+    }
+
+    public PhotoAnalysisResponse upload(UUID gardenId, MultipartFile file, String description,
+            String answersJson, String consentKey) {
+        if (!"privacy.externalProcessingNotice".equals(consentKey)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "External vision consent required");
+        }
+        if (answersJson == null || answersJson.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Questionnaire answers required");
+        }
+        try {
+            JsonNode answers = mapper.readTree(answersJson);
+            if (!answers.isObject() || !answers.hasNonNull("exposure")
+                    || !answers.hasNonNull("waterAvailability")
+                    || !answers.hasNonNull("maintenancePreference")) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Required answers missing");
+            }
+        } catch (com.fasterxml.jackson.core.JsonProcessingException ex) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid answers JSON");
+        }
+        return uploadInternal(gardenId, file, description, answersJson, consentKey, true);
+    }
+
+    private PhotoAnalysisResponse uploadInternal(UUID gardenId, MultipartFile file,
+            String description, String answersJson, String consentKey, boolean consented) {
         if (!Boolean.TRUE.equals(jdbc.queryForObject(
                 "SELECT EXISTS(SELECT 1 FROM garden_projects WHERE id = ?)", Boolean.class, gardenId))) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Garden not found");
         }
         if (file == null || file.isEmpty() || file.getSize() > MAX_BYTES) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Photo must be 1–10 MB");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Photo must be between 1 byte and 5 MiB");
+        }
+        if (description != null && description.length() > 1000) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Description must be at most 1000 characters");
         }
         String type = file.getContentType();
-        if (!Set.of("image/jpeg", "image/png").contains(type)) {
+        if (!Set.of("image/jpeg", "image/png", "image/webp").contains(type)) {
             throw new ResponseStatusException(HttpStatus.UNSUPPORTED_MEDIA_TYPE,
-                    "Only JPEG and PNG are supported by the backend MVP");
+                    "Only JPEG, PNG and WebP are supported");
         }
         byte[] bytes;
         try {
@@ -72,14 +107,14 @@ public class GardenPhotoService {
         if (bytes.length > MAX_BYTES) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Photo too large");
         }
-        BufferedImage image;
+        WebpImageCodec.Encoded normalized;
         try {
-            image = ImageIO.read(new ByteArrayInputStream(bytes));
+            normalized = webpCodec.normalize(bytes);
         } catch (IOException ex) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid image");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid image or WebP encoding failed", ex);
         }
-        if (image == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unsupported image");
+        if (normalized.bytes().length > MAX_BYTES) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Encoded WebP exceeds 5 MiB");
         }
         UUID photoId = UUID.randomUUID();
         String filename = file.getOriginalFilename() == null ? "photo" : file.getOriginalFilename();
@@ -89,17 +124,28 @@ public class GardenPhotoService {
         }
         jdbc.update("""
             INSERT INTO garden_photos (id,garden_id,original_filename,content_type,file_size_bytes,
-                width_px,height_px,image_bytes,photo_status,processing_status)
-            VALUES (?,?,?,?,?,?,?,?,?,?)
-            """, photoId, gardenId, filename, type, bytes.length,
-                image.getWidth(), image.getHeight(), bytes, "RECEIVED", "INITIALIZED");
+                width_px,height_px,image_bytes,description,photo_status,processing_status)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?)
+            """, photoId, gardenId, filename, "image/webp", normalized.bytes().length,
+                normalized.width(), normalized.height(), normalized.bytes(),
+                description == null ? "" : description.trim(), "RECEIVED", "INITIALIZED");
         transition(photoId, "RECEIVED", "INITIALIZED", "Photo persisted on upload");
+        if (consented) {
+            jdbc.update("""
+                INSERT INTO garden_photo_questionnaire
+                    (photo_id, answers, consent_key, consented_at)
+                VALUES (?, CAST(? AS jsonb), ?, now())
+                """, photoId, answersJson, consentKey);
+        }
 
-        if (image.getWidth() < 640 || image.getHeight() < 480) {
+        if (normalized.width() < 640 || normalized.height() < 480) {
             // Minimum resolution is enforced by DB constraint, so this branch is unreachable.
             return reject(photoId, gardenId, "INSUFFICIENT_RESOLUTION");
         }
         transition(photoId, "CHECKED", "IN_PROGRESS", "Local validation passed");
+        if (!consented) {
+            return get(photoId, gardenId);
+        }
         if (!enabled) {
             transition(photoId, "TRANSFER_FAILED", "FAILED", "Vision provider is not configured");
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE,
@@ -114,8 +160,8 @@ public class GardenPhotoService {
                         }
                     })
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(Map.of("photoId", photoId.toString(), "mimeType", type,
-                            "imageBase64", Base64.getEncoder().encodeToString(bytes),
+                    .body(Map.of("photoId", photoId.toString(), "mimeType", "image/webp",
+                            "imageBase64", Base64.getEncoder().encodeToString(normalized.bytes()),
                             "requirements", Map.of("gardenRequired", true,
                                     "allowedClimateCodes", ACCEPTED_CLIMATES,
                                     "minimumWidthPx", 640, "minimumHeightPx", 480)))
@@ -139,7 +185,7 @@ public class GardenPhotoService {
                 VALUES (?,?,?,?,?,'SUCCEEDED',CAST(? AS jsonb))
                 """, analysisId, photoId, providerName, "gemini-adapter",
                     result.path("schemaVersion").asText("1.0"), rawJson);
-            JsonNode description = result.path("description");
+            JsonNode visionDescription = result.path("description");
             jdbc.update("""
                 INSERT INTO garden_features
                   (id,garden_id,source_photo_analysis_id,schema_version,space_type,shade_level,
@@ -149,15 +195,15 @@ public class GardenPhotoService {
                         CAST(? AS jsonb),CAST(? AS jsonb),CAST(? AS jsonb))
                 """, UUID.randomUUID(), gardenId, analysisId,
                     result.path("schemaVersion").asText("1.0"),
-                    nullableText(description.path("spaceType")),
-                    nullableText(description.path("shadeLevel")),
-                    nullableText(description.path("privacyExposure")),
-                    description.path("plantableAreasDetected").isBoolean()
-                        ? description.path("plantableAreasDetected").asBoolean() : null,
-                    mapper.writeValueAsString(description.path("surfaces").isArray()
-                        ? description.path("surfaces") : mapper.createArrayNode()),
-                    mapper.writeValueAsString(description.path("visibleVegetation").isArray()
-                        ? description.path("visibleVegetation") : mapper.createArrayNode()),
+                    nullableText(visionDescription.path("spaceType")),
+                    nullableText(visionDescription.path("shadeLevel")),
+                    nullableText(visionDescription.path("privacyExposure")),
+                    visionDescription.path("plantableAreasDetected").isBoolean()
+                        ? visionDescription.path("plantableAreasDetected").asBoolean() : null,
+                    mapper.writeValueAsString(visionDescription.path("surfaces").isArray()
+                        ? visionDescription.path("surfaces") : mapper.createArrayNode()),
+                    mapper.writeValueAsString(visionDescription.path("visibleVegetation").isArray()
+                        ? visionDescription.path("visibleVegetation") : mapper.createArrayNode()),
                     mapper.writeValueAsString(Map.of("source", "GEMINI_IMAGE_OBSERVATION", "climateVerified", false, "soilVerified", false)));
             transition(photoId, "ANALYZED", "IN_PROGRESS", "Provider JSON persisted");
             if (!result.path("isGarden").asBoolean() || !result.path("isAnalyzable").asBoolean()) {

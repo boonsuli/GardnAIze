@@ -4,12 +4,15 @@ import com.gardnaize.backend.domain.Exposure;
 import com.gardnaize.backend.domain.SoilType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public record CreateGardenProjectRequest(
         @NotBlank @Size(max = 120) String name,
         @NotBlank @Size(max = 160) String location,
         @NotNull Exposure exposure,
-        @NotNull SoilType soilType
+        @NotNull SoilType soilType,
+        @Pattern(regexp = "FR|BE|CH|ES|IT|OTHER") String countryCode,
+        @Size(max = 120) String climateRegion
 ) {
 }

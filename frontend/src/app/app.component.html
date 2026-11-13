@@ -5,6 +5,10 @@
 </mat-toolbar>
 
 <main>
+    <div class="language-selector">
+        <button mat-stroked-button type="button" (click)="changeLanguage('FR')">FR</button>
+        <button mat-stroked-button type="button" (click)="changeLanguage('EN')">EN</button>
+    </div>
     <header>
         <p>AMÉNAGEMENT INTELLIGENT</p>
         <h1>Imaginez votre futur jardin.</h1>
@@ -58,82 +62,58 @@
                     [readonly]="photoConfirmed()" placeholder="Exposition, terrasse, zones à aménager…"></textarea>
             </mat-form-field>
             @if (!photoConfirmed()) {
-                <button mat-flat-button type="button" [disabled]="!canConfirmPhoto() || photoSending()" (click)="confirmPhotoDetails()">
-                    {{ photoSending() ? 'Validation en cours…' : 'Confirmer et envoyer la photo' }}
+                <button mat-flat-button type="button" [disabled]="!canConfirmPhoto() || validationLoading()" (click)="confirmPhotoDetails()">
+                    {{ validationLoading() ? 'Validation en cours…' : 'Confirmer et valider la photo' }}
                 </button>
             } @else {
-                <p class="confirmation" role="status">Photo validée par GDAI-VALID.</p>
+                <p class="confirmation" role="status">Photo validée par GDAI-VALID. Complétez le questionnaire.</p>
                 <button mat-stroked-button type="button" (click)="editPhotoDetails()">Modifier les informations</button>
             }
         </mat-card-content>
     </mat-card>
 
-    <mat-card appearance="outlined" class="questionnaire">
-        <mat-card-header>
-            <mat-card-title>2. Préférences du jardin (démonstration)</mat-card-title>
-            <mat-card-subtitle>Questionnaire MVP · préférences enregistrées en base</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-form-field appearance="outline">
-                <mat-label>Nom du projet</mat-label>
-                <input matInput #gardenNameInput [value]="gardenName()" (input)="gardenName.set(gardenNameInput.value)" maxlength="120">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Exposition</mat-label>
-                <mat-select [value]="exposure()" (selectionChange)="exposure.set($event.value)">
-                    <mat-option value="FULL_SUN">Plein soleil</mat-option>
-                    <mat-option value="PARTIAL_SHADE">Mi-ombre</mat-option>
-                    <mat-option value="SHADE">Ombre</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Type de sol</mat-label>
-                <mat-select [value]="soilType()" (selectionChange)="soilType.set($event.value)">
-                    <mat-option value="UNKNOWN">Inconnu</mat-option>
-                    <mat-option value="SANDY">Sableux</mat-option>
-                    <mat-option value="LOAMY">Limoneux</mat-option>
-                    <mat-option value="CLAY">Argileux</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Disponibilité en eau</mat-label>
-                <mat-select [value]="waterAvailability()" (selectionChange)="waterAvailability.set($event.value)">
-                    <mat-option value="LOW">Faible</mat-option>
-                    <mat-option value="MODERATE">Modérée</mat-option>
-                    <mat-option value="HIGH">Élevée</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Entretien souhaité</mat-label>
-                <mat-select [value]="maintenancePreference()" (selectionChange)="maintenancePreference.set($event.value)">
-                    <mat-option value="LOW">Faible</mat-option>
-                    <mat-option value="MODERATE">Modéré</mat-option>
-                    <mat-option value="HIGH">Élevé</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Hauteur souhaitée (cm, facultatif)</mat-label>
-                <input matInput type="number" min="20" max="3000" #heightInput
-                    [value]="desiredHeightCm() ?? ''"
-                    (input)="desiredHeightCm.set(heightInput.value === '' ? null : heightInput.valueAsNumber)">
-            </mat-form-field>
-            <mat-checkbox [checked]="evergreenPreferred()" (change)="evergreenPreferred.set($event.checked)">
-                Je préfère des plantes persistantes
-            </mat-checkbox>
-            <mat-checkbox [checked]="privacyScreeningRequired()" (change)="privacyScreeningRequired.set($event.checked)">
-                Je souhaite occulter le vis-à-vis
-            </mat-checkbox>
-            <button mat-flat-button [disabled]="loading()" (click)="submitGarden()">
-                {{ loading() ? 'Enregistrement…' : 'Enregistrer et afficher trois suggestions' }}
-            </button>
-            <p aria-live="polite">{{ apiMessage() }}</p>
-            @if (suggestions().length > 0) {
-                <h2>3. Suggestions de plantes (démonstration)</h2>
-                @for (plant of suggestions(); track plant.name) {
-                    <p><strong>{{ plant.name }}</strong> — {{ plant.reason }}</p>
-                }
-            }
-        </mat-card-content>
-    </mat-card>
-    <footer>MVP en développement · Photo envoyée pour validation · Persistance à intégrer</footer>
+    @if (photoValidated()) {
+        @if (questionnaire(); as catalog) {
+            <mat-card appearance="outlined" class="questionnaire">
+                <mat-card-header>
+                    <mat-card-title>2. {{ translate('questionnaireTitle') }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    @for (question of catalog.questions; track question.key) {
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{ translate(question.labelKey) }}{{ question.required ? ' *' : '' }}</mat-label>
+                            <mat-select [value]="answers()[question.key] || ''"
+                                (selectionChange)="setAnswer(question.key, $event.value)">
+                                @if (!question.required) {
+                                    <mat-option value="">Sans réponse</mat-option>
+                                }
+                                @for (option of question.options; track option.value) {
+                                    <mat-option [value]="option.value">{{ translate(option.labelKey) }}</mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                    }
+                    <button mat-flat-button type="button" [disabled]="!allRequiredAnswered()"
+                        (click)="showConsent()">{{ translate('questionnaireSubmit') }}</button>
+                </mat-card-content>
+            </mat-card>
+        }
+    }
+    @if (consentVisible()) {
+        @if (questionnaire(); as catalog) {
+            <mat-card appearance="outlined" class="questionnaire">
+                <mat-card-header>
+                    <mat-card-title>{{ translate('privacy.consentTitle') }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{ translate(catalog.externalProcessingNoticeKey) }}</p>
+                    <button mat-stroked-button type="button" [disabled]="workflowLoading()"
+                        (click)="refuseConsent()">{{ translate('privacy.refuse') }}</button>
+                    <button mat-flat-button type="button" [disabled]="workflowLoading()"
+                        (click)="acceptConsentAndSubmit()">{{ translate('privacy.acceptAndContinue') }}</button>
+                </mat-card-content>
+            </mat-card>
+        }
+    }
+    <footer>MVP · Validation avant questionnaire · Consentement requis avant analyse externe</footer>
 </main>

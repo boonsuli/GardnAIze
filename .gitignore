@@ -17,6 +17,9 @@
 /frontend/node_modules/
 /frontend/.angular/
 
+# Angular build output
+/frontend/dist/
+
 # Local environment files and credentials
 .env
 .env.*
@@ -26,7 +29,6 @@
 # Python virtual environments
 /.venv/
 .venv/
-
 
 # Python / Jupyter
 __pycache__/
@@ -64,3 +66,9 @@ replay_pid*
 
 # Local ML model backups
 /models/backup/
+
+# Local ChatGPT-conversation
+/docs/ChatGPT-conversation/
+
+# GDAI-VISION generated analysis logs
+/vision/logs/

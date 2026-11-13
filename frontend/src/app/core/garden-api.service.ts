@@ -2,6 +2,38 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
+export interface QuestionnaireOption {
+    value: string;
+    labelKey: string;
+}
+export interface QuestionnaireQuestion {
+    key: string;
+    labelKey: string;
+    required: boolean;
+    inputType: string;
+    options: QuestionnaireOption[];
+}
+export interface QuestionnaireCatalog {
+    schemaVersion: number;
+    externalProcessingNoticeKey: string;
+    questions: QuestionnaireQuestion[];
+}
+export interface PhotoProcessingRequest {
+    requestId: string;
+    gardenId: string;
+    photoId: string;
+    status: 'ACCEPTED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'REJECTED' | 'RECONCILIATION_REQUIRED';
+    createdAt: string;
+    statusUrl: string;
+}
+export interface PhotoAnalysisResult {
+    photoId: string;
+    gardenId: string;
+    photoStatus: string;
+    processingStatus: string;
+    rejectionReason: string | null;
+}
+
 export type Exposure = 'FULL_SUN' | 'PARTIAL_SHADE' | 'SHADE';
 export type SoilType = 'SANDY' | 'LOAMY' | 'CLAY' | 'UNKNOWN';
 export type RequirementLevel = 'LOW' | 'MODERATE' | 'HIGH';
@@ -9,6 +41,8 @@ export type RequirementLevel = 'LOW' | 'MODERATE' | 'HIGH';
 export interface CreateGardenRequest {
     name: string;
     location: string;
+    countryCode: string;
+    climateRegion: string;
     exposure: Exposure;
     soilType: SoilType;
 }
@@ -45,21 +79,38 @@ export interface RecommendationResponse {
 export class GardenApiService {
     private readonly http = inject(HttpClient);
 
-    submitGardenPhoto(photo: File, details: {
-        countryCode: string;
-        city: string;
-        climateCode: string;
-        description: string;
-    }): Observable<{ status: 'VALID' | 'INVALID'; message: string }> {
-        const form = new FormData();
-        form.append('photo', photo, photo.name);
-        form.append('countryCode', details.countryCode);
-        form.append('city', details.city);
-        form.append('climateCode', details.climateCode);
-        form.append('description', details.description);
-        return this.http.post<{ status: 'VALID' | 'INVALID'; message: string }>(
-            '/api/v1/gardens/photos/confirm', form
+    loadDictionary(language: 'FR' | 'EN'): Observable<Record<string, unknown>> {
+        return this.http.get<Record<string, unknown>>(
+            '/i18n/GardnAIze_data_' + language + '.json'
         );
+    }
+
+    getQuestionnaire(): Observable<QuestionnaireCatalog> {
+        return this.http.get<QuestionnaireCatalog>('/api/v1/questionnaire');
+    }
+
+    validatePhoto(file: File): Observable<{ valid: boolean; reason: string }> {
+        const data = new FormData();
+        data.append('file', file, file.name);
+        return this.http.post<{ valid: boolean; reason: string }>('/api/v1/photos/validate', data);
+    }
+
+    uploadPhoto(gardenId: string, file: File, description: string,
+            answers: Record<string, string>, consentKey: string): Observable<PhotoProcessingRequest> {
+        const data = new FormData();
+        data.append('file', file, file.name);
+        data.append('description', description);
+        data.append('answersJson', JSON.stringify(answers));
+        data.append('consentKey', consentKey);
+        return this.http.post<PhotoProcessingRequest>(
+            '/api/v1/gardens/' + encodeURIComponent(gardenId) + '/photos', data
+        );
+    }
+
+    getPhotoRequest(gardenId: string, requestId: string): Observable<PhotoProcessingRequest> {
+        return this.http.get<PhotoProcessingRequest>(
+            '/api/v1/gardens/' + encodeURIComponent(gardenId)
+            + '/photo-requests/' + encodeURIComponent(requestId));
     }
 
     createGarden(request: CreateGardenRequest): Observable<GardenProject> {
