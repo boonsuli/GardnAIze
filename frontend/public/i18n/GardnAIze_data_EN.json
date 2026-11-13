@@ -1,10 +1,13 @@
 {
     "privacy": {
-        "externalProcessingNotice": "With your explicit consent, your photo will be sent to Gemini Vision (Google), an external service, to analyze visible garden features. Without consent, no external analysis will start.",
+        "externalProcessingNotice": "To continue your request, GardnAIze needs to send your garden photo to an external image-processing service (Gemini, provided by Google) to analyze visible features and prepare plant recommendations. GardnAIze stores your photo, questionnaire answers and garden details after you agree. The external service receives the photo for analysis. You may decline: no external analysis will be requested, and you will return to the home screen.",
         "externalProcessingConsentKey": "privacy.externalProcessingNotice",
         "accept": "I consent to my photo being analyzed by Gemini Vision (Google).",
-        "refuse": "Decline and return home",
-        "acceptAndContinue": "Accept and continue analysis"
+        "refuse": "I decline and return home",
+        "acceptAndContinue": "I agree and start the analysis",
+        "consentTitle": "Permission to analyze your photo",
+        "pending": "Request received, processing…",
+        "error": "The request could not be submitted. Please try again."
     },
     "questionnaire": {
         "exposure": {
