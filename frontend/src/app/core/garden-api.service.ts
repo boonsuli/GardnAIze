@@ -22,7 +22,7 @@ export interface PhotoProcessingRequest {
     requestId: string;
     gardenId: string;
     photoId: string;
-    status: 'ACCEPTED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'REJECTED';
+    status: 'ACCEPTED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'REJECTED' | 'RECONCILIATION_REQUIRED';
     createdAt: string;
     statusUrl: string;
 }
