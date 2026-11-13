@@ -29,6 +29,7 @@ import org.springframework.test.context.DynamicPropertySource;
 @SpringBootTest(properties = {
     "gardnaize.vision.enabled=true",
     "gardnaize.workflow.poll-ms=3600000",
+    "gardnaize.workflow.initial-delay-ms=3600000",
     "gardnaize.vision.api-key="
 })
 class PhotoWorkflowWorkerIT {
