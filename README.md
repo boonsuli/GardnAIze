@@ -174,3 +174,9 @@ GardnAIze is developed as an Alyra AI-development project, with the MVP initiall
 Photos, model weights and large raw datasets are excluded from version control. Review image provenance, attribution and dataset terms before reuse or redistribution. **No open-source license is granted unless a LICENSE file is added.**
 
 See the [branding guide](docs/BRANDING.md) for the official logo and visual identity.
+
+## Photo workflow delivered in PR #35 (13 November 2026)
+
+The merged [PR #35](https://github.com/boonsuli/GardnAIze/pull/35) adds a durable HTTP 202 photo-processing request, questionnaire/consent persistence, FRONT status polling, PostgreSQL Master/Worker orchestration for **VALID → VISION**, module and photo state histories, leases with heartbeat and generation fencing, and atomic lease-expiry reconciliation. This does **not** yet deliver PLANT/Random Forest recommendations or segmentation. Gemini calls in integration tests are replaced with local HTTP stubs.
+
+**Authoritative current workflow and every status/transition/event:** [docs/PHOTO_WORKFLOW_PR35.md](docs/PHOTO_WORKFLOW_PR35.md). Older progress snapshots and architecture sections above predate this merge; treat this section as the latest PR #35 update. A crashed/expired VISION job is quarantined as `RECONCILIATION_REQUIRED`, not replayed automatically. The optional image-generation module is named **GDAI-GNERAT** and is outside PR #35.
