@@ -55,15 +55,21 @@ public class PhotoWorkflowWorker {
     }
 
     public CompletableFuture<Void> execute(UUID requestId, UUID photoId) {
+        java.util.concurrent.atomic.AtomicReference<String> stage = new java.util.concurrent.atomic.AtomicReference<>("VALID");
         return CompletableFuture.supplyAsync(() -> validate(requestId, photoId), validPool)
                 .thenCompose(valid -> {
                     if (!valid) return CompletableFuture.completedFuture(null);
+                    stage.set("VISION");
                     return CompletableFuture.runAsync(() -> analyze(requestId, photoId), visionPool);
                 }).exceptionally(error -> {
                     log.error("event=WORKFLOW_FAILED requestId={} photoId={} errorType={}",
                             requestId, photoId, error.getClass().getSimpleName());
                     try {
-                        states.photoTransition(photoId, "VISION_FAILED", "WORKFLOW_FAILED");
+                        if ("VISION".equals(stage.get())) {
+                            states.photoTransition(photoId, "VISION_FAILED", "WORKFLOW_FAILED");
+                        } else {
+                            states.photoTransition(photoId, "VALIDATION_FAILED", "WORKFLOW_FAILED");
+                        }
                         states.requestTransition(requestId, "RUNNING", "FAILED", "WORKFLOW_FAILED", "MODULE_ERROR");
                     } catch (RuntimeException transitionError) {
                         log.error("event=WORKFLOW_STATE_WRITE_FAILED requestId={} errorType={}",
@@ -90,13 +96,18 @@ public class PhotoWorkflowWorker {
                 Map<String, Object> result = validClient.post().uri("/api/v1/validation/photo")
                         .contentType(MediaType.MULTIPART_FORM_DATA).body(parts)
                         .retrieve().body(Map.class);
-                if (result == null || !(result.get("valid") instanceof Boolean)) {
+                if (result == null || !(result.get("valid") instanceof Boolean)
+                        || !(result.get("status") instanceof String)
+                        || !(result.get("confidence") instanceof Number)) {
                     throw new IllegalStateException("Malformed VALID response");
                 }
                 boolean accepted = Boolean.TRUE.equals(result.get("valid"));
                 states.moduleFinished(requestId, run, "VALID", accepted ? "COMPLETED" : "REJECTED", null);
                 states.photoTransition(photoId, accepted ? "VALID" : "NOT_VALID",
                         accepted ? "VALIDATION_COMPLETED" : "VALIDATION_REJECTED");
+                if (accepted) {
+                    states.photoTransition(photoId, "VISION_PENDING", "VISION_QUEUED");
+                }
                 if (!accepted) {
                     states.requestTransition(requestId, "RUNNING", "REJECTED", "WORKFLOW_REJECTED", "INVALID_PHOTO");
                 }
