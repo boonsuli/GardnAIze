@@ -51,7 +51,7 @@ class PhotoWorkflowMasterIT {
             // Simulate the new process polling the same durable database.
             master.dispatch();
             assertEquals(0, master.reconcileExpired());
-            verify(worker, never()).execute(requestId, photoId);
+            verify(worker, never()).execute(eq(requestId), eq(photoId), any(PhotoWorkflowFencingService.Lease.class));
         } finally {
             jdbc.update("DELETE FROM garden_projects WHERE id=?", gardenId);
         }
@@ -75,7 +75,7 @@ class PhotoWorkflowMasterIT {
                 VALUES (?,?,?,'ACCEPTED')
                 """, requestId, gardenId, photoId);
             var pending = new CompletableFuture<Void>();
-            when(worker.execute(requestId, photoId)).thenReturn(pending);
+            when(worker.execute(eq(requestId), eq(photoId), any(PhotoWorkflowFencingService.Lease.class))).thenReturn(pending);
             master.dispatch();
             jdbc.update("UPDATE garden_photo_requests SET lease_until=now()+interval '5 seconds' WHERE request_id=?",
                     requestId);
@@ -106,14 +106,14 @@ class PhotoWorkflowMasterIT {
                 INSERT INTO garden_photo_requests(request_id,garden_id,photo_id,status)
                 VALUES (?,?,?,'ACCEPTED')
                 """, requestId, gardenId, photoId);
-            when(worker.execute(requestId, photoId)).thenReturn(CompletableFuture.completedFuture(null));
+            when(worker.execute(eq(requestId), eq(photoId), any(PhotoWorkflowFencingService.Lease.class))).thenReturn(CompletableFuture.completedFuture(null));
             master.dispatch();
             master.dispatch();
             assertEquals("RUNNING", jdbc.queryForObject(
                     "SELECT status FROM garden_photo_requests WHERE request_id=?", String.class, requestId));
             assertEquals(1, jdbc.queryForObject(
                     "SELECT attempt_count FROM garden_photo_requests WHERE request_id=?", Integer.class, requestId));
-            verify(worker, times(1)).execute(requestId, photoId);
+            verify(worker, times(1)).execute(eq(requestId), eq(photoId), any(PhotoWorkflowFencingService.Lease.class));
         } finally {
             jdbc.update("DELETE FROM garden_projects WHERE id=?", gardenId);
         }
