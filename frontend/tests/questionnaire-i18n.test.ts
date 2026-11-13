@@ -18,9 +18,13 @@ for (const language of languages) {
         assert.equal(data.privacy.externalProcessingConsentKey, 'privacy.externalProcessingNotice');
         for (const question of ['exposure', 'soilType', 'waterAvailability',
                 'maintenancePreference', 'evergreenPreferred', 'privacyScreeningRequired',
-                'desiredHeight', 'preferredColors', 'budget', 'gardenStyle']) {
+                'desiredHeight', 'matureSpread', 'rootSpace', 'preferredColors', 'budget', 'gardenStyle']) {
             assert.equal(typeof data.questionnaire[question].label, 'string');
             assert.ok(Object.keys(data.questionnaire[question].options).length > 0);
         }
+        assert.deepEqual(Object.keys(data.questionnaire.matureSpread.options),
+            ['UNDER_1M', 'FROM_1_TO_2M', 'FROM_2_TO_4M', 'OVER_4M', 'NO_PREFERENCE']);
+        assert.deepEqual(Object.keys(data.questionnaire.rootSpace.options),
+            ['VERY_LIMITED', 'LIMITED', 'MODERATE', 'UNRESTRICTED', 'UNKNOWN']);
     });
 }
