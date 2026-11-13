@@ -29,6 +29,27 @@ class PhotoValidationServiceTest {
     }
 
     @Test
+    void asyncValidationReturnsFutureAndUsesConfiguredExecutor() {
+        RestClient client = mock(RestClient.class);
+        RestClient.RequestBodyUriSpec request = mock(RestClient.RequestBodyUriSpec.class, Mockito.RETURNS_SELF);
+        RestClient.ResponseSpec response = mock(RestClient.ResponseSpec.class);
+        when(client.post()).thenReturn(request);
+        when(request.retrieve()).thenReturn(response);
+        when(response.body(Map.class)).thenReturn(Map.of(
+                "valid", true, "status", "VALID", "confidence", 0.98));
+        var service = new PhotoValidationService(client);
+        java.util.concurrent.atomic.AtomicBoolean scheduled = new java.util.concurrent.atomic.AtomicBoolean();
+        service.setValidationExecutor(command -> {
+            scheduled.set(true);
+            command.run();
+        });
+        var photo = new MockMultipartFile("file", "garden.png", "image/png", new byte[] {1, 2});
+        var result = service.validateAsync(photo);
+        assertTrue(scheduled.get());
+        assertEquals("VALID", result.join().get("status"));
+    }
+
+    @Test
     void rejectsUnsupportedMimeBeforeCallingValidator() {
         RestClient client = mock(RestClient.class);
         var photo = new MockMultipartFile("file", "bad.txt", "text/plain", new byte[] {1});
