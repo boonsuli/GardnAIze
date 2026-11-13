@@ -44,3 +44,11 @@ Exposure values: `FULL_SUN`, `PARTIAL_SHADE`, `SHADE`. Soil values: `SANDY`, `LO
 ## Design
 
 Controllers → services → Spring Data JPA repositories → PostgreSQL 18. Flyway migrates the schema and Hibernate validates it. Java `RestClient` calls the AI service with connection/read timeouts. JPA/Hibernate is **blocking**; R2DBC is intentionally not mixed with Hibernate. The frontend uses an API proxy. The garden photo remains **browser-only** and is not sent to the backend. No authentication, file storage or ML model is implemented yet. The demo rules are not verified plant advice. Source indentation: 4 spaces.
+
+## Durable photo processing — merged PR #35
+
+The previous 10 November E2E notes above are historical. The backend now exposes `POST /api/v1/gardens/{gardenId}/photos` (multipart `file`, `description`, `answersJson`, `consentKey`) returning **202 Accepted** with `requestId`, and `GET /api/v1/gardens/{gardenId}/photo-requests/{requestId}` for polling. Consent and required answers are checked server-side. PostgreSQL holds the request, photo, module runs, history, owner, expiry, attempt count and generation.
+
+The Master claims `ACCEPTED` rows using `FOR UPDATE SKIP LOCKED`; the worker executes VALID then VISION with separate executors. Heartbeats renew leases, generation-fenced transactional writes reject stale workers, and an expired lease is atomically quarantined with `LEASE_EXPIRED` audit. `RECONCILIATION_REQUIRED` is **not** an automatic provider retry. Segmentation parallelism and PLANT are separate work.
+
+Read [full state machine, transition conditions, event list and crash tests](../docs/PHOTO_WORKFLOW_PR35.md). Tests: `PhotoWorkflowWorkerIT`, `PhotoWorkflowMasterIT`, `PhotoWorkflowFencingIT`; VALID/VISION HTTP endpoints are stubbed locally to avoid Gemini charges.
