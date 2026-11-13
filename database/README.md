@@ -1,7 +1,7 @@
 # GardnAIze ML database
 
 Two independent PostgreSQL databases in the same Docker instance:
-- `gardnaize` (backend-owned): projects, photos, published recommendations, Flyway managed by Spring Boot.
+- `gardnaize` (backend-owned): application domain schema `app_schema` after backend Flyway V11; legacy `public` tables remain as currently mapped.
 - `gardnaize_ml` (ML-owned): `horticulture` schema, plant taxonomy, provenance, training samples, labels, experiments, separate Flyway CLI history.
 
 ## Initialize and migrate
@@ -9,7 +9,7 @@ From the repository root:
 ```bash
 docker compose -f compose.yaml -f compose.ml.yaml --profile ml run --rm flyway-ml
 ```
-The one-shot `postgres-ml-init` uses `psql` to create `gardnaize_ml` only if absent, then Flyway applies V1-V3 to `horticulture`. Database creation is not a Flyway migration (PostgreSQL CREATE DATABASE cannot execute inside a transaction and Flyway needs to connect to an existing database). No database or volume is deleted. Do not execute the retired manual scripts.
+The one-shot `postgres-ml-init` uses `psql` to create `gardnaize_ml` only if absent, then Flyway applies V1-V4 to `horticulture`. Database creation is not a Flyway migration (PostgreSQL CREATE DATABASE cannot execute inside a transaction and Flyway needs to connect to an existing database). No database or volume is deleted. Do not execute the retired manual scripts.
 
 ## Verify
 ```bash

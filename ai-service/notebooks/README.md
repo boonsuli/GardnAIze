@@ -1,35 +1,23 @@
-# GardnAIze — ML algorithm research
+# GardnAIze — Recherche et comparaison d'algorithmes ML
 
-Six executable Jupyter notebooks for **comparing and selecting algorithms** before production integration.
+Ces six notebooks expérimentent les algorithmes sur des caractéristiques tabulaires ; **ils ne collectent pas de données fournisseurs**.
 
-## Structure
+## Inventaire
+1. `01_data_audit.ipynb` — audit et valeurs manquantes (démo synthétique).
+2. `02_clustering_model_search.ipynb` — K-Means, clustering hiérarchique, DBSCAN.
+3. `03_dimension_reduction.ipynb` — PCA et visualisation.
+4. `04_recommendation_model_search.ipynb` — comparaison de métriques de voisinage.
+5. `05_supervised_target_search.ipynb` — comparaison supervisée dont Random Forest.
+6. `06_selection_report.ipynb` — synthèse et limites des résultats.
 
-- `ai-service/notebooks/`: research notebooks and Python dependencies.
-- `datasets/ml-research/`: synthetic generator and CSV templates for real botanical data.
+## Articulation avec les autres dossiers
+- `../plant-ingestion/` : notebooks numérotés d'ingestion par famille de source et consolidation des CSV/JSON.
+- `../../notebooks/` : classification/validation **d'images** de plantes et jardins.
+- `../../database/migrations/ml/V1__create_horticulture_reference_and_plants.sql` : schéma horticole existant, à préserver.
 
-## Run from WSL / VS Code
+**Pas de doublon à supprimer** : l'audit ML examine les caractéristiques d'un dataset, alors que la consolidation d'ingestion rapproche des enregistrements provenant de plusieurs sources. Les deux étapes peuvent mesurer les doublons, mais avec des objectifs différents.
 
-```bash
-python3 -m venv .venv-ml
-source .venv-ml/bin/activate
-pip install -r ai-service/notebooks/requirements-ml-research.txt
-python datasets/ml-research/generate_synthetic_demo.py
-code .
-```
+## Règles scientifiques
+Les données synthétiques ne sont pas des faits botaniques. Pour KNN supervisé, des catégories fiables et étiquetées sont indispensables ; le notebook de recherche de voisinage n'est pas une preuve d'un classifieur KNN déjà entraîné. Entraîner et évaluer les modèles sur un catalogue consolidé commun, avec séparation anti-fuite entre apprentissage et test. K-Means produit des clusters, pas des catégories validées. Le matching Random Forest nécessite des exemples jardin–plante labellisés.
 
-Select the `.venv-ml` Python kernel. Run notebooks 01–06 in order. Notebook 06 reads score CSVs produced by 02 and 05.
-
-## Notebooks
-
-1. Data audit and missing values
-2. K-Means / agglomerative / DBSCAN clustering comparison
-3. PCA visualization
-4. Euclidean / Manhattan / cosine nearest-neighbor ranking exploration
-5. Dummy / logistic regression / decision tree / random forest / histogram gradient boosting supervised comparison
-6. Selection report and evidence limitations
-
-## Scientific cautions
-
-The generated 600 records are **synthetic**, not botanical facts or evidence of real-world accuracy. Replace them with documented, appropriately licensed plant data. A supervised model requires sufficiently reliable labels. Avoid target leakage and group close species/cultivars in evaluation. Cluster silhouette alone cannot validate horticultural usefulness. Recommendation ranking requires independent garden–plant relevance labels before a metric-based winner can be declared. Never silently replace verified plant needs with predicted values.
-
-These experiments are deliberately separate from the FastAPI production runtime. Future experiments (CNN / transfer learning) may be added independently.
+Ne pas écraser des attributs vérifiés par des valeurs prédites. La complétude et la qualité des données conditionnent l'admissibilité au matching.
