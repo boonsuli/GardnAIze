@@ -39,3 +39,6 @@ The existing `database/migrations/ml/V1__create_horticulture_reference_and_plant
 ## PostgreSQL namespace convention
 
 Application domain: database `gardnaize`, schema `app_schema` after backend Flyway V11. Research ingestion: separate database `gardnaize_ml`, schema `horticulture`. The notebooks must not write directly to `app_schema`; publish validated, mapped exports only. Existing JPA `public` mappings are not modified by the schema rename.
+
+## Garden image review and merchant budgets (V5)
+See [GARDEN_REVIEW.md](GARDEN_REVIEW.md). `005_garden_visual_review.ipynb` reviews one local image at a time and saves decisions. `garden_review.py` assigns deterministic splits by garden identity. `authorized_sources.py` defines opt-in CSV adapters for Truffaut, Leroy Merlin, Vegetalo, Bakker, Gamm vert and Roue Pépinières; it does **not** scrape sites or imply permissions. Flyway ML V5 adds garden review records and merchant offers. `database/scripts/import_garden_reviews.py` and `import_merchant_offers.py` perform transactional upserts, default dry-run. No real garden images or merchant exports have been acquired or committed.
