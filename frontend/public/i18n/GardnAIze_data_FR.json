@@ -96,6 +96,26 @@
                 "MEDITERRANEAN": "Méditerranéen",
                 "NO_PREFERENCE": "Sans préférence"
             }
+        },
+        "matureSpread": {
+            "label": "Quel espace maximal pouvez-vous laisser à la plante en largeur à maturité (feuillage et branches) ?",
+            "options": {
+                "UNDER_1M": "Moins de 1 m de diamètre",
+                "FROM_1_TO_2M": "De 1 à 2 m",
+                "FROM_2_TO_4M": "De 2 à 4 m",
+                "OVER_4M": "Plus de 4 m",
+                "NO_PREFERENCE": "Aucune contrainte particulière"
+            }
+        },
+        "rootSpace": {
+            "label": "Quelle place est disponible pour le développement des racines, en tenant compte des murs, fondations, canalisations et terrasses ?",
+            "options": {
+                "VERY_LIMITED": "Très limitée : bac ou jardinière",
+                "LIMITED": "Limitée : petite zone proche d'aménagements",
+                "MODERATE": "Modérée : massif avec un peu de recul",
+                "UNRESTRICTED": "Importante : pleine terre éloignée des aménagements",
+                "UNKNOWN": "Je ne sais pas"
+            }
         }
     },
     "questionnaireTitle": "Questions sur votre jardin",
