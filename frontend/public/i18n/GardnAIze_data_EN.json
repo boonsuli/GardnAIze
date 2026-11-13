@@ -96,6 +96,26 @@
                 "MEDITERRANEAN": "Mediterranean",
                 "NO_PREFERENCE": "No preference"
             }
+        },
+        "matureSpread": {
+            "label": "How much horizontal space can the plant occupy at maturity (foliage and branches)?",
+            "options": {
+                "UNDER_1M": "Less than 1 m across",
+                "FROM_1_TO_2M": "1 to 2 m",
+                "FROM_2_TO_4M": "2 to 4 m",
+                "OVER_4M": "More than 4 m",
+                "NO_PREFERENCE": "No particular restriction"
+            }
+        },
+        "rootSpace": {
+            "label": "How much space is available for root growth, considering walls, foundations, pipes and patios?",
+            "options": {
+                "VERY_LIMITED": "Very limited: container or planter",
+                "LIMITED": "Limited: small area near structures",
+                "MODERATE": "Moderate: planting bed with some clearance",
+                "UNRESTRICTED": "Ample: open ground away from structures",
+                "UNKNOWN": "I don't know"
+            }
         }
     },
     "questionnaireTitle": "Questions about your garden",
