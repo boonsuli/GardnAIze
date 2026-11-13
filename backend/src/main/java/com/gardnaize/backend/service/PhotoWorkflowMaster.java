@@ -1,6 +1,9 @@
 package com.gardnaize.backend.service;
 
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,6 +20,7 @@ public class PhotoWorkflowMaster {
     private final PhotoWorkflowWorker worker;
     private final PhotoWorkflowStateService states;
     private final String owner = UUID.randomUUID().toString();
+    private final Map<UUID, CompletableFuture<Void>> active = new ConcurrentHashMap<>();
 
     public PhotoWorkflowMaster(JdbcTemplate jdbc, PhotoWorkflowWorker worker,
                                PhotoWorkflowStateService states) {
@@ -40,11 +44,12 @@ public class PhotoWorkflowMaster {
             )
             UPDATE public.garden_photo_requests r
             SET status='RUNNING', attempt_count=r.attempt_count+1,
+                lease_generation=r.lease_generation+1,
                 lease_owner=?, lease_until=now()+interval '180 seconds', updated_at=now()
             FROM candidate c WHERE r.request_id=c.request_id
-            RETURNING r.request_id,r.photo_id,r.attempt_count
+            RETURNING r.request_id,r.photo_id,r.attempt_count,r.lease_generation
             """, (rs, row) -> new Claimed(
-                    (UUID) rs.getObject(1), (UUID) rs.getObject(2), rs.getInt(3)), owner);
+                    (UUID) rs.getObject(1), (UUID) rs.getObject(2), rs.getInt(3), rs.getLong(4)), owner);
         for (var item : claimed) {
             try {
                 jdbc.update("""
@@ -54,7 +59,9 @@ public class PhotoWorkflowMaster {
                     """, item.requestId());
                 log.info("event=WORKER_CLAIMED requestId={} photoId={} attempt={}",
                         item.requestId(), item.photoId(), item.attempt());
-                worker.execute(item.requestId(), item.photoId());
+                var future = worker.execute(item.requestId(), item.photoId());
+                active.put(item.requestId(), future);
+                future.whenComplete((result, failure) -> active.remove(item.requestId(), future));
             } catch (RuntimeException ex) {
                 log.error("event=WORKER_DISPATCH_FAILED requestId={} errorType={}",
                         item.requestId(), ex.getClass().getSimpleName());
@@ -67,8 +74,48 @@ public class PhotoWorkflowMaster {
                 }
             }
         }
-        // Expired RUNNING leases require manual reconciliation, not blind replay.
+        reconcileExpired();
     }
 
-    private record Claimed(UUID requestId, UUID photoId, int attempt) {}
+
+    @Scheduled(fixedDelayString = "${gardnaize.workflow.heartbeat-ms:30000}",
+            initialDelayString = "${gardnaize.workflow.heartbeat-ms:30000}")
+    public void heartbeat() {
+        active.forEach((requestId, future) -> {
+            if (future.isDone()) return;
+            int updated = jdbc.update("""
+                UPDATE public.garden_photo_requests SET lease_until=now()+interval '180 seconds'
+                WHERE request_id=? AND lease_owner=? AND status='RUNNING'
+                  AND lease_until > now()
+                """, requestId, owner);
+            if (updated == 0) log.warn("event=LEASE_LOST requestId={}", requestId);
+        });
+    }
+
+    /** Ambiguous remote calls are quarantined, never automatically billed twice. */
+    public int reconcileExpired() {
+        var expired = jdbc.query("""
+            WITH expired AS (
+                SELECT request_id FROM public.garden_photo_requests
+                WHERE status='RUNNING' AND lease_until < now()
+                ORDER BY lease_until LIMIT 100 FOR UPDATE SKIP LOCKED
+            )
+            UPDATE public.garden_photo_requests r
+            SET status='RECONCILIATION_REQUIRED',lease_owner=NULL,lease_until=NULL,
+                lease_generation=r.lease_generation+1,updated_at=now()
+            FROM expired e WHERE r.request_id=e.request_id
+            RETURNING r.request_id
+            """, (rs, index) -> (UUID) rs.getObject(1));
+        for (UUID requestId : expired) {
+            jdbc.update("""
+                INSERT INTO public.garden_photo_request_history
+                    (request_id,previous_status,status,event_code,error_code)
+                VALUES (?,'RUNNING','RECONCILIATION_REQUIRED','LEASE_EXPIRED','RECOVERY_REVIEW_REQUIRED')
+                """, requestId);
+            log.warn("event=LEASE_EXPIRED requestId={} status=RECONCILIATION_REQUIRED", requestId);
+        }
+        return expired.size();
+    }
+
+    private record Claimed(UUID requestId, UUID photoId, int attempt, long generation) {}
 }
