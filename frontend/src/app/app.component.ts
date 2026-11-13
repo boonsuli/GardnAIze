@@ -6,7 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { finalize, forkJoin, switchMap } from 'rxjs';
+import { finalize, forkJoin, switchMap, timer, takeWhile, Subscription, take } from 'rxjs';
 import { LoggerService } from './core/logger.service';
 import {
     GardenApiService, Exposure, SoilType, RequirementLevel, PlantSuggestion, QuestionnaireCatalog
@@ -44,6 +44,8 @@ export class AppComponent {
     readonly consentAccepted = signal(false);
     readonly workflowLoading = signal(false);
     private selectedPhoto: File | null = null;
+    private processingPoll?: Subscription;
+    readonly processingRequestId = signal<string | null>(null);
     readonly exposure = signal<Exposure>('FULL_SUN');
     readonly soilType = signal<SoilType>('UNKNOWN');
     readonly waterAvailability = signal<RequirementLevel>('MODERATE');
@@ -131,8 +133,12 @@ export class AppComponent {
             finalize(() => this.workflowLoading.set(false))
         ).subscribe({
             next: result => {
-                this.message.set('GDAI-BACK a répondu. Statut du traitement : ' + result.photoStatus);
+                this.processingRequestId.set(result.requestId);
+                this.message.set(this.language() === 'FR'
+                    ? 'Nous avons bien reçu votre demande. Elle est enregistrée sous le numéro ' + result.requestId
+                    : 'We have received your request. Your request number is ' + result.requestId);
                 this.consentVisible.set(false);
+                this.startProcessingPolling(result.gardenId, result.requestId);
             },
             error: () => {
                 this.message.set(this.translate('privacy.error'));
@@ -141,7 +147,28 @@ export class AppComponent {
         });
     }
 
+    private startProcessingPolling(gardenId: string, requestId: string): void {
+        this.processingPoll?.unsubscribe();
+        this.processingPoll = timer(2000, 3000).pipe(
+            take(100),
+            switchMap(() => this.gardenApi.getPhotoRequest(gardenId, requestId)),
+            takeWhile(result => !['COMPLETED', 'FAILED', 'REJECTED'].includes(result.status), true)
+        ).subscribe({
+            next: result => {
+                if (result.status === 'COMPLETED' || result.status === 'FAILED' || result.status === 'REJECTED') {
+                    this.message.set((this.language() === 'FR' ? 'Demande ' : 'Request ')
+                        + requestId + ' : ' + result.status);
+                }
+            },
+            error: () => this.message.set(this.language() === 'FR'
+                ? 'Suivi temporairement indisponible. Conservez le numéro ' + requestId
+                : 'Status temporarily unavailable. Keep request number ' + requestId)
+        });
+    }
+
     resetPhotoWorkflow(): void {
+        this.processingPoll?.unsubscribe();
+        this.processingRequestId.set(null);
         const oldPreview = this.preview();
         if (oldPreview) {
             URL.revokeObjectURL(oldPreview);
