@@ -152,10 +152,10 @@ export class AppComponent {
         this.processingPoll = timer(2000, 3000).pipe(
             take(100),
             switchMap(() => this.gardenApi.getPhotoRequest(gardenId, requestId)),
-            takeWhile(result => !['COMPLETED', 'FAILED', 'REJECTED'].includes(result.status), true)
+            takeWhile(result => !['COMPLETED', 'FAILED', 'REJECTED', 'RECONCILIATION_REQUIRED'].includes(result.status), true)
         ).subscribe({
             next: result => {
-                if (result.status === 'COMPLETED' || result.status === 'FAILED' || result.status === 'REJECTED') {
+                if (result.status === 'COMPLETED' || result.status === 'FAILED' || result.status === 'REJECTED' || result.status === 'RECONCILIATION_REQUIRED') {
                     this.message.set((this.language() === 'FR' ? 'Demande ' : 'Request ')
                         + requestId + ' : ' + result.status);
                 }
