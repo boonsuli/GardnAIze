@@ -49,6 +49,6 @@ class PhotoProcessingRequestServiceTest {
         assertEquals(photoId, accepted.photoId());
         assertEquals("ACCEPTED", accepted.status());
         assertTrue(accepted.statusUrl().endsWith(accepted.requestId().toString()));
-        verify(jdbc, times(3)).update(anyString(), any(Object[].class));
+        verify(photos).upload(gardenId, photo, "test");
     }
 }
