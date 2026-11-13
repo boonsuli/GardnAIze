@@ -103,7 +103,11 @@ class PhotoWorkflowWorkerIT {
                 "{\"exposure\":\"FULL_SUN\",\"waterAvailability\":\"LOW\",\"maintenancePreference\":\"LOW\"}",
                 "privacy.externalProcessingNotice");
         assertEquals("ACCEPTED", accepted.status());
-        states.requestTransition(accepted.requestId(), "ACCEPTED", "RUNNING", "TEST_CLAIMED", null);
+        jdbc.update("""
+            UPDATE garden_photo_requests SET status='RUNNING',lease_owner='worker-it',
+              lease_until=now()+interval '180 seconds',lease_generation=1
+            WHERE request_id=?
+            """, accepted.requestId());
         return new Fixture(gardenId, accepted.photoId(), accepted.requestId());
     }
 
