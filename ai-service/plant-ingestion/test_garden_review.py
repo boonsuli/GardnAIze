@@ -19,7 +19,7 @@ class GardenReviewTest(unittest.TestCase):
     def test_duplicate_manifest_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             path=Path(d)/"images.csv"
-            path.write_text("source_key,external_id,garden_group_key\\ns,x,g\\ns,x,g\\n")
+            path.write_text("source_key,external_id,garden_group_key\ns,x,g\ns,x,g\n", encoding="utf-8")
             with self.assertRaises(ValueError):load_manifest(path)
 
 if __name__=="__main__": unittest.main()
