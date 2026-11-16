@@ -7,7 +7,12 @@
         "acceptAndContinue": "J’accepte et je lance l’analyse",
         "consentTitle": "Autorisation d’analyse de votre photo",
         "pending": "Demande reçue, traitement en cours…",
-        "error": "La demande n’a pas pu être transmise. Veuillez réessayer."
+        "error": "La demande n’a pas pu être transmise. Veuillez réessayer.",
+        "trainingConsentTitle": "Autorisation d'utilisation de ma photo pour améliorer GardnAIze",
+        "trainingConsentNotice": "Souhaitez-vous contribuer à l'amélioration de GardnAIze ? Avec votre accord, GardnAIze pourra conserver et réutiliser la photo de votre jardin pour constituer des jeux de données, entraîner, tester et améliorer ses modèles d'intelligence artificielle. Cette utilisation est facultative et indépendante de l'analyse nécessaire à vos recommandations de plantes. Votre refus n'empêchera pas l'utilisation du service. Vous pourrez retirer votre autorisation ultérieurement : GardnAIze cessera alors les nouvelles utilisations de votre photo pour l'entraînement et la retirera des jeux de données actifs, selon les modalités précisées dans sa politique de confidentialité. Acceptez-vous cette utilisation ?",
+        "trainingConsentAccept": "J'autorise l'utilisation de ma photo pour l'entraînement",
+        "trainingConsentDecline": "Non, merci. Continuer sans contribuer à l'entraînement",
+        "trainingConsentKey": "privacy.trainingConsentNotice"
     },
     "questionnaire": {
         "exposure": {
