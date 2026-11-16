@@ -39,7 +39,7 @@ def main():
                 if total>250*1024*1024:raise ValueError("Download exceeds 250 MiB")
                 h.update(chunk);f.write(chunk)
         with tmp.open("rb") as f:
-            if f.read(4)!=b"PK\\x03\\x04":raise ValueError("Not a ZIP archive")
+            if f.read(4)!=bytes((80,75,3,4)):raise ValueError("Not a ZIP archive")
         tmp.replace(a.output)
     finally:
         if tmp.exists():tmp.unlink()
