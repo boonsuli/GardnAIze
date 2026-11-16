@@ -11,6 +11,12 @@ for (const language of languages) {
         assert.equal(typeof data.privacy.externalProcessingNotice, 'string');
         assert.equal(typeof data.privacy.consentTitle, 'string');
         assert.equal(typeof data.privacy.pending, 'string');
+        assert.equal(typeof data.privacy.trainingConsentTitle, 'string');
+        assert.equal(typeof data.privacy.trainingConsentNotice, 'string');
+        assert.equal(typeof data.privacy.trainingConsentAccept, 'string');
+        assert.equal(typeof data.privacy.trainingConsentDecline, 'string');
+        assert.equal(data.privacy.trainingConsentKey, 'privacy.trainingConsentNotice');
+        assert.notEqual(data.privacy.trainingConsentNotice, data.privacy.externalProcessingNotice);
         assert.equal(typeof data.privacy.error, 'string');
         assert.ok(data.privacy.externalProcessingNotice.length > 200);
         assert.equal(typeof data.privacy.refuse, 'string');
