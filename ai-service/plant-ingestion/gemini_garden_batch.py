@@ -8,13 +8,14 @@ import base64
 import json
 import mimetypes
 import os
+import hashlib
 from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
-KEYS = ("lawn","terrace","pathway","trees","shrubs","fence")
+KEYS = ("lawn","terrace","pathway","trees","shrubs","fence","low_wall","stairs","slope")
 PROMPT = """Analyze this garden photograph. Return ONLY a JSON object with keys
-lawn, terrace, pathway, trees, shrubs, fence, each boolean true/false if
+lawn, terrace, pathway, trees, shrubs, fence, low_wall, stairs, slope, each boolean true/false if
 visually clear; use null when uncertain or not visible. Do not infer soil,
 climate, sun hours, garden size, or plant species. Include a short 'notes'
 string. Treat absence of evidence as null, not false."""
@@ -41,7 +42,7 @@ def analyze(path, key, model):
     for name in KEYS:
         if name not in features or features[name] not in (True,False,None):
             raise ValueError(f"Invalid or missing feature {name}")
-    return features
+    return features, result.get("usageMetadata", {})
 
 def main():
     parser=argparse.ArgumentParser()
@@ -75,15 +76,22 @@ def main():
                 image_path=Path(uri).resolve()
                 if not image_path.is_relative_to(root) or not image_path.is_file():
                     raise ValueError("Image not found inside approved local image root")
-                features=analyze(image_path,key,args.model)
+                features, usage=analyze(image_path,key,args.model)
                 with conn.cursor() as cur:
                     cur.execute("""INSERT INTO horticulture.ml_garden_features
                       (image_id,feature_values,feature_source,feature_model_version,reviewed)
                       VALUES (%s,%s::jsonb,'GEMINI_VISION',%s,false)
                       ON CONFLICT (image_id) DO NOTHING""",
                       (image_id,json.dumps(features,ensure_ascii=False),args.model))
+                    cur.execute("""INSERT INTO horticulture.ml_gemini_usage
+                      (image_id,model_name,prompt_tokens,output_tokens,total_tokens,
+                       image_sha256,request_status)
+                      VALUES (%s,%s,%s,%s,%s,%s,'SUCCEEDED')""",
+                      (image_id,args.model,usage.get("promptTokenCount"),
+                       usage.get("candidatesTokenCount"),usage.get("totalTokenCount"),
+                       hashlib.sha256(image_path.read_bytes()).hexdigest()))
                 conn.commit()
-                print(f"Saved image_id={image_id} reviewed=false")
+                print(f"Saved image_id={image_id} reviewed=false usage={usage}")
             except (ValueError,KeyError,HTTPError,URLError,TimeoutError,OSError) as exc:
                 conn.rollback()
                 print(f"FAILED image_id={image_id}: {type(exc).__name__}: {exc}")
