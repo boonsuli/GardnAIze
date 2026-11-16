@@ -5,8 +5,7 @@ The merchant/scientific notebooks accept authorized local CSV files; they do not
 download GBIF, POWO or merchant catalogs. Questionnaire-related plant fields
 exist in horticulture.plant but have not been verified as populated.
 The existing KNN/K-Means research notebooks do not read production PostgreSQL.
-The new postgres_ml.py is a **K-Means integration baseline**, not a finished
-image classifier or a trained KNN. It needs manually reviewed visual features.
+The new postgres_ml.py provides **K-Means and optional supervised KNN integration baselines**, not a finished image classifier or pre-trained models. It needs manually reviewed visual features.
 
 ## Isolation
 - gardnaize.app_schema: user photo, answers, consent and live recommendations.
@@ -36,6 +35,9 @@ the image and analysis. Do not use Gemini predictions as verified ground truth.
 ```bash
 python ai-service/plant-ingestion/postgres_ml.py --dataset-id 1 --clusters 3
 python ai-service/plant-ingestion/postgres_ml.py --dataset-id 1 --clusters 3 --apply
+# KNN requires at least two independent HUMAN/EXPERT-labelled TRAIN records
+# spanning at least two classes in horticulture.ml_garden_label:
+python ai-service/plant-ingestion/postgres_ml.py --dataset-id 1 --label-type garden_style
 ```
 Replace dataset-id with the ID printed by the snapshot script. K-Means fits
 on TRAIN only; VAL/TEST receive assignments but are not used for fitting.
@@ -45,7 +47,7 @@ This is a six-boolean baseline, not an image embedding model.
 - Authorized botanical provider imports and evidence-based questionnaire fields.
 - Extract visual features from accepted images (Gemini Vision or local model)
   with model provenance and human review.
-- Add expert-labelled classes and split-safe KNN training/evaluation.
+- Populate expert-labelled classes and add split-safe KNN evaluation metrics.
 - Snapshot plant datasets, persist ML experiment metrics and model artifacts,
   enforce snapshot immutability, add integration tests and CI.
 - Image SHA256 must be calculated from image bytes; current snapshot fallback
