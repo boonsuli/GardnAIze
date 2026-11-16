@@ -57,6 +57,11 @@ def main():
     if not dsn:
         raise SystemExit("GARDNAIZE_ML_DATABASE_URL required")
     import psycopg
+    # Accept both SQLAlchemy URLs and native psycopg URLs without logging secrets.
+    if dsn.startswith("postgresql+psycopg://"):
+        dsn = "postgresql://" + dsn[len("postgresql+psycopg://"):]
+    elif dsn.startswith("postgresql+psycopg2://"):
+        dsn = "postgresql://" + dsn[len("postgresql+psycopg2://"):]
     with psycopg.connect(dsn) as conn:
         with conn.cursor() as cur:
             cur.execute("""SELECT g.image_id,g.image_uri FROM horticulture.garden_image_candidate g
