@@ -7,7 +7,12 @@
         "acceptAndContinue": "I agree and start the analysis",
         "consentTitle": "Permission to analyze your photo",
         "pending": "Request received, processing…",
-        "error": "The request could not be submitted. Please try again."
+        "error": "The request could not be submitted. Please try again.",
+        "trainingConsentTitle": "Permission to use my photo to improve GardnAIze",
+        "trainingConsentNotice": "Would you like to help improve GardnAIze? With your consent, GardnAIze may retain and reuse your garden photo to build datasets and to train, test, and improve its artificial intelligence models. This use is optional and separate from the analysis required to provide your plant recommendations. Declining will not prevent you from using the service. You may withdraw your permission later: GardnAIze will then stop using your photo for new training activities and remove it from active datasets, as described in its privacy policy. Do you agree to this use?",
+        "trainingConsentAccept": "Allow my photo to be used for training",
+        "trainingConsentDecline": "No, thanks. Continue without contributing to training",
+        "trainingConsentKey": "privacy.trainingConsentNotice"
     },
     "questionnaire": {
         "exposure": {
