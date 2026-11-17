@@ -40,7 +40,7 @@ def main():
     if not dsn:
         raise SystemExit("GARDNAIZE_ML_DATABASE_URL required")
     import psycopg
-    with psycopg.connect(dsn) as conn:
+    with psycopg.connect(dsn.replace('postgresql+psycopg://','postgresql://',1)) as conn:
         with conn.cursor() as cur:
             for row in rows:
                 cur.execute("""INSERT INTO horticulture.ml_taxon_source_staging
