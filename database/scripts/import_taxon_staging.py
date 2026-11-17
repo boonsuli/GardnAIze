@@ -1,4 +1,4 @@
-"""Import GBIF JSON or approved WCVP/Tela CSV into ML staging. Dry-run default."""
+"""Import GBIF JSON/CSV or approved WCVP/Tela/merchant CSV into ML staging. Dry-run default."""
 import argparse,csv,json,os
 from pathlib import Path
 
@@ -13,8 +13,8 @@ def records(path,source,version):
             yield (source,str(row["gbif_usage_key"]),row["input_name"],
                    row.get("canonical_name"),row["source_url"],version,json.dumps(row))
     else:
-        if source not in ("WCVP","TELA_BOTANICA","MERCHANT_AUTHORIZED"):
-            raise ValueError("CSV source must be WCVP, TELA_BOTANICA or MERCHANT_AUTHORIZED")
+        if source not in ("GBIF","WCVP","TELA_BOTANICA","MERCHANT_AUTHORIZED"):
+            raise ValueError("CSV source must be GBIF, WCVP, TELA_BOTANICA or MERCHANT_AUTHORIZED")
         with path.open(encoding="utf-8-sig",newline="") as f:
             for row in csv.DictReader(f):
                 if not all(row.get(k) for k in ("external_id","scientific_name","source_url")):
