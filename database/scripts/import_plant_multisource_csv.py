@@ -100,6 +100,8 @@ def main():
     p.add_argument("--apply",action="store_true")
     a=p.parse_args()
     rows=load(a.csv)
+    if not rows:
+        raise SystemExit("No plant rows found: CSV contains only headers. Nothing imported.")
     print(f"records={len(rows)} unique_canonical_keys={len(set(r['_key'] for r in rows))} apply={a.apply}")
     if not a.apply: return
     import psycopg
