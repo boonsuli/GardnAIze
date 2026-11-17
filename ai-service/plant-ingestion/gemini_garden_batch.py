@@ -76,11 +76,18 @@ def main():
         if not key:
             raise SystemExit("GEMINI_API_KEY required for --apply")
         root=args.image_root.resolve()
+        ingestion_root=Path(__file__).resolve().parent
         for image_id,uri in rows:
             try:
-                image_path=Path(uri).resolve()
-                if not image_path.is_relative_to(root) or not image_path.is_file():
-                    raise ValueError("Image not found inside approved local image root")
+                stored_path=Path(uri)
+                # DB paths are relative to plant-ingestion (e.g. inputs/images/x.webp).
+                # Absolute paths remain supported, but only inside the approved root.
+                image_path=(stored_path if stored_path.is_absolute()
+                            else ingestion_root / stored_path).resolve()
+                if not image_path.is_relative_to(root):
+                    raise ValueError(f"Image path is outside approved root: {image_path}")
+                if not image_path.is_file():
+                    raise FileNotFoundError(f"Image file does not exist: {image_path}")
                 features, usage=analyze(image_path,key,args.model)
                 with conn.cursor() as cur:
                     cur.execute("""INSERT INTO horticulture.ml_garden_features
