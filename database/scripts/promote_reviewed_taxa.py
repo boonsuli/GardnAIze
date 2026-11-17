@@ -53,6 +53,6 @@ def main():
                           source_version=EXCLUDED.source_version,
                           license_id=EXCLUDED.license_id,
                           payload=EXCLUDED.payload,retrieved_at=now()""",
-                        (source,ext,plant_id,url,version,a.license_id,json.dumps(payload) if isinstance(payload,str) else json.dumps(payload)))
+                        (source,ext,plant_id,url,version,a.license_id,payload if isinstance(payload,str) else json.dumps(payload)))
         print("Committed taxonomy-only PENDING plants. Horticultural suitability remains unverified.")
 if __name__=="__main__":main()
