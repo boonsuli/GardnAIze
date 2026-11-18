@@ -29,3 +29,7 @@ npm run build
 Local UI: http://localhost:4200. Docker/Nginx UI: http://localhost:8080.
 
 **E2E demonstration objective:** 15 December 2026. This date describes the intended demonstration, not the readiness of each capability.
+
+### Future B2B embedded experience
+
+A future version of GardnAIze may be embedded into merchant websites through **Web connectors**, allowing customers to receive garden-specific recommendations and an **editable, pre-filled basket** of plants and useful gardening products (soil, mulch, tools and watering supplies). Basket transfer and checkout would remain under the merchant's control. **No Web connector, merchant basket synchronization or checkout integration is claimed as implemented in the current MVP.**
