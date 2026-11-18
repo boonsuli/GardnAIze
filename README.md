@@ -8,9 +8,17 @@
 
 ## Overview
 
-GardnAIze helps individuals identify plants suited to their garden, climate and preferences. A user provides a garden photo, confirms garden information, answers a short questionnaire and receives explained plant recommendations. The project is developed as part of the Alyra AI Development program.
+GardnAIze is an AI-powered garden recommendation product designed for **individual gardeners (B2C)** and **garden retailers, nurseries and e-commerce platforms (B2B)**. Individuals can analyze their garden and discover suitable plants; merchants can eventually integrate personalized recommendations into their online shopping experience. The project is currently developed as part of the Alyra AI Development program.
 
-**Demonstration objective:** an integrated end-to-end (E2E) MVP demonstration on **15 December 2026**. This is a target, not a claim that the entire AI pipeline is already operational.
+**Demonstration objective:** an integrated end-to-end (E2E) MVP demonstration on **15 December 2026**, as a technical validation milestone toward a commercial product. This is not a product launch date or a claim that the entire AI pipeline is already operational.
+
+## Product audiences and distribution
+
+- **B2C — Individual gardeners:** garden-photo analysis, personalized plant selection, understandable recommendations and optional visual previews.
+- **B2B — Garden retailers and plant e-commerce websites:** potential integration through GardnAIze APIs and UI components to guide customers toward suitable products and support purchasing decisions.
+- **Retail catalog examples:** Truffaut, Leroy Merlin, botanic, Willemse and other garden merchants are possible data-source or distribution examples, **not confirmed partners or authorized commercial data providers**.
+
+Research-stage collection or scraping does not automatically authorize commercial reuse of product descriptions, photos, prices or catalog databases. Commercial ingestion and retailer integration require verification of applicable rights, source terms, provenance and, where needed, permission or a licensing agreement.
 
 ## User experience
 
@@ -86,4 +94,4 @@ See [local deployment](docs/deployment-local.md), [photo workflow](docs/PHOTO_WO
 
 The MVP focuses on European outdoor gardens. Recommendations depend on climate, exposure, soil, water requirements and user preferences. Botanical sources and photo datasets must be checked for provenance, licenses and reuse permissions. User consent for external vision processing is separate from consent to reuse photos for training.
 
-GardnAIze is an evolving MVP, not a production-certified horticultural advisory service. Models, datasets and optional providers may be unavailable in a local installation.
+GardnAIze is an evolving MVP intended to become a commercial B2C/B2B product, not yet a production-certified horticultural advisory service. Models, datasets and optional providers may be unavailable in a local installation.
