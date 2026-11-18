@@ -33,3 +33,5 @@ Local UI: http://localhost:4200. Docker/Nginx UI: http://localhost:8080.
 ### Future B2B embedded experience
 
 A future version of GardnAIze may be embedded into merchant websites through **Web connectors**, allowing customers to receive garden-specific recommendations and an **editable, pre-filled basket** of plants and useful gardening products (soil, mulch, tools and watering supplies). Basket transfer and checkout would remain under the merchant's control. **No Web connector, merchant basket synchronization or checkout integration is claimed as implemented in the current MVP.**
+
+The future B2B offer also includes a **paid API** for merchants and third-party developers building their own interfaces. This is distinct from the ready-to-embed Web connector offer and is not yet commercially available.
