@@ -78,7 +78,7 @@ services:
         environment:
             LOG_LEVEL: "${AI_LOG_LEVEL:-INFO}"
             GEMINI_API_KEY: "${GEMINI_API_KEY:-}"
-            GEMINI_MODEL: "${GEMINI_MODEL:-gemini-2.5-flash}"
+            GEMINI_MODEL: "${GEMINI_MODEL:-gemini-3.8-flash}"
         ports:
             - "127.0.0.1:${AI_PORT:-8000}:8000"
         restart: unless-stopped
