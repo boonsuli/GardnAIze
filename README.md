@@ -8,7 +8,7 @@
   <img alt="Machine Learning: KNN" src="https://img.shields.io/badge/Machine%20Learning-KNN-3776AB" />
   <img alt="Clustering: K-Means" src="https://img.shields.io/badge/Clustering-K--Means-3776AB" />
   <img alt="Recommendation: Random Forest target" src="https://img.shields.io/badge/Recommendation-Random%20Forest%20target-228B22" />
-  <img alt="Vision: Gemini 2.5 Flash" src="https://img.shields.io/badge/Vision-Gemini%202.5%20Flash-4285F4" />
+  <img alt="Vision: Gemini 3.8 Flash" src="https://img.shields.io/badge/Vision-Gemini%203.8%20Flash-4285F4" />
   <img alt="Frontend: Angular 21" src="https://img.shields.io/badge/Frontend-Angular%2021-DD0031" />
   <img alt="Backend: Spring Boot 3.5.7" src="https://img.shields.io/badge/Backend-Spring%20Boot%203.5.7-6DB33F" />
   <img alt="AI API: FastAPI" src="https://img.shields.io/badge/AI%20API-FastAPI-009688" />
