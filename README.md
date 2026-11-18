@@ -95,3 +95,7 @@ See [local deployment](docs/deployment-local.md), [photo workflow](docs/PHOTO_WO
 The MVP focuses on European outdoor gardens. Recommendations depend on climate, exposure, soil, water requirements and user preferences. Botanical sources and photo datasets must be checked for provenance, licenses and reuse permissions. User consent for external vision processing is separate from consent to reuse photos for training.
 
 GardnAIze is an evolving MVP intended to become a commercial B2C/B2B product, not yet a production-certified horticultural advisory service. Models, datasets and optional providers may be unavailable in a local installation.
+
+### Future merchant Web connectors (B2B)
+
+A future GardnAIze offering will provide **Web connectors** that merchants can embed in their own garden retail and plant e-commerce sites. After analyzing a customer's garden and preferences, GardnAIze could propose an **editable, pre-filled shopping basket** with compatible plants and relevant complementary gardening supplies (for example potting soil, mulch, fertilizer, planting tools and watering equipment), matched to the merchant's authorized product catalog and stock information where available. The merchant retains control of its checkout, payments, orders and fulfillment; GardnAIze does not process the sale. **These connectors, basket integrations and merchant catalog mappings are future product capabilities, not implemented for the 15 December 2026 E2E demonstration.**
