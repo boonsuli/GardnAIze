@@ -9,7 +9,7 @@ GardnAIze separates application persistence from horticultural and machine-learn
 | `gardnaize` | Gardens, photos, questionnaire answers, consent, asynchronous workflow and recommendations; managed by GDAI-BACK |
 | `gardnaize_ml` | `horticulture` schema: plant taxonomy, source provenance, catalog attributes and ML datasets |
 
-The plant catalog is intended to supply climate, exposure, soil, water and plant-growth attributes to GDAI-PLANT's Random Forest workflow. Taxonomic sources alone do not necessarily contain horticultural suitability information. Catalog completeness and model-ready labels must be verified; migrations alone do not populate a usable catalog.
+The plant catalog is intended to supply climate, exposure, soil, water and plant-growth attributes to GDAI-PLANT's Random Forest workflow. Potential commercial contexts include plant retailers and e-commerce catalogs such as Truffaut, Leroy Merlin, botanic and Willemse; these examples do not imply partnership, permission or data licensing. Research-stage scraping must be reviewed separately for commercial use, including database rights, images, descriptions, source terms and provenance. Taxonomic sources alone do not necessarily contain horticultural suitability information. Catalog completeness and model-ready labels must be verified; migrations alone do not populate a usable catalog.
 
 ## Initialize ML schema
 
