@@ -2,7 +2,7 @@
 
 ![Angular](https://img.shields.io/badge/Angular-21-DD0031) ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6) ![UI](https://img.shields.io/badge/UI-Angular%20Material-3F51B5)
 
-GDAI-FRONT provides the user journey for GardnAIze: garden photo upload/capture, metadata confirmation, questionnaire, consent, processing status and plant recommendations.
+GDAI-FRONT provides the user journey for GardnAIze: garden photo upload/capture, metadata confirmation, questionnaire, consent, processing status and plant recommendations. The product is designed both for **individual gardeners (B2C)** and for potential **integration into garden retailer and plant e-commerce websites (B2B)**. Retailer embedding is a product direction, not a currently certified integration.
 
 The frontend communicates **only with GDAI-BACK**. It does not invoke ResNet-18, segmentation, Gemini or Random Forest directly, and does not contain provider credentials.
 
