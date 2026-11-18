@@ -8,12 +8,14 @@
   <img alt="Machine Learning: KNN" src="https://img.shields.io/badge/Machine%20Learning-KNN-3776AB" />
   <img alt="Clustering: K-Means" src="https://img.shields.io/badge/Clustering-K--Means-3776AB" />
   <img alt="Recommendation: Random Forest target" src="https://img.shields.io/badge/Recommendation-Random%20Forest%20target-228B22" />
-  <img alt="Vision: Gemini optional" src="https://img.shields.io/badge/Vision-Gemini%20optional-4285F4" />
+  <img alt="Vision: Gemini 2.5 Flash" src="https://img.shields.io/badge/Vision-Gemini%202.5%20Flash-4285F4" />
   <img alt="Frontend: Angular 21" src="https://img.shields.io/badge/Frontend-Angular%2021-DD0031" />
-  <img alt="Backend: Spring Boot 3.5" src="https://img.shields.io/badge/Backend-Spring%20Boot%203.5-6DB33F" />
+  <img alt="Backend: Spring Boot 3.5.7" src="https://img.shields.io/badge/Backend-Spring%20Boot%203.5.7-6DB33F" />
   <img alt="AI API: FastAPI" src="https://img.shields.io/badge/AI%20API-FastAPI-009688" />
-  <img alt="Database: PostgreSQL" src="https://img.shields.io/badge/Database-PostgreSQL-4169E1" />
+  <img alt="Database: PostgreSQL 18" src="https://img.shields.io/badge/Database-PostgreSQL%2018-4169E1" />
+  <img alt="Java: Amazon Corretto 25" src="https://img.shields.io/badge/Java-Amazon%20Corretto%2025-ED8B00" />
   <img alt="Containers: Docker" src="https://img.shields.io/badge/Containers-Docker-2496ED" />
+  <img alt="Orchestration: Docker Compose" src="https://img.shields.io/badge/Orchestration-Docker%20Compose-2496ED" />
   </p>
   
 </div>
