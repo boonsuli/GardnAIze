@@ -6,7 +6,7 @@
   <img alt="ML: Random Forest target" src="https://img.shields.io/badge/ML-Random%20Forest%20target-228B22" />
   <img alt="Classification: KNN" src="https://img.shields.io/badge/Classification-KNN-3776AB" />
   <img alt="Clustering: K-Means" src="https://img.shields.io/badge/Clustering-K--Means-3776AB" />
-  <img alt="Vision: Gemini optional" src="https://img.shields.io/badge/Vision-Gemini%20optional-4285F4" />
+  <img alt="Vision: Gemini 3.8 Flash" src="https://img.shields.io/badge/Vision-Gemini%203.8%20Flash-4285F4" />
 </p>
 
 This Python/FastAPI service provides an API foundation for GardnAIze AI experiments and demonstration recommendations.
@@ -14,7 +14,7 @@ This Python/FastAPI service provides an API foundation for GardnAIze AI experime
 ## AI ecosystem
 
 - **GDAI-VALID:** ResNet-18 photo validation and intended local garden segmentation, documented separately in [validation](../validation/).
-- **GDAI-VISION:** optional external Gemini Vision observations.
+- **GDAI-VISION:** Gemini Vision garden-photo analysis (`gemini-3.8-flash`, runtime-configurable).
 - **GDAI-PLANT:** target Random Forest engine combining garden characteristics, user preferences and horticultural plant attributes.
 - **KNN / K-Means:** supervised classification and unsupervised clustering experiments documented in [notebooks](../notebooks/).
 - **GDAI-GNERAT:** optional image visualization after plant recommendations.
