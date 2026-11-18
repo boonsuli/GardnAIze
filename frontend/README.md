@@ -1,6 +1,12 @@
 # GDAI-FRONT — Angular user interface
 
-![Angular](https://img.shields.io/badge/Angular-21-DD0031) ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6) ![UI](https://img.shields.io/badge/UI-Angular%20Material-3F51B5)
+<p align="left">
+  <img alt="Frontend: Angular 21" src="https://img.shields.io/badge/Frontend-Angular%2021-DD0031" />
+  <img alt="Language: TypeScript" src="https://img.shields.io/badge/Language-TypeScript-3178C6" />
+  <img alt="UI: Angular Material" src="https://img.shields.io/badge/UI-Angular%20Material-3F51B5" />
+  <img alt="API: REST" src="https://img.shields.io/badge/API-REST-009688" />
+  <img alt="i18n: FR + EN" src="https://img.shields.io/badge/i18n-FR%20%2B%20EN-7952B3" />
+</p>
 
 GDAI-FRONT provides the user journey for GardnAIze: garden photo upload/capture, metadata confirmation, questionnaire, consent, processing status and plant recommendations. The product is designed both for **individual gardeners (B2C)** and for potential **integration into garden retailer and plant e-commerce websites (B2B)**. Retailer embedding is a product direction, not a currently certified integration.
 
