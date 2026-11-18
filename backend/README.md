@@ -28,3 +28,7 @@ OpenAPI: http://localhost:8081/v3/api-docs
 Health: http://localhost:8081/actuator/health
 
 **E2E demonstration objective:** 15 December 2026.
+
+### Future commercial B2B API
+
+Beyond its current internal orchestration API, GDAI-BACK may later expose a **paid, externally consumable B2B API** for garden analysis and personalized plant recommendations. This will complement the merchant Web connectors, enabling retailers and partners to develop their own user experiences. Subscription and usage-based pricing are options under consideration; public API contracts, authentication, usage metering, quotas and commercial terms are not yet defined or claimed to be implemented. This commercial API is outside the scope of the 15 December 2026 E2E demonstration.
