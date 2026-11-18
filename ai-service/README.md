@@ -5,7 +5,7 @@
   <img alt="API: FastAPI" src="https://img.shields.io/badge/API-FastAPI-009688" />
   <img alt="ML: Random Forest target" src="https://img.shields.io/badge/ML-Random%20Forest%20target-228B22" />
   <img alt="Classification: KNN" src="https://img.shields.io/badge/Classification-KNN-3776AB" />
-  <img alt="Clustering: K-Means" src="https://img.shields.io/badge/Clustering-K----Means-3776AB" />
+  <img alt="Clustering: K-Means" src="https://img.shields.io/badge/Clustering-K--Means-3776AB" />
   <img alt="Vision: Gemini optional" src="https://img.shields.io/badge/Vision-Gemini%20optional-4285F4" />
 </p>
 
