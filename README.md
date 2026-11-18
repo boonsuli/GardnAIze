@@ -99,3 +99,7 @@ GardnAIze is an evolving MVP intended to become a commercial B2C/B2B product, no
 ### Future merchant Web connectors (B2B)
 
 A future GardnAIze offering will provide **Web connectors** that merchants can embed in their own garden retail and plant e-commerce sites. After analyzing a customer's garden and preferences, GardnAIze could propose an **editable, pre-filled shopping basket** with compatible plants and relevant complementary gardening supplies (for example potting soil, mulch, fertilizer, planting tools and watering equipment), matched to the merchant's authorized product catalog and stock information where available. The merchant retains control of its checkout, payments, orders and fulfillment; GardnAIze does not process the sale. **These connectors, basket integrations and merchant catalog mappings are future product capabilities, not implemented for the 15 December 2026 E2E demonstration.**
+
+### Future paid B2B API
+
+In addition to ready-to-embed merchant Web connectors, GardnAIze plans to offer a **paid B2B API** for businesses that want to build their own customer experiences using garden analysis and plant recommendation capabilities. Potential commercial models include subscription, usage-based billing or a hybrid model; pricing, authentication, quotas, service-level commitments and packaging are not yet defined. The paid API is a **future commercial offering**, not an available paid service or a requirement for the 15 December 2026 E2E demonstration.
