@@ -1,6 +1,13 @@
 # GDAI-VALID — Photo validation and garden segmentation
 
-![API](https://img.shields.io/badge/API-FastAPI-009688) ![DL](https://img.shields.io/badge/DL-ResNet----18-EE4C2C) ![Segmentation](https://img.shields.io/badge/Segmentation-DeepLabV3%20candidate-7952B3) ![Runtime](https://img.shields.io/badge/Runtime-PyTorch-EE4C2C)
+<p align="left">
+  <img alt="Language: Python" src="https://img.shields.io/badge/Language-Python-3776AB" />
+  <img alt="API: FastAPI" src="https://img.shields.io/badge/API-FastAPI-009688" />
+  <img alt="Deep Learning: ResNet-18" src="https://img.shields.io/badge/Deep%20Learning-ResNet----18-EE4C2C" />
+  <img alt="Segmentation: DeepLabV3 candidate" src="https://img.shields.io/badge/Segmentation-DeepLabV3%20candidate-7952B3" />
+  <img alt="Framework: PyTorch" src="https://img.shields.io/badge/Framework-PyTorch-EE4C2C" />
+  <img alt="Containers: Docker" src="https://img.shields.io/badge/Containers-Docker-2496ED" />
+</p>
 
 GDAI-VALID is a local Python/FastAPI service for interpreting garden photographs.
 
