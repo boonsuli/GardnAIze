@@ -22,7 +22,7 @@ spring:
         default-schema: public
         schemas:
             - public
-        # Domain schema renamed to app_schema by V11; history stays in public.
+            - gardnaize
 
 management:
     endpoints:
