@@ -25,11 +25,11 @@ class DummyResponse:
 class IngestionTests(unittest.TestCase):
     def test_questionnaire_coverage(self):
         self.assertTrue({"exposure","soil","water","maintenance","evergreen",
-                         "flower_color","height_max","privacy","budget","climate"}.issubset(QUESTION_MAPPING))
+                            "flower_color","height_max","privacy","budget","climate"}.issubset(QUESTION_MAPPING))
     def test_gbif_name_matching_provenance(self):
         response={"scientificName":"Lavandula angustifolia Mill.",
-                  "canonicalName":"Lavandula angustifolia","usageKey":123,
-                  "matchType":"EXACT","confidence":100}
+                    "canonicalName":"Lavandula angustifolia","usageKey":123,
+                    "matchType":"EXACT","confidence":100}
         with patch("gbif_taxonomy.urlopen",return_value=DummyResponse(response)):
             item=match("Lavandula angustifolia")
         self.assertEqual(item["gbif_usage_key"],123)
