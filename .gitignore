@@ -71,4 +71,4 @@ replay_pid*
 /docs/ChatGPT-conversation/
 
 # GDAI-VISION generated analysis logs
-/vision/logs/
+/vision/logs//docs/ChatGPT-conversation/
