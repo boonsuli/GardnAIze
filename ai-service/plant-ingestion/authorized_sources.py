@@ -3,12 +3,12 @@ import csv
 from pathlib import Path
 
 MERCHANTS = {
- "truffaut":"https://www.truffaut.com",
- "leroymerlin":"https://www.leroymerlin.fr",
- "vegetalo":"https://www.vegetalo.com",
- "bakker":"https://www.bakker.com",
- "gammvert":"https://www.gammvert.fr",
- "rouepepinieres":"https://www.rouepepinieres.com",
+    "truffaut":"https://www.truffaut.com",
+    "leroymerlin":"https://www.leroymerlin.fr",
+    "vegetalo":"https://www.vegetalo.com",
+    "bakker":"https://www.bakker.com",
+    "gammvert":"https://www.gammvert.fr",
+    "rouepepinieres":"https://www.rouepepinieres.com",
 }
 REQUIRED = {"scientific_name","external_offer_id","price_amount","currency"}
 
