@@ -34,7 +34,7 @@ def main():
     a=p.parse_args()
     with a.input.open(encoding="utf-8-sig",newline="") as fh:
         names=list(dict.fromkeys((r.get("scientific_name") or "").strip()
-          for r in csv.DictReader(fh)))
+            for r in csv.DictReader(fh)))
     names=[n for n in names if n][:a.limit]
     print(f"Taxa to resolve: {len(names)} apply={a.apply}")
     if not a.apply:
