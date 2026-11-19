@@ -52,6 +52,8 @@ gardnaize:
         allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:4200}
 
 logging:
+    pattern:
+        level: '%5p [requestId:%X{requestId:-none}]'
     level:
         root: ${LOG_LEVEL:INFO}
         com.gardnaize: ${APP_LOG_LEVEL:INFO}

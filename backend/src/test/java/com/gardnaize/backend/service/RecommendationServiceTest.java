@@ -29,7 +29,7 @@ class RecommendationServiceTest {
         ));
 
         when(gardens.get(id)).thenReturn(new GardenProjectResponse(
-                id, "Garden", "Paris", Exposure.FULL_SUN, SoilType.LOAMY, Instant.now()
+                id, "Garden", "Paris", Exposure.FULL_SUN, SoilType.LOAMY, "FR", "UNKNOWN", Instant.now()
         ));
         when(rest.post()).thenReturn(uri);
         when(uri.retrieve()).thenReturn(response);

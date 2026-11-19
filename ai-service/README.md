@@ -1,49 +1,37 @@
-# GardnAIze AI Service
+# GardnAIze — AI service
 
-> **Point E2E — 10/11/2026 :** le service FastAPI fournit une base opérationnelle et des recommandations de démonstration par règles. Le service d'inférence ResNet-18 et ses poids entraînés, l'intégration des observations Gemini et le moteur Random Forest réel restent à raccorder et à tester. Exposer des contrats Python privés consommés par GDAI-BACK, avec schémas, erreurs et versions de modèle ; ne pas présenter les règles de démo comme des prédictions ML. [Plan de câblage](../docs/E2E_READINESS_2026-11-10.md).
+<p align="left">
+  <img alt="Language: Python" src="https://img.shields.io/badge/Language-Python-3776AB" />
+  <img alt="API: FastAPI" src="https://img.shields.io/badge/API-FastAPI-009688" />
+  <img alt="ML: Random Forest target" src="https://img.shields.io/badge/ML-Random%20Forest%20target-228B22" />
+  <img alt="Classification: KNN" src="https://img.shields.io/badge/Classification-KNN-3776AB" />
+  <img alt="Clustering: K-Means" src="https://img.shields.io/badge/Clustering-K--Means-3776AB" />
+  <img alt="Vision: Gemini 3.8 Flash" src="https://img.shields.io/badge/Vision-Gemini%203.8%20Flash-4285F4" />
+</p>
 
-Python **3.12** and **FastAPI** provide an independent inference API.
+This Python/FastAPI service provides an API foundation for GardnAIze AI experiments and demonstration recommendations.
 
-**Current implementation:** a working FastAPI scaffold with `/`, `/health`, and interactive OpenAPI documentation at `/docs`. Plant ranking, image classification, model loading and ML/DL inference are planned; no trained models are bundled.
+## AI ecosystem
 
-## Docker
+- **GDAI-VALID:** ResNet-18 photo validation and intended local garden segmentation, documented separately in [validation](../validation/).
+- **GDAI-VISION:** Gemini Vision garden-photo analysis (`gemini-3.8-flash`, runtime-configurable).
+- **GDAI-PLANT:** target Random Forest engine combining garden characteristics, user preferences and horticultural plant attributes.
+- **KNN / K-Means:** supervised classification and unsupervised clustering experiments documented in [notebooks](../notebooks/).
+- **GDAI-GNERAT:** optional image visualization after plant recommendations.
 
-From the repository root:
+The existing `POST /recommendations` demo-rule response is **not** a trained Random Forest prediction. Model training, catalog integration and end-to-end serving must be verified independently.
 
-```bash
-docker compose up --build -d
-docker compose logs -f ai-service
-```
-
-Open http://localhost:8000/docs or check http://localhost:8000/health.
-
-Run the AI service alone:
-
-```bash
-docker build -t gardnaize-ai ./ai-service
-docker run --rm -p 127.0.0.1:8000:8000 -e LOG_LEVEL=DEBUG gardnaize-ai
-```
-
-## Local Python development
+## Local development
 
 ```bash
 cd ai-service
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
+python -m pytest -q tests
 uvicorn app.main:app --reload
 ```
 
-## Logs and security
+OpenAPI: http://localhost:8000/docs. Health: http://localhost:8000/health.
 
-The standard Python `logging` module writes to stdout/stderr. Set `AI_LOG_LEVEL=DEBUG` in Compose (or `LOG_LEVEL=DEBUG` when running the container directly). Supported Python levels: DEBUG, INFO, WARNING, ERROR, CRITICAL. Avoid logging photos, credentials or personal data.
-
-The image uses a non-root user and installs only minimal API dependencies. Future ML/DL inference requirements will be added when the corresponding models and endpoints are implemented. In Compose the API port is published on localhost only; do not expose it publicly without authentication, rate limiting and network controls.
-
-## Automated tests
-
-Run `pip install -r requirements-dev.txt` and `python -m pytest -q tests`. CI runs these unit tests before building and smoke-testing the Docker image. Source files use four-space indentation and no tabs.
-
-## Backend orchestration
-
-Java sends `POST /recommendations` with location, exposure and soil type. This currently returns exactly three **demo rule-based** plants (`mode: demo-rules-not-ai`); no trained model is used. Python tests verify the request contract and validation.
+**E2E demonstration objective:** 15 December 2026.

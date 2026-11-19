@@ -38,7 +38,7 @@ class GardenProjectControllerTest {
     void createsGarden() throws Exception {
         UUID id = UUID.randomUUID();
         when(service.create(any())).thenReturn(new GardenProjectResponse(
-                id, "Terrace", "Paris", Exposure.FULL_SUN, SoilType.LOAMY, Instant.now()
+                id, "Terrace", "Paris", Exposure.FULL_SUN, SoilType.LOAMY, "FR", "UNKNOWN", Instant.now()
         ));
 
         mvc.perform(post("/api/v1/gardens")

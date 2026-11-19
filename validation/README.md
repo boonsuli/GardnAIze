@@ -1,6 +1,23 @@
-# GDAI-VALID — FastAPI / ResNet-18
+# GDAI-VALID — Photo validation and garden segmentation
 
-Independent garden photo validation API. No weights are bundled and the service never predicts using random weights.
+<p align="left">
+  <img alt="Language: Python" src="https://img.shields.io/badge/Language-Python-3776AB" />
+  <img alt="API: FastAPI" src="https://img.shields.io/badge/API-FastAPI-009688" />
+  <img alt="Deep Learning: ResNet-18" src="https://img.shields.io/badge/Deep%20Learning-ResNet--18-EE4C2C" />
+  <img alt="Segmentation: DeepLabV3 candidate" src="https://img.shields.io/badge/Segmentation-DeepLabV3%20candidate-7952B3" />
+  <img alt="Framework: PyTorch" src="https://img.shields.io/badge/Framework-PyTorch-EE4C2C" />
+  <img alt="Containers: Docker" src="https://img.shields.io/badge/Containers-Docker-2496ED" />
+</p>
+
+GDAI-VALID is a local Python/FastAPI service for interpreting garden photographs.
+
+## AI functions
+
+- **ResNet-18:** classify whether an uploaded image is suitable for garden analysis.
+- **Semantic segmentation:** identify meaningful garden zones (such as lawn, paths, planting beds and built surfaces). DeepLabV3 is a candidate architecture; the final model and trained classes must be validated.
+- **Structured output:** provide usable observations to GDAI-BACK, which orchestrates downstream plant recommendations.
+
+The validation API exists, but trained model weights are not bundled in Git. Segmentation training and serving are not presented as completed. A pretrained model alone does not demonstrate project-specific fine-tuning.
 
 ## Development
 
@@ -13,21 +30,15 @@ uvicorn app.main:app --reload
 pytest -q
 ```
 
-Swagger: http://localhost:8000/docs
+## Existing validation API
+
+- `POST /api/v1/validation/photo`: JPEG, PNG or WebP validation, up to 5 MiB by default.
+- `GET /api/v1/health`: service and model readiness.
+- `GET /api/v1/model/info`: model metadata.
+
+Swagger: http://localhost:8000/docs  
 ReDoc: http://localhost:8000/redoc
-OpenAPI: http://localhost:8000/openapi.json
 
-## Contract
+The service returns 503 when required model weights are unavailable. No segmentation endpoint is asserted until implemented and tested.
 
-- POST /api/v1/validation/photo: multipart photo (JPEG, PNG, WebP), optional description (max 1000 characters), optional request_id.
-- GET /api/v1/health: process status and model readiness.
-- GET /api/v1/model/info: model metadata.
-
-Returns HTTP 200 with valid true/false for model decisions; 413/415/422 for invalid uploads; 503 if model weights are unavailable. Default maximum size: 5 MiB, configurable with VALID_MAX_IMAGE_BYTES.
-
-## Future retraining and Alyra Block 5 deployment
-
-Retrain using a larger labeled dataset. Export a trusted ResNet-18 state_dict to /models/garden_resnet18.pt and metadata to /models/metadata.json. Override with VALID_MODEL_PATH and VALID_METADATA_PATH. Metadata includes ordered classes, model version, preprocessing normalization and threshold. Match these to the actual training pipeline before deployment. Validate independent holdout metrics and document provenance, packaging, registry, deployment, monitoring and rollback.
-
-Build: docker build -t gdai-valid .
-The service is not yet connected to Spring Boot or root Compose. Model packaging and actual deployment will follow in a later phase.
+**E2E demonstration objective:** 15 December 2026.

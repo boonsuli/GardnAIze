@@ -1,176 +1,117 @@
 <div align="center">
-  <img src="frontend/public/logo-gardnaize.svg" alt="GardnAIze — Imagine. Design. Grow." width="480" />
-  <p><strong>AI-assisted garden analysis and plant recommendations</strong></p>
-  <p><strong>MVP in development · Local-first · Alyra AI Development project</strong></p>
+  <img src="frontend/public/logo-gardnaize.svg" alt="GardnAIze" width="460" />
+  <p><strong>Imagine. Design. Grow.</strong></p>
+  <p>AI-assisted garden analysis and personalized plant recommendations</p>
   <p>
-    <img alt="Angular 21" src="https://img.shields.io/badge/Angular-21-DD0031?logo=angular&logoColor=white" />
-    <img alt="Java 25 LTS" src="https://img.shields.io/badge/Java-25%20LTS-ED8B00?logo=openjdk&logoColor=white" />
-    <img alt="Spring Boot 3.5.7" src="https://img.shields.io/badge/Spring%20Boot-3.5.7-6DB33F?logo=springboot&logoColor=white" />
-    <img alt="PostgreSQL 18" src="https://img.shields.io/badge/PostgreSQL-18-4169E1?logo=postgresql&logoColor=white" />
-    <img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" />
-    <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white" />
-    <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ResNet--18-EE4C2C?logo=pytorch&logoColor=white" />
-    <img alt="Docker Compose" src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white" />
+  <img alt="Deep Learning: ResNet-18" src="https://img.shields.io/badge/Deep%20Learning-ResNet--18-EE4C2C" />
+  <img alt="Segmentation: DeepLabV3 candidate" src="https://img.shields.io/badge/Segmentation-DeepLabV3%20candidate-7952B3" />
+  <img alt="Machine Learning: KNN" src="https://img.shields.io/badge/Machine%20Learning-KNN-3776AB" />
+  <img alt="Clustering: K-Means" src="https://img.shields.io/badge/Clustering-K--Means-3776AB" />
+  <img alt="Recommendation: Random Forest target" src="https://img.shields.io/badge/Recommendation-Random%20Forest%20target-228B22" />
+  <img alt="Vision: Gemini 3.8 Flash" src="https://img.shields.io/badge/Vision-Gemini%203.8%20Flash-4285F4" />
+  <img alt="Frontend: Angular 21" src="https://img.shields.io/badge/Frontend-Angular%2021-DD0031" />
+  <img alt="Backend: Spring Boot 3.5" src="https://img.shields.io/badge/Backend-Spring%20Boot%203.5-6DB33F" />
+  <img alt="AI API: FastAPI" src="https://img.shields.io/badge/AI%20API-FastAPI-009688" />
+  <img alt="Database: PostgreSQL" src="https://img.shields.io/badge/Database-PostgreSQL-4169E1" />
+  <img alt="Containers: Docker" src="https://img.shields.io/badge/Containers-Docker-2496ED" />
   </p>
+  
 </div>
 
-> **Point d'avancement — 10 novembre 2026 · Démo MVP visée le 15 décembre 2026.** Estimation de pilotage : **65 % global / 25 % chaîne IA E2E**, non issue de tests automatisés. Le parcours actuel fournit des recommandations **par règles de démonstration**. La validation ResNet-18, le câblage complet Gemini → PLANT et le Random Forest restent à prouver. **P0 : unifier les contrats REST** (BACK propriétaire d'OpenAPI, FRONT consommateur). [Voir l'audit, le câblage et les critères de recette](docs/E2E_READINESS_2026-11-10.md).
+## Overview
 
-> **Status — MVP under development.** The web application, Java API, FastAPI service, PostgreSQL persistence and Docker stack are integrated for a **rule-based demonstration**. Image-classification experiments have been conducted in notebooks, but trained-model inference is **not yet connected** to the running application. The photo currently stays in the browser. This is **not a production-ready AI recommendation system**.
+GardnAIze is an AI-powered garden recommendation product designed for **individual gardeners (B2C)** and **garden retailers, nurseries and e-commerce platforms (B2B)**. Individuals can analyze their garden and discover suitable plants; merchants can eventually integrate personalized recommendations into their online shopping experience. The project is currently developed as part of the Alyra AI Development program.
 
-> **Mise à jour FRONT — 10 novembre 2026.** Les évolutions proposées dans les PR [#33](https://github.com/boonsuli/GardnAIze/pull/33), [#34](https://github.com/boonsuli/GardnAIze/pull/34) et [#36](https://github.com/boonsuli/GardnAIze/pull/36) couvrent : prise de photo smartphone ou sélection galerie, JPEG/PNG/WebP jusqu'à **5 Mio**, formulaire **pays obligatoire + ville/code postal obligatoire + région climatique facultative + description facultative (1 000 caractères)**, écran de confirmation et modification, puis transmission multipart `photo`, `countryCode`, `city`, `climateCode`, `description` vers GDAI-BACK. **Ces fonctionnalités sont décrites dans les PR ; leur fusion et leur fonctionnement E2E ne sont pas certifiés par cette mise à jour documentaire.** La persistance après VALID, le contrat Python `/validate` et l'enchaînement VISION → PLANT restent à valider. Pas de GPS ni d'API météo pour le MVP.
+**Demonstration objective:** an integrated end-to-end (E2E) MVP demonstration on **15 December 2026**, as a technical validation milestone toward a commercial product. This is not a product launch date or a claim that the entire AI pipeline is already operational.
 
-## What is GardnAIze?
+## Product audiences and distribution
 
-GardnAIze aims to help users choose plants suited to their garden, local conditions and preferences. The MVP targets an end-to-end journey: upload a garden photo, check whether it is usable, confirm observations, answer a short questionnaire, and receive **three explained plant recommendations**.
+- **B2C — Individual gardeners:** garden-photo analysis, personalized plant selection, understandable recommendations and optional visual previews.
+- **B2B — Garden retailers and plant e-commerce websites:** potential integration through GardnAIze APIs and UI components to guide customers toward suitable products and support purchasing decisions.
+- **Retail catalog examples:** Truffaut, Leroy Merlin, botanic, Willemse and other garden merchants are possible data-source or distribution examples, **not confirmed partners or authorized commercial data providers**.
 
-The first delivery is a **standalone, locally runnable application**. Retailer embedding, user accounts, checkout and public cloud hosting are outside the initial MVP scope.
+Research-stage collection or scraping does not automatically authorize commercial reuse of product descriptions, photos, prices or catalog databases. Commercial ingestion and retailer integration require verification of applicable rights, source terms, provenance and, where needed, permission or a licensing agreement.
 
-## Current implementation
+## User experience
 
-| Component | Technology | Implemented today | Next milestone |
-| --- | --- | --- | --- |
-| [Frontend](frontend/) | Angular 21, Angular Material 21, TypeScript 5.9 | Responsive UI, local image preview, garden questionnaire and integration with Java project/recommendation APIs | Upload the photo and show real analysis and recommendation results |
-| [Backend](backend/) | Java 25, Spring Boot 3.5.7, Spring Data JPA, Flyway | REST garden APIs, PostgreSQL persistence, Swagger, FastAPI orchestration | Secure photo upload, classifier invocation, expanded preferences and saved results |
-| [AI service](ai-service/) | Python 3.12, FastAPI | Health/API endpoints, rule-based demonstration recommendations, optional external vision adapter | Load and serve trained ResNet-18; use real horticultural data |
-| [Image research](notebooks/) | PyTorch, torchvision, scikit-learn, Jupyter | Image acquisition/review notebooks, KNN and K-Means research, ResNet-18 training and evaluation | Independent evaluation, model packaging and inference API |
-| [Application database](backend/) | PostgreSQL 18, Spring Flyway | Garden/project persistence | Persist photo metadata, analysis status and recommendation history |
-| [ML database](database/) | PostgreSQL 18, separate Flyway migrations | Separate `gardnaize_ml` database and `horticulture` schema; V1–V3 migrations | Ingest and validate a real botanical catalog |
-| [Deployment](compose.yaml) | Docker Compose, Nginx, Docker images | Local frontend + backend + AI service + PostgreSQL | End-to-end tests with actual model inference |
+1. Upload or capture a garden photo and provide location and optional description.
+2. Confirm the information and check whether the image is usable.
+3. Answer garden-preference questions and provide the relevant consents.
+4. Analyze garden characteristics and identify relevant planting zones.
+5. Recommend compatible plants with clear explanations.
+6. Optionally visualize recommended plants in the garden photo.
 
-**Important distinction:** the ML database schema exists, but the `horticulture.plant` table is not populated by the initial migrations. The current recommendation API returns three **demo-rule** suggestions, not predictions or catalog-backed recommendations.
+## Application modules
 
-## Target MVP workflow
+| Module | Responsibility |
+| --- | --- |
+| [GDAI-FRONT](frontend/) | Angular user interface, photo, confirmation, questionnaire and results |
+| [GDAI-BACK](backend/) | Spring Boot REST API, asynchronous orchestration, persistence and status tracking |
+| [GDAI-VALID](validation/) | FastAPI photo validation with ResNet-18; local segmentation is an intended extension |
+| GDAI-VISION | Optional external Gemini Vision garden observations |
+| GDAI-PLANT | Horticultural compatibility and Random Forest recommendation engine |
+| GDAI-GNERAT | Optional external image generation/editing after recommendations; never blocks E2E |
+| [ML data](database/) | PostgreSQL horticultural catalog, provenance and training data |
+| [Research](notebooks/) | KNN, K-Means and deep-learning experiments |
 
-```text
-Angular: upload garden photo
-    |
-    v
-Spring Boot: validate upload and manage garden project       [TO DO]
-    |
-    v
-FastAPI: ResNet-18 garden / not_garden / unusable inference   [TO DO]
-    |                          |
-    | usable                   +--> ask for a new photo
-    v
-Optional Gemini vision analysis + user-confirmed preferences [PARTIAL]
-    |
-    v
-Horticultural catalog: filter by climate, sun, soil, water    [TO DO]
-    |
-    v
-Rank compatible plants and explain three suggestions         [TO DO]
-    |
-    v
-Angular: display and persist recommendations                 [TO DO]
-```
+## AI and machine learning
 
-The **current runnable demo** covers project creation, questionnaire metadata and rule-based suggestions; it does not yet execute the entire workflow above.
+| Method | Role | Integration note |
+| --- | --- | --- |
+| **ResNet-18** | Supervised deep learning to validate garden photos | Service exists; trained weights and end-to-end behavior must be verified |
+| **Semantic segmentation** | Detect garden regions useful for planting recommendations | Local model under development; DeepLabV3 is a candidate, not a confirmed deployed model |
+| **KNN** | Supervised image-classification experiments | Research notebooks |
+| **K-Means** | Unsupervised image clustering | Research notebooks |
+| **Random Forest** | Supervised garden-to-plant compatibility ranking | Target recommendation model; training and serving not claimed complete |
+| **Gemini Vision** | Optional external image interpretation | Subject to API configuration and consent |
+| **Gemini Image** | Optional illustrative photo editing | GDAI-GNERAT, separate from recommendation delivery |
 
-## Machine learning and deep learning
+Segmentation outputs should become structured observations (such as zone type and estimated usable area) that can be combined with questionnaire responses and verified horticultural data. A photo alone cannot reliably determine soil properties.
 
-### Image classification — ResNet-18
-
-- `scripts/download_garden_images.py`: acquire candidate images with provenance and licensing metadata.
-- `notebooks/07_review_garden_images.ipynb`: visual review and manual label corrections.
-- `scripts/create_garden_split.py`: deterministic source-group-based train/validation/test assignment.
-- `datasets/splits/garden_split_v1.csv`: versioned split manifest.
-- `notebooks/04_explore_garden_images.ipynb`: explore the image dataset.
-- `notebooks/05_train_garden_classifier.ipynb`: train a transfer-learning ResNet-18 classifier.
-- `notebooks/06_evaluate_garden_classifier.ipynb`: evaluate held-out predictions.
-
-The initial experiment used **84 images** across `garden`, `not_garden` and `unusable`: **68 training, 11 validation and 5 test images**. A local notebook run reported **5/5 correct test predictions**. This is a **very small exploratory test**, not evidence of generalization or production accuracy. Model weights and original photos are intentionally excluded from Git; the repository does **not** ship a ready-to-run trained classifier.
-
-### Other algorithms
-
-- **KNN:** supervised image-classification experiments in research notebooks; not yet part of the application API.
-- **K-Means:** unsupervised image clustering experiments in research notebooks; not yet part of the application API.
-- **Random Forest:** candidate for a future well-defined supervised horticultural task, subject to suitable labeled data; **not claimed as trained or deployed**.
-- **Gemini:** optional external image-analysis provider, distinct from locally trained models; its availability depends on configuration and API access.
-
-See [image acquisition](docs/garden-image-acquisition.md), [classifier research](docs/ml-garden-classifier.md) and [notebooks](notebooks/). Some detailed research documentation still needs updating to match the newer group-based split.
-
-## Architecture
+## High-level architecture
 
 ```text
-Angular 21 / Nginx
-        |
-        v
-Spring Boot 3.5.7 (Java 25) ------> PostgreSQL: gardnaize
-        |
-        v
-FastAPI (Python 3.12) ------------> PostgreSQL: gardnaize_ml [catalog integration pending]
-        |
-        +--> Demo rule-based recommendations [current]
-        +--> Gemini adapter [optional/configured]
-        +--> ResNet-18 model inference [planned]
+GDAI-FRONT (Angular)
+       |
+       v
+GDAI-BACK (Spring Boot) ---> PostgreSQL application data
+       |
+       +--> GDAI-VALID (ResNet-18 + local segmentation target)
+       +--> GDAI-VISION (optional Gemini Vision)
+       +--> GDAI-PLANT (Random Forest + horticultural catalog)
+       |         |
+       |         +--> PostgreSQL ML data
+       +--> GDAI-GNERAT (optional Gemini Image, after recommendations)
 ```
 
-The application and ML databases are logically separate. Spring Boot owns application persistence; the ML schema is migrated independently. No cross-database foreign keys are used.
+GDAI-FRONT communicates only with GDAI-BACK, not directly with private AI services. The backend coordinates asynchronous processing and exposes its progress to the frontend. Image processing and model training require explicit data permissions.
 
-## Run locally
-
-### Docker Compose — integrated demonstration
-
-From the repository root:
+## Local development
 
 ```bash
 cp .env.example .env
-# Set DB_PASSWORD in .env; configure GEMINI_API_KEY only if needed.
+# Configure local credentials; never commit secrets.
 docker compose up --build -d --wait
 docker compose ps
 ```
 
-| Service | URL |
-| --- | --- |
-| Angular application | http://localhost:8080 |
-| Spring Boot Swagger UI | http://localhost:8081/swagger-ui.html |
-| Spring Boot health | http://localhost:8081/actuator/health |
-| FastAPI OpenAPI | http://localhost:8000/docs |
-| FastAPI health | http://localhost:8000/health |
+- Web application: http://localhost:8080
+- Backend Swagger UI: http://localhost:8081/swagger-ui.html
+- Backend health: http://localhost:8081/actuator/health
+- AI-service OpenAPI: http://localhost:8000/docs
 
-The standard Compose stack runs the application PostgreSQL database internally. For the separate ML database and local notebook access, follow [database setup](database/README.md) and the [local deployment guide](docs/deployment-local.md).
+See [local deployment](docs/deployment-local.md), [photo workflow](docs/PHOTO_WORKFLOW_PR35.md), and each module README for the actual API contracts and setup instructions. The Compose services and standalone VALID service are not necessarily identical deployments.
 
-```bash
-docker compose logs -f
-docker compose down
-```
+## Scope and responsible data use
 
-**Do not run `docker compose down -v` unless you intend to delete persisted database volumes.** Keep API keys and credentials in local environment configuration, never in Git.
+The MVP focuses on European outdoor gardens. Recommendations depend on climate, exposure, soil, water requirements and user preferences. Botanical sources and photo datasets must be checked for provenance, licenses and reuse permissions. User consent for external vision processing is separate from consent to reuse photos for training.
 
-### Native development
+GardnAIze is an evolving MVP intended to become a commercial B2C/B2B product, not yet a production-certified horticultural advisory service. Models, datasets and optional providers may be unavailable in a local installation.
 
-See [local deployment modes](docs/deployment-local.md) for the Java 25, Python 3.12, Node.js 22 and PostgreSQL 18 setup.
+### Future merchant Web connectors (B2B)
 
-## Available APIs
+A future GardnAIze offering will provide **Web connectors** that merchants can embed in their own garden retail and plant e-commerce sites. After analyzing a customer's garden and preferences, GardnAIze could propose an **editable, pre-filled shopping basket** with compatible plants and relevant complementary gardening supplies (for example potting soil, mulch, fertilizer, planting tools and watering equipment), matched to the merchant's authorized product catalog and stock information where available. The merchant retains control of its checkout, payments, orders and fulfillment; GardnAIze does not process the sale. **These connectors, basket integrations and merchant catalog mappings are future product capabilities, not implemented for the 15 December 2026 E2E demonstration.**
 
-| API | Purpose | Status |
-| --- | --- | --- |
-| `POST /api/v1/gardens` | Create a garden project | Implemented |
-| `GET /api/v1/gardens` | List projects | Implemented |
-| `GET /api/v1/gardens/{id}` | Read project | Implemented |
-| `GET /api/v1/gardens/{id}/recommendations` | Return three suggestions via FastAPI | Implemented, **demo rules** |
-| FastAPI `POST /recommendations` | Rule-based suggestions | Implemented, **not ML** |
-| FastAPI `POST /analyze` | External vision adapter | Implemented, configuration-dependent |
-| FastAPI `POST /classify-garden` | ResNet-18 inference | **Planned; not implemented** |
+### Future paid B2B API
 
-## MVP roadmap
-
-1. **Botanical catalog:** source, license, normalize and ingest a first usable plant dataset into `gardnaize_ml`.
-2. **Classifier serving:** export/version ResNet-18 weights, implement preprocessing and a tested FastAPI inference endpoint.
-3. **Photo workflow:** validate and upload images through Spring Boot; handle rejection, errors and optional vision observations.
-4. **Real recommendations:** apply reliable horticultural compatibility filters and explain the top three results.
-5. **Angular integration:** complete the upload → preferences → results user journey.
-6. **Quality and delivery:** expand independent evaluation, add end-to-end tests, update research documentation and rehearse the local demo.
-
-## CI/CD and deployment
-
-[GitHub Actions](.github/workflows/ci-cd.yml) provides source checks, application tests, container builds and local-stack smoke tests. The repository also contains AWS deployment preparation using GitHub OIDC, ECR and EC2/SSM; **configuration and deployment are environment-dependent**, not evidence of a live public production service.
-
-## Project scope, data and licensing
-
-GardnAIze is developed as an Alyra AI-development project, with the MVP initially focused on European garden conditions. Botanical suitability depends on verified climate, soil, exposure and water information; image recognition alone cannot establish soil composition.
-
-Photos, model weights and large raw datasets are excluded from version control. Review image provenance, attribution and dataset terms before reuse or redistribution. **No open-source license is granted unless a LICENSE file is added.**
-
-See the [branding guide](docs/BRANDING.md) for the official logo and visual identity.
+In addition to ready-to-embed merchant Web connectors, GardnAIze plans to offer a **paid B2B API** for businesses that want to build their own customer experiences using garden analysis and plant recommendation capabilities. Potential commercial models include subscription, usage-based billing or a hybrid model; pricing, authentication, quotas, service-level commitments and packaging are not yet defined. The paid API is a **future commercial offering**, not an available paid service or a requirement for the 15 December 2026 E2E demonstration.

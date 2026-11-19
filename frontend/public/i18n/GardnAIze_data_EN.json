@@ -1,0 +1,123 @@
+{
+    "privacy": {
+        "externalProcessingNotice": "To continue your request, GardnAIze needs to send your garden photo to an external image-processing service (Gemini, provided by Google) to analyze visible features and prepare plant recommendations. GardnAIze stores your photo, questionnaire answers and garden details after you agree. The external service receives the photo for analysis. You may decline: no external analysis will be requested, and you will return to the home screen.",
+        "externalProcessingConsentKey": "privacy.externalProcessingNotice",
+        "accept": "I consent to my photo being analyzed by Gemini Vision (Google).",
+        "refuse": "I decline and return home",
+        "acceptAndContinue": "I agree and start the analysis",
+        "consentTitle": "Permission to analyze your photo",
+        "pending": "Request received, processing…",
+        "error": "The request could not be submitted. Please try again."
+    },
+    "questionnaire": {
+        "exposure": {
+            "label": "What is your garden's sun exposure?",
+            "options": {
+                "FULL_SUN": "Full sun",
+                "PARTIAL_SHADE": "Partial shade",
+                "SHADE": "Shade",
+                "UNKNOWN": "I don't know"
+            }
+        },
+        "soilType": {
+            "label": "What type of soil do you have?",
+            "options": {
+                "SANDY": "Sandy",
+                "LOAMY": "Loamy",
+                "CLAY": "Clay",
+                "UNKNOWN": "I don't know"
+            }
+        },
+        "waterAvailability": {
+            "label": "How much water is available?",
+            "options": {
+                "LOW": "Low",
+                "MODERATE": "Moderate",
+                "HIGH": "High"
+            }
+        },
+        "maintenancePreference": {
+            "label": "How much maintenance do you prefer?",
+            "options": {
+                "LOW": "Low",
+                "MODERATE": "Moderate",
+                "HIGH": "High"
+            }
+        },
+        "evergreenPreferred": {
+            "label": "Do you prefer evergreen plants?",
+            "options": {
+                "YES": "Yes",
+                "NO": "No",
+                "NO_PREFERENCE": "No preference"
+            }
+        },
+        "privacyScreeningRequired": {
+            "label": "Do you need privacy screening?",
+            "options": {
+                "YES": "Yes",
+                "NO": "No",
+                "NO_PREFERENCE": "No preference"
+            }
+        },
+        "desiredHeight": {
+            "label": "What plant height do you prefer?",
+            "options": {
+                "LOW": "Low",
+                "MEDIUM": "Medium",
+                "TALL": "Tall",
+                "NO_PREFERENCE": "No preference"
+            }
+        },
+        "preferredColors": {
+            "label": "What flower color do you prefer?",
+            "options": {
+                "WHITE": "White",
+                "PINK": "Pink",
+                "PURPLE": "Purple",
+                "YELLOW": "Yellow",
+                "NO_PREFERENCE": "No preference"
+            }
+        },
+        "budget": {
+            "label": "What is your budget?",
+            "options": {
+                "LOW": "Low",
+                "MEDIUM": "Medium",
+                "HIGH": "High",
+                "NO_PREFERENCE": "No preference"
+            }
+        },
+        "gardenStyle": {
+            "label": "What garden style do you prefer?",
+            "options": {
+                "CONTEMPORARY": "Contemporary",
+                "NATURAL": "Natural",
+                "MEDITERRANEAN": "Mediterranean",
+                "NO_PREFERENCE": "No preference"
+            }
+        },
+        "matureSpread": {
+            "label": "How much horizontal space can the plant occupy at maturity (foliage and branches)?",
+            "options": {
+                "UNDER_1M": "Less than 1 m across",
+                "FROM_1_TO_2M": "1 to 2 m",
+                "FROM_2_TO_4M": "2 to 4 m",
+                "OVER_4M": "More than 4 m",
+                "NO_PREFERENCE": "No particular restriction"
+            }
+        },
+        "rootSpace": {
+            "label": "How much space is available for root growth, considering walls, foundations, pipes and patios?",
+            "options": {
+                "VERY_LIMITED": "Very limited: container or planter",
+                "LIMITED": "Limited: small area near structures",
+                "MODERATE": "Moderate: planting bed with some clearance",
+                "UNRESTRICTED": "Ample: open ground away from structures",
+                "UNKNOWN": "I don't know"
+            }
+        }
+    },
+    "questionnaireTitle": "Questions about your garden",
+    "questionnaireSubmit": "Confirm answers"
+}

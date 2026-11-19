@@ -23,7 +23,8 @@ public class GardenProjectService {
     @Transactional
     public GardenProjectResponse create(CreateGardenProjectRequest request) {
         GardenProject project = new GardenProject(
-                request.name(), request.location(), request.exposure(), request.soilType()
+                request.name(), request.location(), request.exposure(), request.soilType(),
+                request.countryCode(), request.climateRegion()
         );
         return GardenProjectResponse.from(repository.save(project));
     }

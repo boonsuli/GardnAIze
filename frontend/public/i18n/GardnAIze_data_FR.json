@@ -1,0 +1,123 @@
+{
+    "privacy": {
+        "externalProcessingNotice": "Pour poursuivre votre demande, GardnAIze doit transmettre votre photo de jardin à un service externe de traitement d’images (Gemini, fourni par Google) afin d’en analyser les éléments visibles et de préparer des recommandations de plantes. Votre photo, vos réponses au questionnaire et les informations de votre jardin sont enregistrées par GardnAIze après votre accord. Le service externe reçoit la photo pour l’analyse. Vous pouvez refuser : aucune analyse externe ne sera demandée et vous reviendrez à l’accueil.",
+        "externalProcessingConsentKey": "privacy.externalProcessingNotice",
+        "accept": "J’accepte l’analyse de ma photo par Gemini Vision (Google).",
+        "refuse": "Je refuse et je reviens à l’accueil",
+        "acceptAndContinue": "J’accepte et je lance l’analyse",
+        "consentTitle": "Autorisation d’analyse de votre photo",
+        "pending": "Demande reçue, traitement en cours…",
+        "error": "La demande n’a pas pu être transmise. Veuillez réessayer."
+    },
+    "questionnaire": {
+        "exposure": {
+            "label": "Quelle est l’exposition de votre jardin ?",
+            "options": {
+                "FULL_SUN": "Plein soleil",
+                "PARTIAL_SHADE": "Mi-ombre",
+                "SHADE": "Ombre",
+                "UNKNOWN": "Je ne sais pas"
+            }
+        },
+        "soilType": {
+            "label": "Quel est votre type de sol ?",
+            "options": {
+                "SANDY": "Sableux",
+                "LOAMY": "Limoneux",
+                "CLAY": "Argileux",
+                "UNKNOWN": "Je ne sais pas"
+            }
+        },
+        "waterAvailability": {
+            "label": "Quelle disponibilité en eau ?",
+            "options": {
+                "LOW": "Faible",
+                "MODERATE": "Modéré",
+                "HIGH": "Élevé"
+            }
+        },
+        "maintenancePreference": {
+            "label": "Quel niveau d’entretien souhaitez-vous ?",
+            "options": {
+                "LOW": "Faible",
+                "MODERATE": "Modéré",
+                "HIGH": "Élevé"
+            }
+        },
+        "evergreenPreferred": {
+            "label": "Souhaitez-vous des plantes persistantes ?",
+            "options": {
+                "YES": "Oui",
+                "NO": "Non",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "privacyScreeningRequired": {
+            "label": "Souhaitez-vous vous protéger du vis-à-vis ?",
+            "options": {
+                "YES": "Oui",
+                "NO": "Non",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "desiredHeight": {
+            "label": "Quelle hauteur de plantes préférez-vous ?",
+            "options": {
+                "LOW": "Faible",
+                "MEDIUM": "Moyenne",
+                "TALL": "Grande",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "preferredColors": {
+            "label": "Quelle couleur de fleurs préférez-vous ?",
+            "options": {
+                "WHITE": "Blanc",
+                "PINK": "Rose",
+                "PURPLE": "Violet",
+                "YELLOW": "Jaune",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "budget": {
+            "label": "Quel est votre budget ?",
+            "options": {
+                "LOW": "Faible",
+                "MEDIUM": "Moyenne",
+                "HIGH": "Élevé",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "gardenStyle": {
+            "label": "Quel style de jardin préférez-vous ?",
+            "options": {
+                "CONTEMPORARY": "Contemporain",
+                "NATURAL": "Naturel",
+                "MEDITERRANEAN": "Méditerranéen",
+                "NO_PREFERENCE": "Sans préférence"
+            }
+        },
+        "matureSpread": {
+            "label": "Quel espace maximal pouvez-vous laisser à la plante en largeur à maturité (feuillage et branches) ?",
+            "options": {
+                "UNDER_1M": "Moins de 1 m de diamètre",
+                "FROM_1_TO_2M": "De 1 à 2 m",
+                "FROM_2_TO_4M": "De 2 à 4 m",
+                "OVER_4M": "Plus de 4 m",
+                "NO_PREFERENCE": "Aucune contrainte particulière"
+            }
+        },
+        "rootSpace": {
+            "label": "Quelle place est disponible pour le développement des racines, en tenant compte des murs, fondations, canalisations et terrasses ?",
+            "options": {
+                "VERY_LIMITED": "Très limitée : bac ou jardinière",
+                "LIMITED": "Limitée : petite zone proche d'aménagements",
+                "MODERATE": "Modérée : massif avec un peu de recul",
+                "UNRESTRICTED": "Importante : pleine terre éloignée des aménagements",
+                "UNKNOWN": "Je ne sais pas"
+            }
+        }
+    },
+    "questionnaireTitle": "Questions sur votre jardin",
+    "questionnaireSubmit": "Valider les réponses"
+}

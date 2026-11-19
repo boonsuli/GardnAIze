@@ -38,11 +38,12 @@ class GardenProjectServiceTest {
                 .thenAnswer(invocation -> invocation.getArgument(0));
 
         var created = service.create(new CreateGardenProjectRequest(
-                "My garden", "Paris", Exposure.FULL_SUN, SoilType.LOAMY
+                "My garden", "Paris", Exposure.FULL_SUN, SoilType.LOAMY, "FR", "UNKNOWN"
         ));
 
         assertThat(created.name()).isEqualTo("My garden");
         assertThat(created.id()).isNotNull();
+        assertThat(created.countryCode()).isEqualTo("FR");
         verify(repository).save(any(GardenProject.class));
     }
 

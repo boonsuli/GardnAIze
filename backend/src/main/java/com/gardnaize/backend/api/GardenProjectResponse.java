@@ -12,16 +12,15 @@ public record GardenProjectResponse(
         String location,
         Exposure exposure,
         SoilType soilType,
+        String countryCode,
+        String climateRegion,
         Instant createdAt
 ) {
     public static GardenProjectResponse from(GardenProject project) {
         return new GardenProjectResponse(
-                project.getId(),
-                project.getName(),
-                project.getLocation(),
-                project.getExposure(),
-                project.getSoilType(),
-                project.getCreatedAt()
+                project.getId(), project.getName(), project.getLocation(),
+                project.getExposure(), project.getSoilType(), project.getCountryCode(),
+                project.getClimateRegion(), project.getCreatedAt()
         );
     }
 }
