@@ -42,7 +42,7 @@ def main():
     finally:
         if tmp.exists():tmp.unlink()
     manifest={"source":"TELA_BOTANICA","version":a.version,
-              "url":a.url,"sha256":h.hexdigest(),"file":str(a.output)}
+                "url":a.url,"sha256":h.hexdigest(),"file":str(a.output)}
     a.output.with_suffix(".manifest.json").write_text(json.dumps(manifest,indent=2),encoding="utf-8")
     print(json.dumps(manifest,indent=2))
 if __name__=="__main__":main()
