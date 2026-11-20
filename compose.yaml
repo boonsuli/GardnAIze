@@ -93,5 +93,34 @@ services:
                 max-size: "10m"
                 max-file: "3"
 
+    gdai-valid:
+        build:
+            context: ./validation
+            dockerfile: Dockerfile
+        environment:
+            VALID_MODEL_PATH: /models/weights/garden_resnet18_v2.pth
+            VALID_METADATA_PATH: /models/metadata/garden_resnet18_v2.json
+            VALID_MAX_IMAGE_BYTES: "5242880"
+            VALID_THRESHOLD: "0.70"
+        volumes:
+            - type: bind
+              source: ./models/weights
+              target: /models/weights
+              read_only: true
+              bind:
+                  create_host_path: false
+            - ./models/metadata:/models/metadata:ro
+        healthcheck:
+            test:
+                - CMD
+                - python
+                - -c
+                - "import json,urllib.request; d=json.load(urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health',timeout=5)); assert d['model_ready']"
+            interval: 15s
+            timeout: 8s
+            retries: 5
+            start_period: 60s
+        restart: unless-stopped
+
 volumes:
     postgres-data:
