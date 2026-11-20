@@ -1,0 +1,14 @@
+{
+  "architecture": "resnet18",
+  "classes": [
+    "garden",
+    "not_garden",
+    "unusable"
+  ],
+  "pretrained_weights": "ResNet18_Weights.IMAGENET1K_V1",
+  "seed": 42,
+  "validation_accuracy": 0.9090909090909091,
+  "split_file": "datasets/splits/garden_split_v1.csv",
+  "split_strategy": "group_based",
+  "note": "Preliminary group-based split; Small validation and test sets."
+}
