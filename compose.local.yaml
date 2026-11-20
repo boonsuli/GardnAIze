@@ -10,3 +10,7 @@ services:
     postgres:
         ports:
             - "127.0.0.1:${DB_PORT:-5432}:5432"
+
+    gdai-valid:
+        ports: !override
+            - "127.0.0.1:${VALID_PORT:-8001}:8000"
