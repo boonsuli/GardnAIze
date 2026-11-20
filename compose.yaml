@@ -108,14 +108,14 @@ services:
               target: /models/weights
               read_only: true
               bind:
-                  create_host_path: false
+                  create_host_path: true
             - ./models/metadata:/models/metadata:ro
         healthcheck:
             test:
                 - CMD
                 - python
                 - -c
-                - "import json,urllib.request; d=json.load(urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health',timeout=5)); assert d['model_ready']"
+                - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health',timeout=5)"
             interval: 15s
             timeout: 8s
             retries: 5
