@@ -1,44 +1,105 @@
-# GDAI-VALID — Photo validation and garden segmentation
+# GDAI-VALID — ResNet-18 V2
 
-<p align="left">
-  <img alt="Language: Python" src="https://img.shields.io/badge/Language-Python-3776AB" />
-  <img alt="API: FastAPI" src="https://img.shields.io/badge/API-FastAPI-009688" />
-  <img alt="Deep Learning: ResNet-18" src="https://img.shields.io/badge/Deep%20Learning-ResNet--18-EE4C2C" />
-  <img alt="Segmentation: DeepLabV3 candidate" src="https://img.shields.io/badge/Segmentation-DeepLabV3%20candidate-7952B3" />
-  <img alt="Framework: PyTorch" src="https://img.shields.io/badge/Framework-PyTorch-EE4C2C" />
-  <img alt="Containers: Docker" src="https://img.shields.io/badge/Containers-Docker-2496ED" />
-</p>
+## Objectif
 
-GDAI-VALID is a local Python/FastAPI service for interpreting garden photographs.
+GDAI-VALID est le service FastAPI de validation des photographies transmises par GDAI-BACK. Il classe les images en trois catégories :
 
-## AI functions
+- `garden` : photographie de jardin exploitable ;
+- `not_garden` : photographie ne représentant pas un jardin ;
+- `unusable` : photographie inexploitable.
 
-- **ResNet-18:** classify whether an uploaded image is suitable for garden analysis.
-- **Semantic segmentation:** identify meaningful garden zones (such as lawn, paths, planting beds and built surfaces). DeepLabV3 is a candidate architecture; the final model and trained classes must be validated.
-- **Structured output:** provide usable observations to GDAI-BACK, which orchestrates downstream plant recommendations.
+La segmentation des zones du jardin est confiée au module distinct **GDAI-SEGMT**.
 
-The validation API exists, but trained model weights are not bundled in Git. Segmentation training and serving are not presented as completed. A pretrained model alone does not demonstrate project-specific fine-tuning.
+## Entraînement V2
 
-## Development
+Le modèle est un **ResNet-18** préentraîné avec `ResNet18_Weights.IMAGENET1K_V1`, puis adapté aux trois classes. La graine de reproductibilité est `42`.
+
+| Indicateur | Résultat |
+| --- | ---: |
+| Images d'entraînement | 43 |
+| Images de validation | 15 |
+| Images de test | 14 |
+| Total | **72** |
+| Accuracy de validation | **93,33 %** (14/15) |
+| Accuracy de test | **100 %** (14/14) |
+| F1 macro rapporté | **1,00** |
+
+**Limites :** l'objectif initial de 120 images n'a pas été atteint. Ces métriques, obtenues sur de petits ensembles, sont exploratoires et ne garantissent pas la performance en production. Les dérivés floutés sont réservés à l'entraînement. Le découpage est fondé sur les groupes (`group_based`).
+
+### Artefacts
+
+- Poids locaux (non versionnés dans Git) : `models/weights/garden_resnet18_v2.pth`
+- Métadonnées versionnées : `models/metadata/garden_resnet18_v2.json`
+- Découpage : `datasets/splits/garden_split_v2.csv` (à conserver selon la politique de provenance et de confidentialité du dépôt)
+- Notebooks : `notebooks/validation/01_dataset_selection.ipynb` et `notebooks/validation/02_resnet18_training.ipynb` (adapter le nom du premier notebook au fichier effectivement conservé dans le dépôt)
+
+Le modèle V1 est conservé. Les poids V2 doivent être installés séparément sur chaque environnement de déploiement.
+
+## Service FastAPI
+
+| Méthode | Endpoint | Fonction |
+| --- | --- | --- |
+| `POST` | `/api/v1/validation/photo` | Classification d'une photographie |
+| `GET` | `/api/v1/health` | État du service et disponibilité du modèle |
+| `GET` | `/api/v1/model/info` | Métadonnées du modèle chargé |
+| `GET` | `/docs` | Swagger UI |
+| `GET` | `/redoc` | ReDoc |
+| `GET` | `/openapi.json` | Contrat OpenAPI JSON |
+
+Swagger UI et ReDoc sont deux présentations du même contrat OpenAPI, générées automatiquement par FastAPI ; elles ne nécessitent pas de maintenance documentaire distincte.
+
+### Démarrage local
+
+Depuis la racine du dépôt :
 
 ```bash
-cd validation
-python3.12 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements-dev.txt
-uvicorn app.main:app --reload
-pytest -q
+cd validation
+VALID_MODEL_PATH="../models/weights/garden_resnet18_v2.pth" \
+VALID_METADATA_PATH="../models/metadata/garden_resnet18_v2.json" \
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
 
-## Existing validation API
+Le port `8001` permet de tester V2 sans arrêter le conteneur existant exposé sur `8000`.
 
-- `POST /api/v1/validation/photo`: JPEG, PNG or WebP validation, up to 5 MiB by default.
-- `GET /api/v1/health`: service and model readiness.
-- `GET /api/v1/model/info`: model metadata.
+### Contrôles
 
-Swagger: http://localhost:8000/docs  
-ReDoc: http://localhost:8000/redoc
+```bash
+curl -f http://127.0.0.1:8001/api/v1/health
+curl -f http://127.0.0.1:8001/api/v1/model/info
+curl -f http://127.0.0.1:8001/openapi.json
+```
 
-The service returns 503 when required model weights are unavailable. No segmentation endpoint is asserted until implemented and tested.
+Attendu : `model_ready: true`, `ready: true`, `version: v2`, `architecture: resnet18`.
 
-**E2E demonstration objective:** 15 December 2026.
+Des essais manuels dans Swagger ont été effectués avec une photographie de chacune des trois catégories. Les prédictions et seuils de confiance exacts ne sont pas consignés ici ; ils restent à vérifier dans le compte rendu des essais.
+
+## Intégration Docker
+
+Le déploiement doit fournir les chemins configurés par `VALID_MODEL_PATH` et `VALID_METADATA_PATH`, par exemple via des montages en lecture seule :
+
+```yaml
+volumes:
+  - ./models/weights:/models/weights:ro
+  - ./models/metadata:/models/metadata:ro
+environment:
+  VALID_MODEL_PATH: /models/weights/garden_resnet18_v2.pth
+  VALID_METADATA_PATH: /models/metadata/garden_resnet18_v2.json
+```
+
+Ces chemins supposent un fichier Compose situé à la racine du dépôt. Vérifier les chemins et le nom réel du service avant modification. Un modèle non chargé doit être signalé par l'état `model_ready: false` et les requêtes d'inférence doivent retourner `503`.
+
+## Critères de validation avant fusion
+
+- [ ] Notebooks V2 et métadonnées ajoutés au commit, sans inclure les images dont la licence n'autorise pas la redistribution.
+- [ ] Poids `.pth` exclus de Git et conservés localement / dans un stockage d'artefacts adapté.
+- [ ] Configuration FastAPI V2 et montages Docker vérifiés.
+- [ ] Tests automatisés FastAPI réussis ; le test d'indisponibilité du modèle simule explicitement son absence.
+- [ ] Tests d'inférence réels vérifiés sur les trois classes.
+- [ ] `GET /docs`, `/redoc`, `/openapi.json`, `/api/v1/health` et `/api/v1/model/info` validés.
+- [ ] Vérification du contrat d'intégration GDAI-BACK → GDAI-VALID.
+- [ ] CI de la Pull Request réussie.
+
+## Suite du projet
+
+Après validation de l'intégration et fusion de la PR, le développement peut se concentrer sur **GDAI-SEGMT**, service autonome de segmentation des zones du jardin. L'enrichissement du dataset GDAI-VALID jusqu'à 120 images, puis au-delà, reste une amélioration future distincte.

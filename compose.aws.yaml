@@ -21,3 +21,11 @@ services:
         image: "${ECR_REGISTRY:?Set ECR_REGISTRY}/gardnaize-ai-service:${IMAGE_TAG:?Set IMAGE_TAG}"
         build: !reset null
         ports: !override []
+
+    gdai-valid:
+        image: "${ECR_REGISTRY:?Set ECR_REGISTRY}/gardnaize-gdai-valid:${IMAGE_TAG:?Set IMAGE_TAG}"
+        build: !reset null
+        volumes: !override
+            - /opt/gardnaize/models/weights:/models/weights:ro
+            - /opt/gardnaize/models/metadata:/models/metadata:ro
+        ports: !override []
