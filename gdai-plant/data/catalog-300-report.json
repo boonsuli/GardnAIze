@@ -1,0 +1,17 @@
+{
+  "target": 300,
+  "candidate_count": 3709,
+  "selected": 300,
+  "categories": {
+    "SHRUB": 81,
+    "PERENNIAL": 91,
+    "GRASS": 33,
+    "TREE": 35,
+    "GROUNDCOVER": 40,
+    "CLIMBER": 20
+  },
+  "nursery_evidence_names": 0,
+  "errors": {},
+  "availability_verified": false,
+  "warning": "Nursery listing is historical evidence, not live stock confirmation."
+}

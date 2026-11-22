@@ -1,0 +1,26 @@
+scientific_name,field,observed_value,original_range,source_url,source_license,commercial_reuse_allowed,reviewer,reviewed_at,review_status,notes
+Viburnum tinus,water_need,,,https://www.rhs.org.uk/plants/18950/viburnum-tinus/details,UNKNOWN,false,,,RESEARCH_ONLY,RHS moisture/drainage is not irrigation requirement; separate evidence needed
+Photinia × fraseri,water_need,,,https://www.rhs.org.uk/plants/99292/photinia-%C3%97-fraseri/details,UNKNOWN,false,,,RESEARCH_ONLY,RHS moisture/drainage is not irrigation requirement; separate evidence needed
+Choisya ternata,water_need,,,https://www.rhs.org.uk/plants/3766/choisya-ternata/details,UNKNOWN,false,,,RESEARCH_ONLY,RHS moisture/drainage is not irrigation requirement; separate evidence needed
+Elaeagnus × ebbingei,sun_exposure,,,,,,,,TO_RESEARCH,
+Elaeagnus × ebbingei,soil_drainage,,,,,,,,TO_RESEARCH,
+Elaeagnus × ebbingei,water_need,,,,,,,,TO_RESEARCH,
+Elaeagnus × ebbingei,hardiness_min_c,,,,,,,,TO_RESEARCH,
+Elaeagnus × ebbingei,height_cm,,,,,,,,TO_RESEARCH,
+Elaeagnus × ebbingei,spread_cm,,,,,,,,TO_RESEARCH,
+Osmanthus heterophyllus,sun_exposure,,,,,,,,TO_RESEARCH,
+Osmanthus heterophyllus,soil_drainage,,,,,,,,TO_RESEARCH,
+Osmanthus heterophyllus,water_need,,,,,,,,TO_RESEARCH,
+Osmanthus heterophyllus,hardiness_min_c,,,,,,,,TO_RESEARCH,
+Osmanthus heterophyllus,height_cm,,,,,,,,TO_RESEARCH,
+Osmanthus heterophyllus,spread_cm,,,,,,,,TO_RESEARCH,
+Pittosporum tenuifolium,sun_exposure,,,,,,,,TO_RESEARCH,
+Pittosporum tenuifolium,soil_drainage,,,,,,,,TO_RESEARCH,
+Pittosporum tenuifolium,water_need,,,,,,,,TO_RESEARCH,
+Pittosporum tenuifolium,hardiness_min_c,,,,,,,,TO_RESEARCH,
+Pittosporum tenuifolium,height_cm,,,,,,,,TO_RESEARCH,
+Pittosporum tenuifolium,spread_cm,,,,,,,,TO_RESEARCH,
+Hydrangea paniculata,water_need,,,,,,,,TO_RESEARCH,
+Cornus alba,water_need,,,,,,,,TO_RESEARCH,
+Spiraea japonica,water_need,,,,,,,,TO_RESEARCH,
+Sarcococca confusa,water_need,,,,,,,,TO_RESEARCH,
