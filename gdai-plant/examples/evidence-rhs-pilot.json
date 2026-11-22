@@ -1,0 +1,14 @@
+[
+  {"scientific_name":"Geranium macrorrhizum","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/7891/geranium-macrorrhizum/details","attribute_name":"rhs_hardiness_rating","value":"H7","evidence_type":"OBSERVED"},
+  {"scientific_name":"Geranium macrorrhizum","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/7891/geranium-macrorrhizum/details","attribute_name":"sun_exposure","value":["FULL_SUN","PARTIAL_SHADE","FULL_SHADE"],"evidence_type":"OBSERVED"},
+  {"scientific_name":"Geranium macrorrhizum","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/7891/geranium-macrorrhizum/details","attribute_name":"soil_moisture","value":["WELL_DRAINED","MOIST_WELL_DRAINED"],"evidence_type":"OBSERVED"},
+  {"scientific_name":"Geranium macrorrhizum","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/7891/geranium-macrorrhizum/details","attribute_name":"drought_resistance","value":true,"evidence_type":"OBSERVED"},
+  {"scientific_name":"Geranium macrorrhizum","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/7891/geranium-macrorrhizum/details","attribute_name":"foliage_persistence","value":"SEMI_EVERGREEN","evidence_type":"OBSERVED"},
+  {"scientific_name":"Geranium macrorrhizum","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/7891/geranium-macrorrhizum/details","attribute_name":"garden_uses","value":["GROUND_COVER","FLOWER_BORDERS"],"evidence_type":"OBSERVED"},
+  {"scientific_name":"Vinca minor","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/18973/vinca-minor/details","attribute_name":"rhs_hardiness_rating","value":"H6","evidence_type":"OBSERVED"},
+  {"scientific_name":"Vinca minor","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/18973/vinca-minor/details","attribute_name":"sun_exposure","value":["FULL_SUN","PARTIAL_SHADE","FULL_SHADE"],"evidence_type":"OBSERVED"},
+  {"scientific_name":"Vinca minor","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/18973/vinca-minor/details","attribute_name":"soil_moisture","value":["MOIST_WELL_DRAINED"],"evidence_type":"OBSERVED"},
+  {"scientific_name":"Vinca minor","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/18973/vinca-minor/details","attribute_name":"foliage_persistence","value":"EVERGREEN","evidence_type":"OBSERVED"},
+  {"scientific_name":"Vinca minor","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/18973/vinca-minor/details","attribute_name":"garden_uses","value":["GROUND_COVER","UNDERPLANTING"],"evidence_type":"OBSERVED"},
+  {"scientific_name":"Vinca minor","source_name":"RHS","source_url":"https://www.rhs.org.uk/plants/18973/vinca-minor/details","attribute_name":"cultivation_caution","value":"May spread and become a nuisance if unmanaged","evidence_type":"OBSERVED"}
+]

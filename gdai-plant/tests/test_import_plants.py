@@ -3,6 +3,13 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+import sys
+
+from pathlib import Path
+
+INGESTION_DIR = Path(__file__).resolve().parents[1] / "ingestion"
+sys.path.insert(0, str(INGESTION_DIR))
+
 from import_plants import (
     normalize,
     parse_catalog,
