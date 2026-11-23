@@ -45,7 +45,11 @@ def near_duplicate_pairs(scenarios):
             height_diff = abs(left["maximum_height_cm"] - right["maximum_height_cm"])
             spread_diff = abs(left["maximum_spread_cm"] - right["maximum_spread_cm"])
             temp_diff = abs(left["minimum_winter_temperature_c"] - right["minimum_winter_temperature_c"])
-            if matches >= 8 and height_diff <= 30 and spread_diff <= 30 and temp_diff <= 2:
+            # Sun exposure and planting context are essential horticultural
+            # distinctions: never flag full sun versus full shade as duplicates.
+            critical_match = (left.get("sun_exposure") == right.get("sun_exposure")
+                              and left.get("planting_context") == right.get("planting_context"))
+            if critical_match and matches >= 8 and height_diff <= 30 and spread_diff <= 30 and temp_diff <= 2:
                 pairs.append({"ids": [left["id"], right["id"]],
                               "matching_categorical_features": matches,
                               "height_difference_cm": height_diff,
