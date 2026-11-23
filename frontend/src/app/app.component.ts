@@ -12,6 +12,7 @@ import {
     GardenApiService, Exposure, SoilType, RequirementLevel, PlantSuggestion, QuestionnaireCatalog
 } from './core/garden-api.service';
 import { isValidPhoto } from './core/photo-validation';
+import { workflowStatus, type GardenWorkflowPhase } from './core/workflow-status';
 
 @Component({
     selector: 'app-root',
@@ -26,6 +27,9 @@ import { isValidPhoto } from './core/photo-validation';
 export class AppComponent {
     private readonly logger = inject(LoggerService);
     private readonly gardenApi = inject(GardenApiService);
+
+    readonly statusPhase = signal<GardenWorkflowPhase>('PHOTO_READY');
+    readonly currentStatus = () => workflowStatus(this.statusPhase());
 
     readonly gardenName = signal('Mon jardin');
     readonly location = signal('');
@@ -105,6 +109,7 @@ export class AppComponent {
 
     refuseConsent(): void {
         this.resetPhotoWorkflow();
+        this.statusPhase.set('CONSENT_REQUIRED');
         this.message.set(this.translate('privacy.refuse'));
     }
 
@@ -117,6 +122,7 @@ export class AppComponent {
         }
         this.consentAccepted.set(true);
         this.workflowLoading.set(true);
+        this.statusPhase.set('VISION_RUNNING');
         this.message.set(this.translate('privacy.pending'));
         this.gardenApi.createGarden({
             name: this.gardenName().trim() || 'Mon jardin',
@@ -143,6 +149,7 @@ export class AppComponent {
             error: () => {
                 this.message.set(this.translate('privacy.error'));
                 this.consentAccepted.set(false);
+                this.statusPhase.set('FAILED');
             }
         });
     }
@@ -155,6 +162,8 @@ export class AppComponent {
             takeWhile(result => !['COMPLETED', 'FAILED', 'REJECTED', 'RECONCILIATION_REQUIRED'].includes(result.status), true)
         ).subscribe({
             next: result => {
+                if (result.status === 'COMPLETED') this.statusPhase.set('COMPLETED');
+                if (['FAILED', 'REJECTED', 'RECONCILIATION_REQUIRED'].includes(result.status)) this.statusPhase.set('FAILED');
                 if (result.status === 'COMPLETED' || result.status === 'FAILED' || result.status === 'REJECTED' || result.status === 'RECONCILIATION_REQUIRED') {
                     this.message.set((this.language() === 'FR' ? 'Demande ' : 'Request ')
                         + requestId + ' : ' + result.status);
@@ -169,6 +178,7 @@ export class AppComponent {
     resetPhotoWorkflow(): void {
         this.processingPoll?.unsubscribe();
         this.processingRequestId.set(null);
+        this.statusPhase.set('PHOTO_READY');
         const oldPreview = this.preview();
         if (oldPreview) {
             URL.revokeObjectURL(oldPreview);
@@ -204,6 +214,7 @@ export class AppComponent {
         }
         this.photoConfirmed.set(true);
         this.validationLoading.set(true);
+        this.statusPhase.set('VALIDATING');
         this.message.set('Validation GDAI-VALID en cours…');
         this.gardenApi.validatePhoto(file).pipe(
             switchMap(result => {
@@ -219,6 +230,7 @@ export class AppComponent {
         ).subscribe({
             next: ({ catalog, dictionary }) => {
                 this.photoValidated.set(true);
+                this.statusPhase.set('PHOTO_VALID');
                 this.questionnaire.set(catalog);
                 this.dictionary.set(dictionary);
                 this.message.set('Photo acceptée par GDAI-BACK. Répondez au questionnaire.');
@@ -226,6 +238,7 @@ export class AppComponent {
             error: error => {
                 this.photoConfirmed.set(false);
                 this.photoValidated.set(false);
+                this.statusPhase.set('FAILED');
                 this.message.set(error instanceof Error ? error.message : 'Validation impossible');
             }
         });
@@ -306,6 +319,7 @@ export class AppComponent {
         this.photoReady.set(true);
         this.editPhotoDetails();
         this.filename.set(file.name);
+        this.statusPhase.set('PHOTO_READY');
         this.message.set('Photo sélectionnée. Complétez la localisation puis confirmez.');
         this.logger.info('Photo selected');
     }
