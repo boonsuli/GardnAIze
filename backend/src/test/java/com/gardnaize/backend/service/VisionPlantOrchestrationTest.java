@@ -18,11 +18,11 @@ class VisionPlantOrchestrationTest {
             {"isGarden":true,"isAnalyzable":true,"description":{"features":{
               "fence":true,"slope":true,"terrace":true}}}
             """);
-        assertEquals("privacy", selector.select(vision, mapper.readTree("{}")).orElseThrow().key());
-        assertEquals("rootDevelopment", selector.select(vision,
+        assertEquals("privacyScreeningRequired", selector.select(vision, mapper.readTree("{}")).orElseThrow().key());
+        assertEquals("rootSpace", selector.select(vision,
                 mapper.readTree("{\"privacy\":\"YES\"}")).orElseThrow().key());
         assertTrue(selector.select(vision, mapper.readTree("""
-            {"privacy":"YES","rootDevelopment":"LOW","aerialVolume":"SMALL"}
+            {"privacyScreeningRequired":"YES","rootSpace":"LOW","matureSpread":"SMALL"}
             """)).isEmpty());
     }
 
