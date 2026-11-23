@@ -7,7 +7,8 @@
     "acceptAndContinue": "J’accepte et je lance l’analyse",
     "consentTitle": "Autorisation d’analyse de votre photo",
     "pending": "Demande reçue, traitement en cours…",
-    "error": "La demande n’a pas pu être transmise. Veuillez réessayer."
+    "error": "La demande n’a pas pu être transmise. Veuillez réessayer.",
+    "trainingConsent": "J’autorise la réutilisation de mes données pour entraîner les modèles (facultatif)."
   },
   "questionnaire": {
     "exposure": {
@@ -131,6 +132,7 @@
     "answersRequired": "Complétez les réponses obligatoires pour continuer.",
     "plantRunning": "Recherche des plantes adaptées à votre jardin…",
     "completed": "Vos recommandations sont prêtes !",
-    "failed": "Le traitement rencontre une difficulté."
+    "failed": "Le traitement rencontre une difficulté.",
+    "answersSubmitted": "Réponses enregistrées. Préparation des recommandations…"
   }
 }
