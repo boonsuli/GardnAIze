@@ -19,6 +19,14 @@ class ConsolidationTests(unittest.TestCase):
         a, b = scenario("A"), scenario("B")
         b["minimum_winter_temperature_c"] = -7
         self.assertEqual(len(near_duplicate_pairs([a, b])), 1)
+    def test_full_sun_and_full_shade_not_duplicates(self):
+        a, b = scenario("A"), scenario("B")
+        b["sun_exposure"] = "FULL_SHADE"
+        self.assertEqual(near_duplicate_pairs([a, b]), [])
+    def test_different_planting_context_not_duplicates(self):
+        a, b = scenario("A"), scenario("B")
+        b["planting_context"] = "HEDGE"
+        self.assertEqual(near_duplicate_pairs([a, b]), [])
     def test_manual_exclusion_is_explicit(self):
         result = consolidate([scenario("FR-PAR-01")], [scenario("FR-TEM-001")])
         record = next(r for r in result["records"] if r["id"] == "FR-TEM-001")
