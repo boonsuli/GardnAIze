@@ -9,7 +9,7 @@
   <img alt="i18n: FR + EN" src="https://img.shields.io/badge/i18n-FR%20%2B%20EN-7952B3" />
 </p>
 
-[Wiki de démarrage local](../docs/WIKI.md)
+[Wiki de démarrage local](https://github.com/boonsuli/GardnAIze/wiki)
 
 GDAI-FRONT provides the user journey for GardnAIze: garden photo upload/capture, metadata confirmation, questionnaire, consent, processing status and plant recommendations. The product is designed both for **individual gardeners (B2C)** and for potential **integration into garden retailer and plant e-commerce websites (B2B)**. Retailer embedding is a product direction, not a currently certified integration.
 
