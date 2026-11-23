@@ -28,8 +28,8 @@ class GardenAnalysisTests(unittest.TestCase):
             "description": {
                 "summary": "Lawn and terrace",
                 "features": {"lawn": True, "terrace": True, "pathway": False,
-                             "trees": False, "shrubs": True, "fence": True,
-                             "lowWall": False, "stairs": False, "slope": False}
+                            "trees": False, "shrubs": True, "fence": True,
+                            "lowWall": False, "stairs": False, "slope": False}
             }
         }
 
