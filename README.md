@@ -8,6 +8,7 @@
   <img alt="Machine Learning: KNN" src="https://img.shields.io/badge/Machine%20Learning-KNN-3776AB" />
   <img alt="Clustering: K-Means" src="https://img.shields.io/badge/Clustering-K--Means-3776AB" />
   <img alt="Recommendation: Random Forest target" src="https://img.shields.io/badge/Recommendation-Random%20Forest%20target-228B22" />
+  <img alt="Gemini API key required for vision" src="https://img.shields.io/badge/Gemini%20API-Key%20Required-4285F4" />
   <img alt="Vision: Gemini 3.8 Flash" src="https://img.shields.io/badge/Vision-Gemini%203.8%20Flash-4285F4" />
   <img alt="Frontend: Angular 21" src="https://img.shields.io/badge/Frontend-Angular%2021-DD0031" />
   <img alt="Backend: Spring Boot 3.5.7" src="https://img.shields.io/badge/Backend-Spring%20Boot%203.5.7-6DB33F" />
@@ -89,6 +90,20 @@ GDAI-BACK (Spring Boot) ---> PostgreSQL application data
 ```
 
 GDAI-FRONT communicates only with GDAI-BACK, not directly with private AI services. The backend coordinates asynchronous processing and exposes its progress to the frontend. Image processing and model training require explicit data permissions.
+
+## Gemini API prerequisite
+
+**A valid Google Gemini API key is required for the full garden-photo analysis workflow (GDAI-VISION).** Local services and health checks may start without one, but the real Gemini-powered end-to-end recommendation flow cannot operate normally. The key must have access to the selected model and sufficient quota; billing may be necessary.
+
+Obtain a key from [Google AI Studio](https://aistudio.google.com/apikey), then configure the untracked `.env` file:
+
+```dotenv
+GEMINI_API_KEY=your_valid_gemini_api_key
+GEMINI_MODEL=gemini-3.8-flash
+VISION_ENABLED=true
+```
+
+**Important:** `gemini-3.8-flash` is the repository's current configured value, not a guarantee that Google serves that model ID. Check available model identifiers for your account and update `GEMINI_MODEL` as needed. The backend also has a separate `VISION_API_KEY` setting; consult the integration configuration if authentication fails. Never commit or share your actual key.
 
 ## Local development
 

@@ -42,9 +42,21 @@ GDAI-BACK pilote les étapes de manière asynchrone (réponse HTTP 202 et consul
 - Accès Internet pour construire les images et télécharger les dépendances.
 - Ressources suffisantes pour Java, PostgreSQL et les services Python.
 - Poids ResNet-18 V2 **non versionnés** : `models/weights/garden_resnet18_v2.pth`. Les métadonnées attendues sont `models/metadata/garden_resnet18_v2.json`. Sans les poids, le service de validation peut ne pas être prêt.
-- Une clé Gemini valide pour tester les analyses réelles ; la clé n'est pas nécessaire pour examiner l'interface ou les endpoints de santé.
+- **Clé API Google Gemini valide obligatoire pour l'analyse réelle des photos par GDAI-VISION et le parcours E2E complet.** La clé doit autoriser le modèle sélectionné, avec des quotas suffisants et, si nécessaire, une facturation activée. Sans clé, certains services locaux et endpoints de santé peuvent démarrer, mais l'analyse Vision ne fonctionnera pas normalement. Obtenir une clé sur [Google AI Studio](https://aistudio.google.com/apikey).
 
 Images configurées : PostgreSQL `postgres:18-alpine`, Java d'exécution `amazoncorretto:25-alpine`. Le **numéro de version du moteur Docker** dépend de l'installation de l'utilisateur ; il n'est pas fixé par le dépôt.
+
+### Configuration de Gemini pour le parcours complet
+
+Dans le fichier local `.env` (jamais commité), renseigner :
+
+```dotenv
+GEMINI_API_KEY=votre_cle_api_gemini_valide
+GEMINI_MODEL=gemini-3.8-flash
+VISION_ENABLED=true
+```
+
+**Attention :** `gemini-3.8-flash` est la valeur actuellement proposée par le dépôt, mais sa disponibilité réelle doit être vérifiée auprès de l'API Gemini. Utiliser un identifiant de modèle accessible avec votre clé. Le backend possède également une variable `VISION_API_KEY` distincte ; vérifier sa configuration si l'intégration requiert une authentification supplémentaire. Ne jamais publier la clé dans Git, le Wiki ou les logs.
 
 ## 4. Démarrage local recommandé (Docker Compose)
 
