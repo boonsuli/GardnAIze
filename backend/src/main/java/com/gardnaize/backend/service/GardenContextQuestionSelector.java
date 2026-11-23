@@ -21,16 +21,16 @@ public class GardenContextQuestionSelector {
         JsonNode description = vision.path("description");
         JsonNode features = description.path("features");
         if (features.path("fence").asBoolean(false) &&
-                !answered(answers, "privacy")) {
-            return Optional.of(new Question("privacy", "FENCE_DETECTED"));
+                !answered(answers, "privacyScreeningRequired")) {
+            return Optional.of(new Question("privacyScreeningRequired", "FENCE_DETECTED"));
         }
         if (features.path("slope").asBoolean(false) &&
-                !answered(answers, "rootDevelopment")) {
-            return Optional.of(new Question("rootDevelopment", "SLOPE_DETECTED"));
+                !answered(answers, "rootSpace")) {
+            return Optional.of(new Question("rootSpace", "SLOPE_DETECTED"));
         }
         if (features.path("terrace").asBoolean(false) &&
-                !answered(answers, "aerialVolume")) {
-            return Optional.of(new Question("aerialVolume", "TERRACE_DETECTED"));
+                !answered(answers, "matureSpread")) {
+            return Optional.of(new Question("matureSpread", "TERRACE_DETECTED"));
         }
         return Optional.empty();
     }
