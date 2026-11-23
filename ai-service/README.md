@@ -10,7 +10,7 @@
   <img alt="Vision: Gemini 3.8 Flash" src="https://img.shields.io/badge/Vision-Gemini%203.8%20Flash-4285F4" />
 </p>
 
-[Wiki de démarrage local](../docs/WIKI.md)
+[Wiki de démarrage local](https://github.com/boonsuli/GardnAIze/wiki)
 
 This Python/FastAPI service provides an API foundation for GardnAIze AI experiments and demonstration recommendations.
 
