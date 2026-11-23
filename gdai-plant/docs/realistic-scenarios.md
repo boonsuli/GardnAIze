@@ -33,3 +33,47 @@ python -m matching.generate_garden_scenarios --count 10 \
 The live example requests **10** scenarios for a small pilot. The API provider may charge even when generation fails or validation rejects results. For strict monetary protection, configure an appropriate billing limit or monitoring at the provider; this script does not guarantee a euro spending cap.
 
 Next steps: benchmark quality and latency using offline fixtures; add regional plausibility checks, near-duplicate detection and independent review before generating 50 scenarios x 40 plants = 2,000 *potential* pairs.
+
+## V1.2 scope and human review
+
+The MVP is restricted to temperate lowland residential planting zones in mainland
+France. Mediterranean, alpine and mountain scenarios are outside this initial
+scope. New records include `region`, `climate_zone`, `terrain_type`,
+`soil_texture`, `soil_moisture_seasonality` and `planting_context`.
+These are synthetic assumptions, not measurements derived from a photo.
+Legacy records lacking metadata are flagged `REVIEW_REQUIRED`, not discarded.
+Obvious mountain descriptions in free text are flagged for manual review; no
+automatic text heuristic is a reliable geographic classifier.
+
+### Recheck the existing 10-scenario pilot without Gemini
+
+From `gdai-plant/`:
+
+```bash
+python -m matching.generate_garden_scenarios --count 10 \
+  --input-json /tmp/gardnaize-scenarios-pilot.json \
+  --out /tmp/gardnaize-scenarios-pilot-reviewed.json
+jq '.summary' /tmp/gardnaize-scenarios-pilot-reviewed.json
+```
+
+This offline command accepts either a raw `{"scenarios":[...]}` response or a
+previous `{"reviews":[{"scenario":{...}}]}` result. No Gemini call is made.
+
+### Commit reviewed synthetic data for a second review
+
+Commit only the generated JSON (never `.env`, credentials or raw personal
+photos). Keep the original pilot and reviewed output separately:
+
+```bash
+mkdir -p data/scenarios
+cp /tmp/gardnaize-scenarios-pilot.json data/scenarios/pilot-10-original.json
+cp /tmp/gardnaize-scenarios-pilot-reviewed.json data/scenarios/pilot-10-reviewed-v1.2.json
+git add data/scenarios/pilot-10-original.json data/scenarios/pilot-10-reviewed-v1.2.json
+git commit -m "data(plant): add synthetic garden scenario pilot for review"
+git push origin feature/gdai-plant-realistic-scenarios
+```
+
+The reviewer can then inspect the committed scenario JSON from the branch and
+propose corrections in a separate commit. Do not train the Random Forest directly
+on automatically `ACCEPTED` synthetic proposals: independent horticultural
+validation and scenario-level splits remain necessary.
