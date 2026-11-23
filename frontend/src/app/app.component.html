@@ -15,6 +15,12 @@
         <p>Une photo et quelques réponses pour trouver des plantes adaptées.</p>
     </header>
 
+    <section class="workflow-status" role="status" aria-live="polite" aria-atomic="true"
+        [attr.data-tone]="currentStatus().tone">
+        <span class="workflow-status-indicator" [class.busy]="currentStatus().busy" aria-hidden="true"></span>
+        <span>{{ translate(currentStatus().messageKey) }}</span>
+    </section>
+
     <mat-card appearance="outlined" class="intake">
         <mat-card-header>
             <mat-card-title>1. Présentez votre jardin</mat-card-title>
@@ -66,20 +72,20 @@
                     {{ validationLoading() ? 'Validation en cours…' : 'Confirmer et valider la photo' }}
                 </button>
             } @else {
-                <p class="confirmation" role="status">Photo validée par GDAI-VALID. Complétez le questionnaire.</p>
+                <p class="confirmation" role="status">Photo validée par GDAI-VALID. Confirmez votre consentement.</p>
                 <button mat-stroked-button type="button" (click)="editPhotoDetails()">Modifier les informations</button>
             }
         </mat-card-content>
     </mat-card>
 
-    @if (photoValidated()) {
+    @if (photoValidated() && consentAccepted()) {
         @if (questionnaire(); as catalog) {
             <mat-card appearance="outlined" class="questionnaire">
                 <mat-card-header>
                     <mat-card-title>2. {{ translate('questionnaireTitle') }}</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    @for (question of catalog.questions; track question.key) {
+                    @for (question of standardQuestions(); track question.key) {
                         <mat-form-field appearance="outline">
                             <mat-label>{{ translate(question.labelKey) }}{{ question.required ? ' *' : '' }}</mat-label>
                             <mat-select [value]="answers()[question.key] || ''"
@@ -93,13 +99,27 @@
                             </mat-select>
                         </mat-form-field>
                     }
-                    <button mat-flat-button type="button" [disabled]="!allRequiredAnswered()"
-                        (click)="showConsent()">{{ translate('questionnaireSubmit') }}</button>
+                    @if (contextCatalogQuestion(); as context) {
+                        <h3>{{ translate('workflowStatus.contextReady') }}</h3>
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{ translate(context.labelKey) }}</mat-label>
+                            <mat-select [value]="answers()[context.key] || ''"
+                                (selectionChange)="setAnswer(context.key, $event.value)">
+                                @for (option of context.options; track option.value) {
+                                    <mat-option [value]="option.value">{{ translate(option.labelKey) }}</mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                    }
+                    <button mat-flat-button type="button"
+                        [disabled]="!canSubmitStaged()" (click)="submitStagedQuestionnaire()">
+                        {{ translate('questionnaireSubmit') }}
+                    </button>
                 </mat-card-content>
             </mat-card>
         }
     }
-    @if (consentVisible()) {
+    @if (consentVisible() && !consentAccepted()) {
         @if (questionnaire(); as catalog) {
             <mat-card appearance="outlined" class="questionnaire">
                 <mat-card-header>
@@ -107,6 +127,9 @@
                 </mat-card-header>
                 <mat-card-content>
                     <p>{{ translate(catalog.externalProcessingNoticeKey) }}</p>
+                    <mat-checkbox [checked]="trainingConsent()" (change)="trainingConsent.set($event.checked)">
+                        {{ translate('privacy.trainingConsent') }}
+                    </mat-checkbox>
                     <button mat-stroked-button type="button" [disabled]="workflowLoading()"
                         (click)="refuseConsent()">{{ translate('privacy.refuse') }}</button>
                     <button mat-flat-button type="button" [disabled]="workflowLoading()"
