@@ -2,7 +2,7 @@
 
 ![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB) ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688) ![ResNet-18 V2](https://img.shields.io/badge/Model-ResNet--18%20V2-EE4C2C) ![Three classes](https://img.shields.io/badge/Classes-3-7952B3) ![Docker](https://img.shields.io/badge/Deployment-Docker-2496ED)
 
-[Wiki de démarrage local](../docs/WIKI.md)
+[Wiki de démarrage local](https://github.com/boonsuli/GardnAIze/wiki)
 
 ## Objectif
 

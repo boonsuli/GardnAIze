@@ -9,7 +9,7 @@
   <img alt="Migrations: Flyway" src="https://img.shields.io/badge/Migrations-Flyway-CC0200" />
 </p>
 
-[Wiki de démarrage local](../docs/WIKI.md)
+[Wiki de démarrage local](https://github.com/boonsuli/GardnAIze/wiki)
 
 GDAI-BACK is the central application API and orchestrator. It receives requests from GDAI-FRONT, persists garden and photo information, coordinates AI processing and returns application-level statuses and results.
 

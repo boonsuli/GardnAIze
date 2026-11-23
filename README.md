@@ -19,7 +19,7 @@
   
 </div>
 
-**📖 [Wiki développeur : comprendre, configurer et démarrer GardnAIze en local](docs/WIKI.md)** · [Déploiement détaillé](docs/deployment-local.md)
+**📖 [Wiki développeur : comprendre, configurer et démarrer GardnAIze en local](https://github.com/boonsuli/GardnAIze/wiki)** · [Déploiement détaillé](docs/deployment-local.md)
 
 ## Overview
 

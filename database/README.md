@@ -7,7 +7,7 @@
   <img alt="Catalog: Provenance" src="https://img.shields.io/badge/Catalog-Provenance-7952B3" />
 </p>
 
-[Wiki de démarrage local](../docs/WIKI.md)
+[Wiki de démarrage local](https://github.com/boonsuli/GardnAIze/wiki)
 
 GardnAIze separates application persistence from horticultural and machine-learning data.
 
