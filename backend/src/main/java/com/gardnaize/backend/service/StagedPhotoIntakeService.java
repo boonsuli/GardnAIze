@@ -91,6 +91,19 @@ public class StagedPhotoIntakeService {
             throw new ResponseStatusException(HttpStatus.CONFLICT,
                     "Request unavailable or questionnaire already submitted");
         }
+        // If VISION already finished, release the durable wait for the PLANT master.
+        int ready = jdbc.update("""
+            UPDATE public.garden_photo_requests
+            SET status='READY_FOR_PLANT', updated_at=now()
+            WHERE garden_id=? AND request_id=? AND status='WAITING_ANSWERS'
+            """, gardenId, requestId);
+        if (ready == 1) {
+            jdbc.update("""
+                INSERT INTO public.garden_photo_request_history
+                  (request_id,previous_status,status,event_code)
+                VALUES (?,'WAITING_ANSWERS','READY_FOR_PLANT','PLANT_READY')
+                """, requestId);
+        }
         jdbc.update("""
             INSERT INTO public.garden_photo_request_history(request_id,status,event_code)
             SELECT request_id,status,'QUESTIONNAIRE_SUBMITTED'
