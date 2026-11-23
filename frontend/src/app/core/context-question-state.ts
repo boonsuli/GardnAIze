@@ -7,19 +7,20 @@ export interface ContextQuestion {
     reason: string | null;
 }
 
-/** The action is not rendered until the context question (or explicit skip) arrives. */
-export function shouldShowRecommendationButton(context: ContextQuestion | null): boolean {
-    return context?.state === 'READY' || context?.state === 'SKIPPED';
+/** The action is always rendered while the questionnaire is displayed. */
+export function shouldShowRecommendationButton(_context: ContextQuestion | null): boolean {
+    return true;
 }
 
-/** Rendering and enabling are deliberately separate decisions. */
+/** The action stays disabled until VISION resolves and required answers are complete. */
 export function canSubmitRecommendations(
     context: ContextQuestion | null,
     mandatoryAnswersComplete: boolean,
     contextualAnswer: string | undefined
 ): boolean {
-    if (!mandatoryAnswersComplete || !shouldShowRecommendationButton(context)) return false;
-    if (context?.state === 'SKIPPED') return true;
+    if (!mandatoryAnswersComplete || context === null) return false;
+    if (context.state === 'SKIPPED') return true;
+    if (context.state !== 'READY' || !context.questionKey) return false;
     return !!contextualAnswer?.trim();
 }
 
