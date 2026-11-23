@@ -11,9 +11,9 @@ const waiting: ContextQuestion = { state: 'WAITING', questionKey: null, reason: 
 const ready: ContextQuestion = { state: 'READY', questionKey: 'privacy', reason: 'FENCE_DETECTED' };
 const skipped: ContextQuestion = { state: 'SKIPPED', questionKey: null, reason: null };
 
-test('button remains hidden while VISION is pending', () => {
-    assert.equal(shouldShowRecommendationButton(null), false);
-    assert.equal(shouldShowRecommendationButton(waiting), false);
+test('button stays visible but disabled while VISION is pending', () => {
+    assert.equal(shouldShowRecommendationButton(null), true);
+    assert.equal(shouldShowRecommendationButton(waiting), true);
     assert.equal(canSubmitRecommendations(waiting, true, 'YES'), false);
 });
 
