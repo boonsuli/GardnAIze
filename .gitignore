@@ -71,7 +71,7 @@ replay_pid*
 /docs/ChatGPT-conversation/
 
 # GDAI-VISION generated analysis logs
-/vision/logs//docs/ChatGPT-conversation/
+/vision/logs/
 
 # GDAI-VALID V2 - local human reviews and generated image derivatives
 /datasets/validation/resnet18/blur_candidates_train/
