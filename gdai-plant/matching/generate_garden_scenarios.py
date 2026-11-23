@@ -8,6 +8,10 @@ from matching.realistic_scenarios import validate_batch
 PROMPT = """You are assisting a French temperate-climate garden dataset project.
 Return a JSON object with a 'scenarios' array of {count} realistic residential
 garden scenarios. Prefer 60% common, 30% constrained, 10% rare-but-plausible.
+Scope: temperate mainland France, non-mountain lowland residential gardens.
+Exclude mountain/high-altitude and Mediterranean climates for this MVP.
+Represent realistic variation without assuming climate from a photo.
+Describe ONE planting zone, not a whole garden.
 Never fabricate observations, measurements or sources. All generated records
 must have origin='SYNTHETIC_AI'. Do not generate contradictions or duplicates.
 When uncertain, return fewer records. Each scenario must include:
@@ -15,7 +19,12 @@ id (unique string), sun_exposure (FULL_SUN/PARTIAL_SHADE/FULL_SHADE),
 soil_drainage (POOR/MODERATE/GOOD), water_availability (LOW/MEDIUM/HIGH),
 minimum_winter_temperature_c (number), maximum_height_cm (number),
 maximum_spread_cm (number), evergreen_preferred (boolean),
-origin, plausibility_reason (nonempty string).
+origin, plausibility_reason (nonempty string), region (French area string),
+climate_zone (TEMPERATE_OCEANIC/TEMPERATE_SEMI_CONTINENTAL/TEMPERATE_TRANSITIONAL),
+terrain_type (LOWLAND), soil_texture (CLAY/LOAM/SAND/SILT/STONY/MIXED),
+soil_moisture_seasonality (DRY_SUMMER/SEASONAL_WET/CONSISTENTLY_MOIST/WELL_DRAINED),
+planting_context (IN_GROUND_BORDER/HEDGE/COURTYARD/RAISED_BED/PLANTER/RAIN_GARDEN).
+Avoid ambiguous mountain valleys and unsupported claims of measured soil or climate.
 Do not create scenarios tailored to a particular plant. No plant names.
 Represent one planting zone per scenario. Do not claim expert validation.
 Return JSON only."""
@@ -69,13 +78,16 @@ def main():
                 "total_tokens": getattr(usage_data, "total_token_count", None),
             }
         data = json.loads(response.text)
+    # Offline replay also accepts a prior result file with a "reviews" array.
     scenarios = data.get("scenarios") if isinstance(data, dict) else None
+    if scenarios is None and isinstance(data, dict) and isinstance(data.get("reviews"), list):
+        scenarios = [item.get("scenario") for item in data["reviews"] if isinstance(item, dict)]
     if not isinstance(scenarios, list):
         parser.error("Expected JSON object with scenarios array")
     if len(scenarios) > args.count:
         parser.error("Gemini returned more scenarios than requested")
     reviews = validate_batch(scenarios)
-    result = {"schema_version": "1.1",
+    result = {"schema_version": "1.2",
               "generator": "GEMINI" if not args.input_json else "IMPORTED",
               "model": args.model if not args.input_json else None,
               "api_usage": usage, "requested_count": args.count,
