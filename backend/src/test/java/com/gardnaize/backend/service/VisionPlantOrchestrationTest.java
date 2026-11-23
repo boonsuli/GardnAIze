@@ -20,7 +20,7 @@ class VisionPlantOrchestrationTest {
             """);
         assertEquals("privacyScreeningRequired", selector.select(vision, mapper.readTree("{}")).orElseThrow().key());
         assertEquals("rootSpace", selector.select(vision,
-                mapper.readTree("{\"privacy\":\"YES\"}")).orElseThrow().key());
+                mapper.readTree("{\"privacyScreeningRequired\":\"YES\"}")).orElseThrow().key());
         assertTrue(selector.select(vision, mapper.readTree("""
             {"privacyScreeningRequired":"YES","rootSpace":"LOW","matureSpread":"SMALL"}
             """)).isEmpty());
