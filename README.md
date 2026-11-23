@@ -8,15 +8,19 @@
   <img alt="Machine Learning: KNN" src="https://img.shields.io/badge/Machine%20Learning-KNN-3776AB" />
   <img alt="Clustering: K-Means" src="https://img.shields.io/badge/Clustering-K--Means-3776AB" />
   <img alt="Recommendation: Random Forest target" src="https://img.shields.io/badge/Recommendation-Random%20Forest%20target-228B22" />
+  <img alt="Gemini API key required for vision" src="https://img.shields.io/badge/Gemini%20API-Key%20Required-4285F4" />
   <img alt="Vision: Gemini 3.8 Flash" src="https://img.shields.io/badge/Vision-Gemini%203.8%20Flash-4285F4" />
   <img alt="Frontend: Angular 21" src="https://img.shields.io/badge/Frontend-Angular%2021-DD0031" />
-  <img alt="Backend: Spring Boot 3.5" src="https://img.shields.io/badge/Backend-Spring%20Boot%203.5-6DB33F" />
+  <img alt="Backend: Spring Boot 3.5.7" src="https://img.shields.io/badge/Backend-Spring%20Boot%203.5.7-6DB33F" />
+  <img alt="Java: Amazon Corretto 25" src="https://img.shields.io/badge/Java-Amazon%20Corretto%2025-ED8B00" />
   <img alt="AI API: FastAPI" src="https://img.shields.io/badge/AI%20API-FastAPI-009688" />
-  <img alt="Database: PostgreSQL" src="https://img.shields.io/badge/Database-PostgreSQL-4169E1" />
-  <img alt="Containers: Docker" src="https://img.shields.io/badge/Containers-Docker-2496ED" />
+  <img alt="Database: PostgreSQL 18" src="https://img.shields.io/badge/Database-PostgreSQL%2018-4169E1" />
+  <img alt="Containers: Docker Compose" src="https://img.shields.io/badge/Containers-Docker%20Compose-2496ED" />
   </p>
   
 </div>
+
+**📖 [Wiki développeur : comprendre, configurer et démarrer GardnAIze en local](https://github.com/boonsuli/GardnAIze/wiki)** · [Déploiement détaillé](docs/deployment-local.md)
 
 ## Overview
 
@@ -47,9 +51,10 @@ Research-stage collection or scraping does not automatically authorize commercia
 | --- | --- |
 | [GDAI-FRONT](frontend/) | Angular user interface, photo, confirmation, questionnaire and results |
 | [GDAI-BACK](backend/) | Spring Boot REST API, asynchronous orchestration, persistence and status tracking |
-| [GDAI-VALID](validation/) | FastAPI photo validation with ResNet-18; local segmentation is an intended extension |
-| GDAI-VISION | Optional external Gemini Vision garden observations |
+| [GDAI-VALID](validation/) | FastAPI photo validation with ResNet-18; segmentation is handled separately by optional GDAI-SEGMT |
+| GDAI-VISION | Gemini Vision garden observations (runtime activation configurable) |
 | GDAI-PLANT | Horticultural compatibility and Random Forest recommendation engine |
+| GDAI-SEGMT | Optional semantic segmentation of garden zones |
 | GDAI-GNERAT | Optional external image generation/editing after recommendations; never blocks E2E |
 | [ML data](database/) | PostgreSQL horticultural catalog, provenance and training data |
 | [Research](notebooks/) | KNN, K-Means and deep-learning experiments |
@@ -63,7 +68,7 @@ Research-stage collection or scraping does not automatically authorize commercia
 | **KNN** | Supervised image-classification experiments | Research notebooks |
 | **K-Means** | Unsupervised image clustering | Research notebooks |
 | **Random Forest** | Supervised garden-to-plant compatibility ranking | Target recommendation model; training and serving not claimed complete |
-| **Gemini Vision** | Optional external image interpretation | Subject to API configuration and consent |
+| **Gemini Vision** | External garden image interpretation (runtime activation configurable) | Subject to API configuration and consent |
 | **Gemini Image** | Optional illustrative photo editing | GDAI-GNERAT, separate from recommendation delivery |
 
 Segmentation outputs should become structured observations (such as zone type and estimated usable area) that can be combined with questionnaire responses and verified horticultural data. A photo alone cannot reliably determine soil properties.
@@ -76,8 +81,8 @@ GDAI-FRONT (Angular)
        v
 GDAI-BACK (Spring Boot) ---> PostgreSQL application data
        |
-       +--> GDAI-VALID (ResNet-18 + local segmentation target)
-       +--> GDAI-VISION (optional Gemini Vision)
+       +--> GDAI-VALID (ResNet-18 photo validation)
+       +--> GDAI-VISION (Gemini Vision (runtime-configurable))
        +--> GDAI-PLANT (Random Forest + horticultural catalog)
        |         |
        |         +--> PostgreSQL ML data
@@ -86,13 +91,27 @@ GDAI-BACK (Spring Boot) ---> PostgreSQL application data
 
 GDAI-FRONT communicates only with GDAI-BACK, not directly with private AI services. The backend coordinates asynchronous processing and exposes its progress to the frontend. Image processing and model training require explicit data permissions.
 
+## Gemini API prerequisite
+
+**A valid Google Gemini API key is required for the full garden-photo analysis workflow (GDAI-VISION).** Local services and health checks may start without one, but the real Gemini-powered end-to-end recommendation flow cannot operate normally. The key must have access to the selected model and sufficient quota; billing may be necessary.
+
+Obtain a key from [Google AI Studio](https://aistudio.google.com/apikey), then configure the untracked `.env` file:
+
+```dotenv
+GEMINI_API_KEY=your_valid_gemini_api_key
+GEMINI_MODEL=gemini-3.8-flash
+VISION_ENABLED=true
+```
+
+**Important:** `gemini-3.8-flash` is the repository's current configured value, not a guarantee that Google serves that model ID. Check available model identifiers for your account and update `GEMINI_MODEL` as needed. The backend also has a separate `VISION_API_KEY` setting; consult the integration configuration if authentication fails. Never commit or share your actual key.
+
 ## Local development
 
 ```bash
 cp .env.example .env
 # Configure local credentials; never commit secrets.
-docker compose up --build -d --wait
-docker compose ps
+docker compose -f compose.yaml -f compose.local.yaml up --build -d --wait
+docker compose -f compose.yaml -f compose.local.yaml ps
 ```
 
 - Web application: http://localhost:8080

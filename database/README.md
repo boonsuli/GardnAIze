@@ -1,11 +1,13 @@
 # GardnAIze — Application and horticultural data
 
 <p align="left">
-  <img alt="Database: PostgreSQL" src="https://img.shields.io/badge/Database-PostgreSQL-4169E1" />
+  <img alt="Database: PostgreSQL 18" src="https://img.shields.io/badge/Database-PostgreSQL%2018-4169E1" />
   <img alt="Migrations: Flyway" src="https://img.shields.io/badge/Migrations-Flyway-CC0200" />
   <img alt="Schema: Horticulture" src="https://img.shields.io/badge/Schema-Horticulture-228B22" />
   <img alt="Catalog: Provenance" src="https://img.shields.io/badge/Catalog-Provenance-7952B3" />
 </p>
+
+[Wiki de démarrage local](https://github.com/boonsuli/GardnAIze/wiki)
 
 GardnAIze separates application persistence from horticultural and machine-learning data.
 
