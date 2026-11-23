@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 from matching.realistic_scenarios import validate_batch
+from matching.consolidate_garden_scenarios import near_duplicate_pairs
 
 PROMPT = """You are assisting a French temperate-climate garden dataset project.
 Return a JSON object with a 'scenarios' array of {count} realistic residential
@@ -47,6 +48,7 @@ def main():
     parser.add_argument("--model", default=os.getenv("GDAI_PLANT_GEMINI_MODEL"))
     parser.add_argument("--out", required=True)
     parser.add_argument("--input-json", help="Offline validation of existing JSON; no API")
+    parser.add_argument("--existing-json", help="Consolidated dataset used to avoid repeated profiles")
     parser.add_argument("--allow-paid-api", action="store_true",
                         help="Explicit one-command authorization for a Gemini API request")
     parser.add_argument("--confirm-api-spend", default=None,
@@ -55,6 +57,13 @@ def main():
     if not 1 <= args.count <= 50:
         parser.error("--count must be 1..50 (batch limit)")
     check_api_authorization(args, parser)
+    existing = []
+    if args.existing_json:
+        base = json.loads(Path(args.existing_json).read_text(encoding="utf-8"))
+        if not isinstance(base, dict) or not isinstance(base.get("records"), list):
+            parser.error("--existing-json must be a consolidated dataset with records")
+        existing = [r["scenario"] for r in base["records"]
+                    if r.get("decision") in ("CANDIDATE", "MANUAL_REVIEW_REQUIRED")]
     usage = None
     if args.input_json:
         data = json.loads(Path(args.input_json).read_text(encoding="utf-8"))
@@ -67,7 +76,16 @@ def main():
         client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
         response = client.models.generate_content(
             model=args.model,
-            contents=PROMPT.format(count=args.count),
+            contents=PROMPT.format(count=args.count) + (
+                "\\nAvoid close matches to these existing profiles (JSON): " +
+                json.dumps([{k: s.get(k) for k in (
+                    "id", "sun_exposure", "soil_drainage", "water_availability",
+                    "minimum_winter_temperature_c", "maximum_height_cm",
+                    "maximum_spread_cm", "evergreen_preferred", "climate_zone",
+                    "soil_texture", "soil_moisture_seasonality", "planting_context"
+                )} for s in existing], ensure_ascii=False)
+                if existing else ""
+            ),
             config={"response_mime_type": "application/json"},
         )
         usage_data = getattr(response, "usage_metadata", None)
@@ -87,10 +105,25 @@ def main():
     if len(scenarios) > args.count:
         parser.error("Gemini returned more scenarios than requested")
     reviews = validate_batch(scenarios)
+    existing_ids = {s["id"] for s in existing}
+    for r in reviews:
+        if r.scenario.get("id") in existing_ids:
+            r.status = "REJECTED"
+            r.reasons.append("EXISTING_SCENARIO_ID")
+    near_pairs = near_duplicate_pairs(existing + scenarios) if existing else []
+    new_ids = {s["id"] for s in scenarios}
+    cross_pairs = [pair for pair in near_pairs if any(sid in new_ids for sid in pair["ids"])]
+    flagged_ids = {sid for pair in cross_pairs for sid in pair["ids"] if sid in new_ids}
+    for r in reviews:
+        if r.scenario.get("id") in flagged_ids and r.status != "REJECTED":
+            r.status = "REVIEW_REQUIRED"
+            r.reasons.append("NEAR_DUPLICATE_WITH_EXISTING_OR_BATCH")
     result = {"schema_version": "1.2",
               "generator": "GEMINI" if not args.input_json else "IMPORTED",
               "model": args.model if not args.input_json else None,
               "api_usage": usage, "requested_count": args.count,
+              "existing_reference": args.existing_json,
+              "near_duplicate_pairs": cross_pairs,
               "summary": {status: sum(r.status == status for r in reviews)
                           for status in ("ACCEPTED", "REVIEW_REQUIRED", "REJECTED")},
               "reviews": [r.to_dict() for r in reviews]}
