@@ -4,6 +4,14 @@ ALTER TABLE public.garden_photo_requests ADD CONSTRAINT chk_photo_request_status
  CHECK (status IN ('ACCEPTED','RUNNING','WAITING_ANSWERS','READY_FOR_PLANT',
                    'COMPLETED','FAILED','REJECTED','RECONCILIATION_REQUIRED'));
 
+ALTER TABLE public.garden_photos DROP CONSTRAINT chk_garden_photo_workflow_status;
+ALTER TABLE public.garden_photos ADD CONSTRAINT chk_garden_photo_workflow_status
+ CHECK (workflow_status IN (
+ 'DRAFT','VALIDATING','VALID','NOT_VALID','VALIDATION_FAILED',
+ 'VISION_PENDING','VISION_PROCESSING','VISION_COMPLETED','VISION_FAILED',
+ 'PLANT_PROCESSING','COMPLETED'
+ ));
+
 CREATE TABLE public.garden_photo_recommendations (
  request_id UUID PRIMARY KEY REFERENCES public.garden_photo_requests(request_id) ON DELETE CASCADE,
  recommendations JSONB NOT NULL,
