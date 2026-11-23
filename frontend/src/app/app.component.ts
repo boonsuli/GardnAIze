@@ -187,11 +187,14 @@ export class AppComponent {
         const requestId = this.processingRequestId();
         if (!gardenId || !requestId || !this.canSubmitStaged()) return;
         this.workflowLoading.set(true);
-        this.statusPhase.set('PLANT_RUNNING');
+        this.statusPhase.set('ANSWERS_SUBMITTED');
         this.gardenApi.submitStagedAnswers(gardenId, requestId, this.answers())
             .pipe(finalize(() => this.workflowLoading.set(false)))
             .subscribe({
-                next: () => this.submittedAnswers.set(true),
+                next: () => {
+                    this.submittedAnswers.set(true);
+                    this.statusPhase.set('ANSWERS_SUBMITTED');
+                },
                 error: () => this.statusPhase.set('FAILED')
             });
     }
