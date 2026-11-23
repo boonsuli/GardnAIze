@@ -8,6 +8,7 @@ export type GardenWorkflowPhase =
     | 'QUESTIONNAIRE_RUNNING'
     | 'CONTEXT_READY'
     | 'ANSWERS_REQUIRED'
+    | 'ANSWERS_SUBMITTED'
     | 'PLANT_RUNNING'
     | 'COMPLETED'
     | 'FAILED';
@@ -30,6 +31,7 @@ const STATUS: Record<GardenWorkflowPhase, Omit<WorkflowStatus, 'phase'>> = {
     QUESTIONNAIRE_RUNNING: { messageKey: 'workflowStatus.questionnaireRunning', tone: 'info', busy: true },
     CONTEXT_READY: { messageKey: 'workflowStatus.contextReady', tone: 'info', busy: false },
     ANSWERS_REQUIRED: { messageKey: 'workflowStatus.answersRequired', tone: 'warning', busy: false },
+    ANSWERS_SUBMITTED: { messageKey: 'workflowStatus.answersSubmitted', tone: 'info', busy: true },
     PLANT_RUNNING: { messageKey: 'workflowStatus.plantRunning', tone: 'info', busy: true },
     COMPLETED: { messageKey: 'workflowStatus.completed', tone: 'success', busy: false },
     FAILED: { messageKey: 'workflowStatus.failed', tone: 'error', busy: false }
