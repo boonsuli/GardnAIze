@@ -7,7 +7,8 @@
     "acceptAndContinue": "I agree and start the analysis",
     "consentTitle": "Permission to analyze your photo",
     "pending": "Request received, processing…",
-    "error": "The request could not be submitted. Please try again."
+    "error": "The request could not be submitted. Please try again.",
+    "trainingConsent": "I allow my data to be reused to train models (optional)."
   },
   "questionnaire": {
     "exposure": {
@@ -131,6 +132,7 @@
     "answersRequired": "Complete the required answers to continue.",
     "plantRunning": "Finding plants suited to your garden…",
     "completed": "Your recommendations are ready!",
-    "failed": "The process encountered a problem."
+    "failed": "The process encountered a problem.",
+    "answersSubmitted": "Answers saved. Preparing recommendations…"
   }
 }
