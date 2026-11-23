@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import type { ContextQuestion } from './context-question-state';
 
 export interface QuestionnaireOption {
     value: string;
@@ -104,6 +105,35 @@ export class GardenApiService {
         data.append('consentKey', consentKey);
         return this.http.post<PhotoProcessingRequest>(
             '/api/v1/gardens/' + encodeURIComponent(gardenId) + '/photos', data
+        );
+    }
+
+    /** Start VISION immediately after photo confirmation and mandatory external consent. */
+    startStagedPhoto(gardenId: string, file: File, description: string,
+            consentKey: string, trainingConsent: boolean): Observable<PhotoProcessingRequest> {
+        const data = new FormData();
+        data.append('file', file, file.name);
+        data.append('description', description);
+        data.append('consentKey', consentKey);
+        data.append('trainingConsent', String(trainingConsent));
+        return this.http.post<PhotoProcessingRequest>(
+            '/api/v1/gardens/' + encodeURIComponent(gardenId) + '/photos/staged', data
+        );
+    }
+
+    /** Finalize answers independently of the VISION background call. */
+    submitStagedAnswers(gardenId: string, requestId: string,
+            answers: Record<string, string>): Observable<void> {
+        return this.http.put<void>(
+            '/api/v1/gardens/' + encodeURIComponent(gardenId)
+            + '/photo-requests/' + encodeURIComponent(requestId) + '/answers', answers
+        );
+    }
+
+    getContextQuestion(gardenId: string, requestId: string): Observable<ContextQuestion> {
+        return this.http.get<ContextQuestion>(
+            '/api/v1/gardens/' + encodeURIComponent(gardenId)
+            + '/photo-requests/' + encodeURIComponent(requestId) + '/context-question'
         );
     }
 
