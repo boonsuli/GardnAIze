@@ -94,15 +94,25 @@ public class PhotoWorkflowFencingService {
     }
 
     @Transactional
+    public void saveRecommendations(Lease lease, String json, String modelVersion, String method) {
+        requireLease(lease);
+        jdbc.update("""
+            INSERT INTO public.garden_photo_recommendations
+                (request_id,recommendations,model_version,method)
+            VALUES (?,CAST(? AS jsonb),?,?)
+            ON CONFLICT (request_id) DO NOTHING
+            """, lease.requestId(), json, modelVersion, method);
+    }
+
+    @Transactional
     public void requestTransition(Lease lease, String to, String event, String errorCode) {
         requireLease(lease);
         int count = jdbc.update("""
             UPDATE public.garden_photo_requests SET status=?,updated_at=now(),
               finished_at=CASE WHEN ? IN ('COMPLETED','FAILED','REJECTED') THEN now() ELSE finished_at END,
-              lease_owner=CASE WHEN ? IN ('COMPLETED','FAILED','REJECTED') THEN NULL ELSE lease_owner END,
-              lease_until=CASE WHEN ? IN ('COMPLETED','FAILED','REJECTED') THEN NULL ELSE lease_until END
+              lease_owner=NULL, lease_until=NULL
             WHERE request_id=? AND status='RUNNING'
-            """, to, to, to, to, lease.requestId());
+            """, to, to, lease.requestId());
         if (count != 1) throw new LeaseLostException(lease.requestId());
         jdbc.update("""
             INSERT INTO public.garden_photo_request_history
