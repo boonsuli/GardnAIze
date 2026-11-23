@@ -15,6 +15,12 @@
         <p>Une photo et quelques réponses pour trouver des plantes adaptées.</p>
     </header>
 
+    <section class="workflow-status" role="status" aria-live="polite" aria-atomic="true"
+        [attr.data-tone]="currentStatus().tone">
+        <span class="workflow-status-indicator" [class.busy]="currentStatus().busy" aria-hidden="true"></span>
+        <span>{{ translate(currentStatus().messageKey) }}</span>
+    </section>
+
     <mat-card appearance="outlined" class="intake">
         <mat-card-header>
             <mat-card-title>1. Présentez votre jardin</mat-card-title>
