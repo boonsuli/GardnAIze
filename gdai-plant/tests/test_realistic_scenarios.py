@@ -6,6 +6,9 @@ def sample(**changes):
                  water_availability="LOW", minimum_winter_temperature_c=-8,
                  maximum_height_cm=250, maximum_spread_cm=150,
                  evergreen_preferred=True, origin="SYNTHETIC_AI",
+                 climate_zone="TEMPERATE_OCEANIC", terrain_type="LOWLAND",
+                 soil_texture="LOAM", soil_moisture_seasonality="WELL_DRAINED",
+                 planting_context="IN_GROUND_BORDER",
                  plausibility_reason="A plausible temperate residential planting zone.")
     value.update(changes)
     return value
@@ -25,6 +28,18 @@ class ScenarioTests(unittest.TestCase):
         self.assertEqual(validate_batch([sample(), sample()])[1].status, "REJECTED")
     def test_duplicate_profile(self):
         self.assertEqual(validate_batch([sample(), sample(id="G2")])[1].status, "REVIEW_REQUIRED")
+    def test_legacy_scenario_needs_review(self):
+        old = sample()
+        del old["climate_zone"]
+        self.assertEqual(validate(old).status, "REVIEW_REQUIRED")
+    def test_mountain_excluded(self):
+        self.assertEqual(validate(sample(terrain_type="MOUNTAIN")).status, "REJECTED")
+    def test_mediterranean_excluded(self):
+        self.assertEqual(validate(sample(climate_zone="MEDITERRANEAN")).status, "REJECTED")
+    def test_moisture_mismatch_review(self):
+        self.assertEqual(validate(sample(soil_moisture_seasonality="CONSISTENTLY_MOIST")).status, "REVIEW_REQUIRED")
+    def test_mountain_text_review(self):
+        self.assertEqual(validate(sample(plausibility_reason="Mid-altitude valley near Jura")).status, "REVIEW_REQUIRED")
     def test_invalid_height(self):
         self.assertEqual(validate(sample(maximum_height_cm=-1)).status, "REJECTED")
     def test_boolean_temperature_invalid(self):
