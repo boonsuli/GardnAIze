@@ -18,6 +18,9 @@ def prepare(plants, protocol, offset=0, count=5):
         "traits": {k: {"value": None, "source_urls": [], "notes": ""} for k in TRAITS}}]}
     return protocol + "\nRequested names: " + json.dumps(names, ensure_ascii=False) + "\nReturn this structure for each requested name:\n" + json.dumps(template, indent=2) + "\n"
 
+def with_sources(protocol, sources):
+    return protocol + "\nPreferred documentary source registry (unverified leads):\n" + json.dumps(sources, ensure_ascii=False, indent=2) + "\n"
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--offset", type=int, default=0)
@@ -26,7 +29,8 @@ def main():
     a = p.parse_args()
     plants = json.loads((ROOT / "data/plants-mvp-40.json").read_text(encoding="utf-8"))
     protocol = (ROOT / "prompts/horticultural-common-v1.md").read_text(encoding="utf-8")
-    prompt = prepare(plants, protocol, a.offset, a.count)
+    sources = json.loads((ROOT / "config/gardnaize-horticultural-sources-v1.json").read_text(encoding="utf-8"))
+    prompt = prepare(plants, with_sources(protocol, sources), a.offset, a.count)
     a.out.parent.mkdir(parents=True, exist_ok=True)
     with a.out.open("x", encoding="utf-8") as f:
         f.write(prompt)
