@@ -1,0 +1,573 @@
+{
+  "schema_version": "1.2",
+  "generator": "GEMINI",
+  "model": "gemini-3.8-flash",
+  "api_usage": {
+    "prompt_tokens": 4189,
+    "output_tokens": 5452,
+    "total_tokens": 11127
+  },
+  "requested_count": 24,
+  "existing_reference": "data/scenarios/garden-scenarios-consolidated-v1.json",
+  "near_duplicate_pairs": [
+    {
+      "ids": [
+        "FR-PAR-01",
+        "FR-TEM-021"
+      ],
+      "matching_categorical_features": 8,
+      "height_difference_cm": 20,
+      "spread_difference_cm": 30,
+      "winter_temperature_difference_c": 2
+    },
+    {
+      "ids": [
+        "FR-TEM-014",
+        "FR-TEM-039"
+      ],
+      "matching_categorical_features": 8,
+      "height_difference_cm": 20,
+      "spread_difference_cm": 10,
+      "winter_temperature_difference_c": 0
+    }
+  ],
+  "summary": {
+    "ACCEPTED": 22,
+    "REVIEW_REQUIRED": 2,
+    "REJECTED": 0
+  },
+  "reviews": [
+    {
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "NEAR_DUPLICATE_WITH_EXISTING_OR_BATCH"
+      ],
+      "scenario": {
+        "id": "FR-TEM-021",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "GOOD",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -6,
+        "maximum_height_cm": 180,
+        "maximum_spread_cm": 120,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Lowland sandy loam garden border in the Loire valley with seasonal rainfall and open exposure.",
+        "region": "Centre-Val de Loire",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "LOAM",
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "planting_context": "IN_GROUND_BORDER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-022",
+        "sun_exposure": "PARTIAL_SHADE",
+        "soil_drainage": "MODERATE",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -3,
+        "maximum_height_cm": 300,
+        "maximum_spread_cm": 180,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Mild coastal lowland in Brittany with regular oceanic drizzle and wind protection from residential walls.",
+        "region": "Bretagne",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "SILT",
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "planting_context": "HEDGE"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-023",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "GOOD",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -10,
+        "maximum_height_cm": 60,
+        "maximum_spread_cm": 50,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Raised backyard bed in an urban garden in the Grand Est region with cold winters and sharp structural drainage.",
+        "region": "Grand Est",
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "MIXED",
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "planting_context": "RAISED_BED"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-024",
+        "sun_exposure": "FULL_SHADE",
+        "soil_drainage": "MODERATE",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -7,
+        "maximum_height_cm": 120,
+        "maximum_spread_cm": 80,
+        "evergreen_preferred": true,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Narrow north-facing strip alongside a suburban garage in Normandy with consistent ambient humidity.",
+        "region": "Normandie",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "SILT",
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "planting_context": "IN_GROUND_BORDER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-025",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "MODERATE",
+        "water_availability": "LOW",
+        "minimum_winter_temperature_c": -9,
+        "maximum_height_cm": 220,
+        "maximum_spread_cm": 160,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Clay-loam border in suburban Île-de-France with exposed southern aspect and summer moisture deficits.",
+        "region": "Île-de-France",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "CLAY",
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "planting_context": "IN_GROUND_BORDER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-026",
+        "sun_exposure": "PARTIAL_SHADE",
+        "soil_drainage": "GOOD",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -7,
+        "maximum_height_cm": 50,
+        "maximum_spread_cm": 40,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Terrace planter receiving morning light in an urban courtyard in Lille.",
+        "region": "Hauts-de-France",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "LOAM",
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "planting_context": "PLANTER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-027",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "GOOD",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -4,
+        "maximum_height_cm": 200,
+        "maximum_spread_cm": 150,
+        "evergreen_preferred": true,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Sheltered coastal lowland garden in Vendée with high precipitation frequency and light, easily drained soils.",
+        "region": "Pays de la Loire",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "SAND",
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "planting_context": "IN_GROUND_BORDER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-028",
+        "sun_exposure": "PARTIAL_SHADE",
+        "soil_drainage": "MODERATE",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -11,
+        "maximum_height_cm": 160,
+        "maximum_spread_cm": 140,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Bourgogne alluvial plain garden with cold continental winters and loamy lowland garden soil.",
+        "region": "Bourgogne-Franche-Comté",
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "LOAM",
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "planting_context": "IN_GROUND_BORDER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-029",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "MODERATE",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -5,
+        "maximum_height_cm": 140,
+        "maximum_spread_cm": 100,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Elevated backyard bed in Charente-Maritime benefiting from mild oceanic air and consistent domestic watering.",
+        "region": "Nouvelle-Aquitaine",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "LOAM",
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "planting_context": "RAISED_BED"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-030",
+        "sun_exposure": "FULL_SHADE",
+        "soil_drainage": "MODERATE",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -8,
+        "maximum_height_cm": 90,
+        "maximum_spread_cm": 70,
+        "evergreen_preferred": true,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Inner courtyard corner shaded by two-story residential townhouses in Picardy.",
+        "region": "Hauts-de-France",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "MIXED",
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "planting_context": "COURTYARD"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-031",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "POOR",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -7,
+        "maximum_height_cm": 180,
+        "maximum_spread_cm": 130,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Lowland garden depression capturing roof runoff in deep silt-clay terrain of the Parisian basin.",
+        "region": "Île-de-France",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "SILT",
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "planting_context": "RAIN_GARDEN"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-032",
+        "sun_exposure": "PARTIAL_SHADE",
+        "soil_drainage": "GOOD",
+        "water_availability": "LOW",
+        "minimum_winter_temperature_c": -8,
+        "maximum_height_cm": 110,
+        "maximum_spread_cm": 90,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Stony limestone-derived soil along a property boundary wall in Champagne lowlands.",
+        "region": "Grand Est",
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "STONY",
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "planting_context": "IN_GROUND_BORDER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-033",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "MODERATE",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -7,
+        "maximum_height_cm": 280,
+        "maximum_spread_cm": 110,
+        "evergreen_preferred": true,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Boundary hedging zone in a suburban lot near Tours, composed of mixed lowland garden earth.",
+        "region": "Centre-Val de Loire",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "MIXED",
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "planting_context": "HEDGE"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-034",
+        "sun_exposure": "PARTIAL_SHADE",
+        "soil_drainage": "MODERATE",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -4,
+        "maximum_height_cm": 75,
+        "maximum_spread_cm": 60,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Built wooden planter on a shaded residential deck in oceanic Finistère with regular watering.",
+        "region": "Bretagne",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "LOAM",
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "planting_context": "PLANTER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-035",
+        "sun_exposure": "FULL_SHADE",
+        "soil_drainage": "POOR",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -10,
+        "maximum_height_cm": 150,
+        "maximum_spread_cm": 110,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Heavily shaded urban courtyard base with dense subsoil compaction and recurring winter pooling.",
+        "region": "Bourgogne-Franche-Comté",
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "CLAY",
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "planting_context": "COURTYARD"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-036",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "POOR",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -6,
+        "maximum_height_cm": 120,
+        "maximum_spread_cm": 100,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Depressed infiltration basin in a newly built residential estate over slow-draining lowland clay.",
+        "region": "Pays de la Loire",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "CLAY",
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "planting_context": "RAIN_GARDEN"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-037",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "GOOD",
+        "water_availability": "LOW",
+        "minimum_winter_temperature_c": -6,
+        "maximum_height_cm": 60,
+        "maximum_spread_cm": 45,
+        "evergreen_preferred": true,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Freestanding terracotta planter situated on a south-facing paved patio subject to rapid drying.",
+        "region": "Nouvelle-Aquitaine",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "SAND",
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "planting_context": "PLANTER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-038",
+        "sun_exposure": "PARTIAL_SHADE",
+        "soil_drainage": "GOOD",
+        "water_availability": "LOW",
+        "minimum_winter_temperature_c": -12,
+        "maximum_height_cm": 240,
+        "maximum_spread_cm": 150,
+        "evergreen_preferred": true,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Dry, gravelly soil bed along a property boundary partially protected by adjacent deciduous trees.",
+        "region": "Grand Est",
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "STONY",
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "planting_context": "HEDGE"
+      }
+    },
+    {
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "NEAR_DUPLICATE_WITH_EXISTING_OR_BATCH"
+      ],
+      "scenario": {
+        "id": "FR-TEM-039",
+        "sun_exposure": "FULL_SHADE",
+        "soil_drainage": "GOOD",
+        "water_availability": "LOW",
+        "minimum_winter_temperature_c": -8,
+        "maximum_height_cm": 130,
+        "maximum_spread_cm": 110,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Dry shade bed beneath large overhanging house eaves in a low-density suburban plot.",
+        "region": "Centre-Val de Loire",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "SAND",
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "planting_context": "IN_GROUND_BORDER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-040",
+        "sun_exposure": "PARTIAL_SHADE",
+        "soil_drainage": "POOR",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -7,
+        "maximum_height_cm": 200,
+        "maximum_spread_cm": 160,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Low-lying boundary line in the Somme basin where fine silt settles and impedes water exit during wet winters.",
+        "region": "Hauts-de-France",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "SILT",
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "planting_context": "HEDGE"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-041",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "GOOD",
+        "water_availability": "LOW",
+        "minimum_winter_temperature_c": -9,
+        "maximum_height_cm": 90,
+        "maximum_spread_cm": 80,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Engineered raised wooden bed filled with free-draining sandy substrate exposed to strong summer insolation.",
+        "region": "Île-de-France",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "SAND",
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "planting_context": "RAISED_BED"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-042",
+        "sun_exposure": "FULL_SHADE",
+        "soil_drainage": "POOR",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -5,
+        "maximum_height_cm": 110,
+        "maximum_spread_cm": 90,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Enclosed, deeply shadowed sunken garden pocket in Normandy suffering from poor percolation and roof drip.",
+        "region": "Normandie",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "CLAY",
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "planting_context": "COURTYARD"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-043",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "POOR",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -13,
+        "maximum_height_cm": 170,
+        "maximum_spread_cm": 130,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Lowland floodplain border with dense heavy clay prone to cold waterlogging in winter followed by summer crusting.",
+        "region": "Grand Est",
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "CLAY",
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "planting_context": "IN_GROUND_BORDER"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-TEM-044",
+        "sun_exposure": "PARTIAL_SHADE",
+        "soil_drainage": "GOOD",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -6,
+        "maximum_height_cm": 150,
+        "maximum_spread_cm": 120,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Constructed raised bed with balanced loam and compost in a semi-shaded suburban backyard.",
+        "region": "Centre-Val de Loire",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "terrain_type": "LOWLAND",
+        "soil_texture": "LOAM",
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "planting_context": "RAISED_BED"
+      }
+    }
+  ]
+}
