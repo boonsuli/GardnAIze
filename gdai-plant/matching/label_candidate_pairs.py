@@ -12,7 +12,10 @@ MEMBERSHIP = {"sun_exposure":"sun_exposure", "soil_drainage":"soil_drainage",
               "soil_texture":"soil_type", "soil_moisture_seasonality":"soil_moisture_tolerance",
               "planting_context":"planting_context"}
 
-def grade(g, p, policy="v2"):
+def grade(g, p, policy="v2", config=None):
+    if policy == "v3":
+        from matching.rule_engine import evaluate
+        return evaluate(g,p,config if config is not None else load_config())
     if policy not in ("v1", "v2"):
         raise ValueError("Unknown matching policy")
     advisory = []
@@ -67,7 +70,14 @@ def grade(g, p, policy="v2"):
         return 1,reasons
     return (3 if g.get("evergreen_preferred") is True and p.get("evergreen") is True else 2),reasons
 
-def build(gardens, profiles, quality, policy="v2"):
+def load_config():
+    return json.loads((Path(__file__).resolve().parents[1] / "config/matching-rules-v3.json").read_text(encoding="utf-8"))
+
+def build(gardens, profiles, quality, policy="v2", categories=None, config=None):
+    if policy == "v3":
+        config = config if config is not None else load_config()
+        if categories is None or any(p["scientific_name"] not in categories for p in profiles["profiles"]):
+            raise ValueError("V3 requires catalogue categories for all profiles")
     names = [p["scientific_name"] for p in profiles["profiles"]]
     statuses = {p["scientific_name"]:p["status"] for p in quality["plants"]}
     if len(set(names)) != len(names) or set(names) != set(statuses) or len(statuses) != len(quality["plants"]):
@@ -81,8 +91,10 @@ def build(gardens, profiles, quality, policy="v2"):
         for p in profiles["profiles"]:
             name=p["scientific_name"]
             values={k:v["value"] for k,v in p["traits"].items()}
+            if policy == "v3":
+                values["category"] = categories[name]
             status=statuses[name]
-            label,reasons=(None,{"excluded":["plant_quality"]}) if status=="EXCLUDED" else grade(g,values,policy)
+            label,reasons=(None,{"excluded":["plant_quality"]}) if status=="EXCLUDED" else grade(g,values,policy,config)
             # Conditional plants are diagnostic only until their quality is resolved.
             eligible=label is not None and status=="ACCEPTED"
             rows.append({"garden_id":g["id"],"scientific_name":name,"garden_origin":g["origin"],
@@ -98,14 +110,19 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ("gardens","gemini","review","out-dir"):
         p.add_argument("--"+name,type=Path,required=True)
-    p.add_argument("--policy", choices=("v1","v2"), default="v2")
+    p.add_argument("--policy", choices=("v1","v2","v3"), default="v3")
     a=p.parse_args()
     read=lambda path:json.loads(path.read_text(encoding="utf-8"))
     gardens=read(a.gardens)["scenarios"]
     gemini,review=read(a.gemini),read(a.review)
     profiles,_=consolidate(gemini,review,policy="v2")
     quality=assess(gemini,review,profiles,policy="v2")
-    rows=build(gardens,profiles,quality,a.policy)
+    config = load_config() if a.policy == "v3" else None
+    catalogue = read(Path(__file__).resolve().parents[1] / "data/plants-mvp-40.json") if a.policy == "v3" else []
+    categories = {p["scientific_name"]:p["candidate_category"] for p in catalogue}
+    if len(categories) != len(catalogue):
+        raise ValueError("Duplicate catalogue taxa")
+    rows=build(gardens,profiles,quality,a.policy,categories,config)
     report={"policy":"HORTICULTURAL_RULES_"+a.policy.upper(),"status":"EXPERIMENTAL_NOT_EXPERT_VALIDATED",
             "garden_sha256":digest(gardens),"gemini_sha256":digest(gemini),"review_sha256":digest(review),
             "pairs":len(rows),"assessment_counts":dict(Counter(r["assessment_status"] for r in rows)),
@@ -116,6 +133,10 @@ def main():
             "eligible_conditional_reasons":dict(Counter(reason for r in rows if r["experimental_training_eligible"] and r["relevance_grade"]==1 for reason in r["reasons"].get("conditional",[]))),
             "eligible_advisory_reasons":dict(Counter(reason for r in rows if r["experimental_training_eligible"] for reason in r["reasons"].get("advisory",[]))),
             "api_calls":0}
+    if config is not None:
+        report["rule_config"] = config
+        report["rule_config_sha256"] = digest(config)
+        report["catalogue_sha256"] = digest(catalogue)
     a.out_dir.mkdir(parents=True,exist_ok=False)
     for name,data in (("labelled-pairs.json",rows),("matching-report.json",report)):
         (a.out_dir/name).write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding="utf-8")
