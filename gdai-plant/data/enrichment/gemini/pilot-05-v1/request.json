@@ -1,0 +1,12 @@
+{
+  "model": "gemini-3.8-flash",
+  "names": [
+    "Viburnum tinus",
+    "Photinia \u00d7 fraseri",
+    "Choisya ternata",
+    "Elaeagnus \u00d7 ebbingei",
+    "Osmanthus heterophyllus"
+  ],
+  "prompt_sha256": "e5c02819af9b7e488f74e7c8e08bd7a92f7534d97a6efed18bcc4b4e907de73d",
+  "status": "REQUEST_STARTED"
+}

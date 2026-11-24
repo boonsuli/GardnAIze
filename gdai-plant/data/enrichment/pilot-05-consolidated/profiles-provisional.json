@@ -1,0 +1,866 @@
+{
+  "profiles": [
+    {
+      "scientific_name": "Viburnum tinus",
+      "traits": {
+        "sun_exposure": {
+          "value": [
+            "FULL_SUN",
+            "PARTIAL_SHADE",
+            "FULL_SHADE"
+          ],
+          "source_urls": [
+            "https://www.aujardin.info/plantes/viburnum-tinus.php",
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Grows well in full sun or partial shade across metropolitan French lowlands; tolerates shade, though flowering density is highest with adequate sun exposure. | Claude: Independent plausibility assessment, no browsing. Widely grown from full sun to fairly deep shade; flowering and density decline in deep shade, but survival is plausible.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_drainage": {
+          "value": [
+            "GOOD",
+            "MODERATE"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Requires well-drained to moderately drained soils. Highly sensitive to root asphyxiation in waterlogged winter soils. | Claude: Independent plausibility assessment, no browsing. Does best in well-drained to moderately drained soil; prolonged winter waterlogging is harmful.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_type": {
+          "value": [
+            "LOAM",
+            "CLAY",
+            "SAND",
+            "MIXED",
+            "STONY"
+          ],
+          "source_urls": [
+            "https://www.aujardin.info/plantes/viburnum-tinus.php",
+            "https://www.promessedefleurs.com/blogwp/comment-tailler-le-laurier-tin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Adaptable to poor, chalky, clay, and stony soils as long as standing water does not persist. | Claude: Independent plausibility assessment, no browsing. Adaptable to loam, clay, sand and calcareous or stony ground provided there is no standing water.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_moisture_tolerance": {
+          "value": [
+            "WELL_DRAINED",
+            "DRY_SUMMER"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Prefers well-drained moisture regimes; tolerates dry summer conditions once established, but requires regular moisture during the first 2 seasons. | Claude: Independent plausibility assessment, no browsing. Tolerates dry summers only once established; newly planted specimens need regular watering for the first seasons.",
+          "evidence_status": "SUGGESTED"
+        },
+        "planting_context": {
+          "value": [
+            "IN_GROUND_BORDER",
+            "HEDGE",
+            "PLANTER"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-tailler-le-laurier-tin/",
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Widely used for informal or sheared hedging, border backgrounds, and large patio containers (notably for compact cultivars like 'Eve Price'). | Claude: Independent plausibility assessment, no browsing. Standard use as hedge and border shrub; compact cultivars (e.g. 'Eve Price') suit large containers.",
+          "evidence_status": "SUGGESTED"
+        },
+        "water_need": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated LOW for established specimens, which demonstrate robust drought resistance in non-Mediterranean temperate lowland settings. | Claude: Independent plausibility assessment, no browsing. LOW overstates it: newly planted and containerised specimens need regular watering, and established plants are only moderately drought tolerant (the profile itself rates drought tolerance MEDIUM). MEDIUM is more defensible under summer water restrictions; established specimens in deep ground may need less.",
+          "evidence_status": "UNKNOWN"
+        },
+        "heat_tolerance": {
+          "value": "HIGH",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated HIGH due to Mediterranean genetic heritage; tolerates temperate lowland summer heatwaves without foliage drop if roots are established. | Claude: Independent plausibility assessment, no browsing. Of Mediterranean origin and tolerates lowland summer heat when roots are established; the 'Mediterranean heritage' argument is inference only.",
+          "evidence_status": "SUGGESTED"
+        },
+        "drought_tolerance": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated MEDIUM; withstands dry summer spells in deep ground, but prolonged severe drought without water access can cause premature leaf shedding. | Claude: Independent plausibility assessment, no browsing. Established plants withstand dry spells; severe prolonged drought causes leaf drop. MEDIUM is a reasonable qualitative rating.",
+          "evidence_status": "SUGGESTED"
+        },
+        "maintenance_level": {
+          "value": "LOW",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-tailler-le-laurier-tin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated LOW; does not require mandatory pruning except light post-flowering shaping or occasional rejuvenation every few years. | Claude: Independent plausibility assessment, no browsing. Needs little pruning beyond light shaping after flowering or occasional rejuvenation.",
+          "evidence_status": "SUGGESTED"
+        },
+        "hardiness_min_c": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Frost tolerance reliably documented to -12°C to -15°C in open ground; young foliage and flower buds can suffer damage under severe continental freezes. | Claude: Independent plausibility assessment, no browsing. Ratings conflict: RHS-style ratings (about H4, roughly -10 to -5 °C) differ from French sources citing -12 to -15 °C. Damage to foliage and buds is common near -10 to -12 °C, and hardiness varies by cultivar, exposure and wind. No defensible single threshold; conditions are preserved here rather than a number.",
+          "evidence_status": "UNKNOWN"
+        },
+        "height_cm": {
+          "value": [
+            200,
+            350
+          ],
+          "source_urls": [
+            "https://www.aujardin.info/plantes/viburnum-tinus.php",
+            "https://www.promessedefleurs.com/blogwp/comment-tailler-le-laurier-tin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Mature height typically 200 to 350 cm for the botanical species in open ground, smaller (150-200 cm) for compact cultivars. | Claude: Independent plausibility assessment, no browsing. Typical mature height of the species in open ground is about 2–3.5 m; compact cultivars stay smaller and clipped hedges lower.",
+          "evidence_status": "SUGGESTED"
+        },
+        "spread_cm": {
+          "value": [
+            150,
+            300
+          ],
+          "source_urls": [
+            "https://www.aujardin.info/plantes/viburnum-tinus.php",
+            "https://www.promessedefleurs.com/blogwp/comment-tailler-le-laurier-tin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Mature spread generally ranges between 150 and 300 cm depending on pruning and planting density. | Claude: Independent plausibility assessment, no browsing. Plausible mature spread for the species; depends on pruning and planting density.",
+          "evidence_status": "SUGGESTED"
+        },
+        "evergreen": {
+          "value": true,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-tailler-le-laurier-tin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Broadleaf evergreen shrub retaining foliage throughout winter. | Claude: Independent plausibility assessment, no browsing. Broadleaf evergreen shrub.",
+          "evidence_status": "SUGGESTED"
+        },
+        "root_development": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-tailler-le-laurier-tin/"
+          ],
+          "notes": "Gemini: Inferred from botanical rooting habit and nursery literature. Dense, fibrous root structure; non-invasive to structural foundations, but competes well with surface tree roots. | Claude: Independent plausibility assessment, no browsing. Dense fibrous root system with no strongly invasive habit. The rating describes relative development only and is not a guarantee of safety near foundations or networks.",
+          "evidence_status": "SUGGESTED"
+        },
+        "flower_color": {
+          "value": [
+            "white",
+            "pink"
+          ],
+          "source_urls": [
+            "https://www.aujardin.info/plantes/viburnum-tinus.php",
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Buds are deep pink, opening into white to soft pink-tinged terminal cymes. | Claude: Independent plausibility assessment, no browsing. Pink buds opening to white, sometimes pink-tinged, flowers.",
+          "evidence_status": "SUGGESTED"
+        },
+        "flowering_months": {
+          "value": [
+            1,
+            2,
+            3,
+            4,
+            11,
+            12
+          ],
+          "source_urls": [
+            "https://www.aujardin.info/plantes/viburnum-tinus.php",
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Winter and early spring bloom period spanning November through April. | Claude: Independent plausibility assessment, no browsing. Winter to early-spring flowering (about November to April), varying with cultivar and local winter severity.",
+          "evidence_status": "SUGGESTED"
+        },
+        "french_nursery_availability": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/la-plantation-dune-haie-de-laurier-tin-viburnum-tinus/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Staple evergreen hedging and border plant actively stocked across French retail and wholesale nurseries. | Claude: Independent plausibility assessment, no browsing. A catalogue listing is plausible, but IN_STOCK requires specific stock evidence, which is not provided. LISTED is the defensible value.",
+          "evidence_status": "UNKNOWN"
+        }
+      }
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "traits": {
+        "sun_exposure": {
+          "value": [
+            "FULL_SUN",
+            "PARTIAL_SHADE"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Full sun maximizes vibrant red pigmentation of juvenile foliage; tolerates partial shade. | Claude: Independent plausibility assessment, no browsing. Best foliage colour and density in full sun; tolerates partial shade.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_drainage": {
+          "value": [
+            "GOOD",
+            "MODERATE"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Requires well-drained or moderately drained soil; waterlogged anaerobic soils predispose roots to rot. | Claude: Independent plausibility assessment, no browsing. Needs well-drained to moderately drained soil; waterlogging promotes root rot.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_type": {
+          "value": [
+            "LOAM",
+            "CLAY",
+            "SAND",
+            "MIXED"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Adaptable to most garden soils including clay loams and sandy loams; prefers neutral to slightly acidic or moderately alkaline substrates. | Claude: Independent plausibility assessment, no browsing. Adaptable to most garden soils; strongly calcareous soil can cause chlorosis, so the list should not be read as tolerance of all alkaline ground.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_moisture_tolerance": {
+          "value": [
+            "WELL_DRAINED",
+            "DRY_SUMMER"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Established specimens cope well with dry summer soil, but newly planted specimens require consistent moisture during the initial 24 months. | Claude: Independent plausibility assessment, no browsing. Moderate dry-summer tolerance once established; newly planted specimens need regular watering for about two seasons, and combined heat and drought stress favours leaf spot (Entomosporium).",
+          "evidence_status": "SUGGESTED"
+        },
+        "planting_context": {
+          "value": [
+            "HEDGE",
+            "IN_GROUND_BORDER",
+            "PLANTER"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/",
+            "https://www.promessedefleurs.com/blogwp/cultiver-un-photinia-en-pot/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Widely planted for evergreen screening hedges, shrub borders, and large containers (especially dwarf selections like 'Little Red Robin'). | Claude: Independent plausibility assessment, no browsing. Classic evergreen screening hedge and border shrub; dwarf selections such as 'Little Red Robin' suit containers.",
+          "evidence_status": "SUGGESTED"
+        },
+        "water_need": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated MEDIUM; regular watering required during establishment, then moderate water requirement during hot summer spells. | Claude: Independent plausibility assessment, no browsing. Regular watering during establishment and moderate needs in hot spells.",
+          "evidence_status": "SUGGESTED"
+        },
+        "heat_tolerance": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated MEDIUM; tolerates lowland summer heatwaves if soil depth is sufficient, but severe combined heat and drought stress encourages foliar diseases like Entomosporium. | Claude: Independent plausibility assessment, no browsing. Tolerates lowland summers with sufficient soil depth; severe heat plus drought increases disease pressure.",
+          "evidence_status": "SUGGESTED"
+        },
+        "drought_tolerance": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated MEDIUM; once deep root systems are established, specimens endure dry summer spells without fatal desiccation. | Claude: Independent plausibility assessment, no browsing. Established specimens cope with dry spells; not a drought-adapted shrub.",
+          "evidence_status": "SUGGESTED"
+        },
+        "maintenance_level": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated MEDIUM due to necessary pruning (1 to 2 times annually in hedges to stimulate young red flushes) and monitoring for Entomosporium maculatum leaf spotting. | Claude: Independent plausibility assessment, no browsing. Regular clipping is needed to keep the hedge dense and to stimulate red flushes, plus monitoring of leaf-spot disease.",
+          "evidence_status": "SUGGESTED"
+        },
+        "hardiness_min_c": {
+          "value": -15,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Hardy down to -15°C in temperate lowlands; late spring frosts may scorch tender young red shoots without killing the shrub. | Claude: Independent plausibility assessment, no browsing. -15 °C is plausible for established plants in open ground. Late frosts can scorch young red shoots, and young or exposed plants are more vulnerable; cultivar differences exist.",
+          "evidence_status": "SUGGESTED"
+        },
+        "height_cm": {
+          "value": [
+            250,
+            450
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Unpruned standard cultivars (e.g. 'Red Robin') reach 250 to 450 cm; kept lower when maintained as a trimmed hedge. | Claude: Independent plausibility assessment, no browsing. Unpruned standard cultivars such as 'Red Robin' reach roughly 2.5–4.5 m; clipped hedges and dwarf cultivars stay lower.",
+          "evidence_status": "SUGGESTED"
+        },
+        "spread_cm": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Mature spread ranges from 150 to 300 cm depending on pruning regimen. | Claude: Independent plausibility assessment, no browsing. Unpruned shrubs of this hybrid typically spread about as wide as tall, so a maximum of 300 cm looks low next to the 450 cm height. 200–400 cm is more consistent for unclipped specimens; clipped hedges and dwarf cultivars are narrower.",
+          "evidence_status": "UNKNOWN"
+        },
+        "evergreen": {
+          "value": true,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Evergreen shrub characterized by glossy leaves that emerge bright red. | Claude: Independent plausibility assessment, no browsing. Evergreen with glossy leaves.",
+          "evidence_status": "SUGGESTED"
+        },
+        "root_development": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Inferred from cultivation and nursery recommendations. Dense fibrous root ball, non-destructive to paved surfaces if planted at appropriate offset. | Claude: Independent plausibility assessment, no browsing. Fibrous root ball without a notably aggressive habit. The rating is relative only and gives no guarantee of safety near infrastructure.",
+          "evidence_status": "SUGGESTED"
+        },
+        "flower_color": {
+          "value": [
+            "white"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Produces small creamy-white flowers arranged in broad corymbs. | Claude: Independent plausibility assessment, no browsing. Small creamy-white flowers in corymbs.",
+          "evidence_status": "SUGGESTED"
+        },
+        "flowering_months": {
+          "value": [
+            4,
+            5
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Flowers appear mid-spring (April to May); regular pruning may reduce or eliminate flowering. | Claude: Independent plausibility assessment, no browsing. Spring flowering; regular clipping greatly reduces or suppresses blooms.",
+          "evidence_status": "SUGGESTED"
+        },
+        "french_nursery_availability": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/comment-bien-choisir-un-photinia-pour-votre-jardin/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Universally available across metropolitan French garden retailers and nursery catalogues. | Claude: Independent plausibility assessment, no browsing. Catalogue listing is plausible, but IN_STOCK needs specific stock evidence and none is supplied. LISTED is the defensible value.",
+          "evidence_status": "UNKNOWN"
+        }
+      }
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "traits": {
+        "sun_exposure": {
+          "value": [
+            "FULL_SUN",
+            "PARTIAL_SHADE"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Best flowering and density in full sun to partial shade; sheltered from severe cold easterly winds. | Claude: Independent plausibility assessment, no browsing. Grows in sun or partial shade; shelter from cold drying winds and from scorching afternoon sun is advisable.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_drainage": {
+          "value": [
+            "GOOD"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Strictly requires well-drained soil; very sensitive to Phytophthora root rot in cold, heavy, waterlogged soils. | Claude: Independent plausibility assessment, no browsing. Needs well-drained soil; cold, heavy, waterlogged ground leads to root problems.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_type": {
+          "value": [
+            "LOAM",
+            "SAND",
+            "MIXED",
+            "STONY"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Prefers light, fertile, and permeable soils; tolerates moderately calcareous and stony soils if drainage is rapid. | Claude: Independent plausibility assessment, no browsing. Prefers light, fertile, permeable soils. Clay is only tolerable if drained, so its omission is defensible.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_moisture_tolerance": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Established shrubs tolerate dry summer spells, but poorly drained moisture in winter must be strictly avoided. | Claude: Independent plausibility assessment, no browsing. Prefers moist but well-drained soil and can show leaf scorch and reduced flowering in hot, dry summers. DRY_SUMMER overstates tolerance; at best established plants in sheltered spots cope with short dry spells.",
+          "evidence_status": "UNKNOWN"
+        },
+        "planting_context": {
+          "value": [
+            "IN_GROUND_BORDER",
+            "HEDGE",
+            "COURTYARD",
+            "PLANTER"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Excellent for sheltered courtyard borders, mixed flowering hedges, and large terrace containers. | Claude: Independent plausibility assessment, no browsing. Suits sheltered borders, informal hedges, courtyards and large containers.",
+          "evidence_status": "SUGGESTED"
+        },
+        "water_need": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated LOW once established in open ground; drought-resistant once root system develops. | Claude: Independent plausibility assessment, no browsing. Regular summer watering is advisable, especially in containers and dry spells; LOW is not well supported under water-restricted summers. Established plants in open ground may need less.",
+          "evidence_status": "UNKNOWN"
+        },
+        "heat_tolerance": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated HIGH; native to Mexican plateau scrub, handles intense summer warmth efficiently. | Claude: Independent plausibility assessment, no browsing. Mexican origin does not imply high heat tolerance: it scorches in strong sun and heat, and does best with some shelter. MEDIUM is more defensible for lowland France.",
+          "evidence_status": "UNKNOWN"
+        },
+        "drought_tolerance": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated MEDIUM; exhibits good summer dry spell tolerance, though prolonged severe droughts in shallow soils may stunt repeat autumn blooms. | Claude: Independent plausibility assessment, no browsing. Moderate tolerance once established; shallow or sunbaked soils reduce vigour and repeat flowering.",
+          "evidence_status": "SUGGESTED"
+        },
+        "maintenance_level": {
+          "value": "LOW",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated LOW; only requires light trimming after spring bloom to stimulate secondary flowering and compact growth. | Claude: Independent plausibility assessment, no browsing. Light trimming after the first flush is sufficient.",
+          "evidence_status": "SUGGESTED"
+        },
+        "hardiness_min_c": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Generally hardy to -15°C in sheltered garden locations; sub-zero winds may desiccate exposed leaves. | Claude: Independent plausibility assessment, no browsing. Sources conflict: RHS-style ratings (about H4, roughly -10 to -5 °C) versus -15 °C often quoted in French sources. Cold winds cause leaf scorch and shoot damage at much milder temperatures, so no single defensible threshold; exposure and shelter are decisive.",
+          "evidence_status": "UNKNOWN"
+        },
+        "height_cm": {
+          "value": [
+            150,
+            250
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Mature height typically settles between 150 and 250 cm. | Claude: Independent plausibility assessment, no browsing. Typical mature height of the species; cultivars (e.g. golden-leaved or narrow-leaved forms) differ.",
+          "evidence_status": "SUGGESTED"
+        },
+        "spread_cm": {
+          "value": [
+            150,
+            250
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Mounded, bushy spread typically 150 to 250 cm. | Claude: Independent plausibility assessment, no browsing. Mounded habit, roughly as wide as tall.",
+          "evidence_status": "SUGGESTED"
+        },
+        "evergreen": {
+          "value": true,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Aromatic evergreen foliage persisting throughout all seasons. | Claude: Independent plausibility assessment, no browsing. Aromatic evergreen foliage.",
+          "evidence_status": "SUGGESTED"
+        },
+        "root_development": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Inferred from horticultural suitability for container and foundation planting. Non-aggressive, fibrous root development. | Claude: Independent plausibility assessment, no browsing. Fibrous, non-aggressive roots. The rating is relative only and gives no guarantee of safety near infrastructure.",
+          "evidence_status": "SUGGESTED"
+        },
+        "flower_color": {
+          "value": [
+            "white"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Highly fragrant, star-shaped white blossoms with orange-blossom scent. | Claude: Independent plausibility assessment, no browsing. Fragrant white star-shaped flowers.",
+          "evidence_status": "SUGGESTED"
+        },
+        "flowering_months": {
+          "value": [
+            4,
+            5,
+            8,
+            9
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Primary flowering in April to May with a reliable repeat flush in late summer (August to September). | Claude: Independent plausibility assessment, no browsing. Main flowering in spring with a lighter repeat flush in late summer to early autumn; the repeat flush is weaker in dry, hot conditions.",
+          "evidence_status": "SUGGESTED"
+        },
+        "french_nursery_availability": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/oranger-du-mexique-choisya-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Highly popular and continuously stocked across French nursery channels. | Claude: Independent plausibility assessment, no browsing. Catalogue listing is plausible, but IN_STOCK needs specific stock evidence and none is supplied. LISTED is the defensible value.",
+          "evidence_status": "UNKNOWN"
+        }
+      }
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "traits": {
+        "sun_exposure": {
+          "value": [
+            "FULL_SUN",
+            "PARTIAL_SHADE"
+          ],
+          "source_urls": [
+            "https://www.aujardin.info/plantes/elaeagnus-ebbingei.php",
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Thrives in full sun and tolerates partial shade; also known under the accepted botanical synonym Elaeagnus × submacrophylla. | Claude: Independent plausibility assessment, no browsing. Thrives in sun and partial shade; shade tolerance is wider but dense shade reduces vigour and flowering.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_drainage": {
+          "value": [
+            "GOOD",
+            "MODERATE"
+          ],
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Adaptable to most drainage profiles except permanently saturated waterlogged soils. | Claude: Independent plausibility assessment, no browsing. Adaptable except in permanently waterlogged soil.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_type": {
+          "value": [
+            "LOAM",
+            "CLAY",
+            "SAND",
+            "STONY",
+            "MIXED"
+          ],
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Exceptionally unfussy; thrives on poor sandy soils, dry chalky ground, and heavy clays due to nitrogen-fixing actinorhizal symbiosis. | Claude: Independent plausibility assessment, no browsing. Very adaptable to poor, dry, calcareous or heavy soils; actinorhizal nitrogen fixation is a known trait of the genus.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_moisture_tolerance": {
+          "value": [
+            "WELL_DRAINED",
+            "DRY_SUMMER"
+          ],
+          "source_urls": [
+            "https://www.aujardin.info/plantes/elaeagnus-ebbingei.php",
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Highly tolerant of dry summer soils once roots are established; avoids swampy conditions. | Claude: Independent plausibility assessment, no browsing. Tolerates dry summers once established; newly planted specimens still need watering.",
+          "evidence_status": "SUGGESTED"
+        },
+        "planting_context": {
+          "value": [
+            "HEDGE",
+            "IN_GROUND_BORDER",
+            "COURTYARD"
+          ],
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Prime selection for dense windbreaks, screening hedges, coastal buffer plantings, and tough garden borders. | Claude: Independent plausibility assessment, no browsing. Typical use for screening hedges, windbreaks and tough borders. Its mature size makes small courtyards a context to check.",
+          "evidence_status": "SUGGESTED"
+        },
+        "water_need": {
+          "value": "LOW",
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated LOW; extremely drought resilient once settled. | Claude: Independent plausibility assessment, no browsing. LOW applies to established specimens; newly planted plants need regular watering for the first seasons.",
+          "evidence_status": "SUGGESTED"
+        },
+        "heat_tolerance": {
+          "value": "HIGH",
+          "source_urls": [
+            "https://www.aujardin.info/plantes/elaeagnus-ebbingei.php",
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated HIGH; resists severe summer heat, dry winds, and reflective urban microclimates. | Claude: Independent plausibility assessment, no browsing. Tough shrub that copes well with summer heat and dry winds.",
+          "evidence_status": "SUGGESTED"
+        },
+        "drought_tolerance": {
+          "value": "HIGH",
+          "source_urls": [
+            "https://www.aujardin.info/plantes/elaeagnus-ebbingei.php",
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated HIGH; recognized as one of the most reliable drought-hardy evergreen hedging shrubs in temperate zones. | Claude: Independent plausibility assessment, no browsing. Among the more drought-tolerant evergreen hedging shrubs once established; not applicable to newly planted specimens.",
+          "evidence_status": "SUGGESTED"
+        },
+        "maintenance_level": {
+          "value": "LOW",
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated LOW; tolerates hard pruning, shaping once or twice per year if formal hedge, or left unpruned in loose screens. | Claude: Independent plausibility assessment, no browsing. Tolerates hard pruning and can be left loose; vigorous growth means hedges need clipping one to two times a year.",
+          "evidence_status": "SUGGESTED"
+        },
+        "hardiness_min_c": {
+          "value": -15,
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. RHS hardiness H5; hardy down to -15°C, occasionally withstanding brief dips to -18°C. | Claude: Independent plausibility assessment, no browsing. -15 °C is plausible for established plants (hardiness band around H5). Young plants and variegated cultivars are more vulnerable.",
+          "evidence_status": "SUGGESTED"
+        },
+        "height_cm": {
+          "value": [
+            250,
+            400
+          ],
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Reaches 250 to 400 cm in height if allowed to mature naturally. | Claude: Independent plausibility assessment, no browsing. Plausible for unpruned mature specimens; clipped hedges stay lower.",
+          "evidence_status": "SUGGESTED"
+        },
+        "spread_cm": {
+          "value": [
+            200,
+            400
+          ],
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Broad spreading habit reaching 200 to 400 cm across. | Claude: Independent plausibility assessment, no browsing. Broad spreading habit when unclipped.",
+          "evidence_status": "SUGGESTED"
+        },
+        "evergreen": {
+          "value": true,
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Dense leathery evergreen foliage with silvery undersides. | Claude: Independent plausibility assessment, no browsing. Evergreen with leathery, silvery-backed leaves.",
+          "evidence_status": "SUGGESTED"
+        },
+        "root_development": {
+          "value": null,
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Inferred from extensive nitrogen-fixing root network and high planting competition tolerance. Vigorous and competitive root system. | Claude: Independent plausibility assessment, no browsing. The supplied reasoning (nitrogen fixation implying an extensive or competitive root system) does not follow. Vigorous growth and large size suggest at least MEDIUM, but no defensible HIGH mapping exists and infrastructure safety cannot be inferred.",
+          "evidence_status": "UNKNOWN"
+        },
+        "flower_color": {
+          "value": [
+            "white",
+            "cream"
+          ],
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Small, highly fragrant silvery-cream tubular flowers borne in axillary clusters. | Claude: Independent plausibility assessment, no browsing. Small, fragrant, silvery-white to cream flowers.",
+          "evidence_status": "SUGGESTED"
+        },
+        "flowering_months": {
+          "value": null,
+          "source_urls": [
+            "https://www.rhs.org.uk/advice/profile?pid=381"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Blooms in autumn from September through November, providing valuable late nectar for pollinators. | Claude: Independent plausibility assessment, no browsing. Flowering is usually reported for October to November. September is early and unusual for this hybrid, so it should not be included.",
+          "evidence_status": "UNKNOWN"
+        },
+        "french_nursery_availability": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/arbustes/arbustes-par-variete/eleagnus-chalef.html"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Broadly stocked in bare-root and container formats throughout French production nurseries. | Claude: Independent plausibility assessment, no browsing. Catalogue listing is plausible (also under the synonym Elaeagnus × submacrophylla), but IN_STOCK needs specific stock evidence and none is supplied. LISTED is the defensible value.",
+          "evidence_status": "UNKNOWN"
+        }
+      }
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "traits": {
+        "sun_exposure": {
+          "value": null,
+          "source_urls": [
+            "https://www.aujardin.info/plantes/osmanthus-heterophyllus-tricolor.php",
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Highly versatile exposure profile; grows well from full sun to heavy shade. | Claude: Independent plausibility assessment, no browsing. Sun and partial shade are well supported, but FULL_SHADE is stated more strongly ('heavy shade') than I can defend. Sources differ, and deep shade reduces vigour and flowering, so no defensible list.",
+          "evidence_status": "UNKNOWN"
+        },
+        "soil_drainage": {
+          "value": [
+            "GOOD",
+            "MODERATE"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Requires well-drained, permeable soil; does not tolerate stagnant winter moisture. | Claude: Independent plausibility assessment, no browsing. Needs permeable soil and dislikes stagnant winter moisture.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_type": {
+          "value": [
+            "LOAM",
+            "CLAY",
+            "SAND",
+            "MIXED"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Tolerant of acidic, neutral, and slightly calcareous substrates, though best growth occurs in fertile, humic loams. | Claude: Independent plausibility assessment, no browsing. Adaptable to most soils, with best growth in fertile, humus-rich loam; clay needs drainage.",
+          "evidence_status": "SUGGESTED"
+        },
+        "soil_moisture_tolerance": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Shows good resistance to dry summer soil once rooted, including dry shade environments. | Claude: Independent plausibility assessment, no browsing. Prefers moist, well-drained soil and young plants are sensitive to drought. The claim of good dry-summer and dry-shade resistance is overstated; established plants withstand only moderate dry spells.",
+          "evidence_status": "UNKNOWN"
+        },
+        "planting_context": {
+          "value": [
+            "HEDGE",
+            "IN_GROUND_BORDER",
+            "PLANTER",
+            "COURTYARD"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Excellent for defensive spiny hedges, structural shrub borders, shade gardens, and architectural pots. | Claude: Independent plausibility assessment, no browsing. Slow-growing, compact, holly-like evergreen suited to hedges, borders and large pots.",
+          "evidence_status": "SUGGESTED"
+        },
+        "water_need": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated LOW; established specimens require very little supplementary irrigation in lowland France. | Claude: Independent plausibility assessment, no browsing. Needs consistent moisture while young and in containers, and is only moderately drought tolerant when established (the profile rates drought tolerance MEDIUM). LOW is not well supported under water restrictions.",
+          "evidence_status": "UNKNOWN"
+        },
+        "heat_tolerance": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated MEDIUM; withstands lowland summer heat but prefers afternoon shade in hot, dry interior settings. | Claude: Independent plausibility assessment, no browsing. Tolerates lowland summer heat, with afternoon shade preferable in hot, dry settings.",
+          "evidence_status": "SUGGESTED"
+        },
+        "drought_tolerance": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated MEDIUM; exhibits noteworthy tolerance to summer dry spells, particularly in semi-shaded positions. | Claude: Independent plausibility assessment, no browsing. Moderate tolerance once established, better in semi-shade.",
+          "evidence_status": "SUGGESTED"
+        },
+        "maintenance_level": {
+          "value": "LOW",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Rated LOW; naturally slow to moderate growth requiring little to no structural pruning. | Claude: Independent plausibility assessment, no browsing. Slow growth and little pruning required.",
+          "evidence_status": "SUGGESTED"
+        },
+        "hardiness_min_c": {
+          "value": -15,
+          "source_urls": [
+            "https://www.aujardin.info/plantes/osmanthus-heterophyllus-tricolor.php",
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Reliably hardy between -15°C and -18°C; well suited to oceanic, transitional, and semi-continental French lowlands. | Claude: Independent plausibility assessment, no browsing. -15 °C is a plausible conservative value for established plants; young plants and exposed sites are more vulnerable.",
+          "evidence_status": "SUGGESTED"
+        },
+        "height_cm": {
+          "value": [
+            150,
+            350
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Botanical species reaches 200 to 350 cm; compact cultivars ('Goshiki', 'Party Princess') typically stay around 150 to 200 cm. | Claude: Independent plausibility assessment, no browsing. The range mixes the species (about 2–3.5 m, reached slowly) with compact cultivars ('Goshiki', 'Party Princess') at about 1.5–2 m. Cultivar-specific values should be recorded separately.",
+          "evidence_status": "SUGGESTED"
+        },
+        "spread_cm": {
+          "value": [
+            120,
+            250
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Mature spread generally settles between 120 and 250 cm. | Claude: Independent plausibility assessment, no browsing. Plausible mature spread, mixing species and compact cultivars.",
+          "evidence_status": "SUGGESTED"
+        },
+        "evergreen": {
+          "value": true,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Dense, spiny, holly-like evergreen foliage retained year-round. | Claude: Independent plausibility assessment, no browsing. Evergreen with spiny, holly-like juvenile leaves.",
+          "evidence_status": "SUGGESTED"
+        },
+        "root_development": {
+          "value": "MEDIUM",
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Inferred from growth rate and planting contexts. Compact and fibrous root structure with low risk to nearby built structures. | Claude: Independent plausibility assessment, no browsing. Compact, fibrous roots and slow growth. The rating is relative only and gives no guarantee of safety near infrastructure.",
+          "evidence_status": "SUGGESTED"
+        },
+        "flower_color": {
+          "value": [
+            "white"
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Small, highly fragrant white flowers with a jasmine-like perfume. | Claude: Independent plausibility assessment, no browsing. Small, fragrant white flowers.",
+          "evidence_status": "SUGGESTED"
+        },
+        "flowering_months": {
+          "value": [
+            9,
+            10,
+            11
+          ],
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Autumn blooming occurring from September to November. | Claude: Independent plausibility assessment, no browsing. Autumn flowering, mainly October with variation by season and cultivar.",
+          "evidence_status": "SUGGESTED"
+        },
+        "french_nursery_availability": {
+          "value": null,
+          "source_urls": [
+            "https://www.promessedefleurs.com/blogwp/osmanthe-osmanthus-plantation-taille-et-entretien/"
+          ],
+          "notes": "Gemini: Retrieved November 2026. Available in stock across French nurseries, both in botanical form and popular variegated cultivars. | Claude: Independent plausibility assessment, no browsing. Catalogue listing is plausible, but IN_STOCK needs specific stock evidence and none is supplied. LISTED is the defensible value.",
+          "evidence_status": "UNKNOWN"
+        }
+      }
+    }
+  ]
+}
