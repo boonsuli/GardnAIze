@@ -1,0 +1,219 @@
+{
+  "schema_version": "1.3",
+  "generator": "OFFLINE_ENRICHMENT",
+  "source_schema_version": "1.2",
+  "api_usage": null,
+  "requested_count": 9,
+  "excluded": [
+    {
+      "id": "FR-JUR-10",
+      "reason": "OUT_OF_SCOPE_MID_ALTITUDE_MOUNTAIN"
+    }
+  ],
+  "summary": {
+    "ACCEPTED": 9,
+    "REVIEW_REQUIRED": 0,
+    "REJECTED": 0
+  },
+  "reviews": [
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-PAR-01",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "MODERATE",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -8,
+        "maximum_height_cm": 200,
+        "maximum_spread_cm": 150,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Typical suburban front-lawn border in the Paris basin featuring loamy garden soil and standard seasonal rainfall.",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "soil_texture": "LOAM",
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "planting_context": "IN_GROUND_BORDER",
+        "terrain_type": "LOWLAND",
+        "enrichment_provenance": "HUMAN_REVIEW_HYPOTHESIS"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-BRE-02",
+        "sun_exposure": "PARTIAL_SHADE",
+        "soil_drainage": "MODERATE",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -4,
+        "maximum_height_cm": 250,
+        "maximum_spread_cm": 200,
+        "evergreen_preferred": true,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Residential boundary bed along a wooden fence in maritime Brittany with frequent ocean-influenced precipitation and mild winters.",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "soil_texture": "MIXED",
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "planting_context": "HEDGE",
+        "terrain_type": "LOWLAND",
+        "enrichment_provenance": "HUMAN_REVIEW_HYPOTHESIS"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-AQU-03",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "GOOD",
+        "water_availability": "LOW",
+        "minimum_winter_temperature_c": -5,
+        "maximum_height_cm": 120,
+        "maximum_spread_cm": 100,
+        "evergreen_preferred": true,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Sandy loam border flanking a sun-drenched paved patio in southwestern France where summer precipitation is minimal.",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "soil_texture": "MIXED",
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "planting_context": "IN_GROUND_BORDER",
+        "terrain_type": "LOWLAND",
+        "enrichment_provenance": "HUMAN_REVIEW_HYPOTHESIS"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-CTR-04",
+        "sun_exposure": "FULL_SHADE",
+        "soil_drainage": "MODERATE",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -7,
+        "maximum_height_cm": 150,
+        "maximum_spread_cm": 120,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Foundation planting along the north-facing facade of a stone house in the Loire Valley, sheltered from direct sun.",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "soil_texture": "MIXED",
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "planting_context": "IN_GROUND_BORDER",
+        "terrain_type": "LOWLAND",
+        "enrichment_provenance": "HUMAN_REVIEW_HYPOTHESIS"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-EST-05",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "MODERATE",
+        "water_availability": "MEDIUM",
+        "minimum_winter_temperature_c": -12,
+        "maximum_height_cm": 300,
+        "maximum_spread_cm": 250,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Open perimeter garden bed in an eastern France semi-continental climate subject to hard winter freezes and rich alluvial silt.",
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "soil_texture": "SILT",
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "planting_context": "IN_GROUND_BORDER",
+        "terrain_type": "LOWLAND",
+        "enrichment_provenance": "HUMAN_REVIEW_HYPOTHESIS"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-NOR-06",
+        "sun_exposure": "PARTIAL_SHADE",
+        "soil_drainage": "GOOD",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -6,
+        "maximum_height_cm": 180,
+        "maximum_spread_cm": 150,
+        "evergreen_preferred": true,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Gently sloped residential side yard in Normandy benefiting from regular Atlantic rain systems and natural gravitational drainage.",
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "soil_texture": "MIXED",
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "planting_context": "IN_GROUND_BORDER",
+        "terrain_type": "LOWLAND",
+        "enrichment_provenance": "HUMAN_REVIEW_HYPOTHESIS"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-RHO-07",
+        "sun_exposure": "FULL_SHADE",
+        "soil_drainage": "POOR",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -8,
+        "maximum_height_cm": 100,
+        "maximum_spread_cm": 80,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Enclosed urban courtyard base in the Lyon urban area with compacted clay soil and severe light restriction from tall masonry walls.",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "soil_texture": "CLAY",
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "planting_context": "COURTYARD",
+        "terrain_type": "LOWLAND",
+        "enrichment_provenance": "HUMAN_REVIEW_HYPOTHESIS"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-OCC-08",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "GOOD",
+        "water_availability": "LOW",
+        "minimum_winter_temperature_c": -6,
+        "maximum_height_cm": 80,
+        "maximum_spread_cm": 60,
+        "evergreen_preferred": true,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Narrow, gravelly driveway curb in an inland transitional microclimate with restricted irrigation options and shallow substrate.",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "soil_texture": "STONY",
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "planting_context": "IN_GROUND_BORDER",
+        "terrain_type": "LOWLAND",
+        "enrichment_provenance": "HUMAN_REVIEW_HYPOTHESIS"
+      }
+    },
+    {
+      "status": "ACCEPTED",
+      "reasons": [],
+      "scenario": {
+        "id": "FR-IDF-09",
+        "sun_exposure": "FULL_SUN",
+        "soil_drainage": "POOR",
+        "water_availability": "HIGH",
+        "minimum_winter_temperature_c": -9,
+        "maximum_height_cm": 200,
+        "maximum_spread_cm": 180,
+        "evergreen_preferred": false,
+        "origin": "SYNTHETIC_AI",
+        "plausibility_reason": "Depression swale collecting roof runoff in a newly built residential development with dense, unamended clay subsoil.",
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "soil_texture": "CLAY",
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "planting_context": "RAIN_GARDEN",
+        "terrain_type": "LOWLAND",
+        "enrichment_provenance": "HUMAN_REVIEW_HYPOTHESIS"
+      }
+    }
+  ],
+  "validation_note": "Automatic checks only; enrichment values are unverified review hypotheses."
+}

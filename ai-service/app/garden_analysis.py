@@ -9,7 +9,7 @@ from urllib import error, request
 
 SCHEMA_VERSION = "1.0"
 MAX_IMAGE_BYTES = 10 * 1024 * 1024
-SUPPORTED_MIME = {"image/jpeg", "image/png"}
+SUPPORTED_MIME = {"image/jpeg", "image/png", "image/webp"}
 
 SYSTEM_PROMPT = """Analyze the attached photograph for GardnAIze.
 Return JSON only. Describe visible garden evidence, not inferred geography.
@@ -31,6 +31,9 @@ Return:
     "shadeLevel":"SUNNY|PARTIAL|SHADED|UNKNOWN",
     "privacyExposure":"LOW|MODERATE|HIGH|UNKNOWN",
     "plantableAreasDetected":true,
+    "features":{"lawn":true,"terrace":false,"pathway":false,
+    "trees":true,"shrubs":true,"fence":false,"lowWall":false,
+    "stairs":false,"slope":false},
     "limitations":["..."]
     }
 }"""
@@ -78,6 +81,12 @@ def analyze_image(image_base64: str, mime_type: str) -> dict:
     if not isinstance(parsed.get("isGarden"), bool) or not isinstance(parsed.get("isAnalyzable"), bool):
         raise RuntimeError("Gemini garden flags missing")
     # Climate cannot be verified from image alone; never trust model speculation.
+    description = parsed["description"]
+    features = description.get("features")
+    if features is not None:
+        expected = {"lawn", "terrace", "pathway", "trees", "shrubs", "fence", "lowWall", "stairs", "slope"}
+        if not isinstance(features, dict) or any(k not in expected or not isinstance(v, bool) for k, v in features.items()):
+            raise RuntimeError("Gemini features contract mismatch")
     parsed["climateCode"] = "UNKNOWN"
     parsed["schemaVersion"] = SCHEMA_VERSION
     return parsed
