@@ -1,4 +1,4 @@
-"""Prepare identical offline prompts for independent Gemini and Claude responses."""
+"""Prepare offline Gemini generation prompt."""
 import argparse
 import json
 from pathlib import Path
@@ -15,7 +15,7 @@ def prepare(plants, protocol, offset=0, count=5):
         raise ValueError("Invalid batch; maximum five plants")
     names = [p["scientific_name"] for p in plants[offset:offset+count]]
     template = {"profiles": [{"scientific_name": "<requested name>",
-        "traits": {k: {"value": None, "source_urls": [], "notes": ""} for k in TRAITS}}]}
+        "traits": {k: {"value": None, "source_urls": [], "notes": "Explain evidence or uncertainty", "evidence_status": "UNKNOWN"} for k in TRAITS}}]}
     return protocol + "\nRequested names: " + json.dumps(names, ensure_ascii=False) + "\nReturn this structure for each requested name:\n" + json.dumps(template, indent=2) + "\n"
 
 def with_sources(protocol, sources):
@@ -30,6 +30,8 @@ def main():
     plants = json.loads((ROOT / "data/plants-mvp-40.json").read_text(encoding="utf-8"))
     protocol = (ROOT / "prompts/horticultural-common-v1.md").read_text(encoding="utf-8")
     sources = json.loads((ROOT / "config/gardnaize-horticultural-sources-v1.json").read_text(encoding="utf-8"))
+    schema = json.loads((ROOT / "schemas/plant-enrichment-v1.schema.json").read_text(encoding="utf-8"))
+    protocol += "\nThe following JSON Schema is authoritative:\n" + json.dumps(schema, ensure_ascii=False) + "\n"
     prompt = prepare(plants, with_sources(protocol, sources), a.offset, a.count)
     a.out.parent.mkdir(parents=True, exist_ok=True)
     with a.out.open("x", encoding="utf-8") as f:
