@@ -25,8 +25,22 @@ class MatchingTest(unittest.TestCase):
         self.assertIsNone(grade(self.g,self.p)[0])
     def test_dimensions(self):
         self.g["maximum_height_cm"]=250
-        self.assertEqual(grade(self.g,self.p)[0],1)
+        self.assertEqual(grade(self.g,self.p,policy="v1")[0],1)
+        self.assertEqual(grade(self.g,self.p)[0],2)
         self.g["maximum_height_cm"]=100
+        self.g["maximum_spread_cm"]=40
+        self.assertEqual(grade(self.g,self.p,policy="v1")[0],0)
+        label,reasons=grade(self.g,self.p)
+        self.assertEqual(label,2)
+        self.assertIn("review_size_management_height_cm",reasons["advisory"])
+        self.assertIn("review_size_management_spread_cm",reasons["advisory"])
+    def test_unknown_dimensions(self):
+        self.p["height_cm"]=None
+        self.p["spread_cm"]=None
+        self.assertEqual(grade(self.g,self.p)[0],2)
+    def test_small_space_does_not_override_environment(self):
+        self.g["maximum_height_cm"]=30
+        self.g["sun_exposure"]="FULL_SHADE"
         self.assertEqual(grade(self.g,self.p)[0],0)
     def test_water(self):
         self.g["water_availability"]="LOW"
