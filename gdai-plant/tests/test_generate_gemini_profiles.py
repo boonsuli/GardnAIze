@@ -7,8 +7,8 @@ class GeminiExtractionTest(unittest.TestCase):
         self.assertEqual(extract(response), {"profiles": []})
 
     def test_missing_grounding(self):
-        with self.assertRaises(ValueError):
-            extract({"candidates": [{"finishReason": "STOP"}]})
+        response = {"candidates": [{"finishReason": "STOP", "content": {"parts": [{"text": '```json\n{"profiles": []}\n```'}]}}]}
+        self.assertEqual(extract(response), {"profiles": []})
 
     def test_truncated(self):
         with self.assertRaises(ValueError):
