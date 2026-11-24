@@ -18,8 +18,11 @@ class ValidationTest(unittest.TestCase):
 
     def test_unsupported_value(self):
         self.traits["evergreen"]["value"] = True
-        with self.assertRaises(ValueError):
-            validate(self.payload, ["Plant A"])
+        self.assertTrue(validate(self.payload, ["Plant A"])["warnings"])
+
+    def test_catalogue_listing(self):
+        self.traits["french_nursery_availability"].update(value="LISTED", evidence_status="SUGGESTED")
+        self.assertEqual(validate(self.payload, ["Plant A"])["status"], "STRUCTURE_VALID_PENDING_REVIEW")
 
     def test_invalid_enum(self):
         self.traits["sun_exposure"]["value"] = ["SUN"]
