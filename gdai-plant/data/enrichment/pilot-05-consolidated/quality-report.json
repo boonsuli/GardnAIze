@@ -1,0 +1,51 @@
+{
+  "policy": "PROVISIONAL_V1",
+  "plants": [
+    {
+      "scientific_name": "Viburnum tinus",
+      "status": "EXCLUDED",
+      "agreement": 0.875,
+      "major_divergences": [],
+      "missing_essential": [
+        "hardiness_min_c",
+        "water_need"
+      ]
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "status": "CONDITIONAL",
+      "agreement": 0.9375,
+      "major_divergences": [],
+      "missing_essential": [
+        "spread_cm"
+      ]
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "status": "EXCLUDED",
+      "agreement": 0.75,
+      "major_divergences": [],
+      "missing_essential": [
+        "hardiness_min_c",
+        "water_need"
+      ]
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "status": "ACCEPTED",
+      "agreement": 0.875,
+      "major_divergences": [],
+      "missing_essential": []
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "status": "EXCLUDED",
+      "agreement": 0.8125,
+      "major_divergences": [],
+      "missing_essential": [
+        "sun_exposure",
+        "water_need"
+      ]
+    }
+  ]
+}

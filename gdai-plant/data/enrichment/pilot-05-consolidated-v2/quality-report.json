@@ -1,0 +1,64 @@
+{
+  "policy": "PROVISIONAL_V2",
+  "plants": [
+    {
+      "scientific_name": "Viburnum tinus",
+      "status": "CONDITIONAL",
+      "agreement": 0.875,
+      "environment_agreement": 0.7777777777777778,
+      "major_divergences": [],
+      "missing_essential": [
+        "hardiness_min_c"
+      ],
+      "missing_traits": [
+        "hardiness_min_c"
+      ]
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "status": "ACCEPTED",
+      "agreement": 0.9375,
+      "environment_agreement": 1.0,
+      "major_divergences": [],
+      "missing_essential": [],
+      "missing_traits": []
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "status": "EXCLUDED",
+      "agreement": 0.75,
+      "environment_agreement": 0.5555555555555556,
+      "major_divergences": [],
+      "missing_essential": [
+        "hardiness_min_c"
+      ],
+      "missing_traits": [
+        "hardiness_min_c"
+      ]
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "status": "ACCEPTED",
+      "agreement": 0.875,
+      "environment_agreement": 1.0,
+      "major_divergences": [],
+      "missing_essential": [],
+      "missing_traits": [
+        "root_development"
+      ]
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "status": "EXCLUDED",
+      "agreement": 0.8125,
+      "environment_agreement": 0.6666666666666666,
+      "major_divergences": [],
+      "missing_essential": [
+        "sun_exposure"
+      ],
+      "missing_traits": [
+        "sun_exposure"
+      ]
+    }
+  ]
+}
