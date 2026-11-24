@@ -1,0 +1,11 @@
+scientific_name,commercial_evidence_level,evidence_type,nursery_name,nursery_country,evidence_url,observed_at,stock_confirmed,product_page_verified,review_status,notes
+Choisya ternata,UNVERIFIED,NONE,,,,,false,false,TO_VERIFY,Recherche de fiche produit exacte requise
+Cornus alba,UNVERIFIED,NONE,,,,,false,false,TO_VERIFY,Recherche de fiche produit exacte requise
+Elaeagnus × ebbingei,CATALOG_LISTED,CATEGORY_LISTING,Promesse de Fleurs,FR,https://www.promessedefleurs.com/arbustes/arbustes-a-feuillage-persistant/arbustes-persistants-parfumes.html,2026-11-22,false,false,RESEARCH_ONLY,Espèce mentionnée sur une page catégorie; URL produit exacte à rechercher; stock non confirmé
+Hydrangea paniculata,UNVERIFIED,NONE,,,,,false,false,TO_VERIFY,Recherche de fiche produit exacte requise
+Osmanthus heterophyllus,CATALOG_LISTED,CATEGORY_LISTING,Promesse de Fleurs,FR,https://www.promessedefleurs.com/arbustes/arbustes-de-haie/haie-parfumee.html?p=3,2026-11-22,false,false,RESEARCH_ONLY,Espèce mentionnée sur une page catégorie; stock non confirmé
+Photinia × fraseri,UNVERIFIED,NONE,,,,,false,false,TO_VERIFY,Recherche de fiche produit exacte requise
+Pittosporum tenuifolium,CATALOG_LISTED,CULTIVAR_LISTING,Promesse de Fleurs,FR,https://www.promessedefleurs.com/arbustes/arbustes-de-haie/haie-brise-vent.html,2026-11-22,false,false,RESEARCH_ONLY,Cultivar Green Elf; ne prouve pas la disponibilité du type botanique; stock non confirmé
+Sarcococca confusa,UNVERIFIED,NONE,,,,,false,false,TO_VERIFY,Recherche de fiche produit exacte requise
+Spiraea japonica,UNVERIFIED,NONE,,,,,false,false,TO_VERIFY,Recherche de fiche produit exacte requise
+Viburnum tinus,UNVERIFIED,NONE,,,,,false,false,TO_VERIFY,Recherche de fiche produit exacte requise
