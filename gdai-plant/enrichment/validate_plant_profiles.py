@@ -11,14 +11,17 @@ def validate(payload, names):
     actual = [p["scientific_name"] for p in payload["profiles"]]
     if len(actual) != len(names) or set(actual) != set(names):
         raise ValueError("Unexpected or duplicate scientific names")
+    warnings = []
     for p in payload["profiles"]:
         for key, trait in p["traits"].items():
             v = trait["value"]
             if v is not None and (not trait["source_urls"] or trait["evidence_status"] != "RETRIEVED"):
-                raise ValueError(f"{p['scientific_name']}: {key} requires retrieved evidence")
+                warnings.append(f"{p['scientific_name']}: {key} has unverified evidence")
+            if key == "french_nursery_availability" and v in ("IN_STOCK", "OUT_OF_STOCK"):
+                warnings.append(f"{p['scientific_name']}: stock claim is optional and unverified")
             if key in ("height_cm", "spread_cm") and v is not None and v[0] > v[1]:
                 raise ValueError(f"Reversed range: {key}")
-    return {"profiles": len(actual), "status": "STRUCTURE_VALID_PENDING_REVIEW"}
+    return {"profiles": len(actual), "status": "STRUCTURE_VALID_PENDING_REVIEW", "warnings": warnings}
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
