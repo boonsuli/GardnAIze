@@ -61,7 +61,15 @@ public class GardenContextQuestionController {
         try {
             JsonNode vision = mapper.readTree(row.get("vision"));
             JsonNode answers = mapper.readTree(row.get("answers"));
-            return selector.select(vision, answers)
+            JsonNode saved = answers.path("_contextQuestion");
+            if (saved.isObject()) {
+                return new ContextQuestionResponse("READY", saved.path("questionKey").asText(),
+                        saved.path("reason").asText());
+            }
+            if (!"WAITING_ANSWERS".equals(status)) {
+                return new ContextQuestionResponse("WAITING", null, null);
+            }
+            return selector.select(vision, mapper.createObjectNode())
                     .map(q -> new ContextQuestionResponse("READY", q.key(), q.reason()))
                     .orElseGet(() -> new ContextQuestionResponse("SKIPPED", null, null));
         } catch (com.fasterxml.jackson.core.JsonProcessingException e) {
