@@ -93,7 +93,15 @@ public class StagedPhotoIntakeService {
             if (question.isPresent() && !present(answers, question.get().key())) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contextual answer required");
             }
-            json = mapper.writeValueAsString(answers);
+            var persistedAnswers = ((com.fasterxml.jackson.databind.node.ObjectNode) answers).deepCopy();
+            persistedAnswers.remove("_contextQuestion");
+            question.ifPresent(q -> {
+                var context = persistedAnswers.putObject("_contextQuestion");
+                context.put("questionKey", q.key());
+                context.put("reason", q.reason());
+                context.set("answer", answers.get(q.key()));
+            });
+            json = mapper.writeValueAsString(persistedAnswers);
         } catch (com.fasterxml.jackson.core.JsonProcessingException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid answers");
         }
