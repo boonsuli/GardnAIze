@@ -70,8 +70,29 @@ public class StagedPhotoIntakeService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     "Required questionnaire answers missing");
         }
+        var rows = jdbc.query("""
+            SELECT r.status, p.analysis_json::text
+            FROM public.garden_photo_requests r
+            JOIN public.garden_photos p ON p.id=r.photo_id
+            WHERE r.garden_id=? AND r.request_id=? AND r.intake_mode='STAGED'
+            FOR UPDATE OF r
+            """, (rs, i) -> new String[]{rs.getString(1), rs.getString(2)}, gardenId, requestId);
+        if (rows.isEmpty() || !"WAITING_ANSWERS".equals(rows.getFirst()[0])
+                || rows.getFirst()[1] == null) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "VISION must finish before final submission");
+        }
         String json;
         try {
+            var vision = mapper.readTree(rows.getFirst()[1]);
+            if (!vision.path("isGarden").asBoolean(false)
+                    || !vision.path("isAnalyzable").asBoolean(false)) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "VISION result unusable");
+            }
+            var question = new GardenContextQuestionSelector().select(vision, mapper.createObjectNode());
+            if (question.isPresent() && !present(answers, question.get().key())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contextual answer required");
+            }
             json = mapper.writeValueAsString(answers);
         } catch (com.fasterxml.jackson.core.JsonProcessingException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid answers");
@@ -85,7 +106,7 @@ public class StagedPhotoIntakeService {
                 SELECT 1 FROM public.garden_photo_requests r
                 WHERE r.photo_id=q.photo_id AND r.garden_id=?
                   AND r.request_id=? AND r.intake_mode='STAGED'
-                  AND r.status NOT IN ('FAILED','REJECTED','RECONCILIATION_REQUIRED'))
+                  AND r.status='WAITING_ANSWERS')
             """, json, gardenId, requestId);
         if (updated != 1) {
             throw new ResponseStatusException(HttpStatus.CONFLICT,
