@@ -1,0 +1,24 @@
+{
+  "policy": "HORTICULTURAL_RULES_V1",
+  "status": "EXPERIMENTAL_NOT_EXPERT_VALIDATED",
+  "garden_sha256": "d297329bd600e263b0bad76ca2299da4d592e51aa960250fb0bc96df654d35d7",
+  "gemini_sha256": "b8b3f9ae606d7be721704adef1e8d40e189dda17f02a5e9d3f6ba85406c53479",
+  "review_sha256": "2bbad2f612833337f16081849c4cd8d1482dd44726c57252a95aab927e632c03",
+  "pairs": 250,
+  "assessment_counts": {
+    "INSUFFICIENT_DATA": 12,
+    "PROVISIONAL": 138,
+    "EXCLUDED": 100
+  },
+  "label_counts": {
+    "None": 112,
+    "0": 127,
+    "1": 11
+  },
+  "experimental_training_eligible": 100,
+  "eligible_label_counts": {
+    "0": 89,
+    "1": 11
+  },
+  "api_calls": 0
+}

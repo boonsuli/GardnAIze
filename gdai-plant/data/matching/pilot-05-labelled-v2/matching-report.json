@@ -1,0 +1,42 @@
+{
+  "policy": "HORTICULTURAL_RULES_V2",
+  "status": "EXPERIMENTAL_NOT_EXPERT_VALIDATED",
+  "garden_sha256": "d297329bd600e263b0bad76ca2299da4d592e51aa960250fb0bc96df654d35d7",
+  "gemini_sha256": "b8b3f9ae606d7be721704adef1e8d40e189dda17f02a5e9d3f6ba85406c53479",
+  "review_sha256": "2bbad2f612833337f16081849c4cd8d1482dd44726c57252a95aab927e632c03",
+  "pairs": 250,
+  "assessment_counts": {
+    "INSUFFICIENT_DATA": 41,
+    "PROVISIONAL": 109,
+    "EXCLUDED": 100
+  },
+  "label_counts": {
+    "None": 141,
+    "2": 11,
+    "1": 43,
+    "3": 14,
+    "0": 41
+  },
+  "experimental_training_eligible": 100,
+  "eligible_label_counts": {
+    "2": 11,
+    "1": 43,
+    "3": 14,
+    "0": 32
+  },
+  "eligible_incompatible_reasons": {
+    "sun_exposure": 20,
+    "soil_drainage": 18
+  },
+  "eligible_conditional_reasons": {
+    "soil_moisture_tolerance": 22,
+    "water_need": 11,
+    "soil_type": 13,
+    "planting_context": 15
+  },
+  "eligible_advisory_reasons": {
+    "review_size_management_height_cm": 100,
+    "review_size_management_spread_cm": 100
+  },
+  "api_calls": 0
+}

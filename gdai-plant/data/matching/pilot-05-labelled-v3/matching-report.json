@@ -1,0 +1,66 @@
+{
+  "policy": "HORTICULTURAL_RULES_V3",
+  "status": "EXPERIMENTAL_NOT_EXPERT_VALIDATED",
+  "garden_sha256": "d297329bd600e263b0bad76ca2299da4d592e51aa960250fb0bc96df654d35d7",
+  "gemini_sha256": "b8b3f9ae606d7be721704adef1e8d40e189dda17f02a5e9d3f6ba85406c53479",
+  "review_sha256": "2bbad2f612833337f16081849c4cd8d1482dd44726c57252a95aab927e632c03",
+  "pairs": 250,
+  "assessment_counts": {
+    "INSUFFICIENT_DATA": 41,
+    "PROVISIONAL": 109,
+    "EXCLUDED": 100
+  },
+  "label_counts": {
+    "None": 141,
+    "2": 8,
+    "1": 47,
+    "3": 13,
+    "0": 41
+  },
+  "experimental_training_eligible": 100,
+  "eligible_label_counts": {
+    "2": 8,
+    "1": 47,
+    "3": 13,
+    "0": 32
+  },
+  "eligible_incompatible_reasons": {
+    "HORT-001:sun_exposure": 20,
+    "HORT-003:soil_drainage": 18
+  },
+  "eligible_conditional_reasons": {
+    "HORT-006:soil_moisture_tolerance": 22,
+    "HORT-004:water_need": 11,
+    "HORT-005:soil_type": 13,
+    "PAYS-001:prefer_compact_vegetation": 18,
+    "PAYS-003:planting_context": 15
+  },
+  "eligible_advisory_reasons": {
+    "ENTR-001:review_size_management_height_cm": 100,
+    "ENTR-002:review_size_management_spread_cm": 100
+  },
+  "api_calls": 0,
+  "rule_config": {
+    "policy": "HORTICULTURAL_RULES_V3",
+    "status": "EXPERIMENTAL",
+    "frost_margin_c": 2,
+    "small_space_height_cm": 100,
+    "small_space_spread_cm": 80,
+    "enabled_rules": [
+      "HORT-001",
+      "HORT-002",
+      "HORT-003",
+      "HORT-004",
+      "HORT-005",
+      "HORT-006",
+      "PAYS-001",
+      "PAYS-003",
+      "PAYS-004",
+      "ENTR-001",
+      "ENTR-002",
+      "PREF-001"
+    ]
+  },
+  "rule_config_sha256": "55b7d67e6f749562920210617b5b2fe36523921d9ade7b6a2f66a89b9131ddfd",
+  "catalogue_sha256": "73c343ae99154423b3081896c6d5560a1ec3e86f2c616f6fec68e9dee7c4fc88"
+}
