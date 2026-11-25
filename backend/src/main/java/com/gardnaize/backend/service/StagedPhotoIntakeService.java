@@ -20,6 +20,19 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class StagedPhotoIntakeService {
     private static final String EXTERNAL_CONSENT = "privacy.externalProcessingNotice";
+    private static final java.util.Map<String, java.util.Set<String>> OPTIONS = java.util.Map.ofEntries(
+        java.util.Map.entry("exposure", java.util.Set.of("FULL_SUN", "PARTIAL_SHADE", "SHADE", "UNKNOWN")),
+        java.util.Map.entry("soilType", java.util.Set.of("SANDY", "LOAMY", "CLAY", "UNKNOWN")),
+        java.util.Map.entry("waterAvailability", java.util.Set.of("LOW", "MODERATE", "HIGH")),
+        java.util.Map.entry("maintenancePreference", java.util.Set.of("LOW", "MODERATE", "HIGH")),
+        java.util.Map.entry("evergreenPreferred", java.util.Set.of("YES", "NO", "NO_PREFERENCE")),
+        java.util.Map.entry("privacyScreeningRequired", java.util.Set.of("YES", "NO", "NO_PREFERENCE")),
+        java.util.Map.entry("desiredHeight", java.util.Set.of("LOW", "MEDIUM", "TALL", "NO_PREFERENCE")),
+        java.util.Map.entry("preferredColors", java.util.Set.of("WHITE", "PINK", "PURPLE", "YELLOW", "NO_PREFERENCE")),
+        java.util.Map.entry("budget", java.util.Set.of("LOW", "MEDIUM", "HIGH", "NO_PREFERENCE")),
+        java.util.Map.entry("gardenStyle", java.util.Set.of("CONTEMPORARY", "NATURAL", "MEDITERRANEAN", "NO_PREFERENCE")),
+        java.util.Map.entry("matureSpread", java.util.Set.of("UNDER_1M", "FROM_1_TO_2M", "FROM_2_TO_4M", "OVER_4M", "NO_PREFERENCE")),
+        java.util.Map.entry("rootSpace", java.util.Set.of("VERY_LIMITED", "LIMITED", "MODERATE", "UNRESTRICTED", "UNKNOWN")));
     private final GardenPhotoService photos;
     private final JdbcTemplate jdbc;
     private final ObjectMapper mapper;
@@ -70,6 +83,7 @@ public class StagedPhotoIntakeService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     "Required questionnaire answers missing");
         }
+        validateOptions(answers);
         var rows = jdbc.query("""
             SELECT r.status, p.analysis_json::text
             FROM public.garden_photo_requests r
@@ -138,6 +152,17 @@ public class StagedPhotoIntakeService {
             SELECT request_id,status,'QUESTIONNAIRE_SUBMITTED'
             FROM public.garden_photo_requests WHERE garden_id=? AND request_id=?
             """, gardenId, requestId);
+    }
+
+    static void validateOptions(JsonNode answers) {
+        answers.fields().forEachRemaining(entry -> {
+            var allowed = OPTIONS.get(entry.getKey());
+            if (allowed == null || !entry.getValue().isTextual()
+                    || !allowed.contains(entry.getValue().asText())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                        "Invalid questionnaire option: " + entry.getKey());
+            }
+        });
     }
 
     private boolean present(JsonNode answers, String key) {
