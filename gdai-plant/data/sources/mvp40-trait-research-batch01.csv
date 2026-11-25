@@ -1,0 +1,11 @@
+scientific_name,field,value,source_url,source_license,commercial_reuse_allowed,reviewer,reviewed_at,review_status,notes
+Viburnum tinus,evergreen,true,https://www.rhs.org.uk/plants/18950/viburnum-tinus/details,UNKNOWN,false,,2026-11-22,RESEARCH_ONLY,RHS plant profile
+Viburnum tinus,sun_exposure,SUN;PARTIAL_SHADE;SHADE,https://www.rhs.org.uk/plants/18950/viburnum-tinus/details,UNKNOWN,false,,2026-11-22,RESEARCH_ONLY,RHS plant profile
+Viburnum tinus,soil_drainage,WELL_DRAINED,https://www.rhs.org.uk/plants/18950/viburnum-tinus/details,UNKNOWN,false,,2026-11-22,RESEARCH_ONLY,RHS plant profile
+Photinia × fraseri,evergreen,true,https://www.rhs.org.uk/plants/types/hedges/choosing,UNKNOWN,false,,2026-11-22,RESEARCH_ONLY,RHS evergreen hedges list; species-level inference to review
+Choisya ternata,evergreen,true,https://www.rhs.org.uk/plants/types/shrubs/shade-planting,UNKNOWN,false,,2026-11-22,RESEARCH_ONLY,RHS shade planting list
+Elaeagnus × ebbingei,evergreen,true,https://www.rhs.org.uk/plants/types/hedges/choosing,UNKNOWN,false,,2026-11-22,RESEARCH_ONLY,RHS evergreen hedges list
+Osmanthus heterophyllus,evergreen,true,https://www.rhs.org.uk/plants/types/shrubs/evergreen-for-situations,UNKNOWN,false,,2026-11-22,RESEARCH_ONLY,RHS evergreen shrubs list
+Pittosporum tenuifolium,evergreen,true,https://www.rhs.org.uk/plants/types/hedges/choosing,UNKNOWN,false,,2026-11-22,RESEARCH_ONLY,RHS evergreen hedges list
+Sarcococca confusa,evergreen,true,https://www.rhs.org.uk/plants/types/shrubs/evergreen-for-situations,UNKNOWN,false,,2026-11-22,RESEARCH_ONLY,RHS evergreen shrubs list
+Cornus alba,evergreen,false,https://www.rhs.org.uk/plants/types/shrubs/shade-planting,UNKNOWN,false,,2026-11-22,RESEARCH_ONLY,RHS shade planting describes deciduous dogwood; confirm species

@@ -1,0 +1,2702 @@
+[
+  {
+    "scientific_name": "Berberis acuminata",
+    "external_id": "3981137",
+    "source_url": "https://www.gbif.org/species/3981137",
+    "source_key": "GBIF",
+    "genus": "Berberis",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Actinella glabra",
+    "external_id": "7864894",
+    "source_url": "https://www.gbif.org/species/7864894",
+    "source_key": "GBIF",
+    "genus": "Helenium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carex alsophila",
+    "external_id": "2722155",
+    "source_url": "https://www.gbif.org/species/2722155",
+    "source_key": "GBIF",
+    "genus": "Carex",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Amelanchier alnifolia",
+    "external_id": "8168485",
+    "source_url": "https://www.gbif.org/species/8168485",
+    "source_key": "GBIF",
+    "genus": "Amelanchier",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Armeria albi",
+    "external_id": "5668072",
+    "source_url": "https://www.gbif.org/species/5668072",
+    "source_key": "GBIF",
+    "genus": "Armeria",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Hedera caerulescens",
+    "external_id": "9405094",
+    "source_url": "https://www.gbif.org/species/9405094",
+    "source_key": "GBIF",
+    "genus": "Hedera",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Callitris ettingshauseni",
+    "external_id": "9545748",
+    "source_url": "https://www.gbif.org/species/9545748",
+    "source_key": "GBIF",
+    "genus": "Cornus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Astilbe amabilis",
+    "external_id": "3755306",
+    "source_url": "https://www.gbif.org/species/3755306",
+    "source_key": "GBIF",
+    "genus": "Astilbe",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Festuca airoides",
+    "external_id": "2704920",
+    "source_url": "https://www.gbif.org/species/2704920",
+    "source_key": "GBIF",
+    "genus": "Festuca",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carpinus attenuata",
+    "external_id": "11426441",
+    "source_url": "https://www.gbif.org/species/11426441",
+    "source_key": "GBIF",
+    "genus": "Carpinus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cerastium aleuticum",
+    "external_id": "3085477",
+    "source_url": "https://www.gbif.org/species/3085477",
+    "source_key": "GBIF",
+    "genus": "Cerastium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Humulus americanus",
+    "external_id": "3874393",
+    "source_url": "https://www.gbif.org/species/3874393",
+    "source_key": "GBIF",
+    "genus": "Humulus",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cotoneaster acuminatus",
+    "external_id": "3025566",
+    "source_url": "https://www.gbif.org/species/3025566",
+    "source_key": "GBIF",
+    "genus": "Cotoneaster",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Bergenia ciliata",
+    "external_id": "8330218",
+    "source_url": "https://www.gbif.org/species/8330218",
+    "source_key": "GBIF",
+    "genus": "Bergenia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Hakonechloa macra",
+    "external_id": "4125185",
+    "source_url": "https://www.gbif.org/species/4125185",
+    "source_key": "GBIF",
+    "genus": "Hakonechloa",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cercis borealis",
+    "external_id": "8802602",
+    "source_url": "https://www.gbif.org/species/8802602",
+    "source_key": "GBIF",
+    "genus": "Cercis",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Epimedium acuminatum",
+    "external_id": "3981102",
+    "source_url": "https://www.gbif.org/species/3981102",
+    "source_key": "GBIF",
+    "genus": "Epimedium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Jasminum acuminatum",
+    "external_id": "3683131",
+    "source_url": "https://www.gbif.org/species/3683131",
+    "source_key": "GBIF",
+    "genus": "Jasminum",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Deutzia albida",
+    "external_id": "3645752",
+    "source_url": "https://www.gbif.org/species/3645752",
+    "source_key": "GBIF",
+    "genus": "Deutzia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Centrocarpha gracilis",
+    "external_id": "8027904",
+    "source_url": "https://www.gbif.org/species/8027904",
+    "source_key": "GBIF",
+    "genus": "Rudbeckia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Miscanthus affinis",
+    "external_id": "8199975",
+    "source_url": "https://www.gbif.org/species/8199975",
+    "source_key": "GBIF",
+    "genus": "Miscanthus",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Crataegus aestivalis",
+    "external_id": "3013483",
+    "source_url": "https://www.gbif.org/species/3013483",
+    "source_key": "GBIF",
+    "genus": "Crataegus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Lamium album",
+    "external_id": "2926683",
+    "source_url": "https://www.gbif.org/species/2926683",
+    "source_key": "GBIF",
+    "genus": "Lamium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Parthenocissus britannica",
+    "external_id": "8697996",
+    "source_url": "https://www.gbif.org/species/8697996",
+    "source_key": "GBIF",
+    "genus": "Parthenocissus",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Escallonia alpina",
+    "external_id": "7359652",
+    "source_url": "https://www.gbif.org/species/7359652",
+    "source_key": "GBIF",
+    "genus": "Escallonia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Coreopsis atkinsiana",
+    "external_id": "3133936",
+    "source_url": "https://www.gbif.org/species/3133936",
+    "source_key": "GBIF",
+    "genus": "Coreopsis",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Panicum acrotrichum",
+    "external_id": "4107059",
+    "source_url": "https://www.gbif.org/species/4107059",
+    "source_key": "GBIF",
+    "genus": "Panicum",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Liquidambar acalycina",
+    "external_id": "3702626",
+    "source_url": "https://www.gbif.org/species/3702626",
+    "source_key": "GBIF",
+    "genus": "Liquidambar",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Pachysandra axillaris",
+    "external_id": "7286008",
+    "source_url": "https://www.gbif.org/species/7286008",
+    "source_key": "GBIF",
+    "genus": "Pachysandra",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Trachelospermum asiaticum",
+    "external_id": "7317060",
+    "source_url": "https://www.gbif.org/species/7317060",
+    "source_key": "GBIF",
+    "genus": "Trachelospermum",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Euonymus acanthoxanthus",
+    "external_id": "3790689",
+    "source_url": "https://www.gbif.org/species/3790689",
+    "source_key": "GBIF",
+    "genus": "Euonymus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Echinacea angustifolia",
+    "external_id": "3150933",
+    "source_url": "https://www.gbif.org/species/3150933",
+    "source_key": "GBIF",
+    "genus": "Echinacea",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carex arenaria",
+    "external_id": "2721897",
+    "source_url": "https://www.gbif.org/species/2721897",
+    "source_key": "GBIF",
+    "genus": "Carex",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Magnolia albosericea",
+    "external_id": "3153376",
+    "source_url": "https://www.gbif.org/species/3153376",
+    "source_key": "GBIF",
+    "genus": "Magnolia",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Saxifraga adscendens",
+    "external_id": "3032719",
+    "source_url": "https://www.gbif.org/species/3032719",
+    "source_key": "GBIF",
+    "genus": "Saxifraga",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Wisteria brachybotrya",
+    "external_id": "11191479",
+    "source_url": "https://www.gbif.org/species/11191479",
+    "source_key": "GBIF",
+    "genus": "Wisteria",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Forsythia europaea",
+    "external_id": "5549548",
+    "source_url": "https://www.gbif.org/species/5549548",
+    "source_key": "GBIF",
+    "genus": "Forsythia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Geranium albicans",
+    "external_id": "2890387",
+    "source_url": "https://www.gbif.org/species/2890387",
+    "source_key": "GBIF",
+    "genus": "Geranium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Festuca arizonica",
+    "external_id": "2704972",
+    "source_url": "https://www.gbif.org/species/2704972",
+    "source_key": "GBIF",
+    "genus": "Festuca",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Malus angustifolia",
+    "external_id": "3001548",
+    "source_url": "https://www.gbif.org/species/3001548",
+    "source_key": "GBIF",
+    "genus": "Malus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Sedum acre",
+    "external_id": "5362007",
+    "source_url": "https://www.gbif.org/species/5362007",
+    "source_key": "GBIF",
+    "genus": "Sedum",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Humulus cordifolius",
+    "external_id": "3874385",
+    "source_url": "https://www.gbif.org/species/3874385",
+    "source_key": "GBIF",
+    "genus": "Humulus",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Hydrangea acuminata",
+    "external_id": "3645256",
+    "source_url": "https://www.gbif.org/species/3645256",
+    "source_key": "GBIF",
+    "genus": "Hydrangea",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Heuchera abramsii",
+    "external_id": "3032647",
+    "source_url": "https://www.gbif.org/species/3032647",
+    "source_key": "GBIF",
+    "genus": "Heuchera",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Miscanthus depauperatus",
+    "external_id": "4122735",
+    "source_url": "https://www.gbif.org/species/4122735",
+    "source_key": "GBIF",
+    "genus": "Miscanthus",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Sorbus alnifolia",
+    "external_id": "3012762",
+    "source_url": "https://www.gbif.org/species/3012762",
+    "source_key": "GBIF",
+    "genus": "Sorbus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Vinca difformis",
+    "external_id": "6421637",
+    "source_url": "https://www.gbif.org/species/6421637",
+    "source_key": "GBIF",
+    "genus": "Vinca",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Jasminum agastyamalayanum",
+    "external_id": "3683025",
+    "source_url": "https://www.gbif.org/species/3683025",
+    "source_key": "GBIF",
+    "genus": "Jasminum",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Ilex amazonensis",
+    "external_id": "5533598",
+    "source_url": "https://www.gbif.org/species/5533598",
+    "source_key": "GBIF",
+    "genus": "Ilex",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Nepeta adenoclada",
+    "external_id": "5607593",
+    "source_url": "https://www.gbif.org/species/5607593",
+    "source_key": "GBIF",
+    "genus": "Nepeta",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Panicum alatum",
+    "external_id": "2705082",
+    "source_url": "https://www.gbif.org/species/2705082",
+    "source_key": "GBIF",
+    "genus": "Panicum",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Tilia alaskana",
+    "external_id": "11784016",
+    "source_url": "https://www.gbif.org/species/11784016",
+    "source_key": "GBIF",
+    "genus": "Tilia",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Waldsteinia pendula",
+    "external_id": "2986336",
+    "source_url": "https://www.gbif.org/species/2986336",
+    "source_key": "GBIF",
+    "genus": "Waldsteinia",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Parthenocissus dalzielii",
+    "external_id": "4055000",
+    "source_url": "https://www.gbif.org/species/4055000",
+    "source_key": "GBIF",
+    "genus": "Parthenocissus",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Philadelphus affinis",
+    "external_id": "3645557",
+    "source_url": "https://www.gbif.org/species/3645557",
+    "source_key": "GBIF",
+    "genus": "Philadelphus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Penstemon absarokensis",
+    "external_id": "3171439",
+    "source_url": "https://www.gbif.org/species/3171439",
+    "source_key": "GBIF",
+    "genus": "Penstemon",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carex bonatiana",
+    "external_id": "2710362",
+    "source_url": "https://www.gbif.org/species/2710362",
+    "source_key": "GBIF",
+    "genus": "Carex",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Amelanchier arborea",
+    "external_id": "3024052",
+    "source_url": "https://www.gbif.org/species/3024052",
+    "source_key": "GBIF",
+    "genus": "Amelanchier",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Armeria alboi",
+    "external_id": "7219549",
+    "source_url": "https://www.gbif.org/species/7219549",
+    "source_key": "GBIF",
+    "genus": "Armeria",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Trachelospermum assamense",
+    "external_id": "3618831",
+    "source_url": "https://www.gbif.org/species/3618831",
+    "source_key": "GBIF",
+    "genus": "Trachelospermum",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Potentilla acaulis",
+    "external_id": "5365452",
+    "source_url": "https://www.gbif.org/species/5365452",
+    "source_key": "GBIF",
+    "genus": "Potentilla",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Phlox aculeata",
+    "external_id": "2927705",
+    "source_url": "https://www.gbif.org/species/2927705",
+    "source_key": "GBIF",
+    "genus": "Phlox",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Festuca arvernensis",
+    "external_id": "2705029",
+    "source_url": "https://www.gbif.org/species/2705029",
+    "source_key": "GBIF",
+    "genus": "Festuca",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carpinus betuloides",
+    "external_id": "11699141",
+    "source_url": "https://www.gbif.org/species/11699141",
+    "source_key": "GBIF",
+    "genus": "Carpinus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cerastium alpinum",
+    "external_id": "3085450",
+    "source_url": "https://www.gbif.org/species/3085450",
+    "source_key": "GBIF",
+    "genus": "Cerastium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Wisteria brachybotrys",
+    "external_id": "2977318",
+    "source_url": "https://www.gbif.org/species/2977318",
+    "source_key": "GBIF",
+    "genus": "Wisteria",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Pyracantha angustifolia",
+    "external_id": "2988222",
+    "source_url": "https://www.gbif.org/species/2988222",
+    "source_key": "GBIF",
+    "genus": "Pyracantha",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Salvia aegyptiaca",
+    "genus": "Salvia",
+    "external_id": "10667710",
+    "source_url": "https://www.gbif.org/species/10667710",
+    "source_key": "GBIF",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Miscanthus ecklonii",
+    "external_id": "4122727",
+    "source_url": "https://www.gbif.org/species/4122727",
+    "source_key": "GBIF",
+    "genus": "Miscanthus",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cercis canadensis",
+    "external_id": "5353583",
+    "source_url": "https://www.gbif.org/species/5353583",
+    "source_key": "GBIF",
+    "genus": "Cercis",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Epimedium alpinum",
+    "external_id": "7695021",
+    "source_url": "https://www.gbif.org/species/7695021",
+    "source_key": "GBIF",
+    "genus": "Epimedium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Humulus lupulus",
+    "external_id": "2984535",
+    "source_url": "https://www.gbif.org/species/2984535",
+    "source_key": "GBIF",
+    "genus": "Humulus",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Ribes acerifolium",
+    "external_id": "2986189",
+    "source_url": "https://www.gbif.org/species/2986189",
+    "source_key": "GBIF",
+    "genus": "Ribes",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Actinella insignis",
+    "external_id": "8145907",
+    "source_url": "https://www.gbif.org/species/8145907",
+    "source_key": "GBIF",
+    "genus": "Helenium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Panicum aldabrense",
+    "external_id": "4106545",
+    "source_url": "https://www.gbif.org/species/4106545",
+    "source_key": "GBIF",
+    "genus": "Panicum",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Crataegus alabamensis",
+    "external_id": "3013743",
+    "source_url": "https://www.gbif.org/species/3013743",
+    "source_key": "GBIF",
+    "genus": "Crataegus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Lamium amplexicaule",
+    "external_id": "2926679",
+    "source_url": "https://www.gbif.org/species/2926679",
+    "source_key": "GBIF",
+    "genus": "Lamium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Jasminum aldabrarum",
+    "external_id": "3683003",
+    "source_url": "https://www.gbif.org/species/3683003",
+    "source_key": "GBIF",
+    "genus": "Jasminum",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Syringa chinensis",
+    "external_id": "5549761",
+    "source_url": "https://www.gbif.org/species/5549761",
+    "source_key": "GBIF",
+    "genus": "Syringa",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Astilbe apoensis",
+    "external_id": "3755296",
+    "source_url": "https://www.gbif.org/species/3755296",
+    "source_key": "GBIF",
+    "genus": "Astilbe",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carex brevicaulis",
+    "external_id": "2718079",
+    "source_url": "https://www.gbif.org/species/2718079",
+    "source_key": "GBIF",
+    "genus": "Carex",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Liquidambar californicum",
+    "external_id": "4940662",
+    "source_url": "https://www.gbif.org/species/4940662",
+    "source_key": "GBIF",
+    "genus": "Liquidambar",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Pachysandra procumbens",
+    "external_id": "2984677",
+    "source_url": "https://www.gbif.org/species/2984677",
+    "source_key": "GBIF",
+    "genus": "Pachysandra",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Parthenocissus feddei",
+    "external_id": "7293903",
+    "source_url": "https://www.gbif.org/species/7293903",
+    "source_key": "GBIF",
+    "genus": "Parthenocissus",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Viburnum acerifolium",
+    "external_id": "2888596",
+    "source_url": "https://www.gbif.org/species/2888596",
+    "source_key": "GBIF",
+    "genus": "Viburnum",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Bergenia crassifolia",
+    "external_id": "5567694",
+    "source_url": "https://www.gbif.org/species/5567694",
+    "source_key": "GBIF",
+    "genus": "Bergenia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Festuca auriculata",
+    "external_id": "2704936",
+    "source_url": "https://www.gbif.org/species/2704936",
+    "source_key": "GBIF",
+    "genus": "Festuca",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Magnolia allenii",
+    "external_id": "3153258",
+    "source_url": "https://www.gbif.org/species/3153258",
+    "source_key": "GBIF",
+    "genus": "Magnolia",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Saxifraga aleutica",
+    "external_id": "3032839",
+    "source_url": "https://www.gbif.org/species/3032839",
+    "source_key": "GBIF",
+    "genus": "Saxifraga",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Trachelospermum axillare",
+    "external_id": "4940054",
+    "source_url": "https://www.gbif.org/species/4940054",
+    "source_key": "GBIF",
+    "genus": "Trachelospermum",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Weigela amabilis",
+    "external_id": "10841117",
+    "source_url": "https://www.gbif.org/species/10841117",
+    "source_key": "GBIF",
+    "genus": "Weigela",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Centrocarpha hirta",
+    "external_id": "8386417",
+    "source_url": "https://www.gbif.org/species/8386417",
+    "source_key": "GBIF",
+    "genus": "Rudbeckia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Miscanthus erectus",
+    "external_id": "8183941",
+    "source_url": "https://www.gbif.org/species/8183941",
+    "source_key": "GBIF",
+    "genus": "Miscanthus",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Malus armeniacifolia",
+    "external_id": "3853665",
+    "source_url": "https://www.gbif.org/species/3853665",
+    "source_key": "GBIF",
+    "genus": "Malus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Sedum actinocarpum",
+    "external_id": "5688205",
+    "source_url": "https://www.gbif.org/species/5688205",
+    "source_key": "GBIF",
+    "genus": "Sedum",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Wisteria floribunda",
+    "external_id": "2977323",
+    "source_url": "https://www.gbif.org/species/2977323",
+    "source_key": "GBIF",
+    "genus": "Wisteria",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Berberis acutinervia",
+    "external_id": "3981119",
+    "source_url": "https://www.gbif.org/species/3981119",
+    "source_key": "GBIF",
+    "genus": "Berberis",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Coreopsis auriculata",
+    "external_id": "3133965",
+    "source_url": "https://www.gbif.org/species/3133965",
+    "source_key": "GBIF",
+    "genus": "Coreopsis",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Panicum alopecurus",
+    "external_id": "4106448",
+    "source_url": "https://www.gbif.org/species/4106448",
+    "source_key": "GBIF",
+    "genus": "Panicum",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Sorbus arachnoidea",
+    "external_id": "3012996",
+    "source_url": "https://www.gbif.org/species/3012996",
+    "source_key": "GBIF",
+    "genus": "Sorbus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Vinca erecta",
+    "external_id": "3616629",
+    "source_url": "https://www.gbif.org/species/3616629",
+    "source_key": "GBIF",
+    "genus": "Vinca",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Humulus neomexicanus",
+    "external_id": "3874386",
+    "source_url": "https://www.gbif.org/species/3874386",
+    "source_key": "GBIF",
+    "genus": "Humulus",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cornus acadiensis",
+    "external_id": "3082237",
+    "source_url": "https://www.gbif.org/species/3082237",
+    "source_key": "GBIF",
+    "genus": "Cornus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Echinacea atrorubens",
+    "external_id": "3150915",
+    "source_url": "https://www.gbif.org/species/3150915",
+    "source_key": "GBIF",
+    "genus": "Echinacea",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carex breviscapa",
+    "external_id": "2722140",
+    "source_url": "https://www.gbif.org/species/2722140",
+    "source_key": "GBIF",
+    "genus": "Carex",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Tilia americana",
+    "external_id": "3152042",
+    "source_url": "https://www.gbif.org/species/3152042",
+    "source_key": "GBIF",
+    "genus": "Tilia",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Armeria alliacea",
+    "external_id": "7136602",
+    "source_url": "https://www.gbif.org/species/7136602",
+    "source_key": "GBIF",
+    "genus": "Armeria",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Jasminum alongense",
+    "external_id": "3682989",
+    "source_url": "https://www.gbif.org/species/3682989",
+    "source_key": "GBIF",
+    "genus": "Jasminum",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cotoneaster acutifolius",
+    "external_id": "3025770",
+    "source_url": "https://www.gbif.org/species/3025770",
+    "source_key": "GBIF",
+    "genus": "Cotoneaster",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Geranium amatolicum",
+    "external_id": "2890322",
+    "source_url": "https://www.gbif.org/species/2890322",
+    "source_key": "GBIF",
+    "genus": "Geranium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Festuca baffinensis",
+    "external_id": "2704993",
+    "source_url": "https://www.gbif.org/species/2704993",
+    "source_key": "GBIF",
+    "genus": "Festuca",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Amelanchier asiatica",
+    "external_id": "3023822",
+    "source_url": "https://www.gbif.org/species/3023822",
+    "source_key": "GBIF",
+    "genus": "Amelanchier",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cerastium arcticum",
+    "external_id": "3085444",
+    "source_url": "https://www.gbif.org/species/3085444",
+    "source_key": "GBIF",
+    "genus": "Cerastium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Parthenocissus henryana",
+    "external_id": "4054916",
+    "source_url": "https://www.gbif.org/species/4054916",
+    "source_key": "GBIF",
+    "genus": "Parthenocissus",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Deutzia aspera",
+    "external_id": "7319053",
+    "source_url": "https://www.gbif.org/species/7319053",
+    "source_key": "GBIF",
+    "genus": "Deutzia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Heuchera acutifolia",
+    "external_id": "3753512",
+    "source_url": "https://www.gbif.org/species/3753512",
+    "source_key": "GBIF",
+    "genus": "Heuchera",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Miscanthus floridulus",
+    "external_id": "2706022",
+    "source_url": "https://www.gbif.org/species/2706022",
+    "source_key": "GBIF",
+    "genus": "Miscanthus",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carpinus betulus",
+    "external_id": "2875818",
+    "source_url": "https://www.gbif.org/species/2875818",
+    "source_key": "GBIF",
+    "genus": "Carpinus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Epimedium baiealiguizhouense",
+    "external_id": "7433762",
+    "source_url": "https://www.gbif.org/species/7433762",
+    "source_key": "GBIF",
+    "genus": "Epimedium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Trachelospermum bodinieri",
+    "external_id": "3618789",
+    "source_url": "https://www.gbif.org/species/3618789",
+    "source_key": "GBIF",
+    "genus": "Trachelospermum",
+    "category": "CLIMBER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Escallonia angustifolia",
+    "external_id": "7278648",
+    "source_url": "https://www.gbif.org/species/7278648",
+    "source_key": "GBIF",
+    "genus": "Escallonia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Nepeta adenophyta",
+    "external_id": "5607590",
+    "source_url": "https://www.gbif.org/species/5607590",
+    "source_key": "GBIF",
+    "genus": "Nepeta",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Panicum altum",
+    "external_id": "4106392",
+    "source_url": "https://www.gbif.org/species/4106392",
+    "source_key": "GBIF",
+    "genus": "Panicum",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cercis chinensis",
+    "external_id": "5353599",
+    "source_url": "https://www.gbif.org/species/5353599",
+    "source_key": "GBIF",
+    "genus": "Cercis",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Lamium bakhtiaricum",
+    "external_id": "9619626",
+    "source_url": "https://www.gbif.org/species/9619626",
+    "source_key": "GBIF",
+    "genus": "Lamium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Euonymus alatus",
+    "external_id": "3169120",
+    "source_url": "https://www.gbif.org/species/3169120",
+    "source_key": "GBIF",
+    "genus": "Euonymus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Penstemon alamosensis",
+    "external_id": "3171426",
+    "source_url": "https://www.gbif.org/species/3171426",
+    "source_key": "GBIF",
+    "genus": "Penstemon",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carex breweri",
+    "external_id": "2722005",
+    "source_url": "https://www.gbif.org/species/2722005",
+    "source_key": "GBIF",
+    "genus": "Carex",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Crataegus albanica",
+    "external_id": "3014314",
+    "source_url": "https://www.gbif.org/species/3014314",
+    "source_key": "GBIF",
+    "genus": "Crataegus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Pachysandra terminalis",
+    "external_id": "2984676",
+    "source_url": "https://www.gbif.org/species/2984676",
+    "source_key": "GBIF",
+    "genus": "Pachysandra",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Forsythia giraldiana",
+    "external_id": "7325954",
+    "source_url": "https://www.gbif.org/species/7325954",
+    "source_key": "GBIF",
+    "genus": "Forsythia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Phlox adsurgens",
+    "external_id": "2927762",
+    "source_url": "https://www.gbif.org/species/2927762",
+    "source_key": "GBIF",
+    "genus": "Phlox",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Festuca borderii",
+    "external_id": "4107320",
+    "source_url": "https://www.gbif.org/species/4107320",
+    "source_key": "GBIF",
+    "genus": "Festuca",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Liquidambar cambodiana",
+    "external_id": "8383906",
+    "source_url": "https://www.gbif.org/species/8383906",
+    "source_key": "GBIF",
+    "genus": "Liquidambar",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Saxifraga bijiangensis",
+    "external_id": "3752872",
+    "source_url": "https://www.gbif.org/species/3752872",
+    "source_key": "GBIF",
+    "genus": "Saxifraga",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Hydrangea albostellata",
+    "external_id": "7798110",
+    "source_url": "https://www.gbif.org/species/7798110",
+    "source_key": "GBIF",
+    "genus": "Hydrangea",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Salvia aethiopis",
+    "external_id": "2927030",
+    "source_url": "https://www.gbif.org/species/2927030",
+    "source_key": "GBIF",
+    "genus": "Salvia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Miscanthus fuscus",
+    "external_id": "4122690",
+    "source_url": "https://www.gbif.org/species/4122690",
+    "source_key": "GBIF",
+    "genus": "Miscanthus",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Magnolia amabilis",
+    "external_id": "3152904",
+    "source_url": "https://www.gbif.org/species/3152904",
+    "source_key": "GBIF",
+    "genus": "Magnolia",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Sedum adolphi",
+    "external_id": "5688173",
+    "source_url": "https://www.gbif.org/species/5688173",
+    "source_key": "GBIF",
+    "genus": "Sedum",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Ilex amelanchier",
+    "external_id": "5414275",
+    "source_url": "https://www.gbif.org/species/5414275",
+    "source_key": "GBIF",
+    "genus": "Ilex",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Astilbe biternata",
+    "external_id": "8142314",
+    "source_url": "https://www.gbif.org/species/8142314",
+    "source_key": "GBIF",
+    "genus": "Astilbe",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Panicum amarum",
+    "external_id": "2705089",
+    "source_url": "https://www.gbif.org/species/2705089",
+    "source_key": "GBIF",
+    "genus": "Panicum",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Malus asiatica",
+    "external_id": "3001132",
+    "source_url": "https://www.gbif.org/species/3001132",
+    "source_key": "GBIF",
+    "genus": "Malus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Vinca guilelmi-waldemarii",
+    "external_id": "10876513",
+    "source_url": "https://www.gbif.org/species/10876513",
+    "source_key": "GBIF",
+    "genus": "Vinca",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Philadelphus asperifolius",
+    "external_id": "7390965",
+    "source_url": "https://www.gbif.org/species/7390965",
+    "source_key": "GBIF",
+    "genus": "Philadelphus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Bergenia emeiensis",
+    "external_id": "7584129",
+    "source_url": "https://www.gbif.org/species/7584129",
+    "source_key": "GBIF",
+    "genus": "Bergenia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carex brizoides",
+    "external_id": "2721983",
+    "source_url": "https://www.gbif.org/species/2721983",
+    "source_key": "GBIF",
+    "genus": "Carex",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Sorbus arguta",
+    "external_id": "3012716",
+    "source_url": "https://www.gbif.org/species/3012716",
+    "source_key": "GBIF",
+    "genus": "Sorbus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Armeria alpina",
+    "external_id": "7136582",
+    "source_url": "https://www.gbif.org/species/7136582",
+    "source_key": "GBIF",
+    "genus": "Armeria",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Potentilla alchimilloides",
+    "external_id": "5365422",
+    "source_url": "https://www.gbif.org/species/5365422",
+    "source_key": "GBIF",
+    "genus": "Potentilla",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cephalophora aromalica",
+    "external_id": "5385013",
+    "source_url": "https://www.gbif.org/species/5385013",
+    "source_key": "GBIF",
+    "genus": "Helenium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Festuca brachyphylla",
+    "external_id": "2704975",
+    "source_url": "https://www.gbif.org/species/2704975",
+    "source_key": "GBIF",
+    "genus": "Festuca",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Tilia amurensis",
+    "external_id": "7356729",
+    "source_url": "https://www.gbif.org/species/7356729",
+    "source_key": "GBIF",
+    "genus": "Tilia",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cerastium arvense",
+    "external_id": "3085433",
+    "source_url": "https://www.gbif.org/species/3085433",
+    "source_key": "GBIF",
+    "genus": "Cerastium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Pyracantha atalantioides",
+    "external_id": "2988212",
+    "source_url": "https://www.gbif.org/species/2988212",
+    "source_key": "GBIF",
+    "genus": "Pyracantha",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Coreopsis basalis",
+    "external_id": "3133967",
+    "source_url": "https://www.gbif.org/species/3133967",
+    "source_key": "GBIF",
+    "genus": "Coreopsis",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Miscanthus gigantheus",
+    "external_id": "7399581",
+    "source_url": "https://www.gbif.org/species/7399581",
+    "source_key": "GBIF",
+    "genus": "Miscanthus",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Amelanchier bartramiana",
+    "external_id": "3024074",
+    "source_url": "https://www.gbif.org/species/3024074",
+    "source_key": "GBIF",
+    "genus": "Amelanchier",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Epimedium borealiguizhouense",
+    "external_id": "3981060",
+    "source_url": "https://www.gbif.org/species/3981060",
+    "source_key": "GBIF",
+    "genus": "Epimedium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Ribes alpinum",
+    "external_id": "2986184",
+    "source_url": "https://www.gbif.org/species/2986184",
+    "source_key": "GBIF",
+    "genus": "Ribes",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Echinacea hybr",
+    "external_id": "6710967",
+    "source_url": "https://www.gbif.org/species/6710967",
+    "source_key": "GBIF",
+    "genus": "Echinacea",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Panicum amlisa",
+    "external_id": "4106171",
+    "source_url": "https://www.gbif.org/species/4106171",
+    "source_key": "GBIF",
+    "genus": "Panicum",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carpinus caroliniana",
+    "external_id": "2875842",
+    "source_url": "https://www.gbif.org/species/2875842",
+    "source_key": "GBIF",
+    "genus": "Carpinus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Lamium bifidum",
+    "external_id": "7308131",
+    "source_url": "https://www.gbif.org/species/7308131",
+    "source_key": "GBIF",
+    "genus": "Lamium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Syringa coerulea",
+    "external_id": "5549756",
+    "source_url": "https://www.gbif.org/species/5549756",
+    "source_key": "GBIF",
+    "genus": "Syringa",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Geranium ardjunense",
+    "external_id": "2890345",
+    "source_url": "https://www.gbif.org/species/2890345",
+    "source_key": "GBIF",
+    "genus": "Geranium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Carex buchananii",
+    "external_id": "2712244",
+    "source_url": "https://www.gbif.org/species/2712244",
+    "source_key": "GBIF",
+    "genus": "Carex",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cercis chingii",
+    "external_id": "5353581",
+    "source_url": "https://www.gbif.org/species/5353581",
+    "source_key": "GBIF",
+    "genus": "Cercis",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Saxifraga bilekii",
+    "external_id": "3752864",
+    "source_url": "https://www.gbif.org/species/3752864",
+    "source_key": "GBIF",
+    "genus": "Saxifraga",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Viburnum acutifolium",
+    "external_id": "3855985",
+    "source_url": "https://www.gbif.org/species/3855985",
+    "source_key": "GBIF",
+    "genus": "Viburnum",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Heuchera alba",
+    "external_id": "3032660",
+    "source_url": "https://www.gbif.org/species/3032660",
+    "source_key": "GBIF",
+    "genus": "Heuchera",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Festuca brevissima",
+    "external_id": "2705016",
+    "source_url": "https://www.gbif.org/species/2705016",
+    "source_key": "GBIF",
+    "genus": "Festuca",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Crataegus alleghaniensis",
+    "external_id": "3014390",
+    "source_url": "https://www.gbif.org/species/3014390",
+    "source_key": "GBIF",
+    "genus": "Crataegus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Sedum alamosanum",
+    "external_id": "5688120",
+    "source_url": "https://www.gbif.org/species/5688120",
+    "source_key": "GBIF",
+    "genus": "Sedum",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Weigela coraeensis",
+    "external_id": "3856535",
+    "source_url": "https://www.gbif.org/species/3856535",
+    "source_key": "GBIF",
+    "genus": "Weigela",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Nepeta agrestis",
+    "external_id": "5607587",
+    "source_url": "https://www.gbif.org/species/5607587",
+    "source_key": "GBIF",
+    "genus": "Nepeta",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Miscanthus hybr",
+    "external_id": "6710644",
+    "source_url": "https://www.gbif.org/species/6710644",
+    "source_key": "GBIF",
+    "genus": "Miscanthus",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Liquidambar caudata",
+    "external_id": "8218247",
+    "source_url": "https://www.gbif.org/species/8218247",
+    "source_key": "GBIF",
+    "genus": "Liquidambar",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Vinca herbacea",
+    "external_id": "3169710",
+    "source_url": "https://www.gbif.org/species/3169710",
+    "source_key": "GBIF",
+    "genus": "Vinca",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Berberis aemulans",
+    "external_id": "3981110",
+    "source_url": "https://www.gbif.org/species/3981110",
+    "source_key": "GBIF",
+    "genus": "Berberis",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Penstemon albertinus",
+    "external_id": "3171414",
+    "source_url": "https://www.gbif.org/species/3171414",
+    "source_key": "GBIF",
+    "genus": "Penstemon",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Panicum amoenum",
+    "external_id": "4106122",
+    "source_url": "https://www.gbif.org/species/4106122",
+    "source_key": "GBIF",
+    "genus": "Panicum",
+    "category": "GRASS",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Magnolia amazonica",
+    "external_id": "3153193",
+    "source_url": "https://www.gbif.org/species/3153193",
+    "source_key": "GBIF",
+    "genus": "Magnolia",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Armeria alpinifolia",
+    "external_id": "5668017",
+    "source_url": "https://www.gbif.org/species/5668017",
+    "source_key": "GBIF",
+    "genus": "Armeria",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cornus acuminata",
+    "external_id": "3663313",
+    "source_url": "https://www.gbif.org/species/3663313",
+    "source_key": "GBIF",
+    "genus": "Cornus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Phlox albomarginata",
+    "external_id": "2927748",
+    "source_url": "https://www.gbif.org/species/2927748",
+    "source_key": "GBIF",
+    "genus": "Phlox",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Malus atrosanguinea",
+    "external_id": "3001440",
+    "source_url": "https://www.gbif.org/species/3001440",
+    "source_key": "GBIF",
+    "genus": "Malus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cerastium axillare",
+    "external_id": "3085436",
+    "source_url": "https://www.gbif.org/species/3085436",
+    "source_key": "GBIF",
+    "genus": "Cerastium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cotoneaster adpressus",
+    "external_id": "3025764",
+    "source_url": "https://www.gbif.org/species/3025764",
+    "source_key": "GBIF",
+    "genus": "Cotoneaster",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Rudbeckia alata",
+    "external_id": "5705519",
+    "source_url": "https://www.gbif.org/species/5705519",
+    "source_key": "GBIF",
+    "genus": "Rudbeckia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Sorbus arnoldiana",
+    "external_id": "3012941",
+    "source_url": "https://www.gbif.org/species/3012941",
+    "source_key": "GBIF",
+    "genus": "Sorbus",
+    "category": "TREE",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Epimedium brevicornu",
+    "external_id": "3981041",
+    "source_url": "https://www.gbif.org/species/3981041",
+    "source_key": "GBIF",
+    "genus": "Epimedium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Deutzia baroniana",
+    "external_id": "3645716",
+    "source_url": "https://www.gbif.org/species/3645716",
+    "source_key": "GBIF",
+    "genus": "Deutzia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Salvia ajugoides",
+    "genus": "Salvia",
+    "external_id": "7306990",
+    "source_url": "https://www.gbif.org/species/7306990",
+    "source_key": "GBIF",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Lamium bilgilii",
+    "external_id": "10796641",
+    "source_url": "https://www.gbif.org/species/10796641",
+    "source_key": "GBIF",
+    "genus": "Lamium",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Escallonia bedfordi",
+    "external_id": "3932833",
+    "source_url": "https://www.gbif.org/species/3932833",
+    "source_key": "GBIF",
+    "genus": "Escallonia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Astilbe crenatiloba",
+    "external_id": "3032694",
+    "source_url": "https://www.gbif.org/species/3032694",
+    "source_key": "GBIF",
+    "genus": "Astilbe",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Saxifraga biternata",
+    "external_id": "3752838",
+    "source_url": "https://www.gbif.org/species/3752838",
+    "source_key": "GBIF",
+    "genus": "Saxifraga",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Euonymus americanus",
+    "external_id": "3169130",
+    "source_url": "https://www.gbif.org/species/3169130",
+    "source_key": "GBIF",
+    "genus": "Euonymus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Bergenia hissarica",
+    "external_id": "5567682",
+    "source_url": "https://www.gbif.org/species/5567682",
+    "source_key": "GBIF",
+    "genus": "Bergenia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Sedum albomarginatum",
+    "external_id": "5361996",
+    "source_url": "https://www.gbif.org/species/5361996",
+    "source_key": "GBIF",
+    "genus": "Sedum",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Forsythia hybr",
+    "external_id": "6712061",
+    "source_url": "https://www.gbif.org/species/6712061",
+    "source_key": "GBIF",
+    "genus": "Forsythia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Coreopsis bigelowii",
+    "external_id": "4207952",
+    "source_url": "https://www.gbif.org/species/4207952",
+    "source_key": "GBIF",
+    "genus": "Coreopsis",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Vinca ispartensis",
+    "external_id": "9756254",
+    "source_url": "https://www.gbif.org/species/9756254",
+    "source_key": "GBIF",
+    "genus": "Vinca",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Hydrangea alternifolia",
+    "external_id": "3645224",
+    "source_url": "https://www.gbif.org/species/3645224",
+    "source_key": "GBIF",
+    "genus": "Hydrangea",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Echinacea hybrida",
+    "external_id": "4228717",
+    "source_url": "https://www.gbif.org/species/4228717",
+    "source_key": "GBIF",
+    "genus": "Echinacea",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Armeria arcuata",
+    "external_id": "5667987",
+    "source_url": "https://www.gbif.org/species/5667987",
+    "source_key": "GBIF",
+    "genus": "Armeria",
+    "category": "GROUNDCOVER",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Ilex anomala",
+    "external_id": "5414254",
+    "source_url": "https://www.gbif.org/species/5414254",
+    "source_key": "GBIF",
+    "genus": "Ilex",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Geranium aristatum",
+    "external_id": "2890332",
+    "source_url": "https://www.gbif.org/species/2890332",
+    "source_key": "GBIF",
+    "genus": "Geranium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Philadelphus bendirei",
+    "external_id": "9686006",
+    "source_url": "https://www.gbif.org/species/9686006",
+    "source_key": "GBIF",
+    "genus": "Philadelphus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Heleniastrum amphilobum",
+    "external_id": "4254724",
+    "source_url": "https://www.gbif.org/species/4254724",
+    "source_key": "GBIF",
+    "genus": "Helenium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Potentilla alluvialis",
+    "external_id": "5365566",
+    "source_url": "https://www.gbif.org/species/5365566",
+    "source_key": "GBIF",
+    "genus": "Potentilla",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Heuchera alpestris",
+    "external_id": "3032677",
+    "source_url": "https://www.gbif.org/species/3032677",
+    "source_key": "GBIF",
+    "genus": "Heuchera",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Pyracantha coccinea",
+    "external_id": "2988188",
+    "source_url": "https://www.gbif.org/species/2988188",
+    "source_key": "GBIF",
+    "genus": "Pyracantha",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Nepeta alaghezi",
+    "external_id": "5607585",
+    "source_url": "https://www.gbif.org/species/5607585",
+    "source_key": "GBIF",
+    "genus": "Nepeta",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Ribes americanum",
+    "external_id": "2986121",
+    "source_url": "https://www.gbif.org/species/2986121",
+    "source_key": "GBIF",
+    "genus": "Ribes",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Penstemon albidus",
+    "external_id": "3171339",
+    "source_url": "https://www.gbif.org/species/3171339",
+    "source_key": "GBIF",
+    "genus": "Penstemon",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Syringa diversifolia",
+    "external_id": "5549721",
+    "source_url": "https://www.gbif.org/species/5549721",
+    "source_key": "GBIF",
+    "genus": "Syringa",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Phlox alyssifolia",
+    "external_id": "2927739",
+    "source_url": "https://www.gbif.org/species/2927739",
+    "source_key": "GBIF",
+    "genus": "Phlox",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Viburnum albopedunculatum",
+    "external_id": "3855891",
+    "source_url": "https://www.gbif.org/species/3855891",
+    "source_key": "GBIF",
+    "genus": "Viburnum",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Rudbeckia alpicola",
+    "external_id": "3114224",
+    "source_url": "https://www.gbif.org/species/3114224",
+    "source_key": "GBIF",
+    "genus": "Rudbeckia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Weigela decora",
+    "external_id": "7272600",
+    "source_url": "https://www.gbif.org/species/7272600",
+    "source_key": "GBIF",
+    "genus": "Weigela",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Salvia albicaulis",
+    "genus": "Salvia",
+    "external_id": "3886103",
+    "source_url": "https://www.gbif.org/species/3886103",
+    "source_key": "GBIF",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Berberis aethnensis",
+    "external_id": "3981096",
+    "source_url": "https://www.gbif.org/species/3981096",
+    "source_key": "GBIF",
+    "genus": "Berberis",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Astilbe crenatilobata",
+    "external_id": "3755185",
+    "source_url": "https://www.gbif.org/species/3755185",
+    "source_key": "GBIF",
+    "genus": "Astilbe",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cornus alba",
+    "external_id": "8365953",
+    "source_url": "https://www.gbif.org/species/8365953",
+    "source_key": "GBIF",
+    "genus": "Cornus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Bergenia pacumbis",
+    "external_id": "5567668",
+    "source_url": "https://www.gbif.org/species/5567668",
+    "source_key": "GBIF",
+    "genus": "Bergenia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cotoneaster affinis",
+    "external_id": "3025799",
+    "source_url": "https://www.gbif.org/species/3025799",
+    "source_key": "GBIF",
+    "genus": "Cotoneaster",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Coreopsis bolanosana",
+    "external_id": "3133985",
+    "source_url": "https://www.gbif.org/species/3133985",
+    "source_key": "GBIF",
+    "genus": "Coreopsis",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Deutzia bomiensis",
+    "external_id": "7319044",
+    "source_url": "https://www.gbif.org/species/7319044",
+    "source_key": "GBIF",
+    "genus": "Deutzia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Echinacea laevigata",
+    "external_id": "3150927",
+    "source_url": "https://www.gbif.org/species/3150927",
+    "source_key": "GBIF",
+    "genus": "Echinacea",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Escallonia bifida",
+    "external_id": "7428724",
+    "source_url": "https://www.gbif.org/species/7428724",
+    "source_key": "GBIF",
+    "genus": "Escallonia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Geranium arnottianum",
+    "external_id": "2890278",
+    "source_url": "https://www.gbif.org/species/2890278",
+    "source_key": "GBIF",
+    "genus": "Geranium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Euonymus atropurpureus",
+    "external_id": "3169121",
+    "source_url": "https://www.gbif.org/species/3169121",
+    "source_key": "GBIF",
+    "genus": "Euonymus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Helenium amarum",
+    "external_id": "5401836",
+    "source_url": "https://www.gbif.org/species/5401836",
+    "source_key": "GBIF",
+    "genus": "Helenium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Forsythia intermedia",
+    "external_id": "5415054",
+    "source_url": "https://www.gbif.org/species/5415054",
+    "source_key": "GBIF",
+    "genus": "Forsythia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Heuchera americana",
+    "external_id": "3032665",
+    "source_url": "https://www.gbif.org/species/3032665",
+    "source_key": "GBIF",
+    "genus": "Heuchera",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Hydrangea amagiana",
+    "external_id": "3645207",
+    "source_url": "https://www.gbif.org/species/3645207",
+    "source_key": "GBIF",
+    "genus": "Hydrangea",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Nepeta alatavica",
+    "external_id": "5607582",
+    "source_url": "https://www.gbif.org/species/5607582",
+    "source_key": "GBIF",
+    "genus": "Nepeta",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Ilex aquifolium",
+    "external_id": "5414222",
+    "source_url": "https://www.gbif.org/species/5414222",
+    "source_key": "GBIF",
+    "genus": "Ilex",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Penstemon ambiguus",
+    "external_id": "3171442",
+    "source_url": "https://www.gbif.org/species/3171442",
+    "source_key": "GBIF",
+    "genus": "Penstemon",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Philadelphus brachybotrya",
+    "external_id": "11131074",
+    "source_url": "https://www.gbif.org/species/11131074",
+    "source_key": "GBIF",
+    "genus": "Philadelphus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Phlox amabilis",
+    "external_id": "2927729",
+    "source_url": "https://www.gbif.org/species/2927729",
+    "source_key": "GBIF",
+    "genus": "Phlox",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Potentilla angarensis",
+    "external_id": "5365753",
+    "source_url": "https://www.gbif.org/species/5365753",
+    "source_key": "GBIF",
+    "genus": "Potentilla",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Rudbeckia amplectens",
+    "external_id": "7755448",
+    "source_url": "https://www.gbif.org/species/7755448",
+    "source_key": "GBIF",
+    "genus": "Rudbeckia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Pyracantha crenulata",
+    "external_id": "2988172",
+    "source_url": "https://www.gbif.org/species/2988172",
+    "source_key": "GBIF",
+    "genus": "Pyracantha",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Salvia algeriensis",
+    "genus": "Salvia",
+    "external_id": "3885967",
+    "source_url": "https://www.gbif.org/species/3885967",
+    "source_key": "GBIF",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Ribes anatolicum",
+    "external_id": "4194503",
+    "source_url": "https://www.gbif.org/species/4194503",
+    "source_key": "GBIF",
+    "genus": "Ribes",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Astilbe formosa",
+    "external_id": "3755115",
+    "source_url": "https://www.gbif.org/species/3755115",
+    "source_key": "GBIF",
+    "genus": "Astilbe",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Syringa dubia",
+    "external_id": "5549720",
+    "source_url": "https://www.gbif.org/species/5549720",
+    "source_key": "GBIF",
+    "genus": "Syringa",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Bergenia purpurascens",
+    "external_id": "7339454",
+    "source_url": "https://www.gbif.org/species/7339454",
+    "source_key": "GBIF",
+    "genus": "Bergenia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Viburnum alpinum",
+    "external_id": "3855855",
+    "source_url": "https://www.gbif.org/species/3855855",
+    "source_key": "GBIF",
+    "genus": "Viburnum",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Coreopsis borianiana",
+    "external_id": "7559807",
+    "source_url": "https://www.gbif.org/species/7559807",
+    "source_key": "GBIF",
+    "genus": "Coreopsis",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Weigela floribunda",
+    "external_id": "8011733",
+    "source_url": "https://www.gbif.org/species/8011733",
+    "source_key": "GBIF",
+    "genus": "Weigela",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Echinacea pallida",
+    "external_id": "3150919",
+    "source_url": "https://www.gbif.org/species/3150919",
+    "source_key": "GBIF",
+    "genus": "Echinacea",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Berberis aetnensis",
+    "external_id": "3981087",
+    "source_url": "https://www.gbif.org/species/3981087",
+    "source_key": "GBIF",
+    "genus": "Berberis",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Geranium austroapenninum",
+    "external_id": "2890379",
+    "source_url": "https://www.gbif.org/species/2890379",
+    "source_key": "GBIF",
+    "genus": "Geranium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cornus alternifolia",
+    "external_id": "3082242",
+    "source_url": "https://www.gbif.org/species/3082242",
+    "source_key": "GBIF",
+    "genus": "Cornus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Helenium amphibolum",
+    "external_id": "5705099",
+    "source_url": "https://www.gbif.org/species/5705099",
+    "source_key": "GBIF",
+    "genus": "Helenium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Cotoneaster aitchisonii",
+    "external_id": "3025780",
+    "source_url": "https://www.gbif.org/species/3025780",
+    "source_key": "GBIF",
+    "genus": "Cotoneaster",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Heuchera amoena",
+    "external_id": "3753319",
+    "source_url": "https://www.gbif.org/species/3753319",
+    "source_key": "GBIF",
+    "genus": "Heuchera",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Deutzia breviloba",
+    "external_id": "3645675",
+    "source_url": "https://www.gbif.org/species/3645675",
+    "source_key": "GBIF",
+    "genus": "Deutzia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Nepeta alexeenkoi",
+    "external_id": "5607575",
+    "source_url": "https://www.gbif.org/species/5607575",
+    "source_key": "GBIF",
+    "genus": "Nepeta",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Escallonia bracteata",
+    "external_id": "3932755",
+    "source_url": "https://www.gbif.org/species/3932755",
+    "source_key": "GBIF",
+    "genus": "Escallonia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Penstemon anguineus",
+    "external_id": "3171350",
+    "source_url": "https://www.gbif.org/species/3171350",
+    "source_key": "GBIF",
+    "genus": "Penstemon",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Euonymus chenmoui",
+    "external_id": "3793813",
+    "source_url": "https://www.gbif.org/species/3793813",
+    "source_key": "GBIF",
+    "genus": "Euonymus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Phlox amoena",
+    "external_id": "2927711",
+    "source_url": "https://www.gbif.org/species/2927711",
+    "source_key": "GBIF",
+    "genus": "Phlox",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Forsythia japonica",
+    "external_id": "5549540",
+    "source_url": "https://www.gbif.org/species/5549540",
+    "source_key": "GBIF",
+    "genus": "Forsythia",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Rudbeckia amplexicaulis",
+    "external_id": "4255472",
+    "source_url": "https://www.gbif.org/species/4255472",
+    "source_key": "GBIF",
+    "genus": "Rudbeckia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Hydrangea amamiohsimensis",
+    "external_id": "8585689",
+    "source_url": "https://www.gbif.org/species/8585689",
+    "source_key": "GBIF",
+    "genus": "Hydrangea",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Salvia alvajaca",
+    "genus": "Salvia",
+    "external_id": "3885860",
+    "source_url": "https://www.gbif.org/species/3885860",
+    "source_key": "GBIF",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Ilex arimensis",
+    "external_id": "5414256",
+    "source_url": "https://www.gbif.org/species/5414256",
+    "source_key": "GBIF",
+    "genus": "Ilex",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Astilbe glaberrima",
+    "external_id": "7339560",
+    "source_url": "https://www.gbif.org/species/7339560",
+    "source_key": "GBIF",
+    "genus": "Astilbe",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Philadelphus brachybotrys",
+    "external_id": "3645448",
+    "source_url": "https://www.gbif.org/species/3645448",
+    "source_key": "GBIF",
+    "genus": "Philadelphus",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Bergenia scopulosa",
+    "external_id": "5567655",
+    "source_url": "https://www.gbif.org/species/5567655",
+    "source_key": "GBIF",
+    "genus": "Bergenia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Potentilla anglica",
+    "external_id": "5365283",
+    "source_url": "https://www.gbif.org/species/5365283",
+    "source_key": "GBIF",
+    "genus": "Potentilla",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Coreopsis breviligulata",
+    "external_id": "3134020",
+    "source_url": "https://www.gbif.org/species/3134020",
+    "source_key": "GBIF",
+    "genus": "Coreopsis",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Pyracantha crenulata-serrata",
+    "external_id": "7695501",
+    "source_url": "https://www.gbif.org/species/7695501",
+    "source_key": "GBIF",
+    "genus": "Pyracantha",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Echinacea paradoxa",
+    "external_id": "3150925",
+    "source_url": "https://www.gbif.org/species/3150925",
+    "source_key": "GBIF",
+    "genus": "Echinacea",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Ribes armenum",
+    "external_id": "4194416",
+    "source_url": "https://www.gbif.org/species/4194416",
+    "source_key": "GBIF",
+    "genus": "Ribes",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Geranium baurianum",
+    "external_id": "2889994",
+    "source_url": "https://www.gbif.org/species/2889994",
+    "source_key": "GBIF",
+    "genus": "Geranium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Syringa emodi",
+    "external_id": "7519573",
+    "source_url": "https://www.gbif.org/species/7519573",
+    "source_key": "GBIF",
+    "genus": "Syringa",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Helenium argentinum",
+    "external_id": "5401886",
+    "source_url": "https://www.gbif.org/species/5401886",
+    "source_key": "GBIF",
+    "genus": "Helenium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Viburnum amethystinum",
+    "external_id": "3855800",
+    "source_url": "https://www.gbif.org/species/3855800",
+    "source_key": "GBIF",
+    "genus": "Viburnum",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Heuchera bracteata",
+    "external_id": "3032679",
+    "source_url": "https://www.gbif.org/species/3032679",
+    "source_key": "GBIF",
+    "genus": "Heuchera",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Weigela florida",
+    "external_id": "2888730",
+    "source_url": "https://www.gbif.org/species/2888730",
+    "source_key": "GBIF",
+    "genus": "Weigela",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Nepeta algeriensis",
+    "external_id": "5607571",
+    "source_url": "https://www.gbif.org/species/5607571",
+    "source_key": "GBIF",
+    "genus": "Nepeta",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Penstemon angustifolius",
+    "external_id": "3171336",
+    "source_url": "https://www.gbif.org/species/3171336",
+    "source_key": "GBIF",
+    "genus": "Penstemon",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Phlox amplifolia",
+    "external_id": "2927788",
+    "source_url": "https://www.gbif.org/species/2927788",
+    "source_key": "GBIF",
+    "genus": "Phlox",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Rudbeckia auriculata",
+    "external_id": "3114240",
+    "source_url": "https://www.gbif.org/species/3114240",
+    "source_key": "GBIF",
+    "genus": "Rudbeckia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Salvia amissa",
+    "external_id": "2927009",
+    "source_url": "https://www.gbif.org/species/2927009",
+    "source_key": "GBIF",
+    "genus": "Salvia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Astilbe grandis",
+    "external_id": "3755082",
+    "source_url": "https://www.gbif.org/species/3755082",
+    "source_key": "GBIF",
+    "genus": "Astilbe",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Bergenia spathulata",
+    "external_id": "5567652",
+    "source_url": "https://www.gbif.org/species/5567652",
+    "source_key": "GBIF",
+    "genus": "Bergenia",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Coreopsis buchii",
+    "external_id": "3114433",
+    "source_url": "https://www.gbif.org/species/3114433",
+    "source_key": "GBIF",
+    "genus": "Coreopsis",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Echinacea purpurea",
+    "external_id": "3150935",
+    "source_url": "https://www.gbif.org/species/3150935",
+    "source_key": "GBIF",
+    "genus": "Echinacea",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Geranium bequaertii",
+    "external_id": "2889961",
+    "source_url": "https://www.gbif.org/species/2889961",
+    "source_key": "GBIF",
+    "genus": "Geranium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Helenium arizonicum",
+    "external_id": "5401816",
+    "source_url": "https://www.gbif.org/species/5401816",
+    "source_key": "GBIF",
+    "genus": "Helenium",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Berberis affinis",
+    "external_id": "3981078",
+    "source_url": "https://www.gbif.org/species/3981078",
+    "source_key": "GBIF",
+    "genus": "Berberis",
+    "category": "SHRUB",
+    "nursery_evidence_count": 0
+  },
+  {
+    "scientific_name": "Heuchera brevistaminea",
+    "external_id": "3032667",
+    "source_url": "https://www.gbif.org/species/3032667",
+    "source_key": "GBIF",
+    "genus": "Heuchera",
+    "category": "PERENNIAL",
+    "nursery_evidence_count": 0
+  }
+]

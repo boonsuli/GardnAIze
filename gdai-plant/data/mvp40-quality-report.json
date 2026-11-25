@@ -1,0 +1,330 @@
+{
+  "total": 40,
+  "traits_accepted": 0,
+  "plants_with_all_required_traits": 0,
+  "plants_with_french_nursery_evidence": 0,
+  "ready_for_expert_review": 0,
+  "errors": [],
+  "plants": [
+    {
+      "scientific_name": "Viburnum tinus",
+      "plant_type": "SHRUB",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "plant_type": "SHRUB",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "plant_type": "SHRUB",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "plant_type": "SHRUB",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "plant_type": "SHRUB",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Pittosporum tenuifolium",
+      "plant_type": "SHRUB",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Hydrangea paniculata",
+      "plant_type": "SHRUB",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Cornus alba",
+      "plant_type": "SHRUB",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Spiraea japonica",
+      "plant_type": "SHRUB",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Sarcococca confusa",
+      "plant_type": "SHRUB",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Salvia nemorosa",
+      "plant_type": "PERENNIAL",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Geranium macrorrhizum",
+      "plant_type": "PERENNIAL",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Echinacea purpurea",
+      "plant_type": "PERENNIAL",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Rudbeckia fulgida",
+      "plant_type": "PERENNIAL",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Nepeta × faassenii",
+      "plant_type": "PERENNIAL",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Hylotelephium spectabile",
+      "plant_type": "PERENNIAL",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Agapanthus africanus",
+      "plant_type": "PERENNIAL",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Helleborus orientalis",
+      "plant_type": "PERENNIAL",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Heuchera villosa",
+      "plant_type": "PERENNIAL",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Achillea millefolium",
+      "plant_type": "PERENNIAL",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Miscanthus sinensis",
+      "plant_type": "GRASS",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Calamagrostis × acutiflora",
+      "plant_type": "GRASS",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Panicum virgatum",
+      "plant_type": "GRASS",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Stipa tenuissima",
+      "plant_type": "GRASS",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Pennisetum alopecuroides",
+      "plant_type": "GRASS",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Vinca minor",
+      "plant_type": "GROUNDCOVER",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Ajuga reptans",
+      "plant_type": "GROUNDCOVER",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Pachysandra terminalis",
+      "plant_type": "GROUNDCOVER",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Waldsteinia ternata",
+      "plant_type": "GROUNDCOVER",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Thymus serpyllum",
+      "plant_type": "GROUNDCOVER",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Amelanchier lamarckii",
+      "plant_type": "TREE",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Acer campestre",
+      "plant_type": "TREE",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Carpinus betulus",
+      "plant_type": "TREE",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Cercis siliquastrum",
+      "plant_type": "TREE",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Malus floribunda",
+      "plant_type": "TREE",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Clematis armandii",
+      "plant_type": "CLIMBER",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Lonicera periclymenum",
+      "plant_type": "CLIMBER",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Trachelospermum jasminoides",
+      "plant_type": "CLIMBER",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Hedera helix",
+      "plant_type": "CLIMBER",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    },
+    {
+      "scientific_name": "Wisteria sinensis",
+      "plant_type": "CLIMBER",
+      "documented_fields": 0,
+      "missing_required": "sun_exposure;soil_drainage;water_need;hardiness_min_c;height_cm;spread_cm;evergreen",
+      "nursery_evidence": false,
+      "review_status": "PENDING"
+    }
+  ]
+}

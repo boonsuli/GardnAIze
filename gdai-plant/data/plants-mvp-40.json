@@ -1,0 +1,282 @@
+[
+  {
+    "scientific_name": "Viburnum tinus",
+    "candidate_category": "SHRUB",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Photinia × fraseri",
+    "candidate_category": "SHRUB",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Choisya ternata",
+    "candidate_category": "SHRUB",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Elaeagnus × ebbingei",
+    "candidate_category": "SHRUB",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Osmanthus heterophyllus",
+    "candidate_category": "SHRUB",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Pittosporum tenuifolium",
+    "candidate_category": "SHRUB",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Hydrangea paniculata",
+    "candidate_category": "SHRUB",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Cornus alba",
+    "candidate_category": "SHRUB",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Spiraea japonica",
+    "candidate_category": "SHRUB",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Sarcococca confusa",
+    "candidate_category": "SHRUB",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Salvia nemorosa",
+    "candidate_category": "PERENNIAL",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Geranium macrorrhizum",
+    "candidate_category": "PERENNIAL",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Echinacea purpurea",
+    "candidate_category": "PERENNIAL",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Rudbeckia fulgida",
+    "candidate_category": "PERENNIAL",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Nepeta × faassenii",
+    "candidate_category": "PERENNIAL",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Hylotelephium spectabile",
+    "candidate_category": "PERENNIAL",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Agapanthus africanus",
+    "candidate_category": "PERENNIAL",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Helleborus orientalis",
+    "candidate_category": "PERENNIAL",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Heuchera villosa",
+    "candidate_category": "PERENNIAL",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Achillea millefolium",
+    "candidate_category": "PERENNIAL",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Miscanthus sinensis",
+    "candidate_category": "GRASS",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Calamagrostis × acutiflora",
+    "candidate_category": "GRASS",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Panicum virgatum",
+    "candidate_category": "GRASS",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Stipa tenuissima",
+    "candidate_category": "GRASS",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Pennisetum alopecuroides",
+    "candidate_category": "GRASS",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Vinca minor",
+    "candidate_category": "GROUNDCOVER",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Ajuga reptans",
+    "candidate_category": "GROUNDCOVER",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Pachysandra terminalis",
+    "candidate_category": "GROUNDCOVER",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Waldsteinia ternata",
+    "candidate_category": "GROUNDCOVER",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Thymus serpyllum",
+    "candidate_category": "GROUNDCOVER",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Amelanchier lamarckii",
+    "candidate_category": "TREE",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Acer campestre",
+    "candidate_category": "TREE",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Carpinus betulus",
+    "candidate_category": "TREE",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Cercis siliquastrum",
+    "candidate_category": "TREE",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Malus floribunda",
+    "candidate_category": "TREE",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Clematis armandii",
+    "candidate_category": "CLIMBER",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Lonicera periclymenum",
+    "candidate_category": "CLIMBER",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Trachelospermum jasminoides",
+    "candidate_category": "CLIMBER",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Hedera helix",
+    "candidate_category": "CLIMBER",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  },
+  {
+    "scientific_name": "Wisteria sinensis",
+    "candidate_category": "CLIMBER",
+    "selection_status": "CANDIDATE",
+    "horticultural_validation": "NOT_REVIEWED",
+    "nursery_availability": "NOT_VERIFIED"
+  }
+]
