@@ -12,6 +12,8 @@ import {
     GardenApiService, Exposure, SoilType, RequirementLevel, PlantSuggestion, QuestionnaireCatalog
 } from './core/garden-api.service';
 import { isValidPhoto } from './core/photo-validation';
+import { workflowStatus, type GardenWorkflowPhase } from './core/workflow-status';
+import { canSubmitRecommendations, type ContextQuestion } from './core/context-question-state';
 
 @Component({
     selector: 'app-root',
@@ -26,6 +28,9 @@ import { isValidPhoto } from './core/photo-validation';
 export class AppComponent {
     private readonly logger = inject(LoggerService);
     private readonly gardenApi = inject(GardenApiService);
+
+    readonly statusPhase = signal<GardenWorkflowPhase>('PHOTO_READY');
+    readonly currentStatus = () => workflowStatus(this.statusPhase());
 
     readonly gardenName = signal('Mon jardin');
     readonly location = signal('');
@@ -45,6 +50,12 @@ export class AppComponent {
     readonly workflowLoading = signal(false);
     private selectedPhoto: File | null = null;
     private processingPoll?: Subscription;
+    private contextPoll?: Subscription;
+    readonly contextQuestion = signal<ContextQuestion | null>(null);
+    readonly submittedAnswers = signal(false);
+    readonly trainingConsent = signal(false);
+    private activeGardenId: string | null = null;
+    private visionFinished = false;
     readonly processingRequestId = signal<string | null>(null);
     readonly exposure = signal<Exposure>('FULL_SUN');
     readonly soilType = signal<SoilType>('UNKNOWN');
@@ -89,7 +100,7 @@ export class AppComponent {
 
     setAnswer(key: string, value: string): void {
         this.answers.update(current => ({ ...current, [key]: value }));
-        this.consentVisible.set(false);
+        if (this.visionFinished && !this.allRequiredAnswered()) this.statusPhase.set('ANSWERS_REQUIRED');
     }
 
     allRequiredAnswered(): boolean {
@@ -98,42 +109,48 @@ export class AppComponent {
     }
 
     showConsent(): void {
-        if (this.photoValidated() && this.allRequiredAnswered()) {
+        if (this.photoValidated() && !this.consentAccepted()) {
             this.consentVisible.set(true);
         }
     }
 
     refuseConsent(): void {
         this.resetPhotoWorkflow();
+        this.statusPhase.set('CONSENT_REQUIRED');
         this.message.set(this.translate('privacy.refuse'));
     }
 
     acceptConsentAndSubmit(): void {
         const file = this.selectedPhoto;
         const catalog = this.questionnaire();
-        if (!file || !catalog || !this.consentVisible() || !this.allRequiredAnswered()
+        if (!file || !catalog || !this.consentVisible()
                 || this.workflowLoading()) {
             return;
         }
         this.consentAccepted.set(true);
         this.workflowLoading.set(true);
+        this.statusPhase.set('VISION_RUNNING');
         this.message.set(this.translate('privacy.pending'));
         this.gardenApi.createGarden({
             name: this.gardenName().trim() || 'Mon jardin',
             location: this.location().trim(),
             countryCode: this.countryCode(),
             climateRegion: this.climate(),
-            exposure: (this.answers()['exposure'] || 'FULL_SUN') as Exposure,
-            soilType: (this.answers()['soilType'] || 'UNKNOWN') as SoilType
+            exposure: 'FULL_SUN' as Exposure,
+            soilType: 'UNKNOWN' as SoilType
         }).pipe(
-            switchMap(garden => this.gardenApi.uploadPhoto(
+            switchMap(garden => this.gardenApi.startStagedPhoto(
                 garden.id, file, this.gardenDescription().trim(),
-                this.answers(), catalog.externalProcessingNoticeKey
+                catalog.externalProcessingNoticeKey, this.trainingConsent()
             )),
             finalize(() => this.workflowLoading.set(false))
         ).subscribe({
             next: result => {
                 this.processingRequestId.set(result.requestId);
+                this.activeGardenId = result.gardenId;
+                this.contextQuestion.set({ state: 'WAITING', questionKey: null, reason: null });
+                this.statusPhase.set('VISION_RUNNING');
+                this.startContextPolling(result.gardenId, result.requestId);
                 this.message.set(this.language() === 'FR'
                     ? 'Nous avons bien reçu votre demande. Elle est enregistrée sous le numéro ' + result.requestId
                     : 'We have received your request. Your request number is ' + result.requestId);
@@ -143,7 +160,68 @@ export class AppComponent {
             error: () => {
                 this.message.set(this.translate('privacy.error'));
                 this.consentAccepted.set(false);
+                this.statusPhase.set('FAILED');
             }
+        });
+    }
+
+    contextCatalogQuestion() {
+        const key = this.contextQuestion()?.questionKey;
+        return key ? this.questionnaire()?.questions.find(q => q.key === key) : undefined;
+    }
+
+    standardQuestions() {
+        const contextKey = this.contextQuestion()?.questionKey;
+        return this.questionnaire()?.questions.filter(q => q.key !== contextKey) ?? [];
+    }
+
+    canSubmitStaged(): boolean {
+        const context = this.contextQuestion();
+        const answer = context?.questionKey ? this.answers()[context.questionKey] : undefined;
+        return !!this.processingRequestId() && !this.submittedAnswers() && !this.workflowLoading()
+            && canSubmitRecommendations(context, this.allRequiredAnswered(), answer);
+    }
+
+    submitStagedQuestionnaire(): void {
+        const gardenId = this.activeGardenId;
+        const requestId = this.processingRequestId();
+        if (!gardenId || !requestId || !this.canSubmitStaged()) return;
+        this.workflowLoading.set(true);
+        this.statusPhase.set('ANSWERS_SUBMITTED');
+        this.gardenApi.submitStagedAnswers(gardenId, requestId, this.answers())
+            .pipe(finalize(() => this.workflowLoading.set(false)))
+            .subscribe({
+                next: () => {
+                    this.submittedAnswers.set(true);
+                    this.statusPhase.set('ANSWERS_SUBMITTED');
+                },
+                error: () => this.statusPhase.set('FAILED')
+            });
+    }
+
+    private startContextPolling(gardenId: string, requestId: string): void {
+        this.contextPoll?.unsubscribe();
+        this.contextPoll = timer(1000, 3000).pipe(
+            take(100),
+            switchMap(() => this.gardenApi.getContextQuestion(gardenId, requestId)),
+            takeWhile(context => context.state === 'WAITING', true)
+        ).subscribe({
+            next: context => {
+                this.contextQuestion.set(context);
+                if (context.state === 'READY') {
+                    this.visionFinished = true;
+                    this.statusPhase.set('CONTEXT_READY');
+                } else if (context.state === 'SKIPPED') {
+                    this.visionFinished = true;
+                    this.statusPhase.set(this.allRequiredAnswered()
+                        ? 'CONTEXT_READY' : 'ANSWERS_REQUIRED');
+                } else if (context.state === 'UNAVAILABLE') {
+                    this.statusPhase.set('FAILED');
+                } else {
+                    this.statusPhase.set('VISION_RUNNING');
+                }
+            },
+            error: () => this.statusPhase.set('FAILED')
         });
     }
 
@@ -155,6 +233,13 @@ export class AppComponent {
             takeWhile(result => !['COMPLETED', 'FAILED', 'REJECTED', 'RECONCILIATION_REQUIRED'].includes(result.status), true)
         ).subscribe({
             next: result => {
+                // Legacy worker currently completes after VISION, not PLANT.
+                // Do not claim recommendations are ready before a PLANT result exists.
+                if (result.status === 'COMPLETED') {
+                    this.visionFinished = true;
+                    if (this.contextQuestion()?.state === 'WAITING') this.statusPhase.set('QUESTIONNAIRE_RUNNING');
+                }
+                if (['FAILED', 'REJECTED', 'RECONCILIATION_REQUIRED'].includes(result.status)) this.statusPhase.set('FAILED');
                 if (result.status === 'COMPLETED' || result.status === 'FAILED' || result.status === 'REJECTED' || result.status === 'RECONCILIATION_REQUIRED') {
                     this.message.set((this.language() === 'FR' ? 'Demande ' : 'Request ')
                         + requestId + ' : ' + result.status);
@@ -168,7 +253,13 @@ export class AppComponent {
 
     resetPhotoWorkflow(): void {
         this.processingPoll?.unsubscribe();
+        this.contextPoll?.unsubscribe();
+        this.contextQuestion.set(null);
+        this.submittedAnswers.set(false);
+        this.activeGardenId = null;
+        this.visionFinished = false;
         this.processingRequestId.set(null);
+        this.statusPhase.set('PHOTO_READY');
         const oldPreview = this.preview();
         if (oldPreview) {
             URL.revokeObjectURL(oldPreview);
@@ -204,6 +295,7 @@ export class AppComponent {
         }
         this.photoConfirmed.set(true);
         this.validationLoading.set(true);
+        this.statusPhase.set('VALIDATING');
         this.message.set('Validation GDAI-VALID en cours…');
         this.gardenApi.validatePhoto(file).pipe(
             switchMap(result => {
@@ -219,13 +311,16 @@ export class AppComponent {
         ).subscribe({
             next: ({ catalog, dictionary }) => {
                 this.photoValidated.set(true);
+                this.statusPhase.set('CONSENT_REQUIRED');
                 this.questionnaire.set(catalog);
                 this.dictionary.set(dictionary);
-                this.message.set('Photo acceptée par GDAI-BACK. Répondez au questionnaire.');
+                this.consentVisible.set(true);
+                this.message.set('Photo validée. Acceptez le consentement externe pour lancer l’analyse.');
             },
             error: error => {
                 this.photoConfirmed.set(false);
                 this.photoValidated.set(false);
+                this.statusPhase.set('FAILED');
                 this.message.set(error instanceof Error ? error.message : 'Validation impossible');
             }
         });
@@ -306,6 +401,7 @@ export class AppComponent {
         this.photoReady.set(true);
         this.editPhotoDetails();
         this.filename.set(file.name);
+        this.statusPhase.set('PHOTO_READY');
         this.message.set('Photo sélectionnée. Complétez la localisation puis confirmez.');
         this.logger.info('Photo selected');
     }

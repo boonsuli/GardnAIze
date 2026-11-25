@@ -18,6 +18,7 @@ public class PhotoWorkflowMaster {
     private static final Logger log = LoggerFactory.getLogger(PhotoWorkflowMaster.class);
     private final JdbcTemplate jdbc;
     private final PhotoWorkflowWorker worker;
+    private final PlantRecommendationWorker plantWorker;
     private final PhotoWorkflowStateService states;
     private final PhotoLeaseReconciliationService reconciliation;
     private final String owner = UUID.randomUUID().toString();
@@ -25,10 +26,11 @@ public class PhotoWorkflowMaster {
     private final Map<UUID, Long> generations = new ConcurrentHashMap<>();
 
     public PhotoWorkflowMaster(JdbcTemplate jdbc, PhotoWorkflowWorker worker,
-                               PhotoWorkflowStateService states,
+                               PlantRecommendationWorker plantWorker, PhotoWorkflowStateService states,
                                PhotoLeaseReconciliationService reconciliation) {
         this.jdbc = jdbc;
         this.worker = worker;
+        this.plantWorker = plantWorker;
         this.states = states;
         this.reconciliation = reconciliation;
     }
@@ -41,8 +43,8 @@ public class PhotoWorkflowMaster {
         // A dedicated idempotent retry protocol is required before replay is safe.
         var claimed = jdbc.query("""
             WITH candidate AS (
-                SELECT request_id FROM public.garden_photo_requests
-                WHERE status='ACCEPTED'
+                SELECT request_id,status AS previous_status FROM public.garden_photo_requests
+                WHERE status IN ('ACCEPTED','READY_FOR_PLANT')
                 ORDER BY created_at
                 LIMIT 1 FOR UPDATE SKIP LOCKED
             )
@@ -51,20 +53,22 @@ public class PhotoWorkflowMaster {
                 lease_generation=r.lease_generation+1,
                 lease_owner=?, lease_until=now()+interval '180 seconds', updated_at=now()
             FROM candidate c WHERE r.request_id=c.request_id
-            RETURNING r.request_id,r.photo_id,r.attempt_count,r.lease_generation
+            RETURNING r.request_id,r.photo_id,r.attempt_count,r.lease_generation,c.previous_status
             """, (rs, row) -> new Claimed(
-                    (UUID) rs.getObject(1), (UUID) rs.getObject(2), rs.getInt(3), rs.getLong(4)), owner);
+                    (UUID) rs.getObject(1), (UUID) rs.getObject(2), rs.getInt(3), rs.getLong(4), rs.getString(5)), owner);
         for (var item : claimed) {
             try {
                 jdbc.update("""
                     INSERT INTO public.garden_photo_request_history
                         (request_id,previous_status,status,event_code)
-                    VALUES (?,'ACCEPTED','RUNNING','WORKER_CLAIMED')
-                    """, item.requestId());
+                    VALUES (? ,?,'RUNNING','WORKER_CLAIMED')
+                    """, item.requestId(), item.previousStatus());
                 log.info("event=WORKER_CLAIMED requestId={} photoId={} attempt={}",
                         item.requestId(), item.photoId(), item.attempt());
-                var future = worker.execute(item.requestId(), item.photoId(),
-                        new PhotoWorkflowFencingService.Lease(item.requestId(), owner, item.generation()));
+                var lease = new PhotoWorkflowFencingService.Lease(item.requestId(), owner, item.generation());
+                var future = "READY_FOR_PLANT".equals(item.previousStatus())
+                        ? plantWorker.execute(item.requestId(), item.photoId(), lease)
+                        : worker.execute(item.requestId(), item.photoId(), lease);
                 active.put(item.requestId(), future);
                 generations.put(item.requestId(), item.generation());
                 future.whenComplete((result, failure) -> {
@@ -106,5 +110,5 @@ public class PhotoWorkflowMaster {
         return reconciliation.reconcileExpired();
     }
 
-    private record Claimed(UUID requestId, UUID photoId, int attempt, long generation) {}
+    private record Claimed(UUID requestId, UUID photoId, int attempt, long generation, String previousStatus) {}
 }
