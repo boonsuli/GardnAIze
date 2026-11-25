@@ -114,3 +114,36 @@ footer {
     color: #194e35;
     font-weight: 600;
 }
+
+/* Persistent, low-distraction status for asynchronous garden processing. */
+.workflow-status {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 1rem 0;
+    padding: 0.85rem 1rem;
+    border: 1px solid #cbd5d1;
+    border-radius: 0.6rem;
+    background: #f7faf8;
+    color: #23362b;
+}
+.workflow-status[data-tone='error'] { border-color: #d9a9a9; color: #8a2525; }
+.workflow-status[data-tone='warning'] { border-color: #e0c891; }
+.workflow-status[data-tone='success'] { border-color: #a3c7aa; }
+.workflow-status-indicator {
+    display: inline-block;
+    flex: 0 0 0.65rem;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    background: currentColor;
+}
+.workflow-status-indicator.busy {
+    animation: gardnaize-status-pulse 1.6s ease-in-out infinite;
+}
+@keyframes gardnaize-status-pulse {
+    50% { opacity: 0.3; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .workflow-status-indicator.busy { animation: none; }
+}

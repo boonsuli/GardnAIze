@@ -166,9 +166,19 @@ public class PhotoWorkflowWorker {
                         accepted ? "COMPLETED" : "REJECTED", null);
                 fenced.photoTransition(lease, photoId, accepted ? "VISION_COMPLETED" : "NOT_VALID",
                         accepted ? "VISION_COMPLETED" : "VISION_REJECTED");
-                fenced.requestTransition(lease, accepted ? "COMPLETED" : "REJECTED",
-                        accepted ? "WORKFLOW_COMPLETED" : "WORKFLOW_REJECTED",
-                        accepted ? null : "VISION_NOT_ANALYZABLE");
+                if (accepted && isStaged(requestId)) {
+                    boolean submitted = Boolean.TRUE.equals(jdbc.queryForObject("""
+                        SELECT q.answers_submitted_at IS NOT NULL
+                        FROM public.garden_photo_questionnaire q
+                        WHERE q.photo_id=?
+                        """, Boolean.class, photoId));
+                    fenced.requestTransition(lease, submitted ? "READY_FOR_PLANT" : "WAITING_ANSWERS",
+                            submitted ? "VISION_COMPLETED_PLANT_READY" : "VISION_COMPLETED_AWAITING_ANSWERS", null);
+                } else {
+                    fenced.requestTransition(lease, accepted ? "COMPLETED" : "REJECTED",
+                            accepted ? "WORKFLOW_COMPLETED" : "WORKFLOW_REJECTED",
+                            accepted ? null : "VISION_NOT_ANALYZABLE");
+                }
             } catch (PhotoWorkflowFencingService.LeaseLostException ex) {
                 throw ex;
             } catch (RuntimeException ex) {
@@ -176,6 +186,12 @@ public class PhotoWorkflowWorker {
                 throw ex;
             }
         }
+    }
+
+    private boolean isStaged(UUID requestId) {
+        return Boolean.TRUE.equals(jdbc.queryForObject(
+                "SELECT intake_mode='STAGED' FROM public.garden_photo_requests WHERE request_id=?",
+                Boolean.class, requestId));
     }
 
     private byte[] photoBytes(UUID photoId) {
