@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "status": "UNVERIFIED_RESEARCH_LEADS",
+  "groups": {
+    "botanical": [
+      {
+        "name": "RHS",
+        "url": "https://www.rhs.org.uk/"
+      },
+      {
+        "name": "SNHF",
+        "url": "https://www.snhf.org/"
+      },
+      {
+        "name": "Au Jardin",
+        "url": "https://www.aujardin.info/"
+      }
+    ],
+    "nursery": [
+      {
+        "name": "Truffaut",
+        "url": "https://www.truffaut.com/"
+      },
+      {
+        "name": "Botanic",
+        "url": "https://www.botanic.com/"
+      },
+      {
+        "name": "Promesse de Fleurs",
+        "url": "https://www.promessedefleurs.com/"
+      },
+      {
+        "name": "Willemse",
+        "url": "https://www.willemsefrance.fr/"
+      },
+      {
+        "name": "Jardinerie.fr",
+        "url": "https://www.jardinerie.fr/"
+      },
+      {
+        "name": "Gamm vert",
+        "url": "https://www.gammvert.fr/"
+      },
+      {
+        "name": "Bakker",
+        "url": "https://www.bakker.com/"
+      },
+      {
+        "name": "Roué Pépinières",
+        "url": "https://www.rouepepinieres.com/"
+      },
+      {
+        "name": "Vegetalo",
+        "url": "https://www.vegetalo.com/"
+      },
+      {
+        "name": "Leroy Merlin",
+        "url": "https://www.leroymerlin.fr/"
+      },
+      {
+        "name": "La Bambouseraie",
+        "url": null
+      }
+    ],
+    "landscaping": [
+      {
+        "name": "Moquet Jardins",
+        "url": null
+      },
+      {
+        "name": "UNEP",
+        "url": "https://www.lesentreprisesdupaysage.fr/"
+      },
+      {
+        "name": "Paysagiste.info",
+        "url": "https://www.paysagiste.info/"
+      },
+      {
+        "name": "Jardin Harmonie",
+        "url": "https://www.jardin-harmonie.fr/"
+      },
+      {
+        "name": "Jardin Sud",
+        "url": "https://www.jardinsud.fr/"
+      },
+      {
+        "name": "Projet Vert",
+        "url": null
+      },
+      {
+        "name": "Homify",
+        "url": "https://www.homify.fr/"
+      },
+      {
+        "name": "AD Magazine",
+        "url": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "policy": "HORTICULTURAL_RULES_V3",
+  "status": "EXPERIMENTAL",
+  "frost_margin_c": 2,
+  "small_space_height_cm": 100,
+  "small_space_spread_cm": 80,
+  "enabled_rules": [
+    "HORT-001",
+    "HORT-002",
+    "HORT-003",
+    "HORT-004",
+    "HORT-005",
+    "HORT-006",
+    "PAYS-001",
+    "PAYS-003",
+    "PAYS-004",
+    "ENTR-001",
+    "ENTR-002",
+    "PREF-001"
+  ]
+}

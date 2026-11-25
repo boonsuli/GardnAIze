@@ -1,0 +1,1153 @@
+{
+  "status": "PROVISIONAL_NOT_EXPERT_VALIDATED",
+  "input_sha256": "b8b3f9ae606d7be721704adef1e8d40e189dda17f02a5e9d3f6ba85406c53479",
+  "review_sha256": "2bbad2f612833337f16081849c4cd8d1482dd44726c57252a95aab927e632c03",
+  "review_report": {
+    "profiles": 5,
+    "verdict_counts": {
+      "SUPPORTED": 68,
+      "CONTRADICTED": 13,
+      "UNCERTAIN": 4
+    },
+    "status": "REVIEW_STRUCTURE_VALID"
+  },
+  "decisions": [
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "sun_exposure",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE",
+        "FULL_SHADE"
+      ],
+      "claude_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE",
+        "FULL_SHADE"
+      ],
+      "retained_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE",
+        "FULL_SHADE"
+      ]
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "soil_drainage",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "GOOD",
+        "MODERATE"
+      ],
+      "claude_value": [
+        "GOOD",
+        "MODERATE"
+      ],
+      "retained_value": [
+        "GOOD",
+        "MODERATE"
+      ]
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "soil_type",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "MIXED",
+        "STONY"
+      ],
+      "claude_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "MIXED",
+        "STONY"
+      ],
+      "retained_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "MIXED",
+        "STONY"
+      ]
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "soil_moisture_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ],
+      "claude_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ],
+      "retained_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ]
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "planting_context",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "IN_GROUND_BORDER",
+        "HEDGE",
+        "PLANTER"
+      ],
+      "claude_value": [
+        "IN_GROUND_BORDER",
+        "HEDGE",
+        "PLANTER"
+      ],
+      "retained_value": [
+        "IN_GROUND_BORDER",
+        "HEDGE",
+        "PLANTER"
+      ]
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "water_need",
+      "decision": "UNRESOLVED",
+      "gemini_value": "LOW",
+      "claude_value": "MEDIUM",
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "heat_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "HIGH",
+      "claude_value": "HIGH",
+      "retained_value": "HIGH"
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "drought_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "maintenance_level",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "LOW",
+      "claude_value": "LOW",
+      "retained_value": "LOW"
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "hardiness_min_c",
+      "decision": "UNRESOLVED",
+      "gemini_value": -12,
+      "claude_value": null,
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "height_cm",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        200,
+        350
+      ],
+      "claude_value": [
+        200,
+        350
+      ],
+      "retained_value": [
+        200,
+        350
+      ]
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "spread_cm",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        150,
+        300
+      ],
+      "claude_value": [
+        150,
+        300
+      ],
+      "retained_value": [
+        150,
+        300
+      ]
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "evergreen",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": true,
+      "claude_value": true,
+      "retained_value": true
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "root_development",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "flower_color",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "white",
+        "pink"
+      ],
+      "claude_value": [
+        "white",
+        "pink"
+      ],
+      "retained_value": [
+        "white",
+        "pink"
+      ]
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "flowering_months",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        1,
+        2,
+        3,
+        4,
+        11,
+        12
+      ],
+      "claude_value": [
+        1,
+        2,
+        3,
+        4,
+        11,
+        12
+      ],
+      "retained_value": [
+        1,
+        2,
+        3,
+        4,
+        11,
+        12
+      ]
+    },
+    {
+      "scientific_name": "Viburnum tinus",
+      "trait": "french_nursery_availability",
+      "decision": "UNRESOLVED",
+      "gemini_value": "IN_STOCK",
+      "claude_value": "LISTED",
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "sun_exposure",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE"
+      ],
+      "claude_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE"
+      ],
+      "retained_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE"
+      ]
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "soil_drainage",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "GOOD",
+        "MODERATE"
+      ],
+      "claude_value": [
+        "GOOD",
+        "MODERATE"
+      ],
+      "retained_value": [
+        "GOOD",
+        "MODERATE"
+      ]
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "soil_type",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "MIXED"
+      ],
+      "claude_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "MIXED"
+      ],
+      "retained_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "MIXED"
+      ]
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "soil_moisture_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ],
+      "claude_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ],
+      "retained_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ]
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "planting_context",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "HEDGE",
+        "IN_GROUND_BORDER",
+        "PLANTER"
+      ],
+      "claude_value": [
+        "HEDGE",
+        "IN_GROUND_BORDER",
+        "PLANTER"
+      ],
+      "retained_value": [
+        "HEDGE",
+        "IN_GROUND_BORDER",
+        "PLANTER"
+      ]
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "water_need",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "heat_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "drought_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "maintenance_level",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "hardiness_min_c",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": -15,
+      "claude_value": -15,
+      "retained_value": -15
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "height_cm",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        250,
+        450
+      ],
+      "claude_value": [
+        250,
+        450
+      ],
+      "retained_value": [
+        250,
+        450
+      ]
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "spread_cm",
+      "decision": "UNRESOLVED",
+      "gemini_value": [
+        150,
+        300
+      ],
+      "claude_value": [
+        200,
+        400
+      ],
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "evergreen",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": true,
+      "claude_value": true,
+      "retained_value": true
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "root_development",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "flower_color",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "white"
+      ],
+      "claude_value": [
+        "white"
+      ],
+      "retained_value": [
+        "white"
+      ]
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "flowering_months",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        4,
+        5
+      ],
+      "claude_value": [
+        4,
+        5
+      ],
+      "retained_value": [
+        4,
+        5
+      ]
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "trait": "french_nursery_availability",
+      "decision": "UNRESOLVED",
+      "gemini_value": "IN_STOCK",
+      "claude_value": "LISTED",
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "sun_exposure",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE"
+      ],
+      "claude_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE"
+      ],
+      "retained_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE"
+      ]
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "soil_drainage",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "GOOD"
+      ],
+      "claude_value": [
+        "GOOD"
+      ],
+      "retained_value": [
+        "GOOD"
+      ]
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "soil_type",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "LOAM",
+        "SAND",
+        "MIXED",
+        "STONY"
+      ],
+      "claude_value": [
+        "LOAM",
+        "SAND",
+        "MIXED",
+        "STONY"
+      ],
+      "retained_value": [
+        "LOAM",
+        "SAND",
+        "MIXED",
+        "STONY"
+      ]
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "soil_moisture_tolerance",
+      "decision": "UNRESOLVED",
+      "gemini_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ],
+      "claude_value": [
+        "WELL_DRAINED"
+      ],
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "planting_context",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "IN_GROUND_BORDER",
+        "HEDGE",
+        "COURTYARD",
+        "PLANTER"
+      ],
+      "claude_value": [
+        "IN_GROUND_BORDER",
+        "HEDGE",
+        "COURTYARD",
+        "PLANTER"
+      ],
+      "retained_value": [
+        "IN_GROUND_BORDER",
+        "HEDGE",
+        "COURTYARD",
+        "PLANTER"
+      ]
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "water_need",
+      "decision": "UNRESOLVED",
+      "gemini_value": "LOW",
+      "claude_value": "MEDIUM",
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "heat_tolerance",
+      "decision": "UNRESOLVED",
+      "gemini_value": "HIGH",
+      "claude_value": "MEDIUM",
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "drought_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "maintenance_level",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "LOW",
+      "claude_value": "LOW",
+      "retained_value": "LOW"
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "hardiness_min_c",
+      "decision": "UNRESOLVED",
+      "gemini_value": -15,
+      "claude_value": null,
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "height_cm",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        150,
+        250
+      ],
+      "claude_value": [
+        150,
+        250
+      ],
+      "retained_value": [
+        150,
+        250
+      ]
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "spread_cm",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        150,
+        250
+      ],
+      "claude_value": [
+        150,
+        250
+      ],
+      "retained_value": [
+        150,
+        250
+      ]
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "evergreen",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": true,
+      "claude_value": true,
+      "retained_value": true
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "root_development",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "flower_color",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "white"
+      ],
+      "claude_value": [
+        "white"
+      ],
+      "retained_value": [
+        "white"
+      ]
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "flowering_months",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        4,
+        5,
+        8,
+        9
+      ],
+      "claude_value": [
+        4,
+        5,
+        8,
+        9
+      ],
+      "retained_value": [
+        4,
+        5,
+        8,
+        9
+      ]
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "trait": "french_nursery_availability",
+      "decision": "UNRESOLVED",
+      "gemini_value": "IN_STOCK",
+      "claude_value": "LISTED",
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "sun_exposure",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE"
+      ],
+      "claude_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE"
+      ],
+      "retained_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE"
+      ]
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "soil_drainage",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "GOOD",
+        "MODERATE"
+      ],
+      "claude_value": [
+        "GOOD",
+        "MODERATE"
+      ],
+      "retained_value": [
+        "GOOD",
+        "MODERATE"
+      ]
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "soil_type",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "STONY",
+        "MIXED"
+      ],
+      "claude_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "STONY",
+        "MIXED"
+      ],
+      "retained_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "STONY",
+        "MIXED"
+      ]
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "soil_moisture_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ],
+      "claude_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ],
+      "retained_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ]
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "planting_context",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "HEDGE",
+        "IN_GROUND_BORDER",
+        "COURTYARD"
+      ],
+      "claude_value": [
+        "HEDGE",
+        "IN_GROUND_BORDER",
+        "COURTYARD"
+      ],
+      "retained_value": [
+        "HEDGE",
+        "IN_GROUND_BORDER",
+        "COURTYARD"
+      ]
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "water_need",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "LOW",
+      "claude_value": "LOW",
+      "retained_value": "LOW"
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "heat_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "HIGH",
+      "claude_value": "HIGH",
+      "retained_value": "HIGH"
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "drought_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "HIGH",
+      "claude_value": "HIGH",
+      "retained_value": "HIGH"
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "maintenance_level",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "LOW",
+      "claude_value": "LOW",
+      "retained_value": "LOW"
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "hardiness_min_c",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": -15,
+      "claude_value": -15,
+      "retained_value": -15
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "height_cm",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        250,
+        400
+      ],
+      "claude_value": [
+        250,
+        400
+      ],
+      "retained_value": [
+        250,
+        400
+      ]
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "spread_cm",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        200,
+        400
+      ],
+      "claude_value": [
+        200,
+        400
+      ],
+      "retained_value": [
+        200,
+        400
+      ]
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "evergreen",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": true,
+      "claude_value": true,
+      "retained_value": true
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "root_development",
+      "decision": "UNRESOLVED",
+      "gemini_value": "HIGH",
+      "claude_value": null,
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "flower_color",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "white",
+        "cream"
+      ],
+      "claude_value": [
+        "white",
+        "cream"
+      ],
+      "retained_value": [
+        "white",
+        "cream"
+      ]
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "flowering_months",
+      "decision": "UNRESOLVED",
+      "gemini_value": [
+        9,
+        10,
+        11
+      ],
+      "claude_value": [
+        10,
+        11
+      ],
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "trait": "french_nursery_availability",
+      "decision": "UNRESOLVED",
+      "gemini_value": "IN_STOCK",
+      "claude_value": "LISTED",
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "sun_exposure",
+      "decision": "UNRESOLVED",
+      "gemini_value": [
+        "FULL_SUN",
+        "PARTIAL_SHADE",
+        "FULL_SHADE"
+      ],
+      "claude_value": null,
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "soil_drainage",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "GOOD",
+        "MODERATE"
+      ],
+      "claude_value": [
+        "GOOD",
+        "MODERATE"
+      ],
+      "retained_value": [
+        "GOOD",
+        "MODERATE"
+      ]
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "soil_type",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "MIXED"
+      ],
+      "claude_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "MIXED"
+      ],
+      "retained_value": [
+        "LOAM",
+        "CLAY",
+        "SAND",
+        "MIXED"
+      ]
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "soil_moisture_tolerance",
+      "decision": "UNRESOLVED",
+      "gemini_value": [
+        "WELL_DRAINED",
+        "DRY_SUMMER"
+      ],
+      "claude_value": [
+        "WELL_DRAINED"
+      ],
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "planting_context",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "HEDGE",
+        "IN_GROUND_BORDER",
+        "PLANTER",
+        "COURTYARD"
+      ],
+      "claude_value": [
+        "HEDGE",
+        "IN_GROUND_BORDER",
+        "PLANTER",
+        "COURTYARD"
+      ],
+      "retained_value": [
+        "HEDGE",
+        "IN_GROUND_BORDER",
+        "PLANTER",
+        "COURTYARD"
+      ]
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "water_need",
+      "decision": "UNRESOLVED",
+      "gemini_value": "LOW",
+      "claude_value": "MEDIUM",
+      "retained_value": null
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "heat_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "drought_tolerance",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "maintenance_level",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "LOW",
+      "claude_value": "LOW",
+      "retained_value": "LOW"
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "hardiness_min_c",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": -15,
+      "claude_value": -15,
+      "retained_value": -15
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "height_cm",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        150,
+        350
+      ],
+      "claude_value": [
+        150,
+        350
+      ],
+      "retained_value": [
+        150,
+        350
+      ]
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "spread_cm",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        120,
+        250
+      ],
+      "claude_value": [
+        120,
+        250
+      ],
+      "retained_value": [
+        120,
+        250
+      ]
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "evergreen",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": true,
+      "claude_value": true,
+      "retained_value": true
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "root_development",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": "MEDIUM",
+      "claude_value": "MEDIUM",
+      "retained_value": "MEDIUM"
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "flower_color",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        "white"
+      ],
+      "claude_value": [
+        "white"
+      ],
+      "retained_value": [
+        "white"
+      ]
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "flowering_months",
+      "decision": "PROVISIONAL_CONSENSUS",
+      "gemini_value": [
+        9,
+        10,
+        11
+      ],
+      "claude_value": [
+        9,
+        10,
+        11
+      ],
+      "retained_value": [
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "trait": "french_nursery_availability",
+      "decision": "UNRESOLVED",
+      "gemini_value": "IN_STOCK",
+      "claude_value": "LISTED",
+      "retained_value": null
+    }
+  ],
+  "retained_traits": 68
+}

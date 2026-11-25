@@ -1,0 +1,11 @@
+{
+  "garden_count": 50,
+  "plant_count": 40,
+  "expected_pairs": 2000,
+  "generated_pairs": 2000,
+  "duplicate_pairs": 0,
+  "labelled_pairs": 0,
+  "pending_pairs": 2000,
+  "api_calls": 0,
+  "training_eligible_pairs": 0
+}

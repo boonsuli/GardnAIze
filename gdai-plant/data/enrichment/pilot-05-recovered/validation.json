@@ -1,0 +1,19 @@
+{
+  "profiles": 5,
+  "status": "STRUCTURE_VALID_PENDING_REVIEW",
+  "warnings": [
+    "Viburnum tinus: root_development has unverified evidence",
+    "Viburnum tinus: stock claim is optional and unverified",
+    "Photinia \u00d7 fraseri: root_development has unverified evidence",
+    "Photinia \u00d7 fraseri: stock claim is optional and unverified",
+    "Choisya ternata: root_development has unverified evidence",
+    "Choisya ternata: stock claim is optional and unverified",
+    "Elaeagnus \u00d7 ebbingei: root_development has unverified evidence",
+    "Elaeagnus \u00d7 ebbingei: stock claim is optional and unverified",
+    "Osmanthus heterophyllus: root_development has unverified evidence",
+    "Osmanthus heterophyllus: stock claim is optional and unverified"
+  ],
+  "grounding_present": false,
+  "documentary_status": "UNVERIFIED",
+  "api_calls": 0
+}

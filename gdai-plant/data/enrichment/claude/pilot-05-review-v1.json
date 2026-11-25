@@ -1,0 +1,540 @@
+{
+  "profiles": [
+    {
+      "scientific_name": "Viburnum tinus",
+      "traits": {
+        "sun_exposure": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["FULL_SUN", "PARTIAL_SHADE", "FULL_SHADE"],
+          "justification": "Independent plausibility assessment, no browsing. Widely grown from full sun to fairly deep shade; flowering and density decline in deep shade, but survival is plausible.",
+          "source_urls": []
+        },
+        "soil_drainage": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["GOOD", "MODERATE"],
+          "justification": "Independent plausibility assessment, no browsing. Does best in well-drained to moderately drained soil; prolonged winter waterlogging is harmful.",
+          "source_urls": []
+        },
+        "soil_type": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["LOAM", "CLAY", "SAND", "MIXED", "STONY"],
+          "justification": "Independent plausibility assessment, no browsing. Adaptable to loam, clay, sand and calcareous or stony ground provided there is no standing water.",
+          "source_urls": []
+        },
+        "soil_moisture_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["WELL_DRAINED", "DRY_SUMMER"],
+          "justification": "Independent plausibility assessment, no browsing. Tolerates dry summers only once established; newly planted specimens need regular watering for the first seasons.",
+          "source_urls": []
+        },
+        "planting_context": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["IN_GROUND_BORDER", "HEDGE", "PLANTER"],
+          "justification": "Independent plausibility assessment, no browsing. Standard use as hedge and border shrub; compact cultivars (e.g. 'Eve Price') suit large containers.",
+          "source_urls": []
+        },
+        "water_need": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. LOW overstates it: newly planted and containerised specimens need regular watering, and established plants are only moderately drought tolerant (the profile itself rates drought tolerance MEDIUM). MEDIUM is more defensible under summer water restrictions; established specimens in deep ground may need less.",
+          "source_urls": []
+        },
+        "heat_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "HIGH",
+          "justification": "Independent plausibility assessment, no browsing. Of Mediterranean origin and tolerates lowland summer heat when roots are established; the 'Mediterranean heritage' argument is inference only.",
+          "source_urls": []
+        },
+        "drought_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Established plants withstand dry spells; severe prolonged drought causes leaf drop. MEDIUM is a reasonable qualitative rating.",
+          "source_urls": []
+        },
+        "maintenance_level": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "LOW",
+          "justification": "Independent plausibility assessment, no browsing. Needs little pruning beyond light shaping after flowering or occasional rejuvenation.",
+          "source_urls": []
+        },
+        "hardiness_min_c": {
+          "verdict": "UNCERTAIN",
+          "proposed_value": null,
+          "justification": "Independent plausibility assessment, no browsing. Ratings conflict: RHS-style ratings (about H4, roughly -10 to -5 °C) differ from French sources citing -12 to -15 °C. Damage to foliage and buds is common near -10 to -12 °C, and hardiness varies by cultivar, exposure and wind. No defensible single threshold; conditions are preserved here rather than a number.",
+          "source_urls": []
+        },
+        "height_cm": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [200, 350],
+          "justification": "Independent plausibility assessment, no browsing. Typical mature height of the species in open ground is about 2–3.5 m; compact cultivars stay smaller and clipped hedges lower.",
+          "source_urls": []
+        },
+        "spread_cm": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [150, 300],
+          "justification": "Independent plausibility assessment, no browsing. Plausible mature spread for the species; depends on pruning and planting density.",
+          "source_urls": []
+        },
+        "evergreen": {
+          "verdict": "SUPPORTED",
+          "proposed_value": true,
+          "justification": "Independent plausibility assessment, no browsing. Broadleaf evergreen shrub.",
+          "source_urls": []
+        },
+        "root_development": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Dense fibrous root system with no strongly invasive habit. The rating describes relative development only and is not a guarantee of safety near foundations or networks.",
+          "source_urls": []
+        },
+        "flower_color": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["white", "pink"],
+          "justification": "Independent plausibility assessment, no browsing. Pink buds opening to white, sometimes pink-tinged, flowers.",
+          "source_urls": []
+        },
+        "flowering_months": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [1, 2, 3, 4, 11, 12],
+          "justification": "Independent plausibility assessment, no browsing. Winter to early-spring flowering (about November to April), varying with cultivar and local winter severity.",
+          "source_urls": []
+        },
+        "french_nursery_availability": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": "LISTED",
+          "justification": "Independent plausibility assessment, no browsing. A catalogue listing is plausible, but IN_STOCK requires specific stock evidence, which is not provided. LISTED is the defensible value.",
+          "source_urls": []
+        }
+      }
+    },
+    {
+      "scientific_name": "Photinia × fraseri",
+      "traits": {
+        "sun_exposure": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["FULL_SUN", "PARTIAL_SHADE"],
+          "justification": "Independent plausibility assessment, no browsing. Best foliage colour and density in full sun; tolerates partial shade.",
+          "source_urls": []
+        },
+        "soil_drainage": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["GOOD", "MODERATE"],
+          "justification": "Independent plausibility assessment, no browsing. Needs well-drained to moderately drained soil; waterlogging promotes root rot.",
+          "source_urls": []
+        },
+        "soil_type": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["LOAM", "CLAY", "SAND", "MIXED"],
+          "justification": "Independent plausibility assessment, no browsing. Adaptable to most garden soils; strongly calcareous soil can cause chlorosis, so the list should not be read as tolerance of all alkaline ground.",
+          "source_urls": []
+        },
+        "soil_moisture_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["WELL_DRAINED", "DRY_SUMMER"],
+          "justification": "Independent plausibility assessment, no browsing. Moderate dry-summer tolerance once established; newly planted specimens need regular watering for about two seasons, and combined heat and drought stress favours leaf spot (Entomosporium).",
+          "source_urls": []
+        },
+        "planting_context": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["HEDGE", "IN_GROUND_BORDER", "PLANTER"],
+          "justification": "Independent plausibility assessment, no browsing. Classic evergreen screening hedge and border shrub; dwarf selections such as 'Little Red Robin' suit containers.",
+          "source_urls": []
+        },
+        "water_need": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Regular watering during establishment and moderate needs in hot spells.",
+          "source_urls": []
+        },
+        "heat_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Tolerates lowland summers with sufficient soil depth; severe heat plus drought increases disease pressure.",
+          "source_urls": []
+        },
+        "drought_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Established specimens cope with dry spells; not a drought-adapted shrub.",
+          "source_urls": []
+        },
+        "maintenance_level": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Regular clipping is needed to keep the hedge dense and to stimulate red flushes, plus monitoring of leaf-spot disease.",
+          "source_urls": []
+        },
+        "hardiness_min_c": {
+          "verdict": "SUPPORTED",
+          "proposed_value": -15,
+          "justification": "Independent plausibility assessment, no browsing. -15 °C is plausible for established plants in open ground. Late frosts can scorch young red shoots, and young or exposed plants are more vulnerable; cultivar differences exist.",
+          "source_urls": []
+        },
+        "height_cm": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [250, 450],
+          "justification": "Independent plausibility assessment, no browsing. Unpruned standard cultivars such as 'Red Robin' reach roughly 2.5–4.5 m; clipped hedges and dwarf cultivars stay lower.",
+          "source_urls": []
+        },
+        "spread_cm": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": [200, 400],
+          "justification": "Independent plausibility assessment, no browsing. Unpruned shrubs of this hybrid typically spread about as wide as tall, so a maximum of 300 cm looks low next to the 450 cm height. 200–400 cm is more consistent for unclipped specimens; clipped hedges and dwarf cultivars are narrower.",
+          "source_urls": []
+        },
+        "evergreen": {
+          "verdict": "SUPPORTED",
+          "proposed_value": true,
+          "justification": "Independent plausibility assessment, no browsing. Evergreen with glossy leaves.",
+          "source_urls": []
+        },
+        "root_development": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Fibrous root ball without a notably aggressive habit. The rating is relative only and gives no guarantee of safety near infrastructure.",
+          "source_urls": []
+        },
+        "flower_color": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["white"],
+          "justification": "Independent plausibility assessment, no browsing. Small creamy-white flowers in corymbs.",
+          "source_urls": []
+        },
+        "flowering_months": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [4, 5],
+          "justification": "Independent plausibility assessment, no browsing. Spring flowering; regular clipping greatly reduces or suppresses blooms.",
+          "source_urls": []
+        },
+        "french_nursery_availability": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": "LISTED",
+          "justification": "Independent plausibility assessment, no browsing. Catalogue listing is plausible, but IN_STOCK needs specific stock evidence and none is supplied. LISTED is the defensible value.",
+          "source_urls": []
+        }
+      }
+    },
+    {
+      "scientific_name": "Choisya ternata",
+      "traits": {
+        "sun_exposure": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["FULL_SUN", "PARTIAL_SHADE"],
+          "justification": "Independent plausibility assessment, no browsing. Grows in sun or partial shade; shelter from cold drying winds and from scorching afternoon sun is advisable.",
+          "source_urls": []
+        },
+        "soil_drainage": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["GOOD"],
+          "justification": "Independent plausibility assessment, no browsing. Needs well-drained soil; cold, heavy, waterlogged ground leads to root problems.",
+          "source_urls": []
+        },
+        "soil_type": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["LOAM", "SAND", "MIXED", "STONY"],
+          "justification": "Independent plausibility assessment, no browsing. Prefers light, fertile, permeable soils. Clay is only tolerable if drained, so its omission is defensible.",
+          "source_urls": []
+        },
+        "soil_moisture_tolerance": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": ["WELL_DRAINED"],
+          "justification": "Independent plausibility assessment, no browsing. Prefers moist but well-drained soil and can show leaf scorch and reduced flowering in hot, dry summers. DRY_SUMMER overstates tolerance; at best established plants in sheltered spots cope with short dry spells.",
+          "source_urls": []
+        },
+        "planting_context": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["IN_GROUND_BORDER", "HEDGE", "COURTYARD", "PLANTER"],
+          "justification": "Independent plausibility assessment, no browsing. Suits sheltered borders, informal hedges, courtyards and large containers.",
+          "source_urls": []
+        },
+        "water_need": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Regular summer watering is advisable, especially in containers and dry spells; LOW is not well supported under water-restricted summers. Established plants in open ground may need less.",
+          "source_urls": []
+        },
+        "heat_tolerance": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Mexican origin does not imply high heat tolerance: it scorches in strong sun and heat, and does best with some shelter. MEDIUM is more defensible for lowland France.",
+          "source_urls": []
+        },
+        "drought_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Moderate tolerance once established; shallow or sunbaked soils reduce vigour and repeat flowering.",
+          "source_urls": []
+        },
+        "maintenance_level": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "LOW",
+          "justification": "Independent plausibility assessment, no browsing. Light trimming after the first flush is sufficient.",
+          "source_urls": []
+        },
+        "hardiness_min_c": {
+          "verdict": "UNCERTAIN",
+          "proposed_value": null,
+          "justification": "Independent plausibility assessment, no browsing. Sources conflict: RHS-style ratings (about H4, roughly -10 to -5 °C) versus -15 °C often quoted in French sources. Cold winds cause leaf scorch and shoot damage at much milder temperatures, so no single defensible threshold; exposure and shelter are decisive.",
+          "source_urls": []
+        },
+        "height_cm": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [150, 250],
+          "justification": "Independent plausibility assessment, no browsing. Typical mature height of the species; cultivars (e.g. golden-leaved or narrow-leaved forms) differ.",
+          "source_urls": []
+        },
+        "spread_cm": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [150, 250],
+          "justification": "Independent plausibility assessment, no browsing. Mounded habit, roughly as wide as tall.",
+          "source_urls": []
+        },
+        "evergreen": {
+          "verdict": "SUPPORTED",
+          "proposed_value": true,
+          "justification": "Independent plausibility assessment, no browsing. Aromatic evergreen foliage.",
+          "source_urls": []
+        },
+        "root_development": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Fibrous, non-aggressive roots. The rating is relative only and gives no guarantee of safety near infrastructure.",
+          "source_urls": []
+        },
+        "flower_color": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["white"],
+          "justification": "Independent plausibility assessment, no browsing. Fragrant white star-shaped flowers.",
+          "source_urls": []
+        },
+        "flowering_months": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [4, 5, 8, 9],
+          "justification": "Independent plausibility assessment, no browsing. Main flowering in spring with a lighter repeat flush in late summer to early autumn; the repeat flush is weaker in dry, hot conditions.",
+          "source_urls": []
+        },
+        "french_nursery_availability": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": "LISTED",
+          "justification": "Independent plausibility assessment, no browsing. Catalogue listing is plausible, but IN_STOCK needs specific stock evidence and none is supplied. LISTED is the defensible value.",
+          "source_urls": []
+        }
+      }
+    },
+    {
+      "scientific_name": "Elaeagnus × ebbingei",
+      "traits": {
+        "sun_exposure": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["FULL_SUN", "PARTIAL_SHADE"],
+          "justification": "Independent plausibility assessment, no browsing. Thrives in sun and partial shade; shade tolerance is wider but dense shade reduces vigour and flowering.",
+          "source_urls": []
+        },
+        "soil_drainage": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["GOOD", "MODERATE"],
+          "justification": "Independent plausibility assessment, no browsing. Adaptable except in permanently waterlogged soil.",
+          "source_urls": []
+        },
+        "soil_type": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["LOAM", "CLAY", "SAND", "STONY", "MIXED"],
+          "justification": "Independent plausibility assessment, no browsing. Very adaptable to poor, dry, calcareous or heavy soils; actinorhizal nitrogen fixation is a known trait of the genus.",
+          "source_urls": []
+        },
+        "soil_moisture_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["WELL_DRAINED", "DRY_SUMMER"],
+          "justification": "Independent plausibility assessment, no browsing. Tolerates dry summers once established; newly planted specimens still need watering.",
+          "source_urls": []
+        },
+        "planting_context": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["HEDGE", "IN_GROUND_BORDER", "COURTYARD"],
+          "justification": "Independent plausibility assessment, no browsing. Typical use for screening hedges, windbreaks and tough borders. Its mature size makes small courtyards a context to check.",
+          "source_urls": []
+        },
+        "water_need": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "LOW",
+          "justification": "Independent plausibility assessment, no browsing. LOW applies to established specimens; newly planted plants need regular watering for the first seasons.",
+          "source_urls": []
+        },
+        "heat_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "HIGH",
+          "justification": "Independent plausibility assessment, no browsing. Tough shrub that copes well with summer heat and dry winds.",
+          "source_urls": []
+        },
+        "drought_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "HIGH",
+          "justification": "Independent plausibility assessment, no browsing. Among the more drought-tolerant evergreen hedging shrubs once established; not applicable to newly planted specimens.",
+          "source_urls": []
+        },
+        "maintenance_level": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "LOW",
+          "justification": "Independent plausibility assessment, no browsing. Tolerates hard pruning and can be left loose; vigorous growth means hedges need clipping one to two times a year.",
+          "source_urls": []
+        },
+        "hardiness_min_c": {
+          "verdict": "SUPPORTED",
+          "proposed_value": -15,
+          "justification": "Independent plausibility assessment, no browsing. -15 °C is plausible for established plants (hardiness band around H5). Young plants and variegated cultivars are more vulnerable.",
+          "source_urls": []
+        },
+        "height_cm": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [250, 400],
+          "justification": "Independent plausibility assessment, no browsing. Plausible for unpruned mature specimens; clipped hedges stay lower.",
+          "source_urls": []
+        },
+        "spread_cm": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [200, 400],
+          "justification": "Independent plausibility assessment, no browsing. Broad spreading habit when unclipped.",
+          "source_urls": []
+        },
+        "evergreen": {
+          "verdict": "SUPPORTED",
+          "proposed_value": true,
+          "justification": "Independent plausibility assessment, no browsing. Evergreen with leathery, silvery-backed leaves.",
+          "source_urls": []
+        },
+        "root_development": {
+          "verdict": "UNCERTAIN",
+          "proposed_value": null,
+          "justification": "Independent plausibility assessment, no browsing. The supplied reasoning (nitrogen fixation implying an extensive or competitive root system) does not follow. Vigorous growth and large size suggest at least MEDIUM, but no defensible HIGH mapping exists and infrastructure safety cannot be inferred.",
+          "source_urls": []
+        },
+        "flower_color": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["white", "cream"],
+          "justification": "Independent plausibility assessment, no browsing. Small, fragrant, silvery-white to cream flowers.",
+          "source_urls": []
+        },
+        "flowering_months": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": [10, 11],
+          "justification": "Independent plausibility assessment, no browsing. Flowering is usually reported for October to November. September is early and unusual for this hybrid, so it should not be included.",
+          "source_urls": []
+        },
+        "french_nursery_availability": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": "LISTED",
+          "justification": "Independent plausibility assessment, no browsing. Catalogue listing is plausible (also under the synonym Elaeagnus × submacrophylla), but IN_STOCK needs specific stock evidence and none is supplied. LISTED is the defensible value.",
+          "source_urls": []
+        }
+      }
+    },
+    {
+      "scientific_name": "Osmanthus heterophyllus",
+      "traits": {
+        "sun_exposure": {
+          "verdict": "UNCERTAIN",
+          "proposed_value": null,
+          "justification": "Independent plausibility assessment, no browsing. Sun and partial shade are well supported, but FULL_SHADE is stated more strongly ('heavy shade') than I can defend. Sources differ, and deep shade reduces vigour and flowering, so no defensible list.",
+          "source_urls": []
+        },
+        "soil_drainage": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["GOOD", "MODERATE"],
+          "justification": "Independent plausibility assessment, no browsing. Needs permeable soil and dislikes stagnant winter moisture.",
+          "source_urls": []
+        },
+        "soil_type": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["LOAM", "CLAY", "SAND", "MIXED"],
+          "justification": "Independent plausibility assessment, no browsing. Adaptable to most soils, with best growth in fertile, humus-rich loam; clay needs drainage.",
+          "source_urls": []
+        },
+        "soil_moisture_tolerance": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": ["WELL_DRAINED"],
+          "justification": "Independent plausibility assessment, no browsing. Prefers moist, well-drained soil and young plants are sensitive to drought. The claim of good dry-summer and dry-shade resistance is overstated; established plants withstand only moderate dry spells.",
+          "source_urls": []
+        },
+        "planting_context": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["HEDGE", "IN_GROUND_BORDER", "PLANTER", "COURTYARD"],
+          "justification": "Independent plausibility assessment, no browsing. Slow-growing, compact, holly-like evergreen suited to hedges, borders and large pots.",
+          "source_urls": []
+        },
+        "water_need": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Needs consistent moisture while young and in containers, and is only moderately drought tolerant when established (the profile rates drought tolerance MEDIUM). LOW is not well supported under water restrictions.",
+          "source_urls": []
+        },
+        "heat_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Tolerates lowland summer heat, with afternoon shade preferable in hot, dry settings.",
+          "source_urls": []
+        },
+        "drought_tolerance": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Moderate tolerance once established, better in semi-shade.",
+          "source_urls": []
+        },
+        "maintenance_level": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "LOW",
+          "justification": "Independent plausibility assessment, no browsing. Slow growth and little pruning required.",
+          "source_urls": []
+        },
+        "hardiness_min_c": {
+          "verdict": "SUPPORTED",
+          "proposed_value": -15,
+          "justification": "Independent plausibility assessment, no browsing. -15 °C is a plausible conservative value for established plants; young plants and exposed sites are more vulnerable.",
+          "source_urls": []
+        },
+        "height_cm": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [150, 350],
+          "justification": "Independent plausibility assessment, no browsing. The range mixes the species (about 2–3.5 m, reached slowly) with compact cultivars ('Goshiki', 'Party Princess') at about 1.5–2 m. Cultivar-specific values should be recorded separately.",
+          "source_urls": []
+        },
+        "spread_cm": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [120, 250],
+          "justification": "Independent plausibility assessment, no browsing. Plausible mature spread, mixing species and compact cultivars.",
+          "source_urls": []
+        },
+        "evergreen": {
+          "verdict": "SUPPORTED",
+          "proposed_value": true,
+          "justification": "Independent plausibility assessment, no browsing. Evergreen with spiny, holly-like juvenile leaves.",
+          "source_urls": []
+        },
+        "root_development": {
+          "verdict": "SUPPORTED",
+          "proposed_value": "MEDIUM",
+          "justification": "Independent plausibility assessment, no browsing. Compact, fibrous roots and slow growth. The rating is relative only and gives no guarantee of safety near infrastructure.",
+          "source_urls": []
+        },
+        "flower_color": {
+          "verdict": "SUPPORTED",
+          "proposed_value": ["white"],
+          "justification": "Independent plausibility assessment, no browsing. Small, fragrant white flowers.",
+          "source_urls": []
+        },
+        "flowering_months": {
+          "verdict": "SUPPORTED",
+          "proposed_value": [9, 10, 11],
+          "justification": "Independent plausibility assessment, no browsing. Autumn flowering, mainly October with variation by season and cultivar.",
+          "source_urls": []
+        },
+        "french_nursery_availability": {
+          "verdict": "CONTRADICTED",
+          "proposed_value": "LISTED",
+          "justification": "Independent plausibility assessment, no browsing. Catalogue listing is plausible, but IN_STOCK needs specific stock evidence and none is supplied. LISTED is the defensible value.",
+          "source_urls": []
+        }
+      }
+    }
+  ],
+  "input_sha256": "b8b3f9ae606d7be721704adef1e8d40e189dda17f02a5e9d3f6ba85406c53479"
+}
