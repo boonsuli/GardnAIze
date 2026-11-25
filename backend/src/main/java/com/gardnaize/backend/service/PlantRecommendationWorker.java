@@ -98,10 +98,14 @@ public class PlantRecommendationWorker {
         if (!exposure.isBlank()) profile.put("sun_exposure", exposure);
         if (!water.isBlank()) profile.put("water_availability", water);
         // No inferred temperature, soil, or plant characteristics from image alone.
-        if (answers.path("evergreenPreferred").isBoolean())
-            profile.put("evergreen_preferred", answers.path("evergreenPreferred").asBoolean());
-        if (answers.path("privacyScreeningRequired").isBoolean())
-            profile.put("privacy_screening_required", answers.path("privacyScreeningRequired").asBoolean());
+        putPreference(profile, "evergreen_preferred", answers.path("evergreenPreferred"));
+        putPreference(profile, "privacy_screening_required", answers.path("privacyScreeningRequired"));
         return profile;
+    }
+
+    static void putPreference(Map<String,Object> profile, String key, JsonNode value) {
+        if (value.isBoolean()) profile.put(key, value.asBoolean());
+        else if ("YES".equals(value.asText())) profile.put(key, true);
+        else if ("NO".equals(value.asText())) profile.put(key, false);
     }
 }
