@@ -13,6 +13,10 @@ MEMBERSHIP = {"sun_exposure":"sun_exposure", "soil_drainage":"soil_drainage",
               "planting_context":"planting_context"}
 
 def grade(g, p, policy="v2", config=None):
+    if policy == "v4":
+        from matching.compensation_engine import evaluate_v4
+        result = evaluate_v4(g,p,config if config is not None else load_config())
+        return result["relevance_grade"], result["reasons"]
     if policy == "v3":
         from matching.rule_engine import evaluate
         return evaluate(g,p,config if config is not None else load_config())
@@ -74,10 +78,10 @@ def load_config():
     return json.loads((Path(__file__).resolve().parents[1] / "config/matching-rules-v3.json").read_text(encoding="utf-8"))
 
 def build(gardens, profiles, quality, policy="v2", categories=None, config=None):
-    if policy == "v3":
+    if policy in ("v3", "v4"):
         config = config if config is not None else load_config()
         if categories is None or any(p["scientific_name"] not in categories for p in profiles["profiles"]):
-            raise ValueError("V3 requires catalogue categories for all profiles")
+            raise ValueError("V3/V4 requires catalogue categories for all profiles")
     names = [p["scientific_name"] for p in profiles["profiles"]]
     statuses = {p["scientific_name"]:p["status"] for p in quality["plants"]}
     if len(set(names)) != len(names) or set(names) != set(statuses) or len(statuses) != len(quality["plants"]):
@@ -91,10 +95,20 @@ def build(gardens, profiles, quality, policy="v2", categories=None, config=None)
         for p in profiles["profiles"]:
             name=p["scientific_name"]
             values={k:v["value"] for k,v in p["traits"].items()}
-            if policy == "v3":
+            if policy in ("v3", "v4"):
                 values["category"] = categories[name]
             status=statuses[name]
             label,reasons=(None,{"excluded":["plant_quality"]}) if status=="EXCLUDED" else grade(g,values,policy,config)
+            extra = {}
+            if policy == "v4":
+                from matching.compensation_engine import evaluate_v4
+                from matching.alternative_engine import suggest_alternatives
+                if status != "EXCLUDED":
+                    extra = evaluate_v4(g, values, config)
+                    extra["questionnaire_changes"] = suggest_alternatives(g, values, config) if status == "ACCEPTED" else []
+                    extra["recommendation_eligible"] = extra["recommendation_eligible"] and status == "ACCEPTED"
+                else:
+                    extra = {"initial_relevance_grade": None, "resolved_conditions": [], "unresolved_conditions": ["plant_quality"], "usage_advice": [], "questionnaire_changes": [], "recommendation_eligible": False}
             # Conditional plants are diagnostic only until their quality is resolved.
             eligible=label is not None and status=="ACCEPTED"
             rows.append({"garden_id":g["id"],"scientific_name":name,"garden_origin":g["origin"],
@@ -103,22 +117,22 @@ def build(gardens, profiles, quality, policy="v2", categories=None, config=None)
                          "matching_policy":"HORTICULTURAL_RULES_"+policy.upper(),"plant_quality":status,"relevance_grade":label,
                          "label_source":"RULE_DERIVED" if label is not None else None,
                          "assessment_status":"EXCLUDED" if status=="EXCLUDED" else "INSUFFICIENT_DATA" if label is None else "PROVISIONAL",
-                         "experimental_training_eligible":eligible,"reasons":reasons})
+                         "experimental_training_eligible":eligible,"reasons":reasons, **extra})
     return rows
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ("gardens","gemini","review","out-dir"):
         p.add_argument("--"+name,type=Path,required=True)
-    p.add_argument("--policy", choices=("v1","v2","v3"), default="v3")
+    p.add_argument("--policy", choices=("v1","v2","v3","v4"), default="v3")
     a=p.parse_args()
     read=lambda path:json.loads(path.read_text(encoding="utf-8"))
     gardens=read(a.gardens)["scenarios"]
     gemini,review=read(a.gemini),read(a.review)
     profiles,_=consolidate(gemini,review,policy="v2")
     quality=assess(gemini,review,profiles,policy="v2")
-    config = load_config() if a.policy == "v3" else None
-    catalogue = read(Path(__file__).resolve().parents[1] / "data/plants-mvp-40.json") if a.policy == "v3" else []
+    config = load_config() if a.policy in ("v3", "v4") else None
+    catalogue = read(Path(__file__).resolve().parents[1] / "data/plants-mvp-40.json") if a.policy in ("v3", "v4") else []
     categories = {p["scientific_name"]:p["candidate_category"] for p in catalogue}
     if len(categories) != len(catalogue):
         raise ValueError("Duplicate catalogue taxa")
@@ -133,6 +147,13 @@ def main():
             "eligible_conditional_reasons":dict(Counter(reason for r in rows if r["experimental_training_eligible"] and r["relevance_grade"]==1 for reason in r["reasons"].get("conditional",[]))),
             "eligible_advisory_reasons":dict(Counter(reason for r in rows if r["experimental_training_eligible"] for reason in r["reasons"].get("advisory",[]))),
             "api_calls":0}
+    if a.policy == "v4":
+        report["compensation_mode"] = "NO_UNVERIFIED_COMMITMENTS"
+        report["initial_label_counts"] = dict(Counter(str(r["initial_relevance_grade"]) for r in rows))
+        report["resolved_conditions"] = sum(len(r["resolved_conditions"]) for r in rows)
+        report["alternative_pairs"] = sum(bool(r["questionnaire_changes"]) for r in rows)
+        coverage = Counter(r["garden_id"] for r in rows if r["recommendation_eligible"])
+        report["gardens_with_at_least_five_recommendations"] = sum(n >= 5 for n in coverage.values())
     if config is not None:
         report["rule_config"] = config
         report["rule_config_sha256"] = digest(config)
