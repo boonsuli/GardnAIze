@@ -34,3 +34,26 @@ def test_v4_dispatch_preserves_v3():
     p["category"] = "TREE"
     assert grade(g,p,"v3",c)[0] == 1
     assert grade(g,p,"v4",c)[0] == 0
+
+
+def test_combined_preferences():
+    g,p,c = fixture()
+    g.update(evergreen_preferred=True, preferred_color="WHITE", maintenance_preference="LOW")
+    p.update(evergreen=False, flower_color=["PINK"], maintenance_level="MEDIUM")
+    original = dict(g)
+    changes = suggest_alternatives(g,p,c)
+    assert {x["question_key"] for x in changes} == {"evergreenPreferred","preferredColors","maintenancePreference"}
+    assert all(x["alternative_relevance_grade"] == 2 for x in changes)
+    assert g == original
+
+def test_color_alternative():
+    g,p,c = fixture()
+    g["preferred_color"] = "WHITE"
+    p["flower_color"] = ["PINK"]
+    assert suggest_alternatives(g,p,c)[0]["question_key"] == "preferredColors"
+
+def test_maintenance_alternative():
+    g,p,c = fixture()
+    g["maintenance_preference"] = "LOW"
+    p["maintenance_level"] = "HIGH"
+    assert suggest_alternatives(g,p,c)[0]["suggested_answer"] == "HIGH"
