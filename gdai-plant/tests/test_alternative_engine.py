@@ -42,7 +42,7 @@ def test_combined_preferences():
     p.update(evergreen=False, flower_color=["PINK"], maintenance_level="MEDIUM")
     original = dict(g)
     changes = suggest_alternatives(g,p,c)
-    assert {x["question_key"] for x in changes} == {"evergreenPreferred","preferredColors","maintenancePreference"}
+    assert {x["question_key"] for x in changes} == {"evergreenPreferred","maintenancePreference"}
     assert all(x["alternative_relevance_grade"] == 2 for x in changes)
     assert g == original
 
@@ -50,10 +50,30 @@ def test_color_alternative():
     g,p,c = fixture()
     g["preferred_color"] = "WHITE"
     p["flower_color"] = ["PINK"]
-    assert suggest_alternatives(g,p,c)[0]["question_key"] == "preferredColors"
+    from matching.compensation_engine import evaluate_v4
+    result = evaluate_v4(g,p,c)
+    assert result["recommendation_eligible"]
+    assert result["preference_assessment"]["flower_color_match"] is False
+    assert suggest_alternatives(g,p,c) == []
 
 def test_maintenance_alternative():
     g,p,c = fixture()
     g["maintenance_preference"] = "LOW"
     p["maintenance_level"] = "HIGH"
     assert suggest_alternatives(g,p,c)[0]["suggested_answer"] == "HIGH"
+
+
+def test_lower_maintenance_alternative():
+    from matching.compensation_engine import evaluate_v4
+    g,p,c = fixture()
+    g["maintenance_preference"] = "HIGH"
+    p["maintenance_level"] = "LOW"
+    assert evaluate_v4(g,p,c)["recommendation_eligible"]
+    assert suggest_alternatives(g,p,c)[0]["suggested_answer"] == "LOW"
+
+def test_higher_maintenance_not_blocking():
+    from matching.compensation_engine import evaluate_v4
+    g,p,c = fixture()
+    g["maintenance_preference"] = "LOW"
+    p["maintenance_level"] = "HIGH"
+    assert evaluate_v4(g,p,c)["recommendation_eligible"]
