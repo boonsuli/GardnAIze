@@ -47,6 +47,16 @@ def evaluate_v4(garden, plant, config, *, accepted=None, feasible=None):
             resolved.append({"rule_id": reason.split(":")[0],
                              "condition": reason, "solution_id": commitment,
                              "advice_id": advice})
+    # V4-only preference checks; no invented price or style compatibility.
+    color = garden.get("preferred_color")
+    colors = plant.get("flower_color")
+    if color and colors and color.upper() not in {v.upper() for v in colors}:
+        reasons["conditional"].append("PREF-002:flower_color")
+    maintenance = garden.get("maintenance_preference")
+    need = plant.get("maintenance_level")
+    levels = {"LOW": 0, "MEDIUM": 1, "HIGH": 2}
+    if maintenance in levels and need in levels and levels[need] > levels[maintenance]:
+        reasons["conditional"].append("PREF-003:maintenance_level")
     final = (0 if reasons["incompatible"] else None if reasons["unknown"] else
              1 if reasons["conditional"] else 3 if reasons["matched"] else 2)
     return {"initial_relevance_grade": initial, "relevance_grade": final,
