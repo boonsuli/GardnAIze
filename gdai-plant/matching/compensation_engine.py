@@ -47,20 +47,28 @@ def evaluate_v4(garden, plant, config, *, accepted=None, feasible=None):
             resolved.append({"rule_id": reason.split(":")[0],
                              "condition": reason, "solution_id": commitment,
                              "advice_id": advice})
-    # V4-only preference checks; no invented price or style compatibility.
+    # Preferences are independent of horticultural eligibility.
+    preferences = {}
     color = garden.get("preferred_color")
     colors = plant.get("flower_color")
-    if color and colors and color.upper() not in {v.upper() for v in colors}:
-        reasons["conditional"].append("PREF-002:flower_color")
+    if color and colors:
+        preferences["flower_color_match"] = color.upper() in {v.upper() for v in colors}
     maintenance = garden.get("maintenance_preference")
     need = plant.get("maintenance_level")
     levels = {"LOW": 0, "MEDIUM": 1, "HIGH": 2}
-    if maintenance in levels and need in levels and levels[need] > levels[maintenance]:
-        reasons["conditional"].append("PREF-003:maintenance_level")
+    if maintenance in levels and need in levels:
+        preferences["maintenance_match"] = maintenance == need
+        preferences["maintenance_gap"] = levels[need] - levels[maintenance]
+    if garden.get("evergreen_preferred") is True:
+        if "PREF-001:evergreen_preference" in reasons["conditional"]:
+            reasons["conditional"].remove("PREF-001:evergreen_preference")
+        if "PREF-001:evergreen" in reasons["unknown"]:
+            reasons["unknown"].remove("PREF-001:evergreen")
+        preferences["evergreen_match"] = plant.get("evergreen")
     final = (0 if reasons["incompatible"] else None if reasons["unknown"] else
              1 if reasons["conditional"] else 3 if reasons["matched"] else 2)
     return {"initial_relevance_grade": initial, "relevance_grade": final,
             "resolved_conditions": resolved,
             "unresolved_conditions": reasons["incompatible"] + reasons["unknown"] + reasons["conditional"],
             "usage_advice": sorted({item["advice_id"] for item in resolved}),
-            "recommendation_eligible": final in (2, 3), "reasons": reasons}
+            "recommendation_eligible": final in (2, 3), "preference_assessment": preferences, "reasons": reasons}
