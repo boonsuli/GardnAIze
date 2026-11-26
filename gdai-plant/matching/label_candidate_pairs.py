@@ -77,7 +77,7 @@ def grade(g, p, policy="v2", config=None):
 def load_config():
     return json.loads((Path(__file__).resolve().parents[1] / "config/matching-rules-v3.json").read_text(encoding="utf-8"))
 
-def build(gardens, profiles, quality, policy="v2", categories=None, config=None):
+def build(gardens, profiles, quality, policy="v2", categories=None, config=None, *, synthetic_compensation=False):
     if policy in ("v3", "v4"):
         config = config if config is not None else load_config()
         if categories is None or any(p["scientific_name"] not in categories for p in profiles["profiles"]):
@@ -104,8 +104,14 @@ def build(gardens, profiles, quality, policy="v2", categories=None, config=None)
                 from matching.compensation_engine import evaluate_v4
                 from matching.alternative_engine import suggest_alternatives
                 if status != "EXCLUDED":
-                    extra = evaluate_v4(g, values, config)
-                    extra["questionnaire_changes"] = suggest_alternatives(g, values, config) if status == "ACCEPTED" else []
+                    kwargs = {}
+                    if synthetic_compensation:
+                        if g.get("compensation_provenance") != "SYNTHETIC_SENSITIVITY_V1":
+                            raise ValueError("Missing synthetic compensation provenance")
+                        kwargs = {"accepted": g["compensation_accepted"], "feasible": g["compensation_feasible"]}
+                    extra = evaluate_v4(g, values, config, **kwargs)
+                    label, reasons = extra["relevance_grade"], extra["reasons"]
+                    extra["questionnaire_changes"] = suggest_alternatives(g, values, config, **kwargs) if status == "ACCEPTED" else []
                     extra["recommendation_eligible"] = extra["recommendation_eligible"] and status == "ACCEPTED"
                 else:
                     extra = {"initial_relevance_grade": None, "resolved_conditions": [], "unresolved_conditions": ["plant_quality"], "usage_advice": [], "questionnaire_changes": [], "recommendation_eligible": False}
@@ -125,7 +131,10 @@ def main():
     for name in ("gardens","gemini","review","out-dir"):
         p.add_argument("--"+name,type=Path,required=True)
     p.add_argument("--policy", choices=("v1","v2","v3","v4"), default="v3")
+    p.add_argument("--synthetic-compensation", action="store_true")
     a=p.parse_args()
+    if a.synthetic_compensation and a.policy != "v4":
+        p.error("Synthetic compensation requires V4")
     read=lambda path:json.loads(path.read_text(encoding="utf-8"))
     gardens=read(a.gardens)["scenarios"]
     gemini,review=read(a.gemini),read(a.review)
@@ -136,7 +145,7 @@ def main():
     categories = {p["scientific_name"]:p["candidate_category"] for p in catalogue}
     if len(categories) != len(catalogue):
         raise ValueError("Duplicate catalogue taxa")
-    rows=build(gardens,profiles,quality,a.policy,categories,config)
+    rows=build(gardens,profiles,quality,a.policy,categories,config, synthetic_compensation=a.synthetic_compensation)
     report={"policy":"HORTICULTURAL_RULES_"+a.policy.upper(),"status":"EXPERIMENTAL_NOT_EXPERT_VALIDATED",
             "garden_sha256":digest(gardens),"gemini_sha256":digest(gemini),"review_sha256":digest(review),
             "pairs":len(rows),"assessment_counts":dict(Counter(r["assessment_status"] for r in rows)),
@@ -148,7 +157,7 @@ def main():
             "eligible_advisory_reasons":dict(Counter(reason for r in rows if r["experimental_training_eligible"] for reason in r["reasons"].get("advisory",[]))),
             "api_calls":0}
     if a.policy == "v4":
-        report["compensation_mode"] = "NO_UNVERIFIED_COMMITMENTS"
+        report["compensation_mode"] = "SYNTHETIC_SENSITIVITY_V1" if a.synthetic_compensation else "NO_UNVERIFIED_COMMITMENTS"
         report["initial_label_counts"] = dict(Counter(str(r["initial_relevance_grade"]) for r in rows))
         report["resolved_conditions"] = sum(len(r["resolved_conditions"]) for r in rows)
         report["alternative_pairs"] = sum(bool(r["questionnaire_changes"]) for r in rows)
