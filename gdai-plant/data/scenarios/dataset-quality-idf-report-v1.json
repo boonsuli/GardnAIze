@@ -1,0 +1,744 @@
+{
+  "profile_id": "ile-de-france-mvp-v1",
+  "total": 50,
+  "flagged": 48,
+  "issues": [
+    {
+      "id": "FR-PAR-01",
+      "field": "region",
+      "code": "MISSING",
+      "value": null
+    },
+    {
+      "id": "FR-PAR-01",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": null
+    },
+    {
+      "id": "FR-PAR-01",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-BRE-02",
+      "field": "region",
+      "code": "MISSING",
+      "value": null
+    },
+    {
+      "id": "FR-BRE-02",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": null
+    },
+    {
+      "id": "FR-BRE-02",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-AQU-03",
+      "field": "region",
+      "code": "MISSING",
+      "value": null
+    },
+    {
+      "id": "FR-AQU-03",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": null
+    },
+    {
+      "id": "FR-AQU-03",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-CTR-04",
+      "field": "region",
+      "code": "MISSING",
+      "value": null
+    },
+    {
+      "id": "FR-CTR-04",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": null
+    },
+    {
+      "id": "FR-EST-05",
+      "field": "region",
+      "code": "MISSING",
+      "value": null
+    },
+    {
+      "id": "FR-EST-05",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": null
+    },
+    {
+      "id": "FR-EST-05",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-EST-05",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-NOR-06",
+      "field": "region",
+      "code": "MISSING",
+      "value": null
+    },
+    {
+      "id": "FR-NOR-06",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": null
+    },
+    {
+      "id": "FR-NOR-06",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -9
+    },
+    {
+      "id": "FR-RHO-07",
+      "field": "region",
+      "code": "MISSING",
+      "value": null
+    },
+    {
+      "id": "FR-RHO-07",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": null
+    },
+    {
+      "id": "FR-RHO-07",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-OCC-08",
+      "field": "region",
+      "code": "MISSING",
+      "value": null
+    },
+    {
+      "id": "FR-OCC-08",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": null
+    },
+    {
+      "id": "FR-IDF-09",
+      "field": "region",
+      "code": "MISSING",
+      "value": null
+    },
+    {
+      "id": "FR-IDF-09",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": null
+    },
+    {
+      "id": "FR-IDF-09",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -9
+    },
+    {
+      "id": "FR-TEM-002",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Bretagne"
+    },
+    {
+      "id": "FR-TEM-002",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-TEM-003",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Normandie"
+    },
+    {
+      "id": "FR-TEM-003",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -9
+    },
+    {
+      "id": "FR-TEM-004",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Pays de la Loire"
+    },
+    {
+      "id": "FR-TEM-004",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-TEM-005",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Hauts-de-France"
+    },
+    {
+      "id": "FR-TEM-005",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -9
+    },
+    {
+      "id": "FR-TEM-006",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Centre-Val de Loire"
+    },
+    {
+      "id": "FR-TEM-007",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Grand Est"
+    },
+    {
+      "id": "FR-TEM-007",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-007",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-TEM-008",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Nouvelle-Aquitaine"
+    },
+    {
+      "id": "FR-TEM-008",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -9
+    },
+    {
+      "id": "FR-TEM-009",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Normandie"
+    },
+    {
+      "id": "FR-TEM-009",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-TEM-011",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Bourgogne-Franche-Comté"
+    },
+    {
+      "id": "FR-TEM-011",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-011",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -11
+    },
+    {
+      "id": "FR-TEM-012",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Bretagne"
+    },
+    {
+      "id": "FR-TEM-012",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -9
+    },
+    {
+      "id": "FR-TEM-013",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Hauts-de-France"
+    },
+    {
+      "id": "FR-TEM-013",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-013",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -11
+    },
+    {
+      "id": "FR-TEM-014",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Centre-Val de Loire"
+    },
+    {
+      "id": "FR-TEM-014",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-TEM-015",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-TEM-016",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Grand Est"
+    },
+    {
+      "id": "FR-TEM-016",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-016",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -13
+    },
+    {
+      "id": "FR-TEM-017",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Pays de la Loire"
+    },
+    {
+      "id": "FR-TEM-017",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-017",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-TEM-018",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Bretagne"
+    },
+    {
+      "id": "FR-TEM-018",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-018",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -11
+    },
+    {
+      "id": "FR-TEM-020",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Grand Est"
+    },
+    {
+      "id": "FR-TEM-020",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-020",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-TEM-022",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Bretagne"
+    },
+    {
+      "id": "FR-TEM-022",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-022",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-TEM-023",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Grand Est"
+    },
+    {
+      "id": "FR-TEM-023",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-023",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -10
+    },
+    {
+      "id": "FR-TEM-024",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Normandie"
+    },
+    {
+      "id": "FR-TEM-024",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-024",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -11
+    },
+    {
+      "id": "FR-TEM-025",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -9
+    },
+    {
+      "id": "FR-TEM-026",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Hauts-de-France"
+    },
+    {
+      "id": "FR-TEM-026",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-026",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-TEM-027",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Pays de la Loire"
+    },
+    {
+      "id": "FR-TEM-027",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-027",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -11
+    },
+    {
+      "id": "FR-TEM-028",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Bourgogne-Franche-Comté"
+    },
+    {
+      "id": "FR-TEM-028",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-028",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -11
+    },
+    {
+      "id": "FR-TEM-029",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Nouvelle-Aquitaine"
+    },
+    {
+      "id": "FR-TEM-029",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-029",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-TEM-030",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Hauts-de-France"
+    },
+    {
+      "id": "FR-TEM-030",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-030",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-TEM-032",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Grand Est"
+    },
+    {
+      "id": "FR-TEM-032",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-032",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-TEM-033",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Centre-Val de Loire"
+    },
+    {
+      "id": "FR-TEM-034",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Bretagne"
+    },
+    {
+      "id": "FR-TEM-034",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-034",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -11
+    },
+    {
+      "id": "FR-TEM-035",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Bourgogne-Franche-Comté"
+    },
+    {
+      "id": "FR-TEM-035",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-035",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -10
+    },
+    {
+      "id": "FR-TEM-036",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Pays de la Loire"
+    },
+    {
+      "id": "FR-TEM-036",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-036",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -13
+    },
+    {
+      "id": "FR-TEM-037",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Nouvelle-Aquitaine"
+    },
+    {
+      "id": "FR-TEM-037",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-037",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-TEM-038",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Grand Est"
+    },
+    {
+      "id": "FR-TEM-038",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-038",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-TEM-039",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Centre-Val de Loire"
+    },
+    {
+      "id": "FR-TEM-039",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -8
+    },
+    {
+      "id": "FR-TEM-040",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Hauts-de-France"
+    },
+    {
+      "id": "FR-TEM-040",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-040",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -12
+    },
+    {
+      "id": "FR-TEM-041",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -9
+    },
+    {
+      "id": "FR-TEM-042",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Normandie"
+    },
+    {
+      "id": "FR-TEM-042",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-042",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -11
+    },
+    {
+      "id": "FR-TEM-043",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Grand Est"
+    },
+    {
+      "id": "FR-TEM-043",
+      "field": "climate_zone",
+      "code": "OUT_OF_SCOPE",
+      "value": "TEMPERATE_SEMI_CONTINENTAL"
+    },
+    {
+      "id": "FR-TEM-043",
+      "field": "minimum_winter_temperature_c",
+      "code": "OUT_OF_RANGE",
+      "value": -13
+    },
+    {
+      "id": "FR-TEM-044",
+      "field": "region",
+      "code": "OUT_OF_SCOPE",
+      "value": "Centre-Val de Loire"
+    }
+  ],
+  "target_count_met": true,
+  "climate_distribution": {
+    "TEMPERATE_TRANSITIONAL": 25,
+    "TEMPERATE_SEMI_CONTINENTAL": 25
+  }
+}

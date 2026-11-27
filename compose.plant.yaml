@@ -1,0 +1,12 @@
+services:
+    gdai-plant:
+        build:
+            context: ./gdai-plant
+            dockerfile: Dockerfile
+        environment:
+            GDAI_PLANT_MODEL_REGISTRY: "${GDAI_PLANT_MODEL_REGISTRY:-/models/registry.json}"
+        volumes:
+            - ./gdai-plant/models:/models:ro
+        ports:
+            - "127.0.0.1:${PLANT_PORT:-8002}:8000"
+        restart: unless-stopped
