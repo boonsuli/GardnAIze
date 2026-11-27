@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "zones": [
+    {
+      "id": "TEMPERATE_OCEANIC",
+      "label_fr": "Océanique",
+      "station": "Brest",
+      "status": "FUTURE_REFERENCE_ONLY"
+    },
+    {
+      "id": "TEMPERATE_TRANSITIONAL",
+      "label_fr": "Océanique altéré",
+      "station": "Paris",
+      "status": "MVP"
+    },
+    {
+      "id": "TEMPERATE_SEMI_CONTINENTAL",
+      "label_fr": "Semi-continental",
+      "station": "Strasbourg",
+      "status": "FUTURE_REFERENCE_ONLY"
+    },
+    {
+      "id": "MOUNTAIN",
+      "label_fr": "Montagnard",
+      "station": "Mont-Aigoual",
+      "status": "FUTURE_REFERENCE_ONLY"
+    },
+    {
+      "id": "MEDITERRANEAN",
+      "label_fr": "Méditerranéen",
+      "station": "Marseille",
+      "status": "FUTURE_REFERENCE_ONLY"
+    }
+  ]
+}
