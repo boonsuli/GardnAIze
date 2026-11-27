@@ -130,6 +130,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ("gardens","gemini","review","out-dir"):
         p.add_argument("--"+name,type=Path,required=True)
+    p.add_argument("--catalogue", type=Path, default=Path(__file__).resolve().parents[1] / "data/plants-mvp-40.json")
     p.add_argument("--policy", choices=("v1","v2","v3","v4"), default="v3")
     p.add_argument("--synthetic-compensation", action="store_true")
     a=p.parse_args()
@@ -141,7 +142,7 @@ def main():
     profiles,_=consolidate(gemini,review,policy="v2")
     quality=assess(gemini,review,profiles,policy="v2")
     config = load_config() if a.policy in ("v3", "v4") else None
-    catalogue = read(Path(__file__).resolve().parents[1] / "data/plants-mvp-40.json") if a.policy in ("v3", "v4") else []
+    catalogue = read(a.catalogue) if a.policy in ("v3", "v4") else []
     categories = {p["scientific_name"]:p["candidate_category"] for p in catalogue}
     if len(categories) != len(catalogue):
         raise ValueError("Duplicate catalogue taxa")
