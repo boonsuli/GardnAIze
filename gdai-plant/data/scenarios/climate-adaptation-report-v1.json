@@ -1,0 +1,403 @@
+{
+  "source": "data/scenarios/garden-scenarios-final-v2.json",
+  "source_sha256": "34f74524ee7030a1334f90091cb8e1ebaab2f43ae53f17e8ed1567c2232effbe",
+  "output_sha256": "eac9553d8e286b28c92dcfa18aaf1786789abdd3cfe4f1997aa42b3ff3af5ee0",
+  "before": {
+    "TEMPERATE_TRANSITIONAL": 15,
+    "TEMPERATE_OCEANIC": 24,
+    "TEMPERATE_SEMI_CONTINENTAL": 11
+  },
+  "after": {
+    "TEMPERATE_TRANSITIONAL": 25,
+    "TEMPERATE_SEMI_CONTINENTAL": 25
+  },
+  "modified": 24,
+  "unchanged": 26,
+  "changes": [
+    {
+      "id": "FR-BRE-02",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -4,
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "water_availability": "HIGH"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "minimum_winter_temperature_c": -8,
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "water_availability": "HIGH"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Île-de-France, climat TEMPERATE_TRANSITIONAL; minimum hivernal de scénario -8 °C au lieu de -4 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Residential boundary bed along a wooden fence; mixed soil with moderate drainage and seasonal winter wetness. High water availability retained as a scenario assumption."
+    },
+    {
+      "id": "FR-AQU-03",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -5,
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "water_availability": "LOW"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "minimum_winter_temperature_c": -8,
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "water_availability": "LOW"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Centre-Val de Loire, climat TEMPERATE_TRANSITIONAL; minimum hivernal de scénario -8 °C au lieu de -5 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Sunny paved patio beside a sandy loam border with limited water and summer drying."
+    },
+    {
+      "id": "FR-NOR-06",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -6,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "HIGH"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "minimum_winter_temperature_c": -9,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "HIGH"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Île-de-France, climat TEMPERATE_TRANSITIONAL; minimum hivernal de scénario -9 °C au lieu de -6 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Gently sloped residential side yard with natural gravitational drainage and assumed high water availability."
+    },
+    {
+      "id": "FR-TEM-002",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -4,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "MEDIUM"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "minimum_winter_temperature_c": -8,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "MEDIUM"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Centre-Val de Loire, climat TEMPERATE_TRANSITIONAL; minimum hivernal de scénario -8 °C au lieu de -4 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Sheltered residential border beside a fence on freely draining sandy soil."
+    },
+    {
+      "id": "FR-TEM-003",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -8,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "MEDIUM"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "minimum_winter_temperature_c": -9,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "MEDIUM"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Île-de-France, climat TEMPERATE_TRANSITIONAL; minimum hivernal de scénario -9 °C au lieu de -8 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Boundary hedge on fertile silty soil; consistent moisture retained as a local site assumption."
+    },
+    {
+      "id": "FR-TEM-004",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -6,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "HIGH"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "minimum_winter_temperature_c": -8,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "HIGH"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Centre-Val de Loire, climat TEMPERATE_TRANSITIONAL; minimum hivernal de scénario -8 °C au lieu de -6 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Timber raised bed with supplemented topsoil and municipal irrigation."
+    },
+    {
+      "id": "FR-TEM-005",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -9,
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "water_availability": "MEDIUM"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "minimum_winter_temperature_c": -9,
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "water_availability": "MEDIUM"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Hauts-de-France, climat TEMPERATE_TRANSITIONAL; minimum hivernal de scénario -9 °C au lieu de -9 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Inland suburban border shaded by deciduous canopy on silty soil with seasonal wetness."
+    },
+    {
+      "id": "FR-TEM-008",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -6,
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "water_availability": "MEDIUM"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "minimum_winter_temperature_c": -9,
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "water_availability": "MEDIUM"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Centre-Val de Loire, climat TEMPERATE_TRANSITIONAL; minimum hivernal de scénario -9 °C au lieu de -6 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Formal hedge on heavy lowland clay susceptible to summer drying."
+    },
+    {
+      "id": "FR-TEM-009",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -5,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "MEDIUM"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "minimum_winter_temperature_c": -8,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "MEDIUM"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Île-de-France, climat TEMPERATE_TRANSITIONAL; minimum hivernal de scénario -8 °C au lieu de -5 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. West-facing foundation bed on loam with consistent moisture assumed from local conditions."
+    },
+    {
+      "id": "FR-TEM-012",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -4,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "MEDIUM"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_TRANSITIONAL",
+        "minimum_winter_temperature_c": -9,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "MEDIUM"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Centre-Val de Loire, climat TEMPERATE_TRANSITIONAL; minimum hivernal de scénario -9 °C au lieu de -4 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Garden border beside mature oaks on freely draining loam; consistent moisture is a site assumption."
+    },
+    {
+      "id": "FR-TEM-013",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -7,
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "water_availability": "LOW"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -11,
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "water_availability": "LOW"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Grand Est, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -11 °C au lieu de -7 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Narrow north-facing urban courtyard between brick walls with limited water and summer drying."
+    },
+    {
+      "id": "FR-TEM-017",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -5,
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "water_availability": "LOW"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -12,
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "water_availability": "LOW"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Grand Est, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -12 °C au lieu de -5 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Exposed inland garden perimeter on fast-draining sandy soil with limited water."
+    },
+    {
+      "id": "FR-TEM-018",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -4,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "MEDIUM"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -11,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "MEDIUM"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Grand Est, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -11 °C au lieu de -4 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Stone planter against a high north wall of an old town residence."
+    },
+    {
+      "id": "FR-TEM-022",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -3,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "HIGH"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -12,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "HIGH"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Bourgogne-Franche-Comté, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -12 °C au lieu de -3 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Sheltered residential hedge on silty soil with assumed high water availability and consistent moisture."
+    },
+    {
+      "id": "FR-TEM-024",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -7,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "MEDIUM"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -11,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "MEDIUM"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Grand Est, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -11 °C au lieu de -7 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Narrow north-facing garage border on silty soil with consistent local moisture."
+    },
+    {
+      "id": "FR-TEM-026",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -7,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "MEDIUM"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -12,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "MEDIUM"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Grand Est, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -12 °C au lieu de -7 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Terrace planter receiving morning light in an urban courtyard."
+    },
+    {
+      "id": "FR-TEM-027",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -4,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "HIGH"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -11,
+        "soil_moisture_seasonality": "WELL_DRAINED",
+        "water_availability": "HIGH"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Grand Est, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -11 °C au lieu de -4 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Sheltered inland garden on light sandy soil with high water availability assumed independently of rainfall."
+    },
+    {
+      "id": "FR-TEM-029",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -5,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "HIGH"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -12,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "HIGH"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Bourgogne-Franche-Comté, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -12 °C au lieu de -5 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Elevated backyard bed on loam with consistent domestic watering."
+    },
+    {
+      "id": "FR-TEM-030",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -8,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "MEDIUM"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -12,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "MEDIUM"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Grand Est, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -12 °C au lieu de -8 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Inner courtyard shaded by townhouses with consistent local soil moisture."
+    },
+    {
+      "id": "FR-TEM-034",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -4,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "HIGH"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -11,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "HIGH"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Bourgogne-Franche-Comté, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -11 °C au lieu de -4 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Wooden planter on a shaded residential deck with regular watering."
+    },
+    {
+      "id": "FR-TEM-036",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -6,
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "water_availability": "HIGH"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -13,
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "water_availability": "HIGH"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Grand Est, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -13 °C au lieu de -6 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Constructed infiltration basin over slow-draining lowland clay with seasonal wetness."
+    },
+    {
+      "id": "FR-TEM-037",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -6,
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "water_availability": "LOW"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -12,
+        "soil_moisture_seasonality": "DRY_SUMMER",
+        "water_availability": "LOW"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Bourgogne-Franche-Comté, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -12 °C au lieu de -6 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Terracotta planter on a south-facing paved patio with rapid summer drying and limited water."
+    },
+    {
+      "id": "FR-TEM-040",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -7,
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "water_availability": "HIGH"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -12,
+        "soil_moisture_seasonality": "SEASONAL_WET",
+        "water_availability": "HIGH"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Grand Est, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -12 °C au lieu de -7 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Low-lying hedge boundary on fine silt with poor drainage and seasonal winter wetness."
+    },
+    {
+      "id": "FR-TEM-042",
+      "before": {
+        "climate_zone": "TEMPERATE_OCEANIC",
+        "minimum_winter_temperature_c": -5,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "HIGH"
+      },
+      "after": {
+        "climate_zone": "TEMPERATE_SEMI_CONTINENTAL",
+        "minimum_winter_temperature_c": -11,
+        "soil_moisture_seasonality": "CONSISTENTLY_MOIST",
+        "water_availability": "HIGH"
+      },
+      "reason": "Hypothèse de relocalisation synthétique en Grand Est, climat TEMPERATE_SEMI_CONTINENTAL; minimum hivernal de scénario -11 °C au lieu de -5 °C. Humidité et disponibilité en eau conservées comme hypothèses locales, non déduites du climat. Deeply shaded sunken courtyard on clay with poor percolation and roof drip."
+    }
+  ],
+  "matching_requires_regeneration": true
+}
