@@ -20,10 +20,11 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--input-json", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p.add_argument("--catalogue", type=Path, default=ROOT / "data/plants-mvp-40.json")
     p.add_argument("--offset", type=int, default=0)
     p.add_argument("--count", type=int, default=5)
     a = p.parse_args()
-    plants = json.loads((ROOT / "data/plants-mvp-40.json").read_text())
+    plants = json.loads(a.catalogue.read_text())
     if a.offset < 0 or not 1 <= a.count <= 5 or a.offset + a.count > len(plants):
         p.error("Invalid batch")
     names = [x["scientific_name"] for x in plants[a.offset:a.offset+a.count]]
