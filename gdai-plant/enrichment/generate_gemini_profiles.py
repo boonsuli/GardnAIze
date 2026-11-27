@@ -12,7 +12,7 @@ from enrichment.validate_plant_profiles import validate
 def extract(response):
     candidates = response.get("candidates", [])
     if len(candidates) != 1 or candidates[0].get("finishReason") != "STOP":
-        raise ValueError("Missing or incomplete Gemini candidate")
+        raise ValueError(f"Incomplete Gemini response: candidates={len(candidates)}, finishReasons={[c.get('finishReason') for c in candidates]}")
     c = candidates[0]
     raw = "".join(p.get("text", "") for p in c["content"]["parts"] if not p.get("thought"))
     raw = raw.strip()
@@ -26,12 +26,15 @@ def main():
     p.add_argument("--input-json", type=Path, help="Replay saved raw response without API calls")
     p.add_argument("--out-dir", type=Path, required=True)
     p.add_argument("--model")
+    p.add_argument("--max-output-tokens", type=int, default=16384)
     p.add_argument("--catalogue", type=Path, default=ROOT / "data/plants-mvp-40.json")
     p.add_argument("--offset", type=int, default=0)
     p.add_argument("--count", type=int, default=5)
     p.add_argument("--allow-paid-api", action="store_true")
     p.add_argument("--confirm-api-spend")
     a = p.parse_args()
+    if not 1 <= a.max_output_tokens <= 65536:
+        p.error("Invalid output token limit")
     if not a.input_json and (not a.model or not re.fullmatch(r"[A-Za-z0-9._-]+", a.model)):
         p.error("Invalid model ID")
     plants = json.loads(a.catalogue.read_text(encoding="utf-8"))
@@ -55,8 +58,8 @@ def main():
         a.out_dir.mkdir(parents=True, exist_ok=False)
         body = {"contents": [{"parts": [{"text": prompt}]}],
                 "tools": [{"google_search": {}}],
-                "generationConfig": {"maxOutputTokens": 16384}}
-        metadata = {"model": a.model, "names": names, "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(), "status": "REQUEST_STARTED"}
+                "generationConfig": {"maxOutputTokens": a.max_output_tokens}}
+        metadata = {"model": a.model, "names": names, "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(), "status": "REQUEST_STARTED", "max_output_tokens": a.max_output_tokens}
         (a.out_dir / "request.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
         (a.out_dir / "prompt.txt").write_text(prompt, encoding="utf-8")
         req = Request("https://generativelanguage.googleapis.com/v1beta/models/" + a.model + ":generateContent",
@@ -66,6 +69,7 @@ def main():
     (a.out_dir / "response-raw.json").write_bytes(raw)
     response = json.loads(raw)
     print(json.dumps(response.get("usageMetadata", {})))
+    (a.out_dir / "usage.json").write_text(json.dumps(response.get("usageMetadata", {}), indent=2), encoding="utf-8")
     payload = extract(response)
     (a.out_dir / "profiles-unvalidated.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     report = validate(payload, names)
