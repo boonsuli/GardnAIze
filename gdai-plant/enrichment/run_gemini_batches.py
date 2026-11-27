@@ -10,10 +10,13 @@ from enrichment.validate_plant_profiles import validate
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--model", required=True)
+    p.add_argument("--max-output-tokens", type=int, default=32768)
     p.add_argument("--max-requests", type=int, default=1)
     p.add_argument("--allow-paid-api", action="store_true")
     p.add_argument("--confirm-api-spend")
     a = p.parse_args()
+    if not 1 <= a.max_output_tokens <= 65536:
+        p.error("Invalid output token limit")
     if not 1 <= a.max_requests <= 20:
         p.error("Request cap must be 1..20")
     if a.allow_paid_api and a.confirm_api_spend != "I_AUTHORIZE_GEMINI_API_COST":
@@ -31,7 +34,8 @@ def main():
             validate(json.loads(dest.read_text()),names)
             print(folder.name,"already complete")
             continue
-        run = folder/"gemini-run-v1"
+        attempts = sorted(folder.glob("gemini-run-v*"), key=lambda p: int(p.name.rsplit("v",1)[1]))
+        run = attempts[-1] if attempts else folder/"gemini-run-v1"
         if run.exists():
             validated = run/"validation.json"
             if not validated.exists():
@@ -53,6 +57,7 @@ def main():
         subprocess.run([sys.executable,"-m","enrichment.generate_gemini_profiles",
             "--catalogue",str(catalogue),"--offset",str(offset),"--count",str(count),
             "--prompt",str(prompt),"--out-dir",str(run),"--model",a.model,
+            "--max-output-tokens",str(a.max_output_tokens),
             "--allow-paid-api","--confirm-api-spend",a.confirm_api_spend],cwd=ROOT,check=True)
         payload = json.loads((run/"profiles-unvalidated.json").read_text())
         validate(payload,names)
