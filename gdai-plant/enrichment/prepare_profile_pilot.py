@@ -23,11 +23,12 @@ def with_sources(protocol, sources):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--catalogue", type=Path, default=ROOT / "data/plants-mvp-40.json")
     p.add_argument("--offset", type=int, default=0)
     p.add_argument("--count", type=int, default=5)
     p.add_argument("--out", type=Path, required=True)
     a = p.parse_args()
-    plants = json.loads((ROOT / "data/plants-mvp-40.json").read_text(encoding="utf-8"))
+    plants = json.loads(a.catalogue.read_text(encoding="utf-8"))
     protocol = (ROOT / "prompts/horticultural-common-v1.md").read_text(encoding="utf-8")
     sources = json.loads((ROOT / "config/gardnaize-horticultural-sources-v1.json").read_text(encoding="utf-8"))
     schema = json.loads((ROOT / "schemas/plant-enrichment-v1.schema.json").read_text(encoding="utf-8"))
