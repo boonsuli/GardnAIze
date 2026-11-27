@@ -66,5 +66,7 @@
   "required_values": {
     "region": "Île-de-France"
   },
-  "notes": "Provisional synthetic MVP scope, not climatological limits. Review outliers; never automatically clip or relabel. Other regional profiles require separate validation."
+  "notes": "Provisional synthetic MVP scope, not climatological limits. Review outliers; never automatically clip or relabel. Other regional profiles require separate validation.",
+  "climate_label_fr": "Océanique altéré",
+  "reference_station": "Paris"
 }
