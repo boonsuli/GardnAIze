@@ -26,6 +26,7 @@ def main():
     p.add_argument("--input-json", type=Path, help="Replay saved raw response without API calls")
     p.add_argument("--out-dir", type=Path, required=True)
     p.add_argument("--model")
+    p.add_argument("--catalogue", type=Path, default=ROOT / "data/plants-mvp-40.json")
     p.add_argument("--offset", type=int, default=0)
     p.add_argument("--count", type=int, default=5)
     p.add_argument("--allow-paid-api", action="store_true")
@@ -33,7 +34,7 @@ def main():
     a = p.parse_args()
     if not a.input_json and (not a.model or not re.fullmatch(r"[A-Za-z0-9._-]+", a.model)):
         p.error("Invalid model ID")
-    plants = json.loads((ROOT / "data/plants-mvp-40.json").read_text(encoding="utf-8"))
+    plants = json.loads(a.catalogue.read_text(encoding="utf-8"))
     if a.offset < 0 or not 1 <= a.count <= 5 or a.offset+a.count > len(plants):
         p.error("Invalid batch")
     names = [x["scientific_name"] for x in plants[a.offset:a.offset+a.count]]
