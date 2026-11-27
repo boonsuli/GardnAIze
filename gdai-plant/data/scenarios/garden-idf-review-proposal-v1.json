@@ -1,0 +1,552 @@
+[
+  {
+    "id": "FR-PAR-01",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Suburban front lawn border. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-BRE-02",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Fence-sheltered residential border. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-AQU-03",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -5,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Sunny paved patio border. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-CTR-04",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: North-facing house foundation. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-EST-05",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -3,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Open alluvial garden perimeter. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-NOR-06",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Gently sloping side yard. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-RHO-07",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Enclosed shaded clay courtyard. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-OCC-08",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Gravel driveway border. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-IDF-09",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -4,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Roof-runoff swale. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-002",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -3,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Sheltered fence border. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-003",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Residential hedge on silty soil. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-004",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Irrigated timber raised bed. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-005",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -5,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Partly shaded backyard edge. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-006",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Stony courtyard with reflected heat. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-007",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -3,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Exposed sunny residential strip. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-008",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Heavy clay hedge subject to dry spells. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-009",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: West-facing foundation bed. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-010",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Masonry terrace container. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-011",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -4,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Clay hedge in a cold pocket. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-012",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -3,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Border beside mature trees. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-013",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Narrow north-facing courtyard. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-014",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Sandy border with summer moisture deficit. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-015",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -5,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Engineered roof-runoff swale. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-016",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -4,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Shaded passage between houses. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-017",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -3,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Exposed sandy perimeter. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-018",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Stone planter against north wall. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-020",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Shallow limestone border. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-022",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -5,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Sheltered moist garden pocket. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-023",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -4,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Urban raised backyard bed. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-024",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -3,
+      "plausibility_reason": "Synthetic Île-de-France scenario: North-facing garage strip. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-025",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Sunny clay-loam border. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-026",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Morning-lit terrace planter. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-027",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -5,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Sheltered light-soil garden. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-028",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -4,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Alluvial lowland garden. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-029",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -3,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Watered elevated backyard bed. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-030",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Shaded townhouse courtyard. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-031",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Roof-runoff garden depression. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-032",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -5,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Stony boundary wall border. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-033",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Mixed-soil suburban hedge. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-034",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -3,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Watered shaded deck planter. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-035",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Compacted shaded courtyard. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-036",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Residential infiltration basin. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-037",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -5,
+      "plausibility_reason": "Synthetic Île-de-France scenario: South-facing terracotta planter. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-038",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -4,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Gravel border near deciduous trees. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-039",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -3,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Dry shade beneath eaves. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-040",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -7,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Silty boundary with winter pooling. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-041",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Sunny sandy raised bed. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-042",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -5,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Shaded sunken garden pocket. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-043",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -4,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Clay floodplain border. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  },
+  {
+    "id": "FR-TEM-044",
+    "changes": {
+      "region": "Île-de-France",
+      "climate_zone": "TEMPERATE_TRANSITIONAL",
+      "minimum_winter_temperature_c": -6,
+      "plausibility_reason": "Synthetic Île-de-France scenario: Semi-shaded compost-enriched raised bed. Existing soil, exposure and planting constraints retained."
+    },
+    "reason": "Proposed synthetic relocation; winter minimum is an illustrative scenario assumption within the provisional profile, not a measured climate value. Review local plausibility and microclimate before approval.",
+    "reviewed": false
+  }
+]
